@@ -1,0 +1,120 @@
+:root {
+  --fg: #fff;
+  --bg-primary: #222;
+  --bg-secondary: #171719;
+}
+
+html,
+body,
+main {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  color: var(--fg);
+  background-color: var(--bg-secondary);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  width: calc(100% - 24px);
+  max-width: 800px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-primary);
+  padding: 0.4rem 12px 1rem 12px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+li,
+ul,
+ol,
+span,
+div {
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  margin-top: 8px;
+}
+
+.agencies,
+.routes,
+.stations,
+.trains {
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+  text-align: left;
+}
+
+.agency,
+.route,
+.station,
+.train,
+.destination {
+  display: flex;
+  flex-direction: column;
+  padding: 0.2rem 0.4rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.destination {
+  cursor: default;
+  text-decoration: none;
+}
+
+.station,
+.destination {
+  background-color: #444;
+}
+
+a,
+a:visited {
+  color: var(--fg);
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.train {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  font-size: 1.2em;
+  text-decoration: none !important ;
+}
+
+.trainLink {
+  text-decoration: none !important;
+}
+
+.trains {
+  margin-top: 0;
+  margin-bottom: 4px;
+}
