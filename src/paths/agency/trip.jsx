@@ -91,7 +91,7 @@ const Trip = () => {
         ) : (
           <>
             {trip.routeShortName} Trip {trip.tripID} to{" "}
-            {trip.routeLongName.split(" to ")[1]}
+            {trip.headsign}
           </>
         )}
       </h2>

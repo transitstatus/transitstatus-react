@@ -66,7 +66,7 @@ const Station = () => {
       let destinations = {};
 
       trackingData.upcomingTrains.forEach((vehicle) => {
-        const destination = vehicle.finalStop;
+        const destination = vehicle.headsign;
         destinations[destination] = destinations[destination] ?? [];
         destinations[destination].push(vehicle);
       });
@@ -106,7 +106,7 @@ const Station = () => {
               return (
                 <div key={destination} className='trains'>
                   <h3 className='destination'>
-                    {stopInfo[destination].stopName}
+                    {destination}
                   </h3>
                   {trainDestinations[destination].length > 0 ? (
                     trainDestinations[destination]
@@ -141,8 +141,8 @@ const Station = () => {
                               <span>
                                 <p>{train.routeShortName} to</p>
                                 <h3>
-                                  {stopInfo[train.finalStop]
-                                    ? stopInfo[train.finalStop].stopName
+                                  {destination
+                                    ? destination
                                     : train.routeLongName}
                                 </h3>
                               </span>
