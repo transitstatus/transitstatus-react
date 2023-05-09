@@ -68,7 +68,7 @@ const Agency = () => {
     <>
       <h1>Transitstat.us {agency} Tracker</h1>
       <p>Open source, free, and easy transit tracker.</p>
-      <p>v0.0.2 Beta</p>
+      <p>v0.0.3 Beta</p>
       <p>Heads up: this shit will probably break!</p>
       <h2
         style={{
