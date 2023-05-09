@@ -7,24 +7,28 @@ const agencies = {
     endpoint: "bart",
     color: "#0099d8",
     textColor: "#ffffff",
+    type: "train",
   },
   Metra: {
     name: "Metra",
     endpoint: "metra",
     color: "#005195",
     textColor: "#ffffff",
+    type: "train",
   },
   LIRR: {
     name: "Long Island Rail Road",
     endpoint: "lirr",
     color: "#0f61a9",
     textColor: "#ffffff",
+    type: "train",
   },
   "NYC Subway": {
     name: "New York City Subway",
     endpoint: "nyct_subway",
     color: "#0f61a9",
     textColor: "#ffffff",
+    type: "train",
   },
 };
 
