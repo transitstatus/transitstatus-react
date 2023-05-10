@@ -110,6 +110,9 @@ const Station = () => {
                   </h3>
                   {trainDestinations[destination].length > 0 ? (
                     trainDestinations[destination]
+                      .filter((train) => {
+                        if (!train.arr) return false;
+                      })
                       .sort((a, b) => {
                         if (!a.arr) return -1;
                         if (!b.arr) return 1;
