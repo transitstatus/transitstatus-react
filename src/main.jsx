@@ -61,19 +61,10 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-/*
 root.render(
   <React.Suspense fallback={<LoadingPage />}>
     <React.StrictMode>
       <RouterProvider router={router} />
     </React.StrictMode>
   </React.Suspense>
-);
-*/
-
-root.render(
-  <p>
-    Due to API instability, this site has been taken down for the time being. I
-    will post on my twitter when it returns.
-  </p>
 );

@@ -1,32 +1,6 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-
-const agencies = {
-  BART: {
-    name: "Bay Area Rapid Transit",
-    endpoint: "bart",
-    color: "#0099d8",
-    textColor: "#ffffff",
-  },
-  Metra: {
-    name: "Metra",
-    endpoint: "metra",
-    color: "#005195",
-    textColor: "#ffffff",
-  },
-  LIRR: {
-    name: "Long Island Rail Road",
-    endpoint: "lirr",
-    color: "#0f61a9",
-    textColor: "#ffffff",
-  },
-  "NYC Subway": {
-    name: "New York City Subway",
-    endpoint: "nyct_subway",
-    color: "#0f61a9",
-    textColor: "#ffffff",
-  },
-};
+import { agencies, config } from "../../config";
 
 const hoursMinutesUntilArrival = (arrivalTime) => {
   const now = new Date();
@@ -46,120 +20,106 @@ const Station = () => {
   const { agency, stopID } = useParams();
   const navigate = useNavigate();
   const [station, setStation] = useState({});
-  const [stopInfo, setStopInfo] = useState({});
-  const [trainDestinations, setTrainDestinations] = useState({});
   const [loadingMessage, setLoadingMessage] = useState("Loading trains...");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchVehicles = async () => {
-      const trackingResponse = await fetch(
-        `https://macro.transitstat.us/${agencies[agency].endpoint}/stations/${stopID}`
-      );
-      const stopInfoResponse = await fetch(
-        `https://gtfs.piemadd.com/data/${agencies[agency].endpoint}/stops.json`
-      );
-
-      const trackingData = await trackingResponse.json();
-      const stopInfoData = await stopInfoResponse.json();
-
-      let destinations = {};
-
-      trackingData.upcomingTrains.forEach((vehicle) => {
-        const destination = vehicle.headsign;
-        destinations[destination] = destinations[destination] ?? [];
-        destinations[destination].push(vehicle);
-      });
-
-      setTrainDestinations(destinations);
-      setStation(trackingData);
-      setStopInfo(stopInfoData);
-
-      setIsLoading(false);
-      setTimeout(() => fetchVehicles, 60000);
+    const fetchData = () => {
+      fetch(`${agencies[agency].endpoint}/stations/${stopID}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setStation(data);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.error(error);
+          setLoadingMessage(
+            "Error loading data. Please try again later or choose another station."
+          );
+          setIsLoading(true);
+        });
     };
 
-    fetchVehicles();
+    fetchData();
+    setInterval(fetchData, 30000);
   }, [agency, stopID]);
 
   return (
     <>
-      <h1>Transitstat.us {agency} Tracker</h1>
-      <p>Open source, free, and easy transit tracker.</p>
-      <p>v0.0.3 Beta</p>
-      <p>Heads up: this shit will probably break!</p>
+      <h1>{agencies[agency].name} Tracker</h1>
+      <p>by Transitstat.us</p>
+      <p>{config.tagLine}</p>
+      <p>{config.version}</p>
+      {config.additionalWarnings.map((warning, i) => {
+        return <p key={i}>{warning}</p>;
+      })}
       <h2
         style={{
           marginTop: "4px",
           marginBottom: "8px",
         }}
       >
-        {station.name}
+        {station.stationName}
       </h2>
       <div>
         {isLoading ? (
           <p>{loadingMessage}</p>
         ) : (
-          Object.keys(trainDestinations)
-            .sort()
-            .map((destination) => {
+          Object.keys(station.destinations)
+            .sort((a, b) => {
+              if (a === station.stationName) return 1;
+              if (b === station.stationName) return -1;
+
+              return a.localeCompare(b);
+            })
+            .map((destinationKey) => {
               return (
-                <div key={destination} className='trains'>
-                  <h3 className='destination'>
-                    {destination}
-                  </h3>
-                  {trainDestinations[destination].length > 0 ? (
-                    trainDestinations[destination]
-                      .filter((train) => {
-                        if (!train.arr) return false;
-                      })
-                      .sort((a, b) => {
-                        if (!a.arr) return -1;
-                        if (!b.arr) return 1;
-                        return (
-                          Math.max(a.arr.low, a.arr.high) -
-                          Math.max(b.arr.low, b.arr.high)
-                        );
-                      })
-                      .map((train) => {
-                        if (!train.arr) return null;
-
-                        const arr =
-                          Math.max(train.arr.low, train.arr.high) * 1000;
-                        const now = new Date().valueOf();
-
-                        return now - arr < 300000 ? (
-                          <Link
-                            to={`/${agency}/track/${train.tripID}`}
-                            key={train.tripID}
-                            className='trainLink '
-                          >
-                            <div
-                              className='train '
-                              style={{
-                                backgroundColor: `#${train.routeColor}`,
-                                color: `#${train.routeTextColor}`,
-                              }}
+                <>
+                  {station.destinations[destinationKey].trains.length > 0 ? (
+                    <div key={destinationKey} className='trains'>
+                      <h3 className='destination'>{destinationKey}</h3>
+                      {station.destinations[destinationKey].trains
+                        .sort((a, b) => {
+                          if (!a.eta) return -1;
+                          if (!b.eta) return 1;
+                          return a.eta - b.eta;
+                        })
+                        .map((train) => {
+                          return (
+                            <Link
+                              to={`/${agency}/track/${train.runNumber}`}
+                              key={train.runNumber}
+                              className='trainLink '
                             >
-                              <span>
-                                <p>{train.routeShortName} to</p>
-                                <h3>
-                                  {destination
-                                    ? destination
-                                    : train.routeLongName}
-                                </h3>
-                              </span>
-                              <span>
-                                <h3>{hoursMinutesUntilArrival(arr)}</h3>
-                              </span>
-                            </div>
-                          </Link>
-                        ) : null;
-                      })
-                  ) : (
-                    <p>{trainDestinations[destination].length}</p>
-                  )}
-                </div>
+                              <div
+                                className='train '
+                                style={{
+                                  backgroundColor: `#${train.lineColor}`,
+                                  color: `#${train.lineTextColor}`,
+                                }}
+                              >
+                                <span>
+                                  <p>
+                                    {train.lineCode} #{train.runNumber} to
+                                  </p>
+                                  <h3>
+                                    {destinationKey
+                                      ? destinationKey
+                                      : train.routeLongName}
+                                  </h3>
+                                </span>
+                                <span>
+                                  <h3>
+                                    {hoursMinutesUntilArrival(train.actualETA)}
+                                  </h3>
+                                </span>
+                              </div>
+                            </Link>
+                          );
+                        })}
+                    </div>
+                  ) : null}
+                </>
               );
             })
         )}
@@ -169,7 +129,6 @@ const Station = () => {
           style={{
             backgroundColor: agencies[agency].color,
             color: agencies[agency].textColor,
-            marginTop: "16px",
           }}
           onClick={() => {
             if (history.state.idx && history.state.idx > 0) {
@@ -179,7 +138,7 @@ const Station = () => {
             }
           }}
         >
-          Choose Another Train
+          Choose Another Station
         </h3>
       </div>
     </>

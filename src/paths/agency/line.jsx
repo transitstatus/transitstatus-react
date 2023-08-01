@@ -1,106 +1,69 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-
-const agencies = {
-  BART: {
-    name: "Bay Area Rapid Transit",
-    endpoint: "bart",
-    color: "#0099d8",
-    textColor: "#ffffff",
-  },
-  Metra: {
-    name: "Metra",
-    endpoint: "metra",
-    color: "#005195",
-    textColor: "#ffffff",
-  },
-  LIRR: {
-    name: "Long Island Rail Road",
-    endpoint: "lirr",
-    color: "#0f61a9",
-    textColor: "#ffffff",
-  },
-  "NYC Subway": {
-    name: "New York City Subway",
-    endpoint: "nyct_subway",
-    color: "#0f61a9",
-    textColor: "#ffffff",
-  },
-};
+import { agencies, config } from "../../config";
 
 const Line = () => {
   const { agency, lineName } = useParams();
-  const [stations, setStations] = useState([]);
+  const [lines, setLines] = useState({});
+  const [line, setLine] = useState({});
+  const [stations, setStations] = useState({});
   const [loadingMessage, setLoadingMessage] = useState("Loading data...");
   const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchVehicles = async () => {
-      const response = await fetch(
-        `https://macro.transitstat.us/${agencies[agency].endpoint}/stations`
-      );
+    const fetchData = async () => {
+      const linesReq = await fetch(`${agencies[agency].endpoint}/lines`);
+      const stationsReq = await fetch(`${agencies[agency].endpoint}/stations`);
 
-      const data = await response.json();
+      const linesData = await linesReq.json();
+      const stationsData = await stationsReq.json();
 
-      let stationData = [];
-      Object.values(data).forEach((station) => {
-        const stationLines = station.upcomingTrains.map(
-          (train) => train.routeShortName
-        );
+      setLine(linesData[lineName]);
+      setStations(stationsData);
 
-        if (stationLines.includes(lineName)) {
-          stationData.push({
-            name: station.name,
-            stationID: station.stationID,
-          });
-        }
-      });
-
-      setStations(
-        stationData.sort((a, b) => {
-          if (a.name < b.name) {
-            return -1;
-          }
-          if (a.name > b.name) {
-            return 1;
-          }
-          return 0;
-        })
-      );
       setIsLoading(false);
-      //don't need to re-fetch data as we only need the station names
-      //setTimeout(() => fetchVehicles, 60000);
     };
 
-    fetchVehicles();
-  }, [agency]);
+    fetchData();
+  }, [agency, lineName]);
+
+  console.log(line);
 
   return (
     <>
-      <h1>Transitstat.us {agency} Tracker</h1>
-      <p>Open source, free, and easy transit tracker.</p>
-      <p>v0.0.3 Beta</p>
-      <p>Heads up: this shit will probably break!</p>
-      <h2
-        style={{
-          marginTop: "4px",
-        }}
-      >
-        {lineName} Line Stations
-      </h2>
-      <p>
-        Choose the station you would like to track a {agencies[agency].type}{" "}
-        for:
-      </p>
+      <h1>{agencies[agency].name} Tracker</h1>
+      <p>by Transitstat.us</p>
+      <p>{config.tagLine}</p>
+      <p>{config.version}</p>
+      {config.additionalWarnings.map((warning, i) => {
+        return <p key={i}>{warning}</p>;
+      })}
       <div className='stations'>
+        {isLoading ? (
+          <h2>Loading line...</h2>
+        ) : (
+          <h2
+            style={{
+              marginTop: "4px",
+              padding: "2px 6px",
+              backgroundColor: `#${line.routeColor}`,
+              color: `#${line.routeTextColor}`,
+            }}
+          >
+            {line.lineNameLong} ({line.lineNameShort}){" "}
+            {agencies[agency].addLine ? "Line" : ""}
+          </h2>
+        )}
         <h3
           className='route'
           key='backButton'
           style={{
             backgroundColor: agencies[agency].color,
             color: agencies[agency].textColor,
+            fontSize: "1.3rem",
+            padding: "8px",
           }}
           onClick={() => {
             if (history.state.idx && history.state.idx > 0) {
@@ -114,17 +77,39 @@ const Line = () => {
         </h3>
         {isLoading ? (
           <p>{loadingMessage}</p>
-        ) : stations.length > 0 ? (
-          stations.map((station) => (
-            <h3 key={station.name}>
-              <Link
-                to={`/${agency}/stops/${station.stationID}`}
-                className='station'
-              >
-                {station.name}
-              </Link>
-            </h3>
-          ))
+        ) : line.stations.length > 0 ? (
+          line.stations
+            .sort((a, b) => {
+              const aName = stations[a].stationName;
+              const bName = stations[b].stationName;
+              
+              const aNum = parseInt(aName);
+              const bNum = parseInt(bName);
+
+              if (isNaN(aNum) && isNaN(bNum)) return aName.localeCompare(bName);
+
+              if (isNaN(aNum)) return 1;
+              if (isNaN(bNum)) return -1;
+
+              return aNum - bNum;
+            })
+            .map((stationKey) => {
+              const station = stations[stationKey];
+              return (
+                <h3 key={station.stationID}>
+                  <Link
+                    to={`/${agency}/stops/${station.stationID}`}
+                    className='station'
+                    style={{
+                      fontSize: "1.3rem",
+                      padding: "8px",
+                    }}
+                  >
+                    {station.stationName}
+                  </Link>
+                </h3>
+              );
+            })
         ) : (
           <p>No stations have trains tracking for this line currently.</p>
         )}

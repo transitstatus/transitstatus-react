@@ -1,32 +1,6 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-
-const agencies = {
-  BART: {
-    name: "Bay Area Rapid Transit",
-    endpoint: "bart",
-    color: "#0099d8",
-    textColor: "#ffffff",
-  },
-  Metra: {
-    name: "Metra",
-    endpoint: "metra",
-    color: "#005195",
-    textColor: "#ffffff",
-  },
-  LIRR: {
-    name: "Long Island Rail Road",
-    endpoint: "lirr",
-    color: "#0f61a9",
-    textColor: "#ffffff",
-  },
-  "NYC Subway": {
-    name: "New York City Subway",
-    endpoint: "nyct_subway",
-    color: "#0f61a9",
-    textColor: "#ffffff",
-  },
-};
+import { agencies, config } from "../../config";
 
 const hoursMinutesUntilArrival = (arrivalTime) => {
   const now = new Date();
@@ -51,68 +25,82 @@ const Trip = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchVehicles = async () => {
-      const trackingResponse = await fetch(
-        `https://macro.transitstat.us/${agencies[agency].endpoint}/vehicles/${tripID}`
-      );
-      const stationsResponse = await fetch(
-        `https://gtfs.piemadd.com/data/${agencies[agency].endpoint}/stops.json`
-      );
-
-      const dataResponse = await trackingResponse.json();
-      const stationsData = await stationsResponse.json();
-
-      setTrip(dataResponse);
-      setStations(stationsData);
-
-      console.log(dataResponse);
-
-      setIsLoading(false);
-      setTimeout(() => fetchVehicles, 60000);
+    const fetchData = () => {
+      fetch(`${agencies[agency].endpoint}/trains/${tripID}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setTrip(data);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.error(error);
+          setLoadingMessage(
+            "Error loading data. Please try again later or choose another station."
+          );
+          setIsLoading(true);
+        });
     };
 
-    fetchVehicles();
+    fetchData();
+    setInterval(fetchData, 30000);
   }, [agency, tripID]);
 
   return (
     <>
-      <h1>Transitstat.us {agency} Tracker</h1>
-      <p>Open source, free, and easy transit tracker.</p>
-      <p>v0.0.3 Beta</p>
-      <p>Heads up: this shit will probably break!</p>
-      <h2
-        style={{
-          marginTop: "4px",
-          marginBottom: "8px",
-        }}
-      >
-        {isLoading ? (
-          "Loading trip..."
-        ) : (
-          <>
-            {trip.routeShortName} Trip {trip.tripID} to{" "}
-            {trip.headsign}
-          </>
-        )}
-      </h2>
+      <h1>{agencies[agency].name} Tracker</h1>
+      <p>by Transitstat.us</p>
+      <p>{config.tagLine}</p>
+      <p>{config.version}</p>
+      {config.additionalWarnings.map((warning, i) => {
+        return <p key={i}>{warning}</p>;
+      })}
+
+      {isLoading ? (
+        <p>Loading trip...</p>
+      ) : (
+        <div
+          className='trainInfo'
+          style={{
+            backgroundColor: `#${trip.lineColor}`,
+            color: `#${trip.lineTextColor}`,
+          }}
+        >
+          <h2>
+            {trip.line} #{tripID}
+          </h2>
+          <p>
+            As of{" "}
+            {new Date(
+              trip.predictions[0].actualETA - trip.predictions[0].eta * 60000
+            ).toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            })}
+          </p>
+          <p>
+            Service to{" "}
+            {trip.predictions[trip.predictions.length - 1].stationName}
+          </p>
+        </div>
+      )}
       <div className='trains'>
         {isLoading ? (
           <p>{loadingMessage}</p>
         ) : (
-          trip.stops.map((stop) => {
+          trip.predictions.map((stop) => {
             console.log(stop);
             return (
               <Link
-                to={`/${agency}/stops/${stop.stopID}`}
+                to={`/${agency}/stops/${stop.stationID}`}
                 className='train'
-                key={stop.stopID}
+                key={stop.stationID}
                 style={{
-                  backgroundColor: `#${trip.routeColor}`,
-                  color: `#${trip.routeTextColor}`,
+                  backgroundColor: '#444',
+                  color: '#fff',
                 }}
               >
-                <p>{stations[stop.stopID].stopName}</p>
-                <h3>{hoursMinutesUntilArrival(Math.max(stop.arr.low, stop.arr.high) * 1000)}</h3>
+                <p>{stop.stationName}</p>
+                <h3>{hoursMinutesUntilArrival(stop.actualETA)}</h3>
               </Link>
             );
           })
@@ -123,7 +111,6 @@ const Trip = () => {
           style={{
             backgroundColor: agencies[agency].color,
             color: agencies[agency].textColor,
-            marginTop: "16px",
           }}
           onClick={() => {
             if (history.state.idx && history.state.idx > 0) {
@@ -133,7 +120,7 @@ const Trip = () => {
             }
           }}
         >
-          Choose Another Station
+          Choose Another Train
         </h3>
       </div>
     </>

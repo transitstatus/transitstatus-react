@@ -1,107 +1,80 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-
-const agencies = {
-  BART: {
-    name: "Bay Area Rapid Transit",
-    endpoint: "bart",
-    color: "#0099d8",
-    textColor: "#ffffff",
-    type: "train",
-  },
-  Metra: {
-    name: "Metra",
-    endpoint: "metra",
-    color: "#005195",
-    textColor: "#ffffff",
-    type: "train",
-  },
-  LIRR: {
-    name: "Long Island Rail Road",
-    endpoint: "lirr",
-    color: "#0f61a9",
-    textColor: "#ffffff",
-    type: "train",
-  },
-  "NYC Subway": {
-    name: "New York City Subway",
-    endpoint: "nyct_subway",
-    color: "#0f61a9",
-    textColor: "#ffffff",
-    type: "train",
-  },
-};
+import { agencies, config } from "../../config";
 
 const Agency = () => {
   const { agency } = useParams();
   const navigate = useNavigate();
-  const [lines, setLines] = useState([]);
+  const [lines, setLines] = useState({});
   const [loadingMessage, setLoadingMessage] = useState("Loading data...");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchVehicles = async () => {
-      const response = await fetch(
-        `https://macro.transitstat.us/${agencies[agency].endpoint}/vehicles`
-      );
-
-      const data = await response.json();
-
-      let lineData = {};
-      Object.values(data).forEach((vehicle) => {
-        lineData[vehicle.routeShortName] = {
-          name: vehicle.routeShortName,
-          color: vehicle.routeColor,
-          textColor: vehicle.routeTextColor,
-        };
-      });
-
-      setLines(Object.values(lineData));
-
-      console.log(lineData);
-
-      setIsLoading(false);
-      //don't need to re-fetch data as we only need the line names
-      //setTimeout(() => fetchVehicles, 60000);
+    const fetchData = () => {
+      fetch(`${agencies[agency].endpoint}/lines`)
+        .then((response) => response.json())
+        .then((data) => {
+          setLines(data);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.error(error);
+          setLoadingMessage(
+            "Error loading data. Please try again later or choose another agency."
+          );
+        });
     };
 
-    fetchVehicles();
+    fetchData();
+    //setInterval(fetchData, 30000);
+    //dont need to refetch lines
   }, [agency]);
 
   return (
     <>
-      <h1>Transitstat.us {agency} Tracker</h1>
-      <p>Open source, free, and easy transit tracker.</p>
-      <p>v0.0.3 Beta</p>
-      <p>Heads up: this shit will probably break!</p>
-      <h2
-        style={{
-          marginTop: "4px",
-        }}
-      >
-        Routes
-      </h2>
-      <p>
-        Choose the line you would like to track a {agencies[agency].type} on:
-      </p>
+      <h1>{agencies[agency].name} Tracker</h1>
+      <p>by Transitstat.us</p>
+      <p>{config.tagLine}</p>
+      <p>{config.version}</p>
+      {config.additionalWarnings.map((warning, i) => {
+        return <p key={i}>{warning}</p>;
+      })}
       <div className='routes'>
+        <h2
+          style={{
+            marginTop: "4px",
+            padding: "2px 6px",
+            backgroundColor: agencies[agency].color,
+            color: agencies[agency].textColor,
+          }}
+        >
+          {agencies[agency].name} Routes
+        </h2>
         {isLoading ? (
           <p>{loadingMessage}</p>
         ) : (
-          lines.map((line) => (
-            <h3 key={line.name}>
-              <Link
-                to={`/${agency}/${line.name}`}
-                className='route'
-                style={{
-                  backgroundColor: `#${line.color}`,
-                  color: `#${line.textColor}`,
-                }}
-              >
-                {line.name}
-              </Link>
-            </h3>
-          ))
+          Object.keys(lines)
+            .sort()
+            .map((lineID) => {
+              const line = lines[lineID];
+              console.log(line);
+              return (
+                <h3 key={line.lineCode}>
+                  <Link
+                    to={`/${agency}/${line.lineCode}`}
+                    className='route'
+                    style={{
+                      fontSize: "1.3rem",
+                      padding: "8px",
+                      backgroundColor: `#${line.routeColor}`,
+                      color: `#${line.routeTextColor}`,
+                    }}
+                  >
+                    {line.lineNameLong} ({line.lineNameShort})
+                  </Link>
+                </h3>
+              );
+            })
         )}
         <h3
           className='route'
@@ -109,6 +82,8 @@ const Agency = () => {
           style={{
             backgroundColor: agencies[agency].color,
             color: agencies[agency].textColor,
+            fontSize: "1.3rem",
+            padding: "8px",
           }}
           onClick={() => {
             if (history.state.idx && history.state.idx > 0) {

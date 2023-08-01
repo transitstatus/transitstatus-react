@@ -1,40 +1,16 @@
 import { Link } from "react-router-dom";
 import MoreLinks from "../../components/moreLinks";
-
-const agencies = {
-  BART: {
-    name: "Bay Area Rapid Transit",
-    endpoint: "bart",
-    color: "#0099d8",
-    textColor: "#ffffff",
-  },
-  Metra: {
-    name: "Metra",
-    endpoint: "metra",
-    color: "#005195",
-    textColor: "#ffffff",
-  },
-  LIRR: {
-    name: "Long Island Rail Road",
-    endpoint: "lirr",
-    color: "#0f61a9",
-    textColor: "#ffffff",
-  },
-  "NYC Subway": {
-    name: "New York City Subway",
-    endpoint: "nyct_subway",
-    color: "#0f61a9",
-    textColor: "#ffffff",
-  },
-};
+import { agencies, config } from "../../config";
 
 const Index = () => {
   return (
     <>
       <h1>Transitstat.us</h1>
-      <p>Open source, free, and easy transit tracker.</p>
-      <p>v0.0.3 Beta</p>
-      <p>Heads up: this shit will probably break!</p>
+      <p>{config.tagLine}</p>
+      <p>{config.version}</p>
+      {config.additionalWarnings.map((warning, i) => {
+        return <p key={i}>{warning}</p>;
+      })}
       <h2
         style={{
           marginTop: "4px",
@@ -47,15 +23,13 @@ const Index = () => {
           return (
             <Link
               to={`/${agency}`}
-              className='agency'
+              className={`agency${agencies[agency].disabled ? " disabled" : ""}`}
               style={{
                 backgroundColor: agencies[agency].color,
                 color: agencies[agency].textColor,
               }}
             >
-              <h3>
-                {agencies[agency].name} ({agency})
-              </h3>
+              <h3>{agencies[agency].name}{agencies[agency].disabled ? " (Coming Soon)" : ""}</h3>
             </Link>
           );
         })}

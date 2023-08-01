@@ -13,7 +13,7 @@ main {
   padding: 0;
   color: var(--fg);
   background-color: var(--bg-secondary);
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Atkinson Hyperlegible", sans-serif;
 }
 
 body {
@@ -29,7 +29,7 @@ main {
   display: flex;
   flex-direction: column;
   background-color: var(--bg-primary);
-  padding: 0.4rem 12px 1rem 12px;
+  padding: 4px 12px 12px 12px;
 }
 
 h1,
@@ -117,4 +117,26 @@ a:visited {
 .trains {
   margin-top: 0;
   margin-bottom: 4px;
+}
+
+.trainInfo {
+  display: flex;
+  flex-direction: column;
+  margin: 8px 0 4px 0;
+  padding: 2px 6px 4px 6px;
+}
+
+.trainInfo h2 {
+  margin-top: 0;
+  margin-bottom: -4px;
+}
+
+.trainInfo p {
+  margin-left: 2px;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
 }
