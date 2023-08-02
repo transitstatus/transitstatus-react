@@ -20,6 +20,7 @@ const Station = () => {
   const { agency, stopID } = useParams();
   const navigate = useNavigate();
   const [station, setStation] = useState({});
+  const [lastFetched, setLastFetched] = useState(0);
   const [loadingMessage, setLoadingMessage] = useState("Loading trains...");
   const [isLoading, setIsLoading] = useState(true);
 
@@ -29,6 +30,7 @@ const Station = () => {
         .then((response) => response.json())
         .then((data) => {
           setStation(data);
+          setLastFetched(new Date().valueOf());
           setIsLoading(false);
         })
         .catch((error) => {
@@ -58,28 +60,51 @@ const Station = () => {
       <h2
         style={{
           marginTop: "4px",
-          marginBottom: "8px",
         }}
       >
         {station.stationName}
       </h2>
+      <p
+        style={{
+          marginBottom: "8px",
+        }}
+      >
+        As of{" "}
+        {new Date(lastFetched).toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        })}
+      </p>
       <div>
         {isLoading ? (
           <p>{loadingMessage}</p>
         ) : (
           Object.keys(station.destinations)
             .sort((a, b) => {
+              // if both have no trains, sort alphabetically
+              if (
+                station.destinations[a].trains.length === 0 &&
+                station.destinations[b].trains.length === 0
+              )
+                return a.localeCompare(b);
+
+              // if one has no trains, sort it to the bottom
+              if (station.destinations[a].trains.length === 0) return 1;
+              if (station.destinations[b].trains.length === 0) return -1;
+
+              // if the station is the destination, sort it to the bottom
               if (a === station.stationName) return 1;
               if (b === station.stationName) return -1;
 
+              // sort by the first train's arrival time
               return a.localeCompare(b);
             })
             .map((destinationKey) => {
               return (
                 <div key={destinationKey} className='trains'>
-                  <h3 className='destination'>{destinationKey}</h3>
                   {station.destinations[destinationKey].trains.length > 0 ? (
                     <>
+                      <h3 className='destination'>Towards {destinationKey}</h3>
                       {station.destinations[destinationKey].trains
                         .sort((a, b) => {
                           if (!a.eta) return -1;
@@ -87,7 +112,6 @@ const Station = () => {
                           return a.eta - b.eta;
                         })
                         .map((train) => {
-                          console.log(train);
                           return (
                             <Link
                               to={`/${agency}/track/${train.runNumber}`}
@@ -126,21 +150,11 @@ const Station = () => {
                         })}
                     </>
                   ) : (
-                    <div key='only' className=''>
-                      <div
-                        className='train'
-                        style={{
-                          backgroundColor: `#333`,
-                          color: `#fff`,
-                          cursor: "default",
-                        }}
-                      >
-                        <span>
-                          <p>No trains currently tracking :c</p>
-                        </span>
-                        <span></span>
-                      </div>
-                    </div>
+                    <>
+                      <p className='destination'>
+                        No Trains towards {destinationKey}
+                      </p>
+                    </>
                   )}
                 </div>
               );
@@ -152,6 +166,7 @@ const Station = () => {
           style={{
             backgroundColor: agencies[agency].color,
             color: agencies[agency].textColor,
+            maxWidth: "384px",
           }}
           onClick={() => {
             if (history.state.idx && history.state.idx > 0) {
