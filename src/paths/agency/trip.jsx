@@ -47,7 +47,9 @@ const Trip = () => {
 
   return (
     <>
-      <h1>{agencies[agency].name} {agencies[agency].type} Tracker</h1>
+      <h1>
+        {agencies[agency].name} {agencies[agency].type} Tracker
+      </h1>
       <p>by Transitstat.us</p>
       <p>{config.tagLine}</p>
       <p>{config.version}</p>
@@ -79,7 +81,8 @@ const Trip = () => {
           </p>
           <p>
             Service to{" "}
-            {trip.predictions[trip.predictions.length - 1].stationName}
+            {trip.dest ??
+              trip.predictions[trip.predictions.length - 1].stationName}
           </p>
         </div>
       )}
@@ -87,16 +90,15 @@ const Trip = () => {
         {isLoading ? (
           <p>{loadingMessage}</p>
         ) : (
-          trip.predictions.map((stop) => {
-            console.log(stop);
+          trip.predictions.map((stop, i) => {
             return (
               <Link
                 to={`/${agency}/stops/${stop.stationID}`}
                 className='train'
-                key={stop.stationID}
+                key={`${stop.stationID}-${i}`}
                 style={{
-                  backgroundColor: '#444',
-                  color: '#fff',
+                  backgroundColor: "#444",
+                  color: "#fff",
                 }}
               >
                 <p>{stop.stationName}</p>
