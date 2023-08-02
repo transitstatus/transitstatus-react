@@ -30,6 +30,7 @@ const Line = () => {
   }, [agency, lineName]);
 
   console.log(line);
+  console.log(stations);
 
   return (
     <>
@@ -52,8 +53,7 @@ const Line = () => {
               color: `#${line.routeTextColor}`,
             }}
           >
-            {line.lineNameLong} ({line.lineNameShort}){" "}
-            {agencies[agency].addLine ? "Line" : ""}
+            {line.lineNameLong} {line.lineNameShort ? `(${line.lineNameShort})` : ""}
           </h2>
         )}
         <h3
@@ -80,9 +80,13 @@ const Line = () => {
         ) : line.stations.length > 0 ? (
           line.stations
             .sort((a, b) => {
+              console.log(stations);
+              console.log(a);
+              console.log(stations[a]);
+
               const aName = stations[a].stationName;
               const bName = stations[b].stationName;
-              
+
               const aNum = parseInt(aName);
               const bNum = parseInt(bName);
 

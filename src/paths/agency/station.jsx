@@ -85,6 +85,8 @@ const Station = () => {
                           return a.eta - b.eta;
                         })
                         .map((train) => {
+                          console.log(train);
+
                           return (
                             <Link
                               to={`/${agency}/track/${train.runNumber}`}
@@ -92,7 +94,7 @@ const Station = () => {
                               className='trainLink '
                             >
                               <div
-                                className='train '
+                                className='train'
                                 style={{
                                   backgroundColor: `#${train.lineColor}`,
                                   color: `#${train.lineTextColor}`,
@@ -100,7 +102,11 @@ const Station = () => {
                               >
                                 <span>
                                   <p>
-                                    {train.lineCode} #{train.runNumber} to
+                                    {agencies[agency].useCodeForShortName
+                                      ? train.lineCode
+                                      : train.line}
+                                    {agencies[agency].addLine ? " Line " : " "}#
+                                    {train.runNumber} to
                                   </p>
                                   <h3>
                                     {destinationKey

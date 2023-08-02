@@ -70,7 +70,10 @@ const Agency = () => {
                       color: `#${line.routeTextColor}`,
                     }}
                   >
-                    {line.lineNameLong} ({line.lineNameShort})
+                    {line.lineNameLong}{" "}
+                    {line.lineNameShort.length > 0
+                      ? `(${line.lineNameShort})`
+                      : ""}
                   </Link>
                 </h3>
               );

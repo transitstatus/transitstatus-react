@@ -6,7 +6,8 @@ export const agencies = {
     textColor: "#ffffff",
     type: 'Train',
     addLine: true,
-    disabled: true,
+    disabled: false,
+    useCodeForShortName: false,
   },
   metra: {
     name: "Metra",
@@ -16,6 +17,7 @@ export const agencies = {
     type: 'Train',
     addLine: false,
     disabled: false,
+    useCodeForShortName: true,
   },
 };
 
