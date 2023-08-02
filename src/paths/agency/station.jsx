@@ -46,7 +46,9 @@ const Station = () => {
 
   return (
     <>
-      <h1>{agencies[agency].name} {agencies[agency].type} Tracker</h1>
+      <h1>
+        {agencies[agency].name} {agencies[agency].type} Tracker
+      </h1>
       <p>by Transitstat.us</p>
       <p>{config.tagLine}</p>
       <p>{config.version}</p>
@@ -74,10 +76,10 @@ const Station = () => {
             })
             .map((destinationKey) => {
               return (
-                <>
+                <div key={destinationKey} className='trains'>
+                  <h3 className='destination'>{destinationKey}</h3>
                   {station.destinations[destinationKey].trains.length > 0 ? (
-                    <div key={destinationKey} className='trains'>
-                      <h3 className='destination'>{destinationKey}</h3>
+                    <>
                       {station.destinations[destinationKey].trains
                         .sort((a, b) => {
                           if (!a.eta) return -1;
@@ -86,12 +88,11 @@ const Station = () => {
                         })
                         .map((train) => {
                           console.log(train);
-
                           return (
                             <Link
                               to={`/${agency}/track/${train.runNumber}`}
                               key={train.runNumber}
-                              className='trainLink '
+                              className='trainLink'
                             >
                               <div
                                 className='train'
@@ -115,7 +116,7 @@ const Station = () => {
                                   </h3>
                                 </span>
                                 <span>
-                                  <h3>
+                                  <h3 className='trainLink'>
                                     {hoursMinutesUntilArrival(train.actualETA)}
                                   </h3>
                                 </span>
@@ -123,9 +124,25 @@ const Station = () => {
                             </Link>
                           );
                         })}
+                    </>
+                  ) : (
+                    <div key='only' className=''>
+                      <div
+                        className='train'
+                        style={{
+                          backgroundColor: `#333`,
+                          color: `#fff`,
+                          cursor: "default",
+                        }}
+                      >
+                        <span>
+                          <p>No trains currently tracking :c</p>
+                        </span>
+                        <span></span>
+                      </div>
                     </div>
-                  ) : null}
-                </>
+                  )}
+                </div>
               );
             })
         )}
