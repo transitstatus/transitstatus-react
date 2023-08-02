@@ -1,6 +1,7 @@
 export const agencies = {
   ctat: {
-    name: "CTA Trains",
+    name: "CTA",
+    selectionName: 'CTA (Trains)',
     endpoint: "https://store.piemadd.com/cta_trains/transitStatus",
     color: "#2166b1",
     textColor: "#ffffff",
@@ -11,6 +12,7 @@ export const agencies = {
   },
   metra: {
     name: "Metra",
+    selectionName: 'Metra',
     endpoint: "https://store.piemadd.com/metra/transitStatus",
     color: "#005195",
     textColor: "#ffffff",
@@ -24,7 +26,7 @@ export const agencies = {
 export const config = {
   siteTitle: 'Transit Stat.us',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: '0.4.0 Beta',
+  version: '0.5.0 Beta',
   additionalWarnings: [
     'Heads up: this shit will probably break!'
   ]

@@ -46,7 +46,7 @@ const Station = () => {
 
   return (
     <>
-      <h1>{agencies[agency].name} Tracker</h1>
+      <h1>{agencies[agency].name} {agencies[agency].type} Tracker</h1>
       <p>by Transitstat.us</p>
       <p>{config.tagLine}</p>
       <p>{config.version}</p>

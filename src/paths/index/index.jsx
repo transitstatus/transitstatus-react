@@ -29,7 +29,7 @@ const Index = () => {
                 color: agencies[agency].textColor,
               }}
             >
-              <h3>{agencies[agency].name}{agencies[agency].disabled ? " (Coming Soon)" : ""}</h3>
+              <h3>{agencies[agency].selectionName}{agencies[agency].disabled ? " (Coming Soon)" : ""}</h3>
             </Link>
           );
         })}
