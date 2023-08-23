@@ -28,6 +28,7 @@ const Index = () => {
               style={{
                 backgroundColor: agencies[agency].color,
                 color: agencies[agency].textColor,
+                fontSize: '1.2rem',
               }}
             >
               <h3>{agencies[agency].selectionName}{agencies[agency].disabled ? " (Coming Soon)" : ""}</h3>
