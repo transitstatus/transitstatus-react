@@ -297,15 +297,17 @@ const Map = () => {
 
           let predictionsHTML = "";
 
-          JSON.parse(train.predictions).slice(0, 5).forEach((prediciton) => {
-            predictionsHTML += `<p class='mapTrainBar' style='color: #${
-              train.lineTextColor
-            }; background-color: #${train.lineColor};'><strong>${
-              prediciton.stationName
-            }</strong><strong>${hoursMinutesUntilArrival(
-              new Date(prediciton.actualETA)
-            )}</strong></p>`;
-          });
+          JSON.parse(train.predictions)
+            .slice(0, 5)
+            .forEach((prediciton) => {
+              predictionsHTML += `<p class='mapTrainBar' style='color: #${
+                train.lineTextColor
+              }; background-color: #${train.lineColor};'><strong>${
+                prediciton.stationName
+              }</strong><strong>${hoursMinutesUntilArrival(
+                new Date(prediciton.actualETA)
+              )}</strong></p>`;
+            });
 
           const trainPopup = new maplibregl.Popup({
             offset: 12,
@@ -317,9 +319,9 @@ const Map = () => {
                 agencies[agency].useCodeForShortName
                   ? train.lineCode
                   : train.line
-              }${agencies[agency].addLine ? " Line " : " "}#${
-                train.id
-              } to ${train.dest}</h3>${predictionsHTML}</div>`
+              }${agencies[agency].addLine ? " Line " : " "}#${train.id} to ${
+                train.dest
+              }</h3>${predictionsHTML}</div>`
             )
             .addTo(map.current);
         } else if (feature.layer.id === "stations") {
@@ -379,7 +381,33 @@ const Map = () => {
         map.current.getCanvas().style.cursor = "";
       });
 
-      map.current.on("load", async () => {
+      map.current.addControl(
+        new maplibregl.NavigationControl({
+          visualizePitch: true,
+        }),
+        "top-right"
+      );
+      map.current.addControl(new maplibregl.FullscreenControl());
+      map.current.addControl(
+        new maplibregl.GeolocateControl({
+          positionOptions: {
+            enableHighAccuracy: true,
+          },
+          trackUserLocation: true,
+        })
+      );
+
+      let scale = new maplibregl.ScaleControl({
+        maxWidth: 80,
+        unit: "imperial",
+      });
+      map.current.addControl(scale);
+
+      map.current.addControl(new maplibregl.LogoControl({ compact: false }));
+
+      map.current.on("load", () => {
+        //
+
         map.current.on("moveend", () => {
           console.log(
             `Map moved to ${map.current.getCenter()} with zoom ${map.current.getZoom()}`
