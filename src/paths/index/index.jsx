@@ -23,6 +23,7 @@ const Index = () => {
           return (
             <Link
               to={`/${agency}`}
+              key={agency}
               className={`agency${agencies[agency].disabled ? " disabled" : ""}`}
               style={{
                 backgroundColor: agencies[agency].color,

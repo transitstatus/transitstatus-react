@@ -10,6 +10,7 @@ const Agency = React.lazy(() => import("./paths/agency/agency.jsx"));
 const Line = React.lazy(() => import("./paths/agency/line.jsx"));
 const Station = React.lazy(() => import("./paths/agency/station.jsx"));
 const Trip = React.lazy(() => import("./paths/agency/trip.jsx"));
+const Map = React.lazy(() => import("./paths/agency/map.jsx"));
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,11 @@ const router = createBrowserRouter([
   {
     path: "/:agency",
     element: <Agency />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/:agency/map",
+    element: <Map />,
     errorElement: <ErrorPage />,
   },
   {
@@ -63,8 +69,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.Suspense fallback={<LoadingPage />}>
-    <React.StrictMode>
-      <RouterProvider router={router} />
-    </React.StrictMode>
+    <RouterProvider router={router} />
   </React.Suspense>
 );

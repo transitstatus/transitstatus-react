@@ -32,7 +32,9 @@ const Agency = () => {
 
   return (
     <>
-      <h1>{agencies[agency].name} {agencies[agency].type} Tracker</h1>
+      <h1>
+        {agencies[agency].name} {agencies[agency].type} Tracker
+      </h1>
       <p>by Transitstat.us</p>
       <p>{config.tagLine}</p>
       <p>{config.version}</p>
@@ -79,6 +81,18 @@ const Agency = () => {
               );
             })
         )}
+        <h3
+          className='route'
+          key='onMap'
+          style={{
+            backgroundColor: agencies[agency].color,
+            color: agencies[agency].textColor,
+            fontSize: "1.3rem",
+            padding: "8px",
+          }}
+        >
+          <Link to={`/${agency}/map`}>View on a Map</Link>
+        </h3>
         <h3
           className='route'
           key='backButton'

@@ -141,3 +141,42 @@ a:visited {
   cursor: not-allowed;
   pointer-events: none;
 }
+
+.maplibregl-popup-content {
+  color: var(--fg) !important;
+  background-color: #444 !important;
+  width: 90vw;
+  max-width: 400px;
+  max-height: 50vh;
+  overflow-y: auto;
+  padding: 8px !important;
+}
+
+.maplibregl-popup-close-button {
+  color: var(--fg) !important;
+  font-size: 20px !important;
+}
+
+.mapBar {
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  gap: 2px;
+}
+
+.mapBar h3 {
+  padding: 0 0 6px 0;
+}
+
+.mapStationBar {
+  padding: 6px 8px;
+  background-color: #222;
+}
+
+.mapTrainBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 6px 8px;
+  background-color: #111;
+}
