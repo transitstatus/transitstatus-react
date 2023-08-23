@@ -19,9 +19,9 @@ const Map = () => {
 
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const [lng] = useState(-87.6298209611486);
-  const [lat] = useState(41.87433196355158);
-  const [zoom] = useState(12.67);
+  const [lng] = useState(agencies[agency].mapDefault[1] ?? -87.6279871036212);
+  const [lat] = useState(agencies[agency].mapDefault[0] ?? 41.87433196355158);
+  const [zoom] = useState(agencies[agency].mapDefault[2] ?? 12.67);
 
   let protocol = new pmtiles.Protocol();
   maplibregl.addProtocol("pmtiles", protocol.tile);
@@ -321,7 +321,17 @@ const Map = () => {
                   : train.line
               }${agencies[agency].addLine ? " Line " : " "}#${train.id} to ${
                 train.dest
-              }</h3>${predictionsHTML}</div>`
+              }</h3>${predictionsHTML}<p class='mapTrainBar' style='color: #${
+                train.lineTextColor
+              }; background-color: #${
+                train.lineColor
+              };'><strong><a style='color: #${
+                train.lineTextColor
+              }; background-color: #${
+                train.lineColor
+              };' href='/${agency}/track/${
+                train.id
+              }?prev=map'>View Full Train</a></strong></p></div>`
             )
             .addTo(map.current);
         } else if (feature.layer.id === "stations") {
@@ -381,6 +391,20 @@ const Map = () => {
         map.current.getCanvas().style.cursor = "";
       });
 
+      map.current.on("mouseenter", "trains", () => {
+        map.current.getCanvas().style.cursor = "pointer";
+      });
+
+      map.current.on("mouseleave", "trains", () => {
+        map.current.getCanvas().style.cursor = "";
+      });
+
+      map.current.on("moveend", () => {
+        console.log(
+          `Map moved to ${map.current.getCenter()} with zoom ${map.current.getZoom()}`
+        );
+      });
+
       map.current.addControl(
         new maplibregl.NavigationControl({
           visualizePitch: true,
@@ -404,17 +428,6 @@ const Map = () => {
       map.current.addControl(scale);
 
       map.current.addControl(new maplibregl.LogoControl({ compact: false }));
-
-      map.current.on("load", () => {
-        //
-
-        map.current.on("moveend", () => {
-          console.log(
-            `Map moved to ${map.current.getCenter()} with zoom ${map.current.getZoom()}`
-          );
-        });
-      });
-
       console.log("Map initialized");
     })();
   }, []);

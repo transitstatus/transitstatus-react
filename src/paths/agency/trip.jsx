@@ -115,7 +115,13 @@ const Trip = () => {
             color: agencies[agency].textColor,
           }}
           onClick={() => {
-            if (history.state.idx && history.state.idx > 0) {
+            //see if querey string has prev
+            const urlParams = new URLSearchParams(window.location.search);
+            const prev = urlParams.get("prev");
+
+            if (prev) {
+              navigate(-1);
+            } else if (history.state.idx && history.state.idx > 0) {
               navigate(-1);
             } else {
               navigate(`/${agency}`, { replace: true }); //fallback
