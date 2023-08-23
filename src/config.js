@@ -27,12 +27,26 @@ export const agencies = {
     disabled: false,
     useCodeForShortName: true,
   },
+  southshore: {
+    name: "South Shore Line",
+    selectionName: 'South Shore Line',
+    endpoint: "https://store.piemadd.com/southshore/transitStatus",
+    mapShapes: "https://gtfs.piemadd.com/data/southshore/shapes/type_2.geojson",
+    gtfsRoot: "https://gtfs.piemadd.com/data/southshore",
+    color: "#6a1a18",
+    textColor: "#ffffff",
+    type: 'Train',
+    typeCode: 'train',
+    addLine: false,
+    disabled: false,
+    useCodeForShortName: false,
+  }
 };
 
 export const config = {
   siteTitle: 'Transit Stat.us',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: '0.6.0 Beta',
+  version: '0.6.1 Beta',
   additionalWarnings: [
     'Heads up: this shit will probably break!'
   ]
