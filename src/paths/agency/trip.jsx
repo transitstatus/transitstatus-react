@@ -16,6 +16,14 @@ const hoursMinutesUntilArrival = (arrivalTime) => {
   return `${hours}h ${minutes % 60}m`;
 };
 
+const timeFormat = (time) => {
+  const date = new Date(time);
+  return date.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+};
+
 const Trip = () => {
   const { agency, tripID } = useParams();
   const navigate = useNavigate();
@@ -101,8 +109,15 @@ const Trip = () => {
                   color: "#fff",
                 }}
               >
-                <p>{stop.stationName}</p>
-                <h3>{hoursMinutesUntilArrival(stop.actualETA)}</h3>
+                <p>
+                  <strong>{stop.stationName}</strong>
+                </p>
+                <span>
+                  <h3>{hoursMinutesUntilArrival(stop.actualETA)}</h3>
+                  <p style={{
+                    fontSize: "0.8em",
+                  }}>{timeFormat(stop.actualETA)}</p>
+                </span>
               </Link>
             );
           })

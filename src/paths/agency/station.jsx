@@ -16,6 +16,14 @@ const hoursMinutesUntilArrival = (arrivalTime) => {
   return `${hours}h ${minutes % 60}m`;
 };
 
+const timeFormat = (time) => {
+  const date = new Date(time);
+  return date.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+};
+
 const Station = () => {
   const { agency, stopID } = useParams();
   const navigate = useNavigate();
@@ -143,6 +151,11 @@ const Station = () => {
                                   <h3 className='trainLink'>
                                     {hoursMinutesUntilArrival(train.actualETA)}
                                   </h3>
+                                  <p className='trainLink' style={{
+                                    fontSize: "0.8em",
+                                  }}>
+                                    {timeFormat(train.actualETA)}
+                                  </p>
                                 </span>
                               </div>
                             </Link>
