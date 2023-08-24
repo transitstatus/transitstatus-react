@@ -143,7 +143,7 @@ const Trip = () => {
             }
           }}
         >
-          Choose Another Train
+          Choose Another {agencies[agency].type}
         </h3>
       </div>
     </>

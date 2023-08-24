@@ -331,7 +331,7 @@ const Map = () => {
                 train.lineColor
               };' href='/${agency}/track/${
                 train.id
-              }?prev=map'>View Full Train</a></strong></p></div>`
+              }?prev=map'>View Full ${agencies[agency].type}</a></strong></p></div>`
             )
             .addTo(map.current);
         } else if (feature.layer.id === "stations") {
@@ -368,7 +368,7 @@ const Map = () => {
           });
 
           if (noTrainsAtAll) {
-            finalHTML += `<p class='mapTrainBar'>No trains tracking</p>`;
+            finalHTML += `<p class='mapTrainBar'>No ${agencies[agency].typeCodePlural} tracking</p>`;
           }
 
           finalHTML += "</div>";

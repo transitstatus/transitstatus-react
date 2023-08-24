@@ -115,7 +115,7 @@ const Line = () => {
               );
             })
         ) : (
-          <p>No stations have trains tracking for this line currently.</p>
+          <p>No stations have {agencies[agency].typeCodePlural} tracking for this line currently.</p>
         )}
       </div>
     </>

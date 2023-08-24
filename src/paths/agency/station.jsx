@@ -165,7 +165,7 @@ const Station = () => {
                   ) : (
                     <>
                       <p className='destination'>
-                        No Trains towards {destinationKey}
+                        No {agencies[agency].typePlural} towards {destinationKey}
                       </p>
                     </>
                   )}
