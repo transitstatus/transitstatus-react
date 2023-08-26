@@ -6,6 +6,9 @@ import ErrorPage from "./error.jsx";
 import LoadingPage from "./loading";
 
 const Index = React.lazy(() => import("./paths/index/index.jsx"));
+const About = React.lazy(() => import("./paths/index/about.jsx"));
+const Settings = React.lazy(() => import("./paths/index/settings.jsx"));
+const Privacy = React.lazy(() => import("./paths/index/privacy.jsx"));
 const Agency = React.lazy(() => import("./paths/agency/agency.jsx"));
 const Line = React.lazy(() => import("./paths/agency/line.jsx"));
 const Station = React.lazy(() => import("./paths/agency/station.jsx"));
@@ -50,17 +53,17 @@ const router = createBrowserRouter([
   },
   {
     path: "/about",
-    element: <>Placeholder About Page</>,
+    element: <About />,
     errorElement: <ErrorPage />,
   },
   {
     path: "/settings",
-    element: <>Placeholder Settings Page</>,
+    element: <Settings />,
     errorElement: <ErrorPage />,
   },
   {
     path: "/privacy",
-    element: <>Placeholder Privacy Policy Page</>,
+    element: <Privacy />,
     errorElement: <ErrorPage />,
   },
 ]);
