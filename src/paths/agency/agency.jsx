@@ -59,7 +59,13 @@ const Agency = () => {
             .sort()
             .map((lineID) => {
               const line = lines[lineID];
+
+              if (line.hasActiveTrains === false) {
+                return null;
+              }
+
               console.log(line);
+
               return (
                 <h3 key={line.lineCode}>
                   <Link
@@ -80,6 +86,56 @@ const Agency = () => {
                 </h3>
               );
             })
+        )}
+        {isLoading ? (
+          <p>{loadingMessage}</p>
+        ) : (
+          <details>
+            <summary
+              style={{
+                padding: "6px 6px",
+                fontSize: "1.3rem",
+                backgroundColor: agencies[agency].color,
+              }}
+            >
+              <strong>Inactive Routes</strong>
+            </summary>
+            <div className='routes' style={{
+              marginTop: "4px",
+            }}>
+              {Object.keys(lines)
+                .sort()
+                .map((lineID) => {
+                  const line = lines[lineID];
+
+                  if (line.hasActiveTrains === true) {
+                    return null;
+                  }
+
+                  console.log(line);
+
+                  return (
+                    <h3 key={line.lineCode}>
+                      <Link
+                        to={`/${agency}/${line.lineCode}`}
+                        className='route'
+                        style={{
+                          fontSize: "1.3rem",
+                          padding: "8px",
+                          backgroundColor: `#${line.routeColor}`,
+                          color: `#${line.routeTextColor}`,
+                        }}
+                      >
+                        {line.lineNameLong}{" "}
+                        {line.lineNameShort.length > 0
+                          ? `(${line.lineNameShort})`
+                          : ""}
+                      </Link>
+                    </h3>
+                  );
+                })}
+            </div>
+          </details>
         )}
         <h3
           className='route'

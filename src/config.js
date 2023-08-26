@@ -88,7 +88,7 @@ export const agencies = {
 export const config = {
   siteTitle: 'Transit Stat.us',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: '0.8.0 Beta',
+  version: '0.9.0 Beta',
   additionalWarnings: [
     'Heads up: this shit will probably break!'
   ]
