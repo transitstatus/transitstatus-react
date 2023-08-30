@@ -11,7 +11,7 @@ export default defineConfig({
       sourcemap: true
     },
     manifest: {
-      "short_name": "Transitstat.us",
+      "short_name": "Transitstatus",
       "name": "Trasitstat.us | Transit Tracker",
       "description": "Transitstat.us is a free, open source, and easy to use transit tracker!",
       "lang": "en",
