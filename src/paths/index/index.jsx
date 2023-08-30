@@ -19,22 +19,40 @@ const Index = () => {
         Agencies
       </h2>
       <div className='agencies'>
-        {Object.keys(agencies).map((agency) => {
-          return (
-            <Link
-              to={`/${agency}`}
-              key={agency}
-              className={`agency${agencies[agency].disabled ? " disabled" : ""}`}
-              style={{
-                backgroundColor: agencies[agency].color,
-                color: agencies[agency].textColor,
-                fontSize: '1.2rem',
-              }}
-            >
-              <h3>{agencies[agency].selectionName}{agencies[agency].disabled ? " (Coming Soon)" : ""}</h3>
-            </Link>
-          );
-        })}
+        {Object.keys(agencies)
+          .sort((a, b) => {
+            const aName = agencies[a].selectionName;
+            const bName = agencies[b].selectionName;
+
+            if (aName < bName) {
+              return -1;
+            }
+            if (aName > bName) {
+              return 1;
+            }
+            return 0;
+          })
+          .map((agency) => {
+            return (
+              <Link
+                to={`/${agency}`}
+                key={agency}
+                className={`agency${
+                  agencies[agency].disabled ? " disabled" : ""
+                }`}
+                style={{
+                  backgroundColor: agencies[agency].color,
+                  color: agencies[agency].textColor,
+                  fontSize: "1.2rem",
+                }}
+              >
+                <h3>
+                  {agencies[agency].selectionName}
+                  {agencies[agency].disabled ? " (Coming Soon)" : ""}
+                </h3>
+              </Link>
+            );
+          })}
       </div>
       <MoreLinks />
     </>
