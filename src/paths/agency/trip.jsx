@@ -99,6 +99,7 @@ const Trip = () => {
           <p>{loadingMessage}</p>
         ) : (
           trip.predictions.map((stop, i) => {
+            console.log(stop)
             return (
               <Link
                 to={`/${agency}/stops/${stop.stationID}`}

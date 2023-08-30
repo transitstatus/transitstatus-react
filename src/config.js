@@ -52,9 +52,9 @@ export const agencies = {
   rutgers: {
     name: "Rutgers",
     selectionName: 'Rutgers Shuttles',
-    endpoint: "https://store.piemadd.com/passio/rutgers/transitStatus",
-    mapShapes: "https://gtfs.piemadd.com/data/rutgers/shapes/type_3.geojson",
-    gtfsRoot: "https://gtfs.piemadd.com/data/rutgers",
+    endpoint: "https://store.piemadd.com/passio_go/rutgers",
+    mapShapes: "https://passio.piemadd.com/data/rutgers/shapes.json",
+    gtfsRoot: "https://passio.piemadd.com/data/rutgers",
     mapDefault: [40.35417700651374, -74.70768648283568, 9],
     color: "#ca1735",
     textColor: "#ffffff",
@@ -69,9 +69,9 @@ export const agencies = {
   uchicago: {
     name: "UChicago",
     selectionName: 'UChicago Shuttles',
-    endpoint: "https://store.piemadd.com/passio/chicago/transitStatus",
-    mapShapes: "https://gtfs.piemadd.com/data/chicago/shapes/type_3.geojson",
-    gtfsRoot: "https://gtfs.piemadd.com/data/chicago",
+    endpoint: "https://store.piemadd.com/passio_go/chicago",
+    mapShapes: "https://passio.piemadd.com/data/chicago/shapes.json",
+    gtfsRoot: "https://passio.piemadd.com/data/chicago",
     mapDefault: [41.83695214205909, -87.60849773242845, 11],
     color: "#ca1735",
     textColor: "#ffffff",
@@ -88,7 +88,7 @@ export const agencies = {
 export const config = {
   siteTitle: 'Transit Stat.us',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: '0.9.1 Beta',
+  version: '0.10.0 Beta',
   additionalWarnings: [
     'Heads up: this shit will probably break!'
   ]
