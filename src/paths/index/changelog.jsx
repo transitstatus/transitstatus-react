@@ -14,7 +14,15 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr id='1-0-1'>
+            <td>1.0.1</td>
+            <td>
+              <ul>
+                <li>Added changelog IDs</li>
+              </ul>
+            </td>
+          </tr>
+          <tr id='1-0-0'>
             <td>1.0.0</td>
             <td>
               <ul>
@@ -25,7 +33,7 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr>
+          <tr id='0-10-2'>
             <td>0.10.2 Beta</td>
             <td>
               <ul>
@@ -34,7 +42,7 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr>
+          <tr id='0-10-1'>
             <td>0.10.1 Beta</td>
             <td>
               <ul>
@@ -46,7 +54,7 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr>
+          <tr id='0-10-0'>
             <td>0.10.0 Beta</td>
             <td>
               <ul>
@@ -55,7 +63,7 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr>
+          <tr id='0-9-1'>
             <td>0.9.1 Beta</td>
             <td>
               <ul>
@@ -65,7 +73,7 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr>
+          <tr id='0-9-0'>
             <td>0.9.0 Beta</td>
             <td>
               <ul>
@@ -74,7 +82,7 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr>
+          <tr id='0-8-0'>
             <td>0.8.0 Beta</td>
             <td>
               <ul>
@@ -84,7 +92,7 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr>
+          <tr id='0-7-1'>
             <td>0.7.1 Beta</td>
             <td>
               <ul>
@@ -92,7 +100,7 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr>
+          <tr id='0-7-0'>
             <td>0.7.0 Beta</td>
             <td>
               <ul>
@@ -100,7 +108,7 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr>
+          <tr id='0-6-3'>
             <td>0.6.3 Beta</td>
             <td>
               <ul>
@@ -109,7 +117,7 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr>
+          <tr id='0-6-1'>
             <td>0.6.1 Beta</td>
             <td>
               <ul>
@@ -118,7 +126,7 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr>
+          <tr id='0-6-0'>
             <td>0.6.0 Beta</td>
             <td>
               <ul>
@@ -126,7 +134,7 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr>
+          <tr id='0-5-4'>
             <td>0.5.4 Beta</td>
             <td>
               <ul>
@@ -135,7 +143,7 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr>
+          <tr id='0-5-1'>
             <td>0.5.1 Beta</td>
             <td>
               <ul>
@@ -143,7 +151,7 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr>
+          <tr id='0-5-1'>
             <td>0.5.1 Beta</td>
             <td>
               <ul>
@@ -151,7 +159,7 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr>
+          <tr id='0-5-0'>
             <td>0.5.0 Beta</td>
             <td>
               <ul>
@@ -162,7 +170,7 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr>
+          <tr id='0-4-0'>
             <td>0.4.0 Beta</td>
             <td>
               <ul>
