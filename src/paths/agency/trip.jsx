@@ -1,6 +1,7 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { agencies, config } from "../../config";
+import Meta from "../../components/meta";
 
 const hoursMinutesUntilArrival = (arrivalTime) => {
   const now = new Date();
@@ -58,12 +59,7 @@ const Trip = () => {
       <h1>
         {agencies[agency].name} {agencies[agency].type} Tracker
       </h1>
-      <p>by Transitstat.us</p>
-      <p>{config.tagLine}</p>
-      <p>{config.version}</p>
-      {config.additionalWarnings.map((warning, i) => {
-        return <p key={i}>{warning}</p>;
-      })}
+      <Meta />
 
       {isLoading ? (
         <p>Loading trip...</p>

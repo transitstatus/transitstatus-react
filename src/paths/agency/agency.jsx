@@ -1,6 +1,7 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { agencies, config } from "../../config";
+import Meta from "../../components/meta";
 
 const Agency = () => {
   const { agency } = useParams();
@@ -35,12 +36,7 @@ const Agency = () => {
       <h1>
         {agencies[agency].name} {agencies[agency].type} Tracker
       </h1>
-      <p>by Transitstat.us</p>
-      <p>{config.tagLine}</p>
-      <p>{config.version}</p>
-      {config.additionalWarnings.map((warning, i) => {
-        return <p key={i}>{warning}</p>;
-      })}
+      <Meta />
       <div className='routes'>
         <h2
           style={{
@@ -100,9 +96,12 @@ const Agency = () => {
             >
               <strong>Inactive Routes</strong>
             </summary>
-            <div className='routes' style={{
-              marginTop: "4px",
-            }}>
+            <div
+              className='routes'
+              style={{
+                marginTop: "4px",
+              }}
+            >
               {Object.keys(lines)
                 .sort()
                 .map((lineID) => {

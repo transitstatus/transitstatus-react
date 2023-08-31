@@ -1,6 +1,7 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { agencies, config } from "../../config";
+import Meta from "../../components/meta";
 
 const Line = () => {
   const { agency, lineName } = useParams();
@@ -34,13 +35,10 @@ const Line = () => {
 
   return (
     <>
-      <h1>{agencies[agency].name} {agencies[agency].type} Tracker</h1>
-      <p>by Transitstat.us</p>
-      <p>{config.tagLine}</p>
-      <p>{config.version}</p>
-      {config.additionalWarnings.map((warning, i) => {
-        return <p key={i}>{warning}</p>;
-      })}
+      <h1>
+        {agencies[agency].name} {agencies[agency].type} Tracker
+      </h1>
+      <Meta />
       <div className='stations'>
         {isLoading ? (
           <h2>Loading line...</h2>
@@ -53,7 +51,8 @@ const Line = () => {
               color: `#${line.routeTextColor}`,
             }}
           >
-            {line.lineNameLong} {line.lineNameShort ? `(${line.lineNameShort})` : ""}
+            {line.lineNameLong}{" "}
+            {line.lineNameShort ? `(${line.lineNameShort})` : ""}
           </h2>
         )}
         <h3
@@ -115,7 +114,10 @@ const Line = () => {
               );
             })
         ) : (
-          <p>No stations have {agencies[agency].typeCodePlural} tracking for this line currently.</p>
+          <p>
+            No stations have {agencies[agency].typeCodePlural} tracking for this
+            line currently.
+          </p>
         )}
       </div>
     </>

@@ -40,9 +40,6 @@ h5,
 h6,
 p,
 a,
-li,
-ul,
-ol,
 span,
 div {
   margin: 0;
@@ -179,4 +176,25 @@ a:visited {
   justify-content: space-between;
   padding: 6px 8px;
   background-color: #111;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 8px;
+}
+
+th,
+td {
+  padding: 4px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+  background-color: #222;
+}
+
+tr:nth-child(even) {
+  background-color: #333;
 }

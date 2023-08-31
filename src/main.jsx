@@ -9,6 +9,8 @@ const Index = React.lazy(() => import("./paths/index/index.jsx"));
 const About = React.lazy(() => import("./paths/index/about.jsx"));
 const Settings = React.lazy(() => import("./paths/index/settings.jsx"));
 const Privacy = React.lazy(() => import("./paths/index/privacy.jsx"));
+const ChangeLog = React.lazy(() => import("./paths/index/changelog.jsx"));
+const API = React.lazy(() => import("./paths/index/api.jsx"));
 const Agency = React.lazy(() => import("./paths/agency/agency.jsx"));
 const Line = React.lazy(() => import("./paths/agency/line.jsx"));
 const Station = React.lazy(() => import("./paths/agency/station.jsx"));
@@ -64,6 +66,16 @@ const router = createBrowserRouter([
   {
     path: "/privacy",
     element: <Privacy />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/changelog",
+    element: <ChangeLog />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/api",
+    element: <API />,
     errorElement: <ErrorPage />,
   },
 ]);

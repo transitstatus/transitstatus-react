@@ -1,6 +1,8 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { agencies, config } from "../../config";
+import Heart from "../../components/heart";
+import Meta from "../../components/meta";
 
 const hoursMinutesUntilArrival = (arrivalTime) => {
   const now = new Date();
@@ -59,30 +61,49 @@ const Station = () => {
       <h1>
         {agencies[agency].name} {agencies[agency].type} Tracker
       </h1>
-      <p>by Transitstat.us</p>
-      <p>{config.tagLine}</p>
-      <p>{config.version}</p>
-      {config.additionalWarnings.map((warning, i) => {
-        return <p key={i}>{warning}</p>;
-      })}
-      <h2
+      <Meta />
+      <div
         style={{
-          marginTop: "4px",
+          maxWidth: "384px",
+          padding: "0px 8px",
+          marginBottom: "4px",
+          backgroundColor: "#333",
         }}
       >
-        {station.stationName}
-      </h2>
-      <p
-        style={{
-          marginBottom: "8px",
-        }}
-      >
-        As of{" "}
-        {new Date(lastFetched).toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-        })}
-      </p>
+        <span
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <h2
+            style={{
+              marginTop: "4px",
+            }}
+          >
+            {station.stationName}
+          </h2>
+          <Heart
+            agency={agency}
+            station={station}
+            style={{
+              width: "26px",
+              marginTop: "8px",
+            }}
+          />
+        </span>
+        <p
+          style={{
+            marginBottom: "8px",
+          }}
+        >
+          As of{" "}
+          {new Date(lastFetched).toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+          })}
+        </p>
+      </div>
       <div>
         {isLoading ? (
           <p>{loadingMessage}</p>
@@ -151,9 +172,12 @@ const Station = () => {
                                   <h3 className='trainLink'>
                                     {hoursMinutesUntilArrival(train.actualETA)}
                                   </h3>
-                                  <p className='trainLink' style={{
-                                    fontSize: "0.8em",
-                                  }}>
+                                  <p
+                                    className='trainLink'
+                                    style={{
+                                      fontSize: "0.8em",
+                                    }}
+                                  >
                                     {timeFormat(train.actualETA)}
                                   </p>
                                 </span>
@@ -165,7 +189,8 @@ const Station = () => {
                   ) : (
                     <>
                       <p className='destination'>
-                        No {agencies[agency].typePlural} towards {destinationKey}
+                        No {agencies[agency].typePlural} towards{" "}
+                        {destinationKey}
                       </p>
                     </>
                   )}
