@@ -14,7 +14,16 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
-        <tr id='1-1-0'>
+          <tr id='1-1-1'>
+            <td>1.1.1</td>
+            <td>
+              <ul>
+                <li>Added proper 404 page</li>
+                <li>Made opengraph image professional</li>
+              </ul>
+            </td>
+          </tr>
+          <tr id='1-1-0'>
             <td>1.1.0</td>
             <td>
               <ul>

@@ -10,6 +10,38 @@ const Agency = () => {
   const [loadingMessage, setLoadingMessage] = useState("Loading data...");
   const [isLoading, setIsLoading] = useState(true);
 
+  if (!agencies[agency]) {
+    return (
+      <>
+        <h1>Agency Not Found</h1>
+        <p>
+          The agency you are looking for does not exist. Please choose another
+          agency.
+        </p>
+        <h3
+          className='route'
+          key='backButton'
+          style={{
+            backgroundColor: "#444",
+            color: "#fff",
+            fontSize: "1.3rem",
+            padding: "8px",
+            marginTop: "4px",
+          }}
+          onClick={() => {
+            if (history.state.idx && history.state.idx > 0) {
+              navigate(-1);
+            } else {
+              navigate("/", { replace: true }); //fallback
+            }
+          }}
+        >
+          Choose Another Agency
+        </h3>
+      </>
+    );
+  }
+
   useEffect(() => {
     const fetchData = () => {
       fetch(`${agencies[agency].endpoint}/lines`)
