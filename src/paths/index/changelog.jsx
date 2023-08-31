@@ -14,6 +14,14 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-1-2'>
+            <td>1.1.2</td>
+            <td>
+              <ul>
+                <li>Ensured icons aren't duplicates</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-1-1'>
             <td>1.1.1</td>
             <td>

@@ -245,7 +245,9 @@ const Map = () => {
       fetch(`${agencies[agency].gtfsRoot}/icons.json`)
         .then((res) => res.json())
         .then((data) => {
-          data
+          const uniqueData = [...new Set(data)];
+
+          uniqueData
             .filter((n) => n.includes(agencies[agency].typeCode))
             .forEach((imagePath) => {
               map.current.loadImage(
