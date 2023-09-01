@@ -9,6 +9,7 @@ export const agencies = {
     color: "#2166b1",
     textColor: "#ffffff",
     type: 'Train',
+    typePlural: 'Trains',
     typeCode: 'train',
     typeCodePlural: 'trains',
     addLine: true,
@@ -25,7 +26,7 @@ export const agencies = {
     color: "#005195",
     textColor: "#ffffff",
     type: 'Train',
-    typePlurarl: 'Trains',
+    typePlural: 'Trains',
     typeCode: 'train',
     typeCodePlural: 'trains',
     addLine: false,
@@ -173,7 +174,7 @@ export const agencies = {
 export const config = {
   siteTitle: 'Transit Stat.us',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: '1.1.0',
+  version: 'v1.1.3',
   additionalWarnings: [
     'Heads up: this shit will probably break!'
   ]

@@ -8,7 +8,7 @@ const FavoritedStation = ({ agency, station, style }) => {
 
   return (
     <div
-      class='station'
+      className='station'
       style={{
         fontSize: "1.3rem",
         padding: "8px",

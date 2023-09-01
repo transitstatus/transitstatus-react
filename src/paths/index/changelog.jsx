@@ -14,8 +14,17 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+        <tr id='1-1-3'>
+            <td>v1.1.3</td>
+            <td>
+              <ul>
+                <li>Fixed missing strings in config</li>
+                <li>Slightly modified changelog</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-1-2'>
-            <td>1.1.2</td>
+            <td>v1.1.2</td>
             <td>
               <ul>
                 <li>Ensured icons aren't duplicates</li>
@@ -23,7 +32,7 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-1-1'>
-            <td>1.1.1</td>
+            <td>v1.1.1</td>
             <td>
               <ul>
                 <li>Added proper 404 page</li>
@@ -32,7 +41,7 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-1-0'>
-            <td>1.1.0</td>
+            <td>v1.1.0</td>
             <td>
               <ul>
                 <li>Added everything map</li>
@@ -40,7 +49,7 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-0-1'>
-            <td>1.0.1</td>
+            <td>v1.0.1</td>
             <td>
               <ul>
                 <li>Added changelog IDs</li>
@@ -48,7 +57,7 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-0-0'>
-            <td>1.0.0</td>
+            <td>v1.0.0</td>
             <td>
               <ul>
                 <li>Fixed manifest short name</li>
@@ -59,7 +68,7 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-10-2'>
-            <td>0.10.2 Beta</td>
+            <td>v0.10.2 Beta</td>
             <td>
               <ul>
                 <li>Added icons required for PWA</li>
@@ -68,7 +77,7 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-10-1'>
-            <td>0.10.1 Beta</td>
+            <td>v0.10.1 Beta</td>
             <td>
               <ul>
                 <li>Added Georgia Collegee & State Shuttles</li>
@@ -80,7 +89,7 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-10-0'>
-            <td>0.10.0 Beta</td>
+            <td>v0.10.0 Beta</td>
             <td>
               <ul>
                 <li>Migrated UChicago Shuttles Endpoint</li>
@@ -89,7 +98,7 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-9-1'>
-            <td>0.9.1 Beta</td>
+            <td>v0.9.1 Beta</td>
             <td>
               <ul>
                 <li>Added privacy policy</li>
@@ -99,7 +108,7 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-9-0'>
-            <td>0.9.0 Beta</td>
+            <td>v0.9.0 Beta</td>
             <td>
               <ul>
                 <li>Implemented limited PWA functionality</li>
@@ -108,7 +117,7 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-8-0'>
-            <td>0.8.0 Beta</td>
+            <td>v0.8.0 Beta</td>
             <td>
               <ul>
                 <li>Added UChicago Shuttles</li>
@@ -118,7 +127,7 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-7-1'>
-            <td>0.7.1 Beta</td>
+            <td>v0.7.1 Beta</td>
             <td>
               <ul>
                 <li>Adjusted font sizes</li>
@@ -126,7 +135,7 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-7-0'>
-            <td>0.7.0 Beta</td>
+            <td>v0.7.0 Beta</td>
             <td>
               <ul>
                 <li>Added timestamps to predictions</li>
@@ -134,7 +143,7 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-6-3'>
-            <td>0.6.3 Beta</td>
+            <td>v0.6.3 Beta</td>
             <td>
               <ul>
                 <li>Fixed map navigation</li>
@@ -143,7 +152,7 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-6-1'>
-            <td>0.6.1 Beta</td>
+            <td>v0.6.1 Beta</td>
             <td>
               <ul>
                 <li>Added map controls</li>
@@ -152,7 +161,7 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-6-0'>
-            <td>0.6.0 Beta</td>
+            <td>v0.6.0 Beta</td>
             <td>
               <ul>
                 <li>Added map</li>
@@ -160,7 +169,7 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-5-4'>
-            <td>0.5.4 Beta</td>
+            <td>v0.5.4 Beta</td>
             <td>
               <ul>
                 <li>Accounted for trains/buses not existing</li>
@@ -177,7 +186,7 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-5-1'>
-            <td>0.5.1 Beta</td>
+            <td>v0.5.1 Beta</td>
             <td>
               <ul>
                 <li>Ported over Amtraker error handling</li>
@@ -185,7 +194,7 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-5-0'>
-            <td>0.5.0 Beta</td>
+            <td>v0.5.0 Beta</td>
             <td>
               <ul>
                 <li>Added support for multiple agencies</li>
@@ -196,7 +205,7 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-4-0'>
-            <td>0.4.0 Beta</td>
+            <td>v0.4.0 Beta</td>
             <td>
               <ul>
                 <li>Initial Release</li>
