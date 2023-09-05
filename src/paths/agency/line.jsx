@@ -136,6 +136,18 @@ const Line = () => {
             line currently.
           </p>
         )}
+        <h3
+          className='route'
+          key='viewMap'
+          style={{
+            backgroundColor: agencies[agency].color,
+            color: agencies[agency].textColor,
+            fontSize: "1.3rem",
+            padding: "8px",
+          }}
+        >
+          <Link to={`/${agency}/map?route=${lineName}`}>View on Map</Link>
+        </h3>
       </div>
     </>
   );

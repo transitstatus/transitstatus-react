@@ -14,6 +14,18 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-2-0'>
+            <td>v1.2.0</td>
+            <td>
+              <ul>
+                <li>Added more error messages</li>
+                <li>Handled passio go not having ETAs</li>
+                <li>Autofit markers on map loading</li>
+                <li>New "lasts updated" on map</li>
+                <li>Communication if Passio GO's API is the problem</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-1-4'>
             <td>v1.1.4</td>
             <td>

@@ -47,16 +47,24 @@ const Station = () => {
           console.error(error);
 
           fetch(`${agencies[agency].endpoint}/shitsFucked`)
-            .then((res) => res.json())
-            .then((shitsFucked) => {
-              if (shitsFucked.shitIsFucked) {
-                setLoadingMessage(shitsFucked.message);
-              } else {
-                setLoadingMessage(
-                  "Error loading data. Please try again later or choose another agency."
-                );
+            .then((res) => res.text())
+            .then((raw) => {
+              if (raw !== "Not found") {
+                const shitsFucked = JSON.parse(raw);
+                if (shitsFucked.shitIsFucked) {
+                  setLoadingMessage(shitsFucked.message);
+                } else {
+                  setLoadingMessage(
+                    "Error loading data. Please try again later or choose another station."
+                  );
+                }
               }
               setIsLoading(true);
+            })
+            .catch((e) => {
+              setLoadingMessage(
+                "Error loading data. Please try again later or choose another station."
+              );
             });
         });
     };
@@ -115,7 +123,16 @@ const Station = () => {
       </div>
       <div>
         {isLoading ? (
-          <p>{loadingMessage}</p>
+          <p
+            style={{
+              maxWidth: "384px",
+              padding: "4px 8px 8px 8px",
+              marginBottom: "4px",
+              background: "#333",
+            }}
+          >
+            {loadingMessage}
+          </p>
         ) : (
           Object.keys(station.destinations)
             .sort((a, b) => {

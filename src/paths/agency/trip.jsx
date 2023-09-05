@@ -45,16 +45,24 @@ const Trip = () => {
           console.error(error);
 
           fetch(`${agencies[agency].endpoint}/shitsFucked`)
-            .then((res) => res.json())
-            .then((shitsFucked) => {
-              if (shitsFucked.shitIsFucked) {
-                setLoadingMessage(shitsFucked.message);
-              } else {
-                setLoadingMessage(
-                  "Error loading data. Please try again later or choose another agency."
-                );
+            .then((res) => res.text())
+            .then((raw) => {
+              if (raw !== "Not found") {
+                const shitsFucked = JSON.parse(raw);
+                if (shitsFucked.shitIsFucked) {
+                  setLoadingMessage(shitsFucked.message);
+                } else {
+                  setLoadingMessage(
+                    "Error loading data. Please try again later or choose another trip."
+                  );
+                }
               }
               setIsLoading(true);
+            })
+            .catch((e) => {
+              setLoadingMessage(
+                "Error loading data. Please try again later or choose another trip."
+              );
             });
         });
     };
@@ -70,9 +78,7 @@ const Trip = () => {
       </h1>
       <Meta />
 
-      {isLoading ? (
-        <p>Loading trip...</p>
-      ) : (
+      {isLoading ? null : (
         <div
           className='trainInfo'
           style={{
@@ -116,16 +122,22 @@ const Trip = () => {
                 <p>
                   <strong>{stop.stationName}</strong>
                 </p>
-                <span>
-                  <h3>{hoursMinutesUntilArrival(stop.actualETA)}</h3>
-                  <p
-                    style={{
-                      fontSize: "0.8em",
-                    }}
-                  >
-                    {timeFormat(stop.actualETA)}
-                  </p>
-                </span>
+                {stop.noETA ? (
+                  <span>
+                    <h3>No ETA</h3>
+                  </span>
+                ) : (
+                  <span>
+                    <h3>{hoursMinutesUntilArrival(stop.actualETA)}</h3>
+                    <p
+                      style={{
+                        fontSize: "0.8em",
+                      }}
+                    >
+                      {timeFormat(stop.actualETA)}
+                    </p>
+                  </span>
+                )}
               </Link>
             );
           })
@@ -139,17 +151,7 @@ const Trip = () => {
               }}
             >
               <p>
-                <strong>No Predictions :c</strong>
-              </p>
-            </div>
-            <div
-              className='train'
-              style={{
-                backgroundColor: "#444",
-              }}
-            >
-              <p>
-                <strong>No Predictions :c</strong>
+                <strong>No Predictions available :c</strong>
               </p>
             </div>
           </>
@@ -176,6 +178,25 @@ const Trip = () => {
           }}
         >
           Choose Another {agencies[agency].type}
+        </h3>
+        <h3
+          className='train'
+          key='viewMap'
+          style={{
+            backgroundColor: agencies[agency].color,
+            color: agencies[agency].textColor,
+            padding: "8px",
+            textDecoration: "none",
+          }}
+        >
+          <Link
+            to={`/${agency}/map?route=${trip.lineCode}`}
+            style={{
+              textDecoration: "none",
+            }}
+          >
+            View on Map
+          </Link>
         </h3>
       </div>
     </>
