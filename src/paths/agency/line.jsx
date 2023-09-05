@@ -21,6 +21,30 @@ const Line = () => {
       const linesData = await linesReq.json();
       const stationsData = await stationsReq.json();
 
+      if (linesData.shitsFucked) {
+        setLoadingMessage(data.shitsFuckedMessage);
+      }
+
+      if (
+        Object.keys(linesData).length === 0 ||
+        Object.keys(stationsData).length === 0
+      ) {
+        try {
+          const shitsFuckedReq = await fetch(
+            `${agencies[agency].endpoint}/shitsFucked`
+          );
+          const shitsFucked = await shitsFuckedReq.json();
+
+          if (shitsFucked.shitIsFucked) {
+            setLoadingMessage(shitsFucked.message);
+            setIsLoading(true);
+            return;
+          }
+        } catch (e) {
+          console.log("ig its just meant to be that way??");
+        }
+      }
+
       setLine(linesData[lineName]);
       setStations(stationsData);
 
@@ -29,9 +53,6 @@ const Line = () => {
 
     fetchData();
   }, [agency, lineName]);
-
-  console.log(line);
-  console.log(stations);
 
   return (
     <>
@@ -79,10 +100,6 @@ const Line = () => {
         ) : line.stations.length > 0 ? (
           line.stations
             .sort((a, b) => {
-              console.log(stations);
-              console.log(a);
-              console.log(stations[a]);
-
               const aName = stations[a].stationName;
               const bName = stations[b].stationName;
 

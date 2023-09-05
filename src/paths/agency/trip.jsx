@@ -43,10 +43,19 @@ const Trip = () => {
         })
         .catch((error) => {
           console.error(error);
-          setLoadingMessage(
-            "Error loading data. Please try again later or choose another station."
-          );
-          setIsLoading(true);
+
+          fetch(`${agencies[agency].endpoint}/shitsFucked`)
+            .then((res) => res.json())
+            .then((shitsFucked) => {
+              if (shitsFucked.shitIsFucked) {
+                setLoadingMessage(shitsFucked.message);
+              } else {
+                setLoadingMessage(
+                  "Error loading data. Please try again later or choose another agency."
+                );
+              }
+              setIsLoading(true);
+            });
         });
     };
 
@@ -76,9 +85,7 @@ const Trip = () => {
           </h2>
           <p>
             As of{" "}
-            {new Date(
-              trip.predictions[0].actualETA - trip.predictions[0].eta * 60000
-            ).toLocaleTimeString([], {
+            {new Date().toLocaleTimeString([], {
               hour: "2-digit",
               minute: "2-digit",
             })}
@@ -95,7 +102,7 @@ const Trip = () => {
           <p>{loadingMessage}</p>
         ) : (
           trip.predictions.map((stop, i) => {
-            console.log(stop)
+            console.log(stop);
             return (
               <Link
                 to={`/${agency}/stops/${stop.stationID}`}
@@ -111,14 +118,42 @@ const Trip = () => {
                 </p>
                 <span>
                   <h3>{hoursMinutesUntilArrival(stop.actualETA)}</h3>
-                  <p style={{
-                    fontSize: "0.8em",
-                  }}>{timeFormat(stop.actualETA)}</p>
+                  <p
+                    style={{
+                      fontSize: "0.8em",
+                    }}
+                  >
+                    {timeFormat(stop.actualETA)}
+                  </p>
                 </span>
               </Link>
             );
           })
         )}
+        {!isLoading && trip.predictions.length === 0 ? (
+          <>
+            <div
+              className='train'
+              style={{
+                backgroundColor: "#444",
+              }}
+            >
+              <p>
+                <strong>No Predictions :c</strong>
+              </p>
+            </div>
+            <div
+              className='train'
+              style={{
+                backgroundColor: "#444",
+              }}
+            >
+              <p>
+                <strong>No Predictions :c</strong>
+              </p>
+            </div>
+          </>
+        ) : null}
         <h3
           className='train'
           key='backButton'

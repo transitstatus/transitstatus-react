@@ -52,9 +52,19 @@ const Agency = () => {
         })
         .catch((error) => {
           console.error(error);
-          setLoadingMessage(
-            "Error loading data. Please try again later or choose another agency."
-          );
+
+          fetch(`${agencies[agency].endpoint}/shitsFucked`)
+            .then((res) => res.json())
+            .then((shitsFucked) => {
+              if (shitsFucked.shitIsFucked) {
+                setLoadingMessage(shitsFucked.message);
+              } else {
+                setLoadingMessage(
+                  "Error loading data. Please try again later or choose another agency."
+                );
+              }
+              setIsLoading(true);
+            });
         });
     };
 
