@@ -407,14 +407,17 @@ const Map = () => {
                 noTrainsAtAll = false;
                 finalHTML += `<p class='mapStationBar'>To <strong>${destKey}</strong></p>`;
                 dest.trains
-                  .sort((a, b) => a.actualETA - b.actualETA)
                   .filter(
                     (train) =>
-                      train.lineCode === singleRouteID ||
-                      singleRouteID === "all"
+                      (train.lineCode === singleRouteID ||
+                        singleRouteID === "all") &&
+                      !train.noETA
                   )
+                  .sort((a, b) => a.actualETA - b.actualETA)
                   .slice(0, 3)
                   .forEach((train) => {
+                    console.log(train);
+
                     finalHTML += `<p class='mapTrainBar' style='color: #${
                       train.lineTextColor
                     }; background-color: #${train.lineColor};'><span><strong>${

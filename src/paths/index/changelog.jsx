@@ -14,7 +14,15 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
-        <tr id='1-2-1'>
+          <tr id='1-2-2'>
+            <td>v1.2.2</td>
+            <td>
+              <ul>
+                <li>Fixed bug in station popups having invalid ETAs</li>
+              </ul>
+            </td>
+          </tr>
+          <tr id='1-2-1'>
             <td>v1.2.1</td>
             <td>
               <ul>
