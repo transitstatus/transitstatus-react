@@ -176,6 +176,7 @@ const Map = () => {
                 }),
               });
 
+              setLastUpdated(new Date());
               console.log("Updated stations data");
 
               //stationsSource.
