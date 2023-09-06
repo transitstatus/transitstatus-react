@@ -194,19 +194,27 @@ const Station = () => {
                                       : train.routeLongName}
                                   </h3>
                                 </span>
-                                <span>
-                                  <h3 className='trainLink'>
-                                    {hoursMinutesUntilArrival(train.actualETA)}
-                                  </h3>
-                                  <p
-                                    className='trainLink'
-                                    style={{
-                                      fontSize: "0.8em",
-                                    }}
-                                  >
-                                    {timeFormat(train.actualETA)}
-                                  </p>
-                                </span>
+                                {!train.noETA ? (
+                                  <span>
+                                    <h3 className='trainLink'>
+                                      {hoursMinutesUntilArrival(
+                                        train.actualETA
+                                      )}
+                                    </h3>
+                                    <p
+                                      className='trainLink'
+                                      style={{
+                                        fontSize: "0.8em",
+                                      }}
+                                    >
+                                      {timeFormat(train.actualETA)}
+                                    </p>
+                                  </span>
+                                ) : (
+                                  <span>
+                                    <h3 className='trainLink'>No ETA</h3>
+                                  </span>
+                                )}
                               </div>
                             </Link>
                           );
