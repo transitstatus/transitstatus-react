@@ -38,7 +38,7 @@ export default function ErrorPage() {
       <div id='error-page'>
         <h1>Oops!</h1>
         <p>
-          Seems like an old version of Railstat.us tried to load. We'll fix that
+          Seems like an old version of Transitstat.us tried to load. We'll fix that
           right up for you and you'll be on your way!
         </p>
         <br />

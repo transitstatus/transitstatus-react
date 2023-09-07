@@ -16,6 +16,15 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-3-9'>
+            <td>v1.3.9</td>
+            <td>
+              <ul>
+                <li>Fixed error message typo</li>
+                <li>Removed duplicated changelog entry</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-3-8'>
             <td>v1.3.8</td>
             <td>
@@ -307,14 +316,6 @@ const Changelog = () => {
           </tr>
           <tr id='0-5-1'>
             <td>0.5.1 Beta</td>
-            <td>
-              <ul>
-                <li>Ported over Amtraker error handling</li>
-              </ul>
-            </td>
-          </tr>
-          <tr id='0-5-1'>
-            <td>v0.5.1 Beta</td>
             <td>
               <ul>
                 <li>Ported over Amtraker error handling</li>
