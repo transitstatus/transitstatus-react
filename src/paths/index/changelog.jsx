@@ -16,6 +16,14 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-3-8'>
+            <td>v1.3.8</td>
+            <td>
+              <ul>
+                <li>OK the API actually works this time</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-3-7'>
             <td>v1.3.7</td>
             <td>
