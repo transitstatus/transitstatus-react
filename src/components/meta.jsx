@@ -5,11 +5,11 @@ const Meta = () => {
     <div
       style={{
         marginLeft: "2px",
-        marginTop: "-4px",
-        marginBottom: "4px",
+        marginTop: "-2px",
+        marginBottom: "-8px",
       }}
     >
-      <p>by Transitstat.us</p>
+      <p>by <a href='https://piemadd.com/' target="__blank">Piero</a></p>
       <p>{config.tagLine}</p>
       <p>{config.version}</p>
       {config.additionalWarnings.map((warning, i) => {

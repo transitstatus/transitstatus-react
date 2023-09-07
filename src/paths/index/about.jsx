@@ -39,25 +39,30 @@ const About = () => {
       </p>
       <h2>Who</h2>
       <p>
-      &nbsp;&nbsp;&nbsp;&nbsp;Hi, I'm Piero. I'm a programmer and transit advocate based out of
-        Chicago, IL. You can find out more about me{" "}
+        &nbsp;&nbsp;&nbsp;&nbsp;Hi, I'm Piero. I'm a programmer and transit
+        advocate based out of Chicago, IL. You can find out more about me{" "}
         <a href='https://piemadd.com/' target='__blank'>
           on my website
         </a>
         .
       </p>
       <h2>Extras</h2>
-      <p>If you want to see a full map with every agency and line that transitstatus supports, just click <a href='/fullmap'>here</a>.</p>
+      <p>
+        If you want to see a full map with every agency and line that
+        transitstatus supports, just click <a href='/fullmap'>here</a>. It is
+        missing a few features that the regular map has due to it having a
+        different codebase. I plan on merging these together at some point, but
+        that's low priority due to a full map not being super useful.
+      </p>
       <br />
       <p
         onClick={() => {
           if (history.state.idx && history.state.idx > 0) {
             navigate(-1);
           } else {
-            navigate('/', { replace: true }); //fallback
+            navigate("/", { replace: true }); //fallback
           }
         }}
-
         style={{
           cursor: "pointer",
           textDecoration: "underline",

@@ -14,7 +14,25 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
-        <tr id='1-3-1'>
+          <tr id='1-3-3'>
+            <td>v1.3.3</td>
+            <td>
+              <ul>
+                <li>Minor map popup formatting</li>
+                <li>Removed null island vehicles from map auto pan</li>
+                <li>Slightly changed header</li>
+              </ul>
+            </td>
+          </tr>
+          <tr id='1-3-2'>
+            <td>v1.3.2</td>
+            <td>
+              <ul>
+                <li>Added a small bit to the about section</li>
+              </ul>
+            </td>
+          </tr>
+          <tr id='1-3-1'>
             <td>v1.3.1</td>
             <td>
               <ul>

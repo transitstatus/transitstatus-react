@@ -218,10 +218,12 @@ const Map = () => {
           if (train.lineCode !== singleRouteID && singleRouteID !== "all")
             return;
 
-          if (train.lat < minLat) minLat = train.lat;
-          if (train.lat > maxLat) maxLat = train.lat;
-          if (train.lon < minLon) minLon = train.lon;
-          if (train.lon > maxLon) maxLon = train.lon;
+          if (train.lat !== 0 && train.lon !== 0) {
+            if (train.lat < minLat) minLat = train.lat;
+            if (train.lat > maxLat) maxLat = train.lat;
+            if (train.lon < minLon) minLon = train.lon;
+            if (train.lon > maxLon) maxLon = train.lon;
+          }
 
           finalFeaturesInitial.push({
             type: "Feature",
@@ -443,7 +445,9 @@ const Map = () => {
                       agencies[agency].useCodeForShortName
                         ? train.lineCode
                         : train.line
-                    }</strong> to <strong>${destKey}</strong></span><strong>${
+                    }${agencies[agency].addLine ? " Line " : " "}</strong>#${
+                      train.runNumber
+                    } to <strong>${destKey}</strong></span><strong>${
                       train.noETA
                         ? "No ETA"
                         : hoursMinutesUntilArrival(new Date(train.actualETA))
