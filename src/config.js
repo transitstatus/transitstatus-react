@@ -2,7 +2,7 @@ export const agencies = {
   ctat: {
     name: "CTA",
     selectionName: 'Chicago (CTA) Trains',
-    endpoint: "https://store.transitstat.us/cta_trains/transitStatus",
+    endpoint: "https://store.piemadd.com/cta_trains/transitStatus",
     mapShapes: "https://gtfs.piemadd.com/data/cta/shapes/type_1.geojson",
     gtfsRoot: "https://gtfs.piemadd.com/data/cta",
     mapDefault: [41.900296392725636, -87.6650873752688, 10],
@@ -19,7 +19,7 @@ export const agencies = {
   metra: {
     name: "Metra",
     selectionName: 'Metra',
-    endpoint: "https://store.transitstat.us/metra/transitStatus",
+    endpoint: "https://store.piemadd.com/metra/transitStatus",
     mapShapes: "https://gtfs.piemadd.com/data/metra/shapes/type_2.geojson",
     gtfsRoot: "https://gtfs.piemadd.com/data/metra",
     mapDefault: [42.00716298759261, -87.9244703152358, 9],
@@ -36,7 +36,7 @@ export const agencies = {
   southshore: {
     name: "South Shore Line",
     selectionName: 'South Shore Line',
-    endpoint: "https://store.transitstat.us/southshore/transitStatus",
+    endpoint: "https://store.piemadd.com/southshore/transitStatus",
     mapShapes: "https://gtfs.piemadd.com/data/southshore/shapes/type_2.geojson",
     gtfsRoot: "https://gtfs.piemadd.com/data/southshore",
     mapDefault: [41.78803440543757, -86.99159058472856, 9],
@@ -53,7 +53,7 @@ export const agencies = {
   rutgers: {
     name: "Rutgers",
     selectionName: 'Rutgers Shuttles',
-    endpoint: "https://store.transitstat.us/passio_go/rutgers",
+    endpoint: "https://store.piemadd.com/passio_go/rutgers",
     mapShapes: "https://passio.piemadd.com/data/rutgers/shapes.json",
     gtfsRoot: "https://passio.piemadd.com/data/rutgers",
     mapDefault: [40.35417700651374, -74.70768648283568, 9],
@@ -70,7 +70,7 @@ export const agencies = {
   uchicago: {
     name: "UChicago",
     selectionName: 'UChicago Shuttles',
-    endpoint: "https://store.transitstat.us/passio_go/chicago",
+    endpoint: "https://store.piemadd.com/passio_go/chicago",
     mapShapes: "https://passio.piemadd.com/data/chicago/shapes.json",
     gtfsRoot: "https://passio.piemadd.com/data/chicago",
     mapDefault: [41.83695214205909, -87.60849773242845, 11],
@@ -87,7 +87,7 @@ export const agencies = {
   gcsu: {
     name: "Georgia Collegee & State",
     selectionName: 'GCSU Shuttles',
-    endpoint: "https://store.transitstat.us/passio_go/gcsu",
+    endpoint: "https://store.piemadd.com/passio_go/gcsu",
     mapShapes: "https://passio.piemadd.com/data/gcsu/shapes.json",
     gtfsRoot: "https://passio.piemadd.com/data/gcsu",
     mapDefault: [33.080000, -83.230000, 13],
@@ -104,7 +104,7 @@ export const agencies = {
   'georgiast': {
     name: "Georgia State",
     selectionName: 'Georgia State Shuttles',
-    endpoint: "https://store.transitstat.us/passio_go/georgiast",
+    endpoint: "https://store.piemadd.com/passio_go/georgiast",
     mapShapes: "https://passio.piemadd.com/data/georgiast/shapes.json",
     gtfsRoot: "https://passio.piemadd.com/data/georgiast",
     mapDefault: [33.753746, -84.386330, 13],
@@ -121,7 +121,7 @@ export const agencies = {
   'gatech': {
     name: "Georgia Tech",
     selectionName: 'Georgia Tech Stinger Shuttles',
-    endpoint: "https://store.transitstat.us/passio_go/gatech",
+    endpoint: "https://store.piemadd.com/passio_go/gatech",
     mapShapes: "https://passio.piemadd.com/data/gatech/shapes.json",
     gtfsRoot: "https://passio.piemadd.com/data/gatech",
     mapDefault: [33.775617, -84.396284, 13],
@@ -138,7 +138,7 @@ export const agencies = {
   'GASO': {
     name: "Georgia Southern",
     selectionName: 'Georgia Southern Shuttles',
-    endpoint: "https://store.transitstat.us/passio_go/GASO",
+    endpoint: "https://store.piemadd.com/passio_go/GASO",
     mapShapes: "https://passio.piemadd.com/data/GASO/shapes.json",
     gtfsRoot: "https://passio.piemadd.com/data/GASO",
     mapDefault: [32.421000, -81.786000, 13],
@@ -155,7 +155,7 @@ export const agencies = {
   'MIT': {
     name: "MIT",
     selectionName: 'MIT Shuttles',
-    endpoint: "https://store.transitstat.us/passio_go/mit",
+    endpoint: "https://store.piemadd.com/passio_go/mit",
     mapShapes: "https://passio.piemadd.com/data/mit/shapes.json",
     gtfsRoot: "https://passio.piemadd.com/data/mit",
     mapDefault: [42.360000, -71.092000, 13],
