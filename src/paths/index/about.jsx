@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 const About = () => {
   const navigate = useNavigate();
 
+  document.title = "About | Transitstat.us";
+
   return (
     <div>
       <h1>About</h1>

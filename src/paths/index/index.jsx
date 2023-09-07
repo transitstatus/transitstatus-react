@@ -9,6 +9,8 @@ const Index = () => {
     return JSON.parse(localStorage.getItem("favorites-transitstatus-v0")) || {};
   }, []);
 
+  document.title = "Transitstat.us";
+
   return (
     <>
       <h1>Transitstat.us</h1>

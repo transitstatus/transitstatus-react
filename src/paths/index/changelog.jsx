@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 const Changelog = () => {
   const navigate = useNavigate();
 
+  document.title = "Changelog | Transitstat.us";
+
   return (
     <div>
       <h1>Changelog</h1>
@@ -14,6 +16,14 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+        <tr id='1-3-4'>
+            <td>v1.3.4</td>
+            <td>
+              <ul>
+                <li>Page titles</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-3-3'>
             <td>v1.3.3</td>
             <td>

@@ -13,6 +13,8 @@ const Line = () => {
 
   const navigate = useNavigate();
 
+  document.title = `${line.lineNameLong} | Transitstat.us`;
+
   useEffect(() => {
     const fetchData = async () => {
       const linesReq = await fetch(`${agencies[agency].endpoint}/lines`);

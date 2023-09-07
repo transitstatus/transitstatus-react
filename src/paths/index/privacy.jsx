@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 const Privacy = () => {
   const navigate = useNavigate();
 
+  document.title = "Privacy Policy | Transitstat.us";
+
   return (
     <div>
       <h1>Privacy Policy</h1>

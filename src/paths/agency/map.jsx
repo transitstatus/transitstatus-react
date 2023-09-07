@@ -31,6 +31,8 @@ const Map = () => {
   let protocol = new pmtiles.Protocol();
   maplibregl.addProtocol("pmtiles", protocol.tile);
 
+  document.title = `${agencies[agency].name} Map | Transitstat.us`;
+
   useEffect(() => {
     (async () => {
       try {

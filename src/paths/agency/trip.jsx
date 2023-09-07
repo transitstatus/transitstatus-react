@@ -34,6 +34,8 @@ const Trip = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [lastFetched, setLastFetched] = useState(0);
 
+  document.title = `${trip.line} #${tripID} | Transitstat.us`;
+
   useEffect(() => {
     const fetchData = () => {
       fetch(`${agencies[agency].endpoint}/trains/${tripID}`)
@@ -92,10 +94,11 @@ const Trip = () => {
           style={{
             backgroundColor: `#${trip.lineColor}`,
             color: `#${trip.lineTextColor}`,
+            marginTop: '12px'
           }}
         >
           <h2>
-            {trip.line} #{tripID}
+            {trip.line}{agencies[agency].addLine ? ' Line ' : ' '}#{tripID}
           </h2>
           <p>
             As of{" "}
@@ -118,7 +121,11 @@ const Trip = () => {
       )}
       <div className='trains'>
         {isLoading ? (
-          <p>{loadingMessage}</p>
+          <p style={{
+            marginTop: '12px',
+            marginBottom: '2px',
+            marginLeft: '2px',
+          }}>{loadingMessage}</p>
         ) : (
           trip.predictions.map((stop, i) => {
             console.log(stop);

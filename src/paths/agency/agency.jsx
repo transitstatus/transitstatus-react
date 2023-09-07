@@ -10,6 +10,8 @@ const Agency = () => {
   const [loadingMessage, setLoadingMessage] = useState("Loading data...");
   const [isLoading, setIsLoading] = useState(true);
 
+  document.title = `${agencies[agency].name} | Transitstat.us`;
+
   if (!agencies[agency]) {
     return (
       <>

@@ -34,6 +34,8 @@ const Station = () => {
   const [loadingMessage, setLoadingMessage] = useState("Loading trains...");
   const [isLoading, setIsLoading] = useState(true);
 
+  document.title = `${station.stationName} | Transitstat.us`;
+
   useEffect(() => {
     const fetchData = () => {
       fetch(`${agencies[agency].endpoint}/stations/${stopID}`)
@@ -88,6 +90,7 @@ const Station = () => {
           maxWidth: "384px",
           padding: "0px 8px",
           marginBottom: "4px",
+          marginTop: "12px",
           backgroundColor: "#333",
         }}
       >
@@ -130,7 +133,7 @@ const Station = () => {
           <p
             style={{
               maxWidth: "384px",
-              padding: "4px 8px 8px 8px",
+              padding: "8px",
               marginBottom: "4px",
               background: "#333",
             }}

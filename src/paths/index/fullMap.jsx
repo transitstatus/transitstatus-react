@@ -10,6 +10,8 @@ import "maplibre-gl/dist/maplibre-gl.css";
 const FullMap = () => {
   const navigate = useNavigate();
 
+  document.title = "Full Map | Transitstat.us";
+
   const mapContainer = useRef(null);
   const map = useRef(null);
   const [lng] = useState(-96.42657163363089);
@@ -372,7 +374,7 @@ const FullMap = () => {
                 train.lineTextColor
               }; background-color: #${train.lineColor};' href='/${
                 train.agency
-              }/track/${train.id.split('-')[1]}?prev=fullmap'>View Full ${
+              }/track/${train.id.split("-")[1]}?prev=fullmap'>View Full ${
                 agencies[train.agency].type
               }</a></strong></p></div>`
             )
