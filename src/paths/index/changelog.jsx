@@ -14,7 +14,15 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
-        <tr id='1-2-4'>
+        <tr id='1-3-0'>
+            <td>v1.3.0</td>
+            <td>
+              <ul>
+                <li>Added capacities to passio vehicles</li>
+              </ul>
+            </td>
+          </tr>
+          <tr id='1-2-4'>
             <td>v1.2.4</td>
             <td>
               <ul>

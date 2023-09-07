@@ -209,10 +209,38 @@ const Station = () => {
                                     >
                                       {timeFormat(train.actualETA)}
                                     </p>
+                                    {train.extra && train.extra.cap ? (
+                                      <p
+                                        className='trainLink'
+                                        style={{
+                                          fontSize: "0.8em",
+                                        }}
+                                      >
+                                        {Math.ceil(
+                                          (train.extra.load / train.extra.cap) *
+                                            100
+                                        )}
+                                        % Full
+                                      </p>
+                                    ) : null}
                                   </span>
                                 ) : (
                                   <span>
                                     <h3 className='trainLink'>No ETA</h3>
+                                    {train.extra && train.extra.cap ? (
+                                      <p
+                                        className='trainLink'
+                                        style={{
+                                          fontSize: "0.8em",
+                                        }}
+                                      >
+                                        {Math.ceil(
+                                          (train.extra.load / train.extra.cap) *
+                                            100
+                                        )}
+                                        % Full
+                                      </p>
+                                    ) : null}
                                   </span>
                                 )}
                               </div>

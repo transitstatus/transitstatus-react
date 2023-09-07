@@ -71,6 +71,8 @@ const Trip = () => {
     setInterval(fetchData, 30000);
   }, [agency, tripID]);
 
+  console.log(trip);
+
   return (
     <>
       <h1>
@@ -95,6 +97,11 @@ const Trip = () => {
               hour: "2-digit",
               minute: "2-digit",
             })}
+            {trip.extra && trip.extra.cap
+              ? ` | ${Math.ceil(
+                  (trip.extra.load / trip.extra.cap) * 100
+                )}% Full`
+              : null}
           </p>
           <p>
             Service to{" "}

@@ -356,6 +356,8 @@ const Map = () => {
                 }</strong></p>`;
               });
 
+            const extra = train.extra ? JSON.parse(train.extra) : null;
+
             const trainPopup = new maplibregl.Popup({
               offset: 12,
               closeButton: true,
@@ -368,7 +370,13 @@ const Map = () => {
                     : train.line
                 }${agencies[agency].addLine ? " Line " : " "}#${train.id} to ${
                   train.dest
-                }</h3>${predictionsHTML}<p class='mapTrainBar' style='color: #${
+                }</h3>${
+                  extra && extra.cap
+                    ? `<p style='margin-top: -2px;padding-bottom: 4px;'>${Math.ceil(
+                        (extra.load / extra.cap) * 100
+                      )}% Full</p>`
+                    : ""
+                }${predictionsHTML}<p class='mapTrainBar' style='color: #${
                   train.lineTextColor
                 }; background-color: #${
                   train.lineColor
