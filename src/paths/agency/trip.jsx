@@ -32,6 +32,7 @@ const Trip = () => {
   const [stations, setStations] = useState({});
   const [loadingMessage, setLoadingMessage] = useState("Loading trip...");
   const [isLoading, setIsLoading] = useState(true);
+  const [lastFetched, setLastFetched] = useState(0);
 
   useEffect(() => {
     const fetchData = () => {
@@ -39,7 +40,12 @@ const Trip = () => {
         .then((response) => response.json())
         .then((data) => {
           setTrip(data);
-          setIsLoading(false);
+          fetch(`${agencies[agency].endpoint}/lastUpdated`)
+            .then((res) => res.text())
+            .then((ts) => {
+              setLastFetched(new Date(ts).valueOf());
+              setIsLoading(false);
+            });
         })
         .catch((error) => {
           console.error(error);
@@ -93,7 +99,7 @@ const Trip = () => {
           </h2>
           <p>
             As of{" "}
-            {new Date().toLocaleTimeString([], {
+            {new Date(lastFetched).toLocaleTimeString([], {
               hour: "2-digit",
               minute: "2-digit",
             })}

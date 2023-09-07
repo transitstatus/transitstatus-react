@@ -40,8 +40,12 @@ const Station = () => {
         .then((response) => response.json())
         .then((data) => {
           setStation(data);
-          setLastFetched(new Date().valueOf());
-          setIsLoading(false);
+          fetch(`${agencies[agency].endpoint}/lastUpdated`)
+            .then((res) => res.text())
+            .then((ts) => {
+              setLastFetched(new Date(ts).valueOf());
+              setIsLoading(false);
+            });
         })
         .catch((error) => {
           console.error(error);

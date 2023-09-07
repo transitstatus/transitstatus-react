@@ -102,7 +102,12 @@ const Map = () => {
         const stationsData = await stationsReq.json();
         const trainsData = await trainsReq.json();
 
-        setIsLoading(false);
+        fetch(`${agencies[agency].endpoint}/lastUpdated`)
+          .then((res) => res.text())
+          .then((ts) => {
+            setLastUpdated(new Date(ts));
+            setIsLoading(false);
+          });
 
         const mapShapes = await fetch(`${agencies[agency].mapShapes}`);
         const mapShapesData = await mapShapes.json();
@@ -176,7 +181,12 @@ const Map = () => {
                 }),
               });
 
-              setLastUpdated(new Date());
+              fetch(`${agencies[agency].endpoint}/lastUpdated`)
+                .then((res) => res.text())
+                .then((ts) => {
+                  setLastUpdated(new Date(ts));
+                });
+
               console.log("Updated stations data");
 
               //stationsSource.
