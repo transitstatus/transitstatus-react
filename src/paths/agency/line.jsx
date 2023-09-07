@@ -13,7 +13,7 @@ const Line = () => {
 
   const navigate = useNavigate();
 
-  document.title = `${line.lineNameLong} | Transitstat.us`;
+  document.title = `${line.lineNameLong} ${agencies[agency].name} | Transitstat.us`;
 
   useEffect(() => {
     const fetchData = async () => {

@@ -34,7 +34,7 @@ const Station = () => {
   const [loadingMessage, setLoadingMessage] = useState("Loading trains...");
   const [isLoading, setIsLoading] = useState(true);
 
-  document.title = `${station.stationName} | Transitstat.us`;
+  document.title = `${station.stationName} ${agencies[agency].name} | Transitstat.us`;
 
   useEffect(() => {
     const fetchData = () => {

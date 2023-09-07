@@ -34,7 +34,7 @@ const Trip = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [lastFetched, setLastFetched] = useState(0);
 
-  document.title = `${trip.line} #${tripID} | Transitstat.us`;
+  document.title = `${trip.line} #${tripID} ${agencies[agency].name} | Transitstat.us`;
 
   useEffect(() => {
     const fetchData = () => {
