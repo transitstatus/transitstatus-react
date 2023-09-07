@@ -174,6 +174,6 @@ export const agencies = {
 export const config = {
   siteTitle: 'Transit Stat.us',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'Transitstat.us v1.3.6',
+  version: 'Transitstat.us v1.3.7',
   additionalWarnings: []
 };
