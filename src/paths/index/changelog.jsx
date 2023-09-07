@@ -16,6 +16,14 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-3-6'>
+            <td>v1.3.6</td>
+            <td>
+              <ul>
+                <li>Changed API endpoint root for better analytics</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-3-5'>
             <td>v1.3.5</td>
             <td>
