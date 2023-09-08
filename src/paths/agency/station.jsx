@@ -200,6 +200,9 @@ const Station = () => {
                                       ? destinationKey
                                       : train.routeLongName}
                                   </h3>
+                                  {train.extra && train.extra.info ? (
+                                    <p>{train.extra.info}</p>
+                                  ) : null}
                                 </span>
                                 {!train.noETA ? (
                                   <span>

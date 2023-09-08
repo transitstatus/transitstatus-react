@@ -385,10 +385,14 @@ const Map = () => {
                 }${agencies[agency].addLine ? " Line " : " "}#${train.id} to ${
                   train.dest
                 }</h3>${
-                  extra && extra.cap
-                    ? `<p style='margin-top: -2px;padding-bottom: 4px;'>${Math.ceil(
-                        (extra.load / extra.cap) * 100
-                      )}% Full</p>`
+                  extra && (extra.cap || extra.info)
+                    ? `<p style='margin-top: -2px;padding-bottom: 4px;'>${
+                        extra.info ?? ""
+                      }${extra.cap && extra.info ? " | " : ""}${
+                        extra.cap
+                          ? `${Math.ceil((extra.load / extra.cap) * 100)}% Full`
+                          : ""
+                      }</p>`
                     : ""
                 }${predictionsHTML}<p class='mapTrainBar' style='color: #${
                   train.lineTextColor

@@ -94,11 +94,12 @@ const Trip = () => {
           style={{
             backgroundColor: `#${trip.lineColor}`,
             color: `#${trip.lineTextColor}`,
-            marginTop: '12px'
+            marginTop: "12px",
           }}
         >
           <h2>
-            {trip.line}{agencies[agency].addLine ? ' Line ' : ' '}#{tripID}
+            {trip.line}
+            {agencies[agency].addLine ? " Line " : " "}#{tripID}
           </h2>
           <p>
             As of{" "}
@@ -112,6 +113,7 @@ const Trip = () => {
                 )}% Full`
               : null}
           </p>
+          {trip.extra && trip.extra.info ? <p>{trip.extra.info}</p> : null}
           <p>
             Service to{" "}
             {trip.dest ??
@@ -121,11 +123,15 @@ const Trip = () => {
       )}
       <div className='trains'>
         {isLoading ? (
-          <p style={{
-            marginTop: '12px',
-            marginBottom: '2px',
-            marginLeft: '2px',
-          }}>{loadingMessage}</p>
+          <p
+            style={{
+              marginTop: "12px",
+              marginBottom: "2px",
+              marginLeft: "2px",
+            }}
+          >
+            {loadingMessage}
+          </p>
         ) : (
           trip.predictions.map((stop, i) => {
             console.log(stop);
