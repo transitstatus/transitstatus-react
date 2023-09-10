@@ -146,6 +146,7 @@ const Index = () => {
           height: "8px",
         }}
       ></div>
+      {/*}
       <h2
         style={{
           marginTop: "4px",
@@ -157,7 +158,6 @@ const Index = () => {
       >
         Favorite Agencies
       </h2>
-      {/*}
       <div
         style={{
           display: "flex",
