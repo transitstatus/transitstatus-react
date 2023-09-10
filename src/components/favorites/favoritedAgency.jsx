@@ -1,17 +1,18 @@
-import { agencies } from "../config";
-import Heart from "./heart";
+import { Link } from "react-router-dom";
+import { agencies } from "../../config";
+import AgencyHeart from "../hearts/agencyHeart";
 
-const FavoritedStation = ({ agency, station, style }) => {
-  console.log(station);
-
+const FavoritedAgency = ({ agency, style }) => {
   const agencyObj = agencies[agency];
+
+  console.log(agencyObj);
 
   return (
     <div
       className='station'
       style={{
-        fontSize: "1.3rem",
-        padding: "8px",
+        fontSize: "1.2rem",
+        padding: "0.4rem",
         color: agencyObj.textColor,
         backgroundColor: agencyObj.color,
         display: "flex",
@@ -21,13 +22,10 @@ const FavoritedStation = ({ agency, station, style }) => {
       }}
     >
       <h3>
-        <a href={`/${agency}/stops/${station.stationID}`}>
-          {station.stationName} ({agencyObj.name})
-        </a>
+        <Link to={`/${agency}`}>{agencyObj.selectionName}</Link>
       </h3>
-      <Heart
+      <AgencyHeart
         agency={agency}
-        station={station}
         style={{
           width: "26px",
         }}
@@ -36,4 +34,4 @@ const FavoritedStation = ({ agency, station, style }) => {
   );
 };
 
-export default FavoritedStation;
+export default FavoritedAgency;

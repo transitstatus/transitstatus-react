@@ -2,6 +2,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { agencies, config } from "../../config";
 import Meta from "../../components/meta";
+import LineHeart from "../../components/hearts/lineHeart";
 
 const Line = () => {
   const { agency, lineName } = useParams();
@@ -66,17 +67,30 @@ const Line = () => {
         {isLoading ? (
           <h2>Loading line...</h2>
         ) : (
-          <h2
+          <div
             style={{
               marginTop: "4px",
-              padding: "2px 6px",
+              padding: "8px 8px",
               backgroundColor: `#${line.routeColor}`,
               color: `#${line.routeTextColor}`,
+              display: "flex",
+              justifyContent: "space-between",
             }}
           >
-            {line.lineNameLong}{" "}
-            {line.lineNameShort ? `(${line.lineNameShort})` : ""}
-          </h2>
+            <h2 style={{
+              marginTop: 0
+            }}>
+              {line.lineNameLong}{" "}
+              {line.lineNameShort ? `(${line.lineNameShort})` : ""}
+            </h2>
+            <LineHeart
+              agency={agency}
+              line={line}
+              style={{
+                width: "26px",
+              }}
+            />
+          </div>
         )}
         <h3
           className='route'

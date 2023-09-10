@@ -1,28 +1,30 @@
 import { useEffect, useState } from "react";
-import fullHeart from "../assets/heart_full.svg";
-import emptyHeart from "../assets/heart_empty.svg";
+import fullHeart from "../../assets/heart_full.svg";
+import emptyHeart from "../../assets/heart_empty.svg";
 
-const Heart = ({ agency, station, style }) => {
+const AgencyHeart = ({ agency, style }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const favID = `${agency}-${station.stationID}`;
+  const favID = agency;
 
   useEffect(() => {
     const favorites =
-      JSON.parse(localStorage.getItem("favorites-transitstatus-v0")) || {};
+      JSON.parse(localStorage.getItem("favorites-transitstatus-v1-agencies")) ||
+      {};
 
     if (favorites[favID]) {
       setIsFavorite(true);
     }
-  }, [agency, station.stationID]);
+  }, [agency]);
 
   const addFavorite = () => {
     console.log(`Adding ${favID} to favorites`);
     const favorites =
-      JSON.parse(localStorage.getItem("favorites-transitstatus-v0")) || {};
-    favorites[favID] = station;
+      JSON.parse(localStorage.getItem("favorites-transitstatus-v1-agencies")) ||
+      {};
+    favorites[favID] = agency;
     localStorage.setItem(
-      "favorites-transitstatus-v0",
+      "favorites-transitstatus-v1-agencies",
       JSON.stringify(favorites)
     );
 
@@ -34,10 +36,11 @@ const Heart = ({ agency, station, style }) => {
   const removeFavorite = () => {
     console.log(`Removing ${favID} from favorites`);
     const favorites =
-      JSON.parse(localStorage.getItem("favorites-transitstatus-v0")) || {};
+      JSON.parse(localStorage.getItem("favorites-transitstatus-v1-agencies")) ||
+      {};
     delete favorites[favID];
     localStorage.setItem(
-      "favorites-transitstatus-v0",
+      "favorites-transitstatus-v1-agencies",
       JSON.stringify(favorites)
     );
 
@@ -67,4 +70,4 @@ const Heart = ({ agency, station, style }) => {
   );
 };
 
-export default Heart;
+export default AgencyHeart;

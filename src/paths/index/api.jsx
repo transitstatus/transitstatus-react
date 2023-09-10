@@ -3,10 +3,16 @@ import { useNavigate } from "react-router-dom";
 const API = () => {
   const navigate = useNavigate();
 
+  document.title = "API | React App";
+
   return (
     <div>
-      <h1>Settings</h1>
-      <p>There be no settings to set matey!</p>
+      <h1>API Guide</h1>
+      <p>
+        Transitstat.us doesn't use a single API, but a handful of APIs which all
+        follow the same specification. In this short guide, you'll be able to
+        see the spec and fuck around with some examples.{" "}
+      </p>
       <br />
       <p
         onClick={() => {

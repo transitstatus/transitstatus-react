@@ -1,7 +1,9 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { agencies, config } from "../../config";
 import Meta from "../../components/meta";
+import AgencyHeart from "../../components/hearts/agencyHeart";
+import FavoritedStation from "../../components/favorites/favoritedStation";
 
 const Agency = () => {
   const { agency } = useParams();
@@ -9,6 +11,19 @@ const Agency = () => {
   const [lines, setLines] = useState({});
   const [loadingMessage, setLoadingMessage] = useState("Loading data...");
   const [isLoading, setIsLoading] = useState(true);
+
+  const favoriteStations = useMemo(() => {
+    const results =
+      JSON.parse(localStorage.getItem("favorites-transitstatus-v0")) || {};
+
+    Object.keys(results).forEach((key) => {
+      if (key.split("-")[0] !== agency) {
+        delete results[key];
+      }
+    });
+
+    return results;
+  }, []);
 
   document.title = `${agencies[agency].name} | Transitstat.us`;
 
@@ -82,16 +97,30 @@ const Agency = () => {
       </h1>
       <Meta />
       <div className='routes'>
-        <h2
+        <div
           style={{
             marginTop: "4px",
-            padding: "2px 6px",
+            padding: "8px 8px",
             backgroundColor: agencies[agency].color,
             color: agencies[agency].textColor,
+            display: "flex",
+            justifyContent: "space-between",
           }}
         >
-          {agencies[agency].name} Routes
-        </h2>
+          <h2
+            style={{
+              marginTop: 0,
+            }}
+          >
+            {agencies[agency].name} Routes
+          </h2>
+          <AgencyHeart
+            agency={agency}
+            style={{
+              width: "26px",
+            }}
+          />
+        </div>
         {isLoading ? (
           <p>{loadingMessage}</p>
         ) : (
@@ -148,7 +177,7 @@ const Agency = () => {
               style={{
                 padding: "6px 6px",
                 fontSize: "1.3rem",
-                backgroundColor: agencies[agency].color,
+                backgroundColor: "#444",
               }}
             >
               <strong>Inactive Routes</strong>
@@ -193,6 +222,62 @@ const Agency = () => {
             </div>
           </details>
         )}
+        <div>
+          <h2
+            style={{
+              marginTop: "4px",
+              marginBottom: "-4px",
+              backgroundColor: agencies[agency].color,
+              maxWidth: "384px",
+              padding: "4px 8px",
+            }}
+          >
+            Favorite Stops
+          </h2>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              maxWidth: "400px",
+              gap: "4px",
+              marginTop: "8px",
+            }}
+          >
+            {Object.keys(favoriteStations).length === 0 ? (
+              <p
+                style={{
+                  fontSize: "1rem",
+                  padding: "4px 8px",
+                  color: "#fff",
+                  backgroundColor: "#444",
+                }}
+              >
+                No favorite stops yet.
+              </p>
+            ) : (
+              <>
+                {Object.keys(favoriteStations)
+                  .sort()
+                  .map((favKey) => {
+                    const fav = favoriteStations[favKey];
+
+                    console.log(favKey, fav);
+
+                    return (
+                      <FavoritedStation
+                        agency={favKey.split("-")[0]}
+                        station={fav}
+                        key={favKey}
+                        style={{
+                          backgroundColor: "#444",
+                        }}
+                      />
+                    );
+                  })}
+              </>
+            )}
+          </div>
+        </div>
         <h3
           className='route'
           key='onMap'
@@ -201,6 +286,7 @@ const Agency = () => {
             color: agencies[agency].textColor,
             fontSize: "1.3rem",
             padding: "8px",
+            marginTop: "4px",
           }}
         >
           <Link to={`/${agency}/map`}>View on a Map</Link>
@@ -209,10 +295,11 @@ const Agency = () => {
           className='route'
           key='backButton'
           style={{
-            backgroundColor: agencies[agency].color,
-            color: agencies[agency].textColor,
+            backgroundColor: "#444",
+            color: "#fff",
             fontSize: "1.3rem",
             padding: "8px",
+            marginTop: "4px",
           }}
           onClick={() => {
             if (history.state.idx && history.state.idx > 0) {

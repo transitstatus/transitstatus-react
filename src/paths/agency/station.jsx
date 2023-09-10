@@ -1,7 +1,7 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { agencies, config } from "../../config";
-import Heart from "../../components/heart";
+import StationHeart from "../../components/hearts/stationHeart";
 import Meta from "../../components/meta";
 
 const hoursMinutesUntilArrival = (arrivalTime) => {
@@ -107,7 +107,7 @@ const Station = () => {
           >
             {station.stationName}
           </h2>
-          <Heart
+          <StationHeart
             agency={agency}
             station={station}
             style={{

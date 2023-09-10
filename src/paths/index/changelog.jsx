@@ -16,6 +16,15 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+        <tr id='1-4-0'>
+            <td>v1.4.0</td>
+            <td>
+              <ul>
+                <li>Increased map max zoom level</li>
+                <li>Added saved lines option</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-3-10'>
             <td>v1.3.10</td>
             <td>

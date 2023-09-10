@@ -1,12 +1,27 @@
 import { Link } from "react-router-dom";
 import MoreLinks from "../../components/moreLinks";
 import { agencies, config } from "../../config";
-import FavoritedStation from "../../components/favoritedStation";
+import FavoritedStation from "../../components/favorites/favoritedStation";
 import { useMemo } from "react";
+import FavoritedLine from "../../components/favorites/favoritedLine";
+import FavoritedAgency from "../../components/favorites/favoritedAgency";
 
 const Index = () => {
-  const favorites = useMemo(() => {
+  const favoriteStations = useMemo(() => {
     return JSON.parse(localStorage.getItem("favorites-transitstatus-v0")) || {};
+  }, []);
+
+  const favoriteLines = useMemo(() => {
+    return (
+      JSON.parse(localStorage.getItem("favorites-transitstatus-v1-lines")) || {}
+    );
+  }, []);
+
+  const favoriteAgencies = useMemo(() => {
+    return (
+      JSON.parse(localStorage.getItem("favorites-transitstatus-v1-agencies")) ||
+      {}
+    );
   }, []);
 
   document.title = "Transitstat.us";
@@ -28,7 +43,7 @@ const Index = () => {
           padding: "4px 8px",
         }}
       >
-        Favorites
+        Favorite Stops
       </h2>
       <div
         style={{
@@ -39,7 +54,7 @@ const Index = () => {
           marginTop: "8px",
         }}
       >
-        {Object.keys(favorites).length === 0 ? (
+        {Object.keys(favoriteStations).length === 0 ? (
           <p
             style={{
               fontSize: "1rem",
@@ -48,19 +63,25 @@ const Index = () => {
               backgroundColor: "#444",
             }}
           >
-            No favorites yet.
+            No favorite stops yet.
           </p>
         ) : (
           <>
-            {Object.keys(favorites).map((favKey) => {
-              const fav = favorites[favKey];
+            {Object.keys(favoriteStations)
+              .sort()
+              .map((favKey) => {
+                const fav = favoriteStations[favKey];
 
-              console.log(favKey, fav);
+                console.log(favKey, fav);
 
-              return (
-                <FavoritedStation agency={favKey.split("-")[0]} station={fav} />
-              );
-            })}
+                return (
+                  <FavoritedStation
+                    agency={favKey.split("-")[0]}
+                    station={fav}
+                    key={favKey}
+                  />
+                );
+              })}
           </>
         )}
       </div>
@@ -69,6 +90,120 @@ const Index = () => {
           height: "8px",
         }}
       ></div>
+      <h2
+        style={{
+          marginTop: "4px",
+          marginBottom: "-4px",
+          backgroundColor: "#444",
+          maxWidth: "384px",
+          padding: "4px 8px",
+        }}
+      >
+        Favorite Lines
+      </h2>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          maxWidth: "400px",
+          gap: "4px",
+          marginTop: "8px",
+        }}
+      >
+        {Object.keys(favoriteLines).length === 0 ? (
+          <p
+            style={{
+              fontSize: "1rem",
+              padding: "4px 8px",
+              color: "#fff",
+              backgroundColor: "#444",
+            }}
+          >
+            No favorite lines yet.
+          </p>
+        ) : (
+          <>
+            {Object.keys(favoriteLines)
+              .sort()
+              .map((favKey) => {
+                const fav = favoriteLines[favKey];
+
+                console.log(favKey, fav);
+
+                return (
+                  <FavoritedLine
+                    agency={favKey.split("-")[0]}
+                    line={fav}
+                    key={favKey}
+                  />
+                );
+              })}
+          </>
+        )}
+      </div>
+      <div
+        style={{
+          height: "8px",
+        }}
+      ></div>
+      <h2
+        style={{
+          marginTop: "4px",
+          marginBottom: "-4px",
+          backgroundColor: "#444",
+          maxWidth: "384px",
+          padding: "4px 8px",
+        }}
+      >
+        Favorite Agencies
+      </h2>
+      {/*}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          maxWidth: "400px",
+          gap: "4px",
+          marginTop: "8px",
+        }}
+      >
+        {Object.keys(favoriteAgencies).length === 0 ? (
+          <p
+            style={{
+              fontSize: "1rem",
+              padding: "4px 8px",
+              color: "#fff",
+              backgroundColor: "#444",
+            }}
+          >
+            No favorite agencies yet.
+          </p>
+        ) : (
+          <>
+            {Object.keys(favoriteAgencies)
+              .sort()
+              .map((favKey) => {
+                const fav = favoriteAgencies[favKey];
+
+                console.log(favKey, fav);
+
+                return (
+                  <FavoritedAgency
+                    agency={favKey.split("-")[0]}
+                    station={fav}
+                    key={favKey}
+                  />
+                );
+              })}
+          </>
+        )}
+      </div>
+      <div
+        style={{
+          height: "8px",
+        }}
+      ></div>
+      {*/}
       <h2
         style={{
           marginTop: "4px",
