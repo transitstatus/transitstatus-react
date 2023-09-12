@@ -89,7 +89,6 @@ const Line = () => {
                 ? `(${line.lineNameShort})`
                 : ""}
             </h2>
-            {/*}
             <LineHeart
               agency={agency}
               line={line}
@@ -97,7 +96,6 @@ const Line = () => {
                 width: "26px",
               }}
             />
-            {*/}
           </div>
         )}
         <h3
