@@ -24,7 +24,11 @@ const FavoritedLine = ({ agency, line, style }) => {
       <h3>
         <Link to={`/${agency}/${line.lineCode}`}>
           {line.lineNameLong}{" "}
-          {line.lineNameShort ? `(${line.lineNameShort})` : ""}
+          {line.lineNameShort.length > 0 &&
+          agencies[agency].addShortName &&
+          line.lineNameShort !== line.lineNameLong
+            ? `(${line.lineNameShort})`
+            : ""}
         </Link>
       </h3>
       <LineHeart

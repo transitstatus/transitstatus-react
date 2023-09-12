@@ -16,6 +16,18 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-5-0'>
+            <td>v1.5.0</td>
+            <td>
+              <ul>
+                <li>Added NC State</li>
+                <li>Added UNC Charlotte</li>
+                <li>Added UNC Greensboro</li>
+                <li>Added UNC Wilmington</li>
+                <li>Added University of Alabama</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-4-1'>
             <td>v1.4.1</td>
             <td>

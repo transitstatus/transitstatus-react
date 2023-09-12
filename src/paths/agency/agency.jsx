@@ -161,7 +161,9 @@ const Agency = () => {
                     }}
                   >
                     {line.lineNameLong}{" "}
-                    {line.lineNameShort.length > 0
+                    {line.lineNameShort.length > 0 &&
+                    agencies[agency].addShortName &&
+                    line.lineNameShort !== line.lineNameLong
                       ? `(${line.lineNameShort})`
                       : ""}
                   </Link>
@@ -212,7 +214,9 @@ const Agency = () => {
                         }}
                       >
                         {line.lineNameLong}{" "}
-                        {line.lineNameShort.length > 0
+                        {line.lineNameShort.length > 0 &&
+                        agencies[agency].addShortName &&
+                        line.lineNameShort !== line.lineNameLong
                           ? `(${line.lineNameShort})`
                           : ""}
                       </Link>

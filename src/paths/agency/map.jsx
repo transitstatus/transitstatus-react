@@ -251,13 +251,20 @@ const Map = () => {
           },
         });
 
-        map.current.fitBounds(
-          [
-            [minLon, minLat],
-            [maxLon, maxLat],
-          ],
-          { padding: 50 }
-        );
+        if (
+          minLat !== 90 &&
+          maxLat !== -90 &&
+          minLon !== 180 &&
+          maxLon !== -180
+        ) {
+          map.current.fitBounds(
+            [
+              [minLon, minLat],
+              [maxLon, maxLat],
+            ],
+            { padding: 50 }
+          );
+        }
 
         setInterval(() => {
           fetch(`${agencies[agency].endpoint}/trains`)

@@ -77,12 +77,19 @@ const Line = () => {
               justifyContent: "space-between",
             }}
           >
-            <h2 style={{
-              marginTop: 0
-            }}>
+            <h2
+              style={{
+                marginTop: 0,
+              }}
+            >
               {line.lineNameLong}{" "}
-              {line.lineNameShort ? `(${line.lineNameShort})` : ""}
+              {line.lineNameShort.length > 0 &&
+              agencies[agency].addShortName &&
+              line.lineNameShort !== line.lineNameLong
+                ? `(${line.lineNameShort})`
+                : ""}
             </h2>
+            {/*}
             <LineHeart
               agency={agency}
               line={line}
@@ -90,6 +97,7 @@ const Line = () => {
                 width: "26px",
               }}
             />
+            {*/}
           </div>
         )}
         <h3
