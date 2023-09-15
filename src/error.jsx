@@ -59,13 +59,13 @@ export default function ErrorPage() {
           <i>
             Current path: {window.location.href}
             <br />
-            Current version: v3.9.0
+            Current version: {config.version}
             <br />
             Current date and time (UTC): {new Date().toUTCString()}
             <br />
             Current date and time (local): {new Date().toLocaleString()}
             <br />
-            {errorString}
+            {error.data}
           </i>
         </p>
       </div>
