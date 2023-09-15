@@ -24,7 +24,7 @@ const APIDocs = () => {
     });
   }, []);
 
-  document.title = "API | React App";
+  document.title = "API | Transitstat.us";
 
   return (
     <div>
