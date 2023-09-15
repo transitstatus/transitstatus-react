@@ -16,6 +16,10 @@ main {
   font-family: "Atkinson Hyperlegible", sans-serif;
 }
 
+code {
+  font-family: monospace !important;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -197,4 +201,41 @@ tr:hover {
 
 tr:nth-child(even) {
   background-color: #333;
+}
+
+.json_view_container {
+  font-size: 16px;
+  background-color: #282c34;
+}
+
+.json_view_label {
+  color: #abb2bf;
+}
+
+.json_view_label::after {
+  content: " ";
+}
+
+.json_view_null {
+  color: #c678dd;
+}
+
+.json_view_undefined {
+  color: #abb2bf;
+}
+
+.json_view_number {
+  color: #d19a66;
+}
+
+.json_view_string {
+  color: #98c379;
+}
+
+.json_view_boolean {
+  color: #e6c07b;
+}
+
+.json_view_punctuation {
+  color: #abb2bf;
 }

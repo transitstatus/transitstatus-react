@@ -282,7 +282,7 @@ const Index = () => {
           <Link to='/about'>About</Link>
         </p>
         <p>
-          <Link to='/settings'>Settings</Link>
+          <Link to='/api'>API Docs</Link>
         </p>
         <p>
           <Link to='/privacy'>Privacy Policy</Link>
