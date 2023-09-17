@@ -169,9 +169,9 @@ const Station = () => {
                       <h3 className='destination'>Towards {destinationKey}</h3>
                       {station.destinations[destinationKey].trains
                         .sort((a, b) => {
-                          if (!a.eta) return -1;
-                          if (!b.eta) return 1;
-                          return a.eta - b.eta;
+                          if (!a.actualETA) return -1;
+                          if (!b.actualETA) return 1;
+                          return a.actualETA - b.actualETA;
                         })
                         .map((train) => {
                           return (

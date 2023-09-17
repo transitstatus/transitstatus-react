@@ -16,6 +16,14 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-6-3'>
+            <td>v1.6.3</td>
+            <td>
+              <ul>
+                <li>Fixed ETA sorting</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-6-2'>
             <td>v1.6.2</td>
             <td>

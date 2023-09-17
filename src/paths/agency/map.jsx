@@ -363,6 +363,7 @@ const Map = () => {
             let predictionsHTML = "";
 
             JSON.parse(train.predictions)
+              .sort((a, b) => a.actualETA - b.actualETA)
               .slice(0, 5)
               .forEach((prediction) => {
                 console.log("prediction", prediction);
