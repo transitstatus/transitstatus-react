@@ -193,7 +193,20 @@ const Agency = () => {
               }}
             >
               {Object.keys(lines)
-                .sort()
+                .sort((a, b) => {
+                  const aName = lines[a].lineNameLong;
+                  const bName = lines[b].lineNameLong;
+    
+                  const aNum = parseInt(aName);
+                  const bNum = parseInt(bName);
+    
+                  if (isNaN(aNum) && isNaN(bNum)) return aName.localeCompare(bName);
+    
+                  if (isNaN(aNum)) return 1;
+                  if (isNaN(bNum)) return -1;
+    
+                  return aNum - bNum;
+                })
                 .map((lineID) => {
                   const line = lines[lineID];
 

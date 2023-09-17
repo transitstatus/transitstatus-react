@@ -16,6 +16,16 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-6-4'>
+            <td>v1.6.4</td>
+            <td>
+              <ul>
+                <li>Sorted Inactive Routes</li>
+                <li>Improved map auto-zoom</li>
+                <li>Only show map shapes for selected route</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-6-3'>
             <td>v1.6.3</td>
             <td>

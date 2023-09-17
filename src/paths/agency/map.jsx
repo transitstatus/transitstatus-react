@@ -100,9 +100,11 @@ const Map = () => {
           `${agencies[agency].endpoint}/stations`
         );
         const trainsReq = await fetch(`${agencies[agency].endpoint}/trains`);
+        const linesReq = await fetch(`${agencies[agency].endpoint}/lines`);
 
         const stationsData = await stationsReq.json();
         const trainsData = await trainsReq.json();
+        const linesData = await linesReq.json();
 
         fetch(`${agencies[agency].endpoint}/lastUpdated`)
           .then((res) => res.text())
@@ -116,7 +118,14 @@ const Map = () => {
 
         map.current.addSource("shapes", {
           type: "geojson",
-          data: mapShapesData,
+          data: {
+            type: "FeatureCollection",
+            features: mapShapesData.features.filter((feature) => {
+              if (singleRouteID === "all") return true;
+              if (feature.properties.routeID === singleRouteID) return true;
+              return false;
+            }),
+          },
         });
 
         map.current.addLayer({
@@ -134,27 +143,52 @@ const Map = () => {
           },
         });
 
+        let minLat = 90;
+        let maxLat = -90;
+        let minLon = 180;
+        let maxLon = -180;
+
         map.current.addSource("stations", {
           type: "geojson",
           data: {
             type: "FeatureCollection",
-            features: Object.keys(stationsData).map((stationId) => {
-              const station = stationsData[stationId];
+            features: Object.keys(stationsData)
+              .filter((station) => {
+                if (singleRouteID === "all") return true;
 
-              return {
-                type: "Feature",
-                id: stationId,
-                properties: {
+                const line = linesData[singleRouteID];
+
+                //oopsies!
+                if (!line) return false;
+
+                if (line.stations.includes(station)) return true;
+
+                return false;
+              })
+              .map((stationId) => {
+                const station = stationsData[stationId];
+
+                if (station.lat !== 0 && station.lon !== 0) {
+                  if (station.lat < minLat) minLat = station.lat;
+                  if (station.lat > maxLat) maxLat = station.lat;
+                  if (station.lon < minLon) minLon = station.lon;
+                  if (station.lon > maxLon) maxLon = station.lon;
+                }
+
+                return {
+                  type: "Feature",
                   id: stationId,
-                  name: station.stationName,
-                  stationData: station,
-                },
-                geometry: {
-                  type: "Point",
-                  coordinates: [station.lon, station.lat],
-                },
-              };
-            }),
+                  properties: {
+                    id: stationId,
+                    name: station.stationName,
+                    stationData: station,
+                  },
+                  geometry: {
+                    type: "Point",
+                    coordinates: [station.lon, station.lat],
+                  },
+                };
+              }),
           },
         });
 
@@ -164,23 +198,36 @@ const Map = () => {
             .then((data) => {
               map.current.getSource("stations").setData({
                 type: "FeatureCollection",
-                features: Object.keys(data).map((stationId) => {
-                  const station = data[stationId];
+                features: Object.keys(data)
+                  .filter((station) => {
+                    if (singleRouteID === "all") return true;
 
-                  return {
-                    type: "Feature",
-                    id: stationId,
-                    properties: {
+                    const line = linesData[singleRouteID];
+
+                    //oopsies!
+                    if (!line) return false;
+
+                    if (line.stations.includes(station)) return true;
+
+                    return false;
+                  })
+                  .map((stationId) => {
+                    const station = data[stationId];
+
+                    return {
+                      type: "Feature",
                       id: stationId,
-                      name: station.stationName,
-                      stationData: station,
-                    },
-                    geometry: {
-                      type: "Point",
-                      coordinates: [station.lon, station.lat],
-                    },
-                  };
-                }),
+                      properties: {
+                        id: stationId,
+                        name: station.stationName,
+                        stationData: station,
+                      },
+                      geometry: {
+                        type: "Point",
+                        coordinates: [station.lon, station.lat],
+                      },
+                    };
+                  }),
               });
 
               fetch(`${agencies[agency].endpoint}/lastUpdated`)
@@ -208,10 +255,6 @@ const Map = () => {
         });
 
         let finalFeaturesInitial = [];
-        let minLat = 90;
-        let maxLat = -90;
-        let minLon = 180;
-        let maxLon = -180;
 
         Object.keys(trainsData).forEach((trainId) => {
           const train = trainsData[trainId];
