@@ -16,6 +16,14 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-6-5'>
+            <td>v1.6.5</td>
+            <td>
+              <ul>
+                <li>Fixed GCSU Typo</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-6-4'>
             <td>v1.6.4</td>
             <td>
@@ -305,7 +313,7 @@ const Changelog = () => {
             <td>v0.10.1 Beta</td>
             <td>
               <ul>
-                <li>Added Georgia Collegee & State Shuttles</li>
+                <li>Added Georgia College & State Shuttles</li>
                 <li>Added Georgia State Shuttles</li>
                 <li>Added Georgia Tech Shuttles</li>
                 <li>Added Georgia Southern Shuttles</li>

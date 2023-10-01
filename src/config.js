@@ -90,7 +90,7 @@ export const agencies = {
     addShortName: false,
   },
   gcsu: {
-    name: "Georgia Collegee & State",
+    name: "Georgia College & State",
     selectionName: 'GCSU Shuttles',
     endpoint: "https://store.transitstat.us/passio_go/gcsu",
     mapShapes: "https://passio.piemadd.com/data/gcsu/shapes.json",
@@ -274,6 +274,6 @@ export const agencies = {
 export const config = {
   siteTitle: 'Transit Stat.us',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'Transitstat.us v1.6.4',
+  version: 'Transitstat.us v1.6.5',
   additionalWarnings: []
 };
