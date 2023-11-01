@@ -26,6 +26,9 @@ const Index = () => {
 
   document.title = "Transitstat.us";
 
+  const now = new Date().valueOf();
+  const filteredAlerts = config.globalAlerts.filter((a) => a.expires > now);
+
   return (
     <>
       <h1>Transitstat.us</h1>
@@ -90,6 +93,7 @@ const Index = () => {
           height: "8px",
         }}
       ></div>
+      {/*}
       <h2
         style={{
           marginTop: "4px",
@@ -146,7 +150,7 @@ const Index = () => {
           height: "8px",
         }}
       ></div>
-      {/*}
+      {*/}
       <h2
         style={{
           marginTop: "4px",
@@ -203,7 +207,50 @@ const Index = () => {
           height: "8px",
         }}
       ></div>
-      {*/}
+      {filteredAlerts.length > 0 ? (
+        <>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              maxWidth: "400px",
+              gap: "4px",
+              marginTop: "4px",
+            }}
+          >
+            {filteredAlerts.map((alert) => {
+              return (
+                <details
+                  style={{
+                    backgroundColor: "#444",
+                    padding: "4px 8px",
+                  }}
+                >
+                  <summary
+                    style={{
+                      fontSize: "1.2rem",
+                    }}
+                  >
+                    {alert.title}
+                  </summary>
+                  <div
+                    style={{
+                      height: "2px",
+                    }}
+                  ></div>
+                  {alert.info}
+                </details>
+              );
+            })}
+          </div>
+          <div
+            style={{
+              height: "8px",
+            }}
+          ></div>
+        </>
+      ) : null}
+
       <h2
         style={{
           marginTop: "4px",

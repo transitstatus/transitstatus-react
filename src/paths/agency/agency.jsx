@@ -114,14 +114,12 @@ const Agency = () => {
           >
             {agencies[agency].name} Routes
           </h2>
-          {/*}
           <AgencyHeart
             agency={agency}
             style={{
               width: "26px",
             }}
           />
-          {*/}
         </div>
         {isLoading ? (
           <p>{loadingMessage}</p>

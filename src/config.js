@@ -274,6 +274,13 @@ export const agencies = {
 export const config = {
   siteTitle: 'Transit Stat.us',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'Transitstat.us v1.6.5',
-  additionalWarnings: []
+  version: 'Transitstat.us v1.6.6',
+  additionalWarnings: [],
+  globalAlerts: [
+    {
+      title: 'Rutgers Bus Tracking Update',
+      info: 'Hey Rutgers students! I just wanted y\'all to know I\'ve fully redone ETA calculations for buses. You experience should now be far more reliable than before. Along with this, the bug where stop ETAs would be randomly missing should be fixed. Finally, I am now using the same data as the Transit App for tracking when available to provide the best ETAs possible. All of these changes are available through the API. If you face any issues or have any questions, feel free to email me (piero@piemadd.com) or message me (@piemadd most places). Have a nice one!',
+      expires: 1698962337991
+    }
+  ]
 };
