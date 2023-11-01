@@ -16,6 +16,14 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-6-7'>
+            <td>v1.6.7</td>
+            <td>
+              <ul>
+                <li>Added expiration time for alerts system</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-6-6'>
             <td>v1.6.6</td>
             <td>

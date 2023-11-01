@@ -238,7 +238,15 @@ const Index = () => {
                       height: "2px",
                     }}
                   ></div>
-                  {alert.info}
+                  <p>Expires {new Date(alert.expires).toLocaleString()}</p>
+                  <div
+                    style={{
+                      height: "4px",
+                    }}
+                  ></div>
+                  <p style={{
+                    fontSize: '1.2rem'
+                  }}>{alert.info}</p>
                 </details>
               );
             })}
