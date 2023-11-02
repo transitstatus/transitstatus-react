@@ -2,7 +2,8 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import React, { useRef, useEffect, useState, useMemo } from "react";
 import * as pmtiles from "pmtiles";
 import layers from "protomaps-themes-base";
-import { agencies, config } from "../../config";
+import { agencies } from "../../config";
+import { DataManager } from "../../dataManager";
 
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
@@ -18,6 +19,7 @@ const Map = () => {
     return routeID;
   }, []);
   const navigate = useNavigate();
+  const dataManager = new DataManager();
   const [loadingMessage, setLoadingMessage] = useState("Loading data...");
   const [isLoading, setIsLoading] = useState(true);
   const [lastUpdated, setLastUpdated] = useState(new Date());
@@ -96,22 +98,14 @@ const Map = () => {
           maxZoom: 20,
         });
 
-        const stationsReq = await fetch(
-          `${agencies[agency].endpoint}/stations`
-        );
-        const trainsReq = await fetch(`${agencies[agency].endpoint}/trains`);
-        const linesReq = await fetch(`${agencies[agency].endpoint}/lines`);
+        const stationsData = await dataManager.getData(agency, "stations");
+        const trainsData = await dataManager.getData(agency, "trains");
+        const linesData = await dataManager.getData(agency, "lines");
 
-        const stationsData = await stationsReq.json();
-        const trainsData = await trainsReq.json();
-        const linesData = await linesReq.json();
-
-        fetch(`${agencies[agency].endpoint}/lastUpdated`)
-          .then((res) => res.text())
-          .then((ts) => {
-            setLastUpdated(new Date(ts));
-            setIsLoading(false);
-          });
+        dataManager.getData(agency, "lastUpdated").then((ts) => {
+          setLastUpdated(new Date(ts));
+          setIsLoading(false);
+        });
 
         const mapShapes = await fetch(`${agencies[agency].mapShapes}`);
         const mapShapesData = await mapShapes.json();
@@ -193,53 +187,49 @@ const Map = () => {
         });
 
         setInterval(() => {
-          fetch(`${agencies[agency].endpoint}/stations`)
-            .then((res) => res.json())
-            .then((data) => {
-              map.current.getSource("stations").setData({
-                type: "FeatureCollection",
-                features: Object.keys(data)
-                  .filter((station) => {
-                    if (singleRouteID === "all") return true;
+          dataManager.getData(agency, "stations").then((data) => {
+            map.current.getSource("stations").setData({
+              type: "FeatureCollection",
+              features: Object.keys(data)
+                .filter((station) => {
+                  if (singleRouteID === "all") return true;
 
-                    const line = linesData[singleRouteID];
+                  const line = linesData[singleRouteID];
 
-                    //oopsies!
-                    if (!line) return false;
+                  //oopsies!
+                  if (!line) return false;
 
-                    if (line.stations.includes(station)) return true;
+                  if (line.stations.includes(station)) return true;
 
-                    return false;
-                  })
-                  .map((stationId) => {
-                    const station = data[stationId];
+                  return false;
+                })
+                .map((stationId) => {
+                  const station = data[stationId];
 
-                    return {
-                      type: "Feature",
+                  return {
+                    type: "Feature",
+                    id: stationId,
+                    properties: {
                       id: stationId,
-                      properties: {
-                        id: stationId,
-                        name: station.stationName,
-                        stationData: station,
-                      },
-                      geometry: {
-                        type: "Point",
-                        coordinates: [station.lon, station.lat],
-                      },
-                    };
-                  }),
-              });
-
-              fetch(`${agencies[agency].endpoint}/lastUpdated`)
-                .then((res) => res.text())
-                .then((ts) => {
-                  setLastUpdated(new Date(ts));
-                });
-
-              console.log("Updated stations data");
-
-              //stationsSource.
+                      name: station.stationName,
+                      stationData: station,
+                    },
+                    geometry: {
+                      type: "Point",
+                      coordinates: [station.lon, station.lat],
+                    },
+                  };
+                }),
             });
+
+            dataManager.getData(agency, "lastUpdated").then((ts) => {
+              setLastUpdated(new Date(ts));
+            });
+
+            console.log("Updated stations data");
+
+            //stationsSource.
+          });
         }, 1000 * 30);
 
         map.current.addLayer({
@@ -310,42 +300,37 @@ const Map = () => {
         }
 
         setInterval(() => {
-          fetch(`${agencies[agency].endpoint}/trains`)
-            .then((res) => res.json())
-            .then((data) => {
-              let finalFeatures = [];
+          dataManager.getData(agency, "trains").then((data) => {
+            let finalFeatures = [];
 
-              Object.keys(data).forEach((trainId) => {
-                const train = data[trainId];
+            Object.keys(data).forEach((trainId) => {
+              const train = data[trainId];
 
-                if (
-                  train.lineCode === singleRouteID ||
-                  singleRouteID === "all"
-                ) {
-                  finalFeatures.push({
-                    type: "Feature",
+              if (train.lineCode === singleRouteID || singleRouteID === "all") {
+                finalFeatures.push({
+                  type: "Feature",
+                  id: trainId,
+                  properties: {
+                    ...train,
                     id: trainId,
-                    properties: {
-                      ...train,
-                      id: trainId,
-                      routeColor: train.lineColor,
-                      lineCode: train.lineCode,
-                    },
-                    geometry: {
-                      type: "Point",
-                      coordinates: [train.lon, train.lat],
-                    },
-                  });
-                }
-              });
-
-              map.current.getSource("trains").setData({
-                type: "FeatureCollection",
-                features: finalFeatures,
-              });
-
-              console.log("Updated trains data");
+                    routeColor: train.lineColor,
+                    lineCode: train.lineCode,
+                  },
+                  geometry: {
+                    type: "Point",
+                    coordinates: [train.lon, train.lat],
+                  },
+                });
+              }
             });
+
+            map.current.getSource("trains").setData({
+              type: "FeatureCollection",
+              features: finalFeatures,
+            });
+
+            console.log("Updated trains data");
+          });
         }, 1000 * 10);
 
         fetch(`${agencies[agency].gtfsRoot}/icons.json`)
@@ -569,22 +554,20 @@ const Map = () => {
 
         console.log("Map initialized");
       } catch (e) {
-        fetch(`${agencies[agency].endpoint}/shitsFucked`)
-          .then((res) => res.text())
-          .then((raw) => {
-            if (raw === "Not found") {
-              setLoadingMessage("Error loading data :c");
-            } else {
-              const data = JSON.parse(raw);
+        dataManager.getData(agency, "shitsFucked").then((raw) => {
+          if (raw === "Not found") {
+            setLoadingMessage("Error loading data :c");
+          } else {
+            const data = JSON.parse(raw);
 
-              if (data.shitIsFucked) {
-                setLoadingMessage(data.message);
-              } else {
-                setLoadingMessage("Error loading data :c");
-              }
+            if (data.shitIsFucked) {
+              setLoadingMessage(data.message);
+            } else {
+              setLoadingMessage("Error loading data :c");
             }
-            setIsLoading(true);
-          });
+          }
+          setIsLoading(true);
+        });
       }
     })();
   }, []);

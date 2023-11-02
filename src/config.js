@@ -274,13 +274,23 @@ export const agencies = {
 export const config = {
   siteTitle: 'Transit Stat.us',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'Transitstat.us v1.6.7',
+  version: 'Transitstat.us v1.7.0',
   additionalWarnings: [],
   globalAlerts: [
     {
-      title: 'Rutgers Bus Tracking Update',
-      info: 'Hey Rutgers students! I just wanted y\'all to know I\'ve fully redone ETA calculations for buses. You experience should now be far more reliable than before. Along with this, the bug where stop ETAs would be randomly missing should be fixed. Finally, I am now using the same data as the Transit App for tracking when available to provide the best ETAs possible. All of these changes are available through the API. If you face any issues or have any questions, feel free to email me (piero@piemadd.com) or message me (@piemadd most places). Have a nice one!',
-      expires: 1698962399991
+      title: 'Offline Usage + Lower Latency',
+      info: 'Hello all! Transitstatus now has a custom data management system in place, allowing for some offline usage and *much* lower latency when switching pages.',
+      expires: 1699070399000
+    },
+    {
+      title: 'Rutgers Bus Tracking New Data Source',
+      info: 'Hey Rutgers students! Along with the below mentioned Passio GO tracking improvements, I am now using a secondary system for Rutgers buses for more accurate predictions: the same data as the Transit App. Have a nice one!',
+      expires: 1699070399000
+    },
+    {
+      title: 'Passio Go ETA Improvements',
+      info: 'Hello current/former Passio GO users, I have redone the predictions system to allow for higher reliability and accuracy. Enjoy!',
+      expires: 1699070399000
     }
   ]
 };

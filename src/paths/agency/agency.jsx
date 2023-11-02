@@ -1,6 +1,7 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState, useMemo } from "react";
-import { agencies, config } from "../../config";
+import { agencies } from "../../config";
+import { DataManager } from "../../dataManager";
 import Meta from "../../components/meta";
 import AgencyHeart from "../../components/hearts/agencyHeart";
 import FavoritedStation from "../../components/favorites/favoritedStation";
@@ -8,6 +9,7 @@ import FavoritedStation from "../../components/favorites/favoritedStation";
 const Agency = () => {
   const { agency } = useParams();
   const navigate = useNavigate();
+  const dataManager = new DataManager();
   const [lines, setLines] = useState({});
   const [loadingMessage, setLoadingMessage] = useState("Loading data...");
   const [isLoading, setIsLoading] = useState(true);
@@ -61,8 +63,8 @@ const Agency = () => {
 
   useEffect(() => {
     const fetchData = () => {
-      fetch(`${agencies[agency].endpoint}/lines`)
-        .then((response) => response.json())
+      dataManager
+        .getData(agency, "lines")
         .then((data) => {
           setLines(data);
           setIsLoading(false);
@@ -70,23 +72,21 @@ const Agency = () => {
         .catch((error) => {
           console.error(error);
 
-          fetch(`${agencies[agency].endpoint}/shitsFucked`)
-            .then((res) => res.json())
-            .then((shitsFucked) => {
-              if (shitsFucked.shitIsFucked) {
-                setLoadingMessage(shitsFucked.message);
-              } else {
-                setLoadingMessage(
-                  "Error loading data. Please try again later or choose another agency."
-                );
-              }
-              setIsLoading(true);
-            });
+          dataManager.getData(agency, "shitsFucked").then((shitsFucked) => {
+            if (shitsFucked.shitIsFucked) {
+              setLoadingMessage(shitsFucked.message);
+            } else {
+              setLoadingMessage(
+                "Error loading data. Please try again later or choose another agency."
+              );
+            }
+            setIsLoading(true);
+          });
         });
     };
 
     fetchData();
-    //setInterval(fetchData, 30000);
+    //setInterval(fetchData, 10000);
     //dont need to refetch lines
   }, [agency]);
 
@@ -146,7 +146,7 @@ const Agency = () => {
                 return null;
               }
 
-              console.log(line);
+              //console.log(line);
 
               return (
                 <h3 key={line.lineCode}>
@@ -194,15 +194,16 @@ const Agency = () => {
                 .sort((a, b) => {
                   const aName = lines[a].lineNameLong;
                   const bName = lines[b].lineNameLong;
-    
+
                   const aNum = parseInt(aName);
                   const bNum = parseInt(bName);
-    
-                  if (isNaN(aNum) && isNaN(bNum)) return aName.localeCompare(bName);
-    
+
+                  if (isNaN(aNum) && isNaN(bNum))
+                    return aName.localeCompare(bName);
+
                   if (isNaN(aNum)) return 1;
                   if (isNaN(bNum)) return -1;
-    
+
                   return aNum - bNum;
                 })
                 .map((lineID) => {

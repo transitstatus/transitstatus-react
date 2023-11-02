@@ -1,8 +1,9 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { agencies, config } from "../../config";
+import { agencies } from "../../config";
 import StationHeart from "../../components/hearts/stationHeart";
 import Meta from "../../components/meta";
+import { DataManager } from "../../dataManager";
 
 const hoursMinutesUntilArrival = (arrivalTime) => {
   const now = new Date();
@@ -29,6 +30,7 @@ const timeFormat = (time) => {
 const Station = () => {
   const { agency, stopID } = useParams();
   const navigate = useNavigate();
+  const dataManager = new DataManager();
   const [station, setStation] = useState({});
   const [lastFetched, setLastFetched] = useState(0);
   const [loadingMessage, setLoadingMessage] = useState("Loading trains...");
@@ -38,22 +40,19 @@ const Station = () => {
 
   useEffect(() => {
     const fetchData = () => {
-      fetch(`${agencies[agency].endpoint}/stations/${stopID}`)
-        .then((response) => response.json())
+      dataManager
+        .getData(agency, `stations/${stopID}`)
         .then((data) => {
           setStation(data);
-          fetch(`${agencies[agency].endpoint}/lastUpdated`)
-            .then((res) => res.text())
-            .then((ts) => {
-              setLastFetched(new Date(ts).valueOf());
-              setIsLoading(false);
-            });
+          dataManager.getData(agency, "lastUpdated").then((ts) => {
+            setLastFetched(new Date(ts).valueOf());
+            setIsLoading(false);
+          });
         })
         .catch((error) => {
           console.error(error);
-
-          fetch(`${agencies[agency].endpoint}/shitsFucked`)
-            .then((res) => res.text())
+          dataManager
+            .getData(agency, "shitsFucked")
             .then((raw) => {
               if (raw !== "Not found") {
                 const shitsFucked = JSON.parse(raw);

@@ -1,14 +1,16 @@
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import React, { useRef, useEffect, useState } from "react";
 import * as pmtiles from "pmtiles";
 import layers from "protomaps-themes-base";
-import { agencies, config } from "../../config";
+import { agencies } from "../../config";
+import { DataManager } from "../../dataManager";
 
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 
 const FullMap = () => {
   const navigate = useNavigate();
+  const dataManager = new DataManager();
 
   document.title = "Full Map | Transitstat.us";
 
@@ -95,13 +97,8 @@ const FullMap = () => {
 
         console.log(`Loading ${agency} data`);
 
-        const stationsReq = await fetch(
-          `${agencies[agency].endpoint}/stations`
-        );
-        const trainsReq = await fetch(`${agencies[agency].endpoint}/trains`);
-
-        const stationsDataTemp = await stationsReq.json();
-        const trainsDataTemp = await trainsReq.json();
+        const stationsDataTemp = await dataManager.getData(agency, "stations");
+        const trainsDataTemp = await dataManager.getData(agency, "trains");
 
         const stationsDataKeys = Object.keys(stationsDataTemp);
         const trainsDataKeys = Object.keys(trainsDataTemp);
@@ -183,13 +180,11 @@ const FullMap = () => {
 
           console.log(`Loading ${agency} data`);
 
-          const stationsReq = await fetch(
-            `${agencies[agency].endpoint}/stations`
+          const stationsDataTemp = await dataManager.getData(
+            agency,
+            "stations"
           );
-          const trainsReq = await fetch(`${agencies[agency].endpoint}/trains`);
-
-          const stationsDataTemp = await stationsReq.json();
-          const trainsDataTemp = await trainsReq.json();
+          const trainsDataTemp = await dataManager.getData(agency, "trains");
 
           const stationsDataKeys = Object.keys(stationsDataTemp);
           const trainsDataKeys = Object.keys(trainsDataTemp);

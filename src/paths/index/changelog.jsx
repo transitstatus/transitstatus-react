@@ -16,6 +16,22 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-7-0'>
+            <td>v1.7.0</td>
+            <td>
+              <ul>
+                <li>Fixed issues with new ETAs system</li>
+                <li>
+                  Started using Data manager
+                  <ul>
+                    <li>Allows for less data usage</li>
+                    <li>Allows for better offline usage</li>
+                    <li>Causes lower latency when quickly changing pages</li>
+                  </ul>
+                </li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-6-7'>
             <td>v1.6.7</td>
             <td>

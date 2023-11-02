@@ -8,7 +8,8 @@ export default defineConfig({
     registerType: 'autoUpdate',
     workbox: {
       cleanupOutdatedCaches: false,
-      sourcemap: true
+      sourcemap: true,
+      navigateFallbackDenylist: [/store\.transitstat\.us/g]
     },
     manifest: {
       "short_name": "Transitstat",

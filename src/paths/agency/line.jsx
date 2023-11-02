@@ -1,28 +1,25 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { agencies, config } from "../../config";
+import { agencies } from "../../config";
 import Meta from "../../components/meta";
-import LineHeart from "../../components/hearts/lineHeart";
+//import LineHeart from "../../components/hearts/lineHeart";
+import { DataManager } from "../../dataManager";
 
 const Line = () => {
   const { agency, lineName } = useParams();
-  const [lines, setLines] = useState({});
   const [line, setLine] = useState({});
   const [stations, setStations] = useState({});
   const [loadingMessage, setLoadingMessage] = useState("Loading data...");
   const [isLoading, setIsLoading] = useState(true);
-
   const navigate = useNavigate();
+  const dataManager = new DataManager();
 
   document.title = `${line.lineNameLong} ${agencies[agency].name} | Transitstat.us`;
 
   useEffect(() => {
     const fetchData = async () => {
-      const linesReq = await fetch(`${agencies[agency].endpoint}/lines`);
-      const stationsReq = await fetch(`${agencies[agency].endpoint}/stations`);
-
-      const linesData = await linesReq.json();
-      const stationsData = await stationsReq.json();
+      const linesData = await dataManager.getData(agency, "lines");
+      const stationsData = await dataManager.getData(agency, "stations");
 
       if (linesData.shitsFucked) {
         setLoadingMessage(data.shitsFuckedMessage);
@@ -33,10 +30,7 @@ const Line = () => {
         Object.keys(stationsData).length === 0
       ) {
         try {
-          const shitsFuckedReq = await fetch(
-            `${agencies[agency].endpoint}/shitsFucked`
-          );
-          const shitsFucked = await shitsFuckedReq.json();
+          const shitsFucked = await dataManager.getData(agency, "shitsFucked");
 
           if (shitsFucked.shitIsFucked) {
             setLoadingMessage(shitsFucked.message);

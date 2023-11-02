@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --host --port 3000",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview --host --port 3000"
   },
   "dependencies": {
     "maplibre-gl": "^3.3.0",

@@ -1,7 +1,8 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { agencies, config } from "../../config";
+import { agencies } from "../../config";
 import Meta from "../../components/meta";
+import { DataManager } from "../../dataManager";
 
 const hoursMinutesUntilArrival = (arrivalTime) => {
   const now = new Date();
@@ -28,8 +29,8 @@ const timeFormat = (time) => {
 const Trip = () => {
   const { agency, tripID } = useParams();
   const navigate = useNavigate();
+  const dataManager = new DataManager();
   const [trip, setTrip] = useState({});
-  const [stations, setStations] = useState({});
   const [loadingMessage, setLoadingMessage] = useState("Loading trip...");
   const [isLoading, setIsLoading] = useState(true);
   const [lastFetched, setLastFetched] = useState(0);
@@ -38,22 +39,20 @@ const Trip = () => {
 
   useEffect(() => {
     const fetchData = () => {
-      fetch(`${agencies[agency].endpoint}/trains/${tripID}`)
-        .then((response) => response.json())
+      dataManager
+        .getData(agency, `trains/${tripID}`)
         .then((data) => {
           setTrip(data);
-          fetch(`${agencies[agency].endpoint}/lastUpdated`)
-            .then((res) => res.text())
-            .then((ts) => {
-              setLastFetched(new Date(ts).valueOf());
-              setIsLoading(false);
-            });
+          dataManager.getData(agency, "lastUpdated").then((ts) => {
+            setLastFetched(new Date(ts).valueOf());
+            setIsLoading(false);
+          });
         })
         .catch((error) => {
           console.error(error);
 
-          fetch(`${agencies[agency].endpoint}/shitsFucked`)
-            .then((res) => res.text())
+          dataManager
+            .getData(agency, "shitsFucked")
             .then((raw) => {
               if (raw !== "Not found") {
                 const shitsFucked = JSON.parse(raw);
@@ -79,7 +78,7 @@ const Trip = () => {
     setInterval(fetchData, 30000);
   }, [agency, tripID]);
 
-  console.log(trip);
+  //console.log(trip);
 
   return (
     <>
@@ -106,6 +105,7 @@ const Trip = () => {
             {new Date(lastFetched).toLocaleTimeString([], {
               hour: "2-digit",
               minute: "2-digit",
+              second: "2-digit",
             })}
             {trip.extra && trip.extra.cap
               ? ` | ${Math.ceil(
@@ -134,7 +134,7 @@ const Trip = () => {
           </p>
         ) : (
           trip.predictions.map((stop, i) => {
-            console.log(stop);
+            //console.log(stop);
             return (
               <Link
                 to={`/${agency}/stops/${stop.stationID}`}
