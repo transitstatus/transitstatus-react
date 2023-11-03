@@ -280,17 +280,17 @@ export const config = {
     {
       title: 'Offline Usage + Lower Latency',
       info: 'Hello all! Transitstatus now has a custom data management system in place, allowing for some offline usage and *much* lower latency when switching pages.',
-      expires: 1699070399000
+      expires: 0
     },
     {
       title: 'Rutgers Bus Tracking New Data Source',
       info: 'Hey Rutgers students! Along with the below mentioned Passio GO tracking improvements, I am now using a secondary system for Rutgers buses for more accurate predictions: the same data as the Transit App. Have a nice one!',
-      expires: 1699070399000
+      expires: 0
     },
     {
       title: 'Passio Go ETA Improvements',
       info: 'Hello current/former Passio GO users, I have redone the predictions system to allow for higher reliability and accuracy. Enjoy!',
-      expires: 1699070399000
+      expires: 0
     }
   ]
 };
