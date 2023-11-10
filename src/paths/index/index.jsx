@@ -3,8 +3,9 @@ import MoreLinks from "../../components/moreLinks";
 import { agencies, config } from "../../config";
 import FavoritedStation from "../../components/favorites/favoritedStation";
 import { useMemo } from "react";
-import FavoritedLine from "../../components/favorites/favoritedLine";
+//import FavoritedLine from "../../components/favorites/favoritedLine";
 import FavoritedAgency from "../../components/favorites/favoritedAgency";
+import Oneko from "../../components/extras/oneko";
 
 const Index = () => {
   const favoriteStations = useMemo(() => {
@@ -31,6 +32,7 @@ const Index = () => {
 
   return (
     <>
+      <Oneko />
       <h1>Transitstat.us</h1>
       <p>{config.tagLine}</p>
       <p>{config.version}</p>
@@ -244,9 +246,13 @@ const Index = () => {
                       height: "4px",
                     }}
                   ></div>
-                  <p style={{
-                    fontSize: '1.2rem'
-                  }}>{alert.info}</p>
+                  <p
+                    style={{
+                      fontSize: "1.2rem",
+                    }}
+                  >
+                    {alert.info}
+                  </p>
                 </details>
               );
             })}
@@ -342,13 +348,11 @@ const Index = () => {
         <p>
           <Link to='/privacy'>Privacy Policy</Link>
         </p>
-        {/*
-        <p>
-          <Link to='/api'>API</Link>
-        </p>
-        */}
         <p>
           <Link to='/changelog'>Changelog</Link>
+        </p>
+        <p>
+          <Link to='/settings'>Settings</Link>
         </p>
       </div>
     </>

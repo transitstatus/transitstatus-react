@@ -3,6 +3,7 @@ import APIEndpoint from "../../components/api/apiEndpoint";
 import { CodeBlock, atomOneDark } from "react-code-blocks";
 import { agencies } from "../../config";
 import { useState, useMemo } from "react";
+import Oneko from "../../components/extras/oneko";
 
 const APIDocs = () => {
   const navigate = useNavigate();
@@ -28,6 +29,7 @@ const APIDocs = () => {
 
   return (
     <div>
+      <Oneko />
       <h1>API Guide</h1>
       <h2>Contents</h2>
       <ul

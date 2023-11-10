@@ -4,6 +4,7 @@ import { agencies } from "../../config";
 import Meta from "../../components/meta";
 //import LineHeart from "../../components/hearts/lineHeart";
 import { DataManager } from "../../dataManager";
+import Oneko from "../../components/extras/oneko";
 
 const Line = () => {
   const { agency, lineName } = useParams();
@@ -53,6 +54,7 @@ const Line = () => {
 
   return (
     <>
+      <Oneko />
       <h1>
         {agencies[agency].name} {agencies[agency].type} Tracker
       </h1>

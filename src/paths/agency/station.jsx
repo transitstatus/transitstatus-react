@@ -4,6 +4,7 @@ import { agencies } from "../../config";
 import StationHeart from "../../components/hearts/stationHeart";
 import Meta from "../../components/meta";
 import { DataManager } from "../../dataManager";
+import Oneko from "../../components/extras/oneko";
 
 const hoursMinutesUntilArrival = (arrivalTime) => {
   const now = new Date();
@@ -80,6 +81,7 @@ const Station = () => {
 
   return (
     <>
+      <Oneko />
       <h1>
         {agencies[agency].name} {agencies[agency].type} Tracker
       </h1>

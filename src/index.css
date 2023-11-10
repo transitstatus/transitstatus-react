@@ -239,3 +239,33 @@ tr:nth-child(even) {
 .json_view_punctuation {
   color: #abb2bf;
 }
+
+.settingsPage input {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin: 0;
+}
+
+.settingsPage span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.settingsPage span label {
+  font-size: 1.2rem;
+}
+
+.settingsPage button {
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: #222;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.settingsPage button:hover {
+  background-color: #444;
+}

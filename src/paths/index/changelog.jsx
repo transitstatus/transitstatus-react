@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Oneko from "../../components/extras/oneko";
 
 const Changelog = () => {
   const navigate = useNavigate();
@@ -7,6 +8,7 @@ const Changelog = () => {
 
   return (
     <div>
+      <Oneko />
       <h1>Changelog</h1>
       <table>
         <thead>
@@ -16,6 +18,14 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-7-1'>
+            <td>v1.7.1</td>
+            <td>
+              <ul>
+                <li>Added cat mode :3</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-7-0'>
             <td>v1.7.0</td>
             <td>

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { agencies } from "../../config";
 import Meta from "../../components/meta";
 import { DataManager } from "../../dataManager";
+import Oneko from "../../components/extras/oneko";
 
 const hoursMinutesUntilArrival = (arrivalTime) => {
   const now = new Date();
@@ -82,6 +83,7 @@ const Trip = () => {
 
   return (
     <>
+      <Oneko />
       <h1>
         {agencies[agency].name} {agencies[agency].type} Tracker
       </h1>

@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Oneko from "../../components/extras/oneko";
 
 const About = () => {
   const navigate = useNavigate();
@@ -7,6 +8,7 @@ const About = () => {
 
   return (
     <div>
+      <Oneko />
       <h1>About</h1>
       <h2>Why</h2>
       <p>

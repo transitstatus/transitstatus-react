@@ -5,6 +5,7 @@ import { DataManager } from "../../dataManager";
 import Meta from "../../components/meta";
 import AgencyHeart from "../../components/hearts/agencyHeart";
 import FavoritedStation from "../../components/favorites/favoritedStation";
+import Oneko from "../../components/extras/oneko";
 
 const Agency = () => {
   const { agency } = useParams();
@@ -32,6 +33,7 @@ const Agency = () => {
   if (!agencies[agency]) {
     return (
       <>
+        <Oneko />
         <h1>Agency Not Found</h1>
         <p>
           The agency you are looking for does not exist. Please choose another
@@ -92,6 +94,7 @@ const Agency = () => {
 
   return (
     <>
+      <Oneko />
       <h1>
         {agencies[agency].name} {agencies[agency].type} Tracker
       </h1>

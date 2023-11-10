@@ -4,6 +4,7 @@ import * as pmtiles from "pmtiles";
 import layers from "protomaps-themes-base";
 import { agencies } from "../../config";
 import { DataManager } from "../../dataManager";
+import Oneko from "../../components/extras/oneko";
 
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
@@ -574,6 +575,7 @@ const Map = () => {
 
   return (
     <>
+      <Oneko />
       <div
         ref={mapContainer}
         className='map'
