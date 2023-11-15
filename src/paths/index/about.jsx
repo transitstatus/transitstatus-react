@@ -58,8 +58,12 @@ const About = () => {
         different codebase. I plan on merging these together at some point, but
         that's low priority due to a full map not being super useful.
       </p>
+      <h2>Privacy Policy</h2>
+      <p>
+        The privacy policy can be found <a href='/privacy'>here</a>.
+      </p>
       <br />
-      <p
+      <button
         onClick={() => {
           if (history.state.idx && history.state.idx > 0) {
             navigate(-1);
@@ -67,13 +71,10 @@ const About = () => {
             navigate("/", { replace: true }); //fallback
           }
         }}
-        style={{
-          cursor: "pointer",
-          textDecoration: "underline",
-        }}
+        className='settingsButton'
       >
         Back Home
-      </p>
+      </button>
     </div>
   );
 };

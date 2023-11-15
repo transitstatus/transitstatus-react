@@ -8,8 +8,8 @@ const Oneko = () => {
 
     (function oneko() {
       const nekoEl = document.createElement("div");
-      let nekoPosX = 256;
-      let nekoPosY = 256;
+      let nekoPosX = 16;
+      let nekoPosY = 16;
       let mousePosX = 0;
       let mousePosY = 0;
       const isReduced =
@@ -112,9 +112,18 @@ const Oneko = () => {
 
         document.body.appendChild(nekoEl);
 
-        document.addEventListener("mousemove", function () {
+        document.addEventListener("mousemove", (event) => {
           mousePosX = event.clientX;
           mousePosY = event.clientY;
+        });
+
+        ["touchstart", "touchmove", "touchend"].forEach((eventName) => {
+          document.addEventListener(eventName, (event) => {
+            if (event.targetTouches.length < 1) return;
+
+            mousePosX = event.targetTouches[0].clientX;
+            mousePosY = event.targetTouches[0].clientY;
+          });
         });
 
         window.onekoInterval = setInterval(frame, 100);

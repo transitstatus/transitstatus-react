@@ -10,6 +10,21 @@ const Changelog = () => {
     <div>
       <Oneko />
       <h1>Changelog</h1>
+      <button
+        onClick={() => {
+          if (history.state.idx && history.state.idx > 0) {
+            navigate(-1);
+          } else {
+            navigate("/", { replace: true }); //fallback
+          }
+        }}
+        className='settingsButton'
+        style={{
+          marginTop: "0.5rem",
+        }}
+      >
+        Back Home
+      </button>
       <table>
         <thead>
           <tr>
@@ -18,6 +33,23 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-8-0'>
+            <td>v1.8.0</td>
+            <td>
+              <ul>
+                <li>
+                  Added tools to the settings page
+                  <ul>
+                    <li>Code Cache Clearing</li>
+                    <li>Transit Data Cache Clearing</li>
+                    <li>Settings Resetting</li>
+                    <li>Application Resetting</li>
+                  </ul>
+                </li>
+                <li>Modified cat mode script to work better on mobile.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-7-1'>
             <td>v1.7.1</td>
             <td>
@@ -483,8 +515,7 @@ const Changelog = () => {
           </tr>
         </tbody>
       </table>
-      <br />
-      <p
+      <button
         onClick={() => {
           if (history.state.idx && history.state.idx > 0) {
             navigate(-1);
@@ -492,13 +523,13 @@ const Changelog = () => {
             navigate("/", { replace: true }); //fallback
           }
         }}
+        className='settingsButton'
         style={{
-          cursor: "pointer",
-          textDecoration: "underline",
+          marginTop: "0.5rem",
         }}
       >
         Back Home
-      </p>
+      </button>
     </div>
   );
 };

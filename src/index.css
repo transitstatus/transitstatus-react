@@ -16,8 +16,12 @@ main {
   font-family: "Atkinson Hyperlegible", sans-serif;
 }
 
-code {
+div.code {
   font-family: monospace !important;
+  white-space: pre;
+  overflow-x: scroll;
+  background-color: #282c34;
+  padding: 0.5rem 0.75rem;
 }
 
 body {
@@ -240,6 +244,13 @@ tr:nth-child(even) {
   color: #abb2bf;
 }
 
+.settingsPage {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .settingsPage input {
   width: 1.2rem;
   height: 1.2rem;
@@ -256,7 +267,8 @@ tr:nth-child(even) {
   font-size: 1.2rem;
 }
 
-.settingsPage button {
+.settingsPage button,
+.settingsButton {
   font-size: 1.2rem;
   color: #fff;
   background-color: #222;
@@ -264,8 +276,20 @@ tr:nth-child(even) {
   border: 1px solid #fff;
   border-radius: 4px;
   cursor: pointer;
+  width: 100%;
 }
 
-.settingsPage button:hover {
+.settingsPage button:hover,
+.settingsButton:hover {
   background-color: #444;
+}
+
+.settingsPage select {
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: #222;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  cursor: pointer;
 }

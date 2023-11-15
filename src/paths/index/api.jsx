@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import APIEndpoint from "../../components/api/apiEndpoint";
-import { CodeBlock, atomOneDark } from "react-code-blocks";
+import CodeBlock from "../../components/api/codeBlock";
 import { agencies } from "../../config";
 import { useState, useMemo } from "react";
 import Oneko from "../../components/extras/oneko";
+import "highlight.js/styles/atom-one-dark.min.css";
 
 const APIDocs = () => {
   const navigate = useNavigate();
@@ -31,6 +32,21 @@ const APIDocs = () => {
     <div>
       <Oneko />
       <h1>API Guide</h1>
+      <button
+        onClick={() => {
+          if (history.state.idx && history.state.idx > 0) {
+            navigate(-1);
+          } else {
+            navigate("/", { replace: true }); //fallback
+          }
+        }}
+        className='settingsButton'
+        style={{
+          marginTop: "0.5rem",
+        }}
+      >
+        Back Home
+      </button>
       <h2>Contents</h2>
       <ul
         style={{
@@ -251,8 +267,6 @@ const APIDocs = () => {
     lastUpdated: string //timestamp, *should* be ISO 8601
 }`}
           language='typescript'
-          theme={atomOneDark}
-          showLineNumbers={false}
         />
       </div>
 
@@ -285,8 +299,6 @@ const APIDocs = () => {
     extra?: any //really just whatever the fuck honestly. on passio go endpoints, extra will have load (number, passenger count), cap (number, max capacity), and info (string/null, extra info about vehicle)
 }`}
           language='typescript'
-          theme={atomOneDark}
-          showLineNumbers={false}
         />
       </div>
 
@@ -316,8 +328,6 @@ const APIDocs = () => {
     }
 }`}
           language='typescript'
-          theme={atomOneDark}
-          showLineNumbers={false}
         />
       </div>
 
@@ -349,8 +359,6 @@ const APIDocs = () => {
     stations: string[] //array of station IDs for stations on this line 
 }`}
           language='typescript'
-          theme={atomOneDark}
-          showLineNumbers={false}
         />
       </div>
 
@@ -375,8 +383,6 @@ const APIDocs = () => {
     message: string, //empty normally, has an error message if something is wrong
 }`}
           language='typescript'
-          theme={atomOneDark}
-          showLineNumbers={false}
         />
       </div>
 
@@ -400,8 +406,6 @@ const APIDocs = () => {
     trains: TransitStatusDestinationTrain[]
 }`}
           language='typescript'
-          theme={atomOneDark}
-          showLineNumbers={false}
         />
       </div>
 
@@ -432,8 +436,6 @@ const APIDocs = () => {
     extra?: any //same as seen in TransitStatusTrain. 
 }`}
           language='typescript'
-          theme={atomOneDark}
-          showLineNumbers={false}
         />
       </div>
 
@@ -460,8 +462,6 @@ const APIDocs = () => {
     noETA: boolean, //whether there is no ETA for this train. really only happens when passio go dies
 }`}
           language='typescript'
-          theme={atomOneDark}
-          showLineNumbers={false}
         />
       </div>
 
@@ -817,23 +817,19 @@ const APIDocs = () => {
           })}
         </ul>
       </div>
-
       <p></p>
-      <p
+      <button
         onClick={() => {
-          if (history.state && history.state.idx && history.state.idx > 0) {
+          if (history.state.idx && history.state.idx > 0) {
             navigate(-1);
           } else {
             navigate("/", { replace: true }); //fallback
           }
         }}
-        style={{
-          cursor: "pointer",
-          textDecoration: "underline",
-        }}
+        className='settingsButton'
       >
         Back Home
-      </p>
+      </button>
     </div>
   );
 };

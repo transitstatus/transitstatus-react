@@ -220,13 +220,14 @@ const Index = () => {
               marginTop: "4px",
             }}
           >
-            {filteredAlerts.map((alert) => {
+            {filteredAlerts.map((alert, i) => {
               return (
                 <details
                   style={{
                     backgroundColor: "#444",
                     padding: "4px 8px",
                   }}
+                  key={`alert-${i}`}
                 >
                   <summary
                     style={{
@@ -344,9 +345,6 @@ const Index = () => {
         </p>
         <p>
           <Link to='/api'>API Docs</Link>
-        </p>
-        <p>
-          <Link to='/privacy'>Privacy Policy</Link>
         </p>
         <p>
           <Link to='/changelog'>Changelog</Link>
