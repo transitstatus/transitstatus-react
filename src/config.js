@@ -133,7 +133,7 @@ export const agencies = {
     gtfsRoot: "https://passio.piemadd.com/data/gatech",
     mapDefault: [33.775617, -84.396284, 13],
     color: "#ad9b62",
-    textColor: "#ffffff",
+    textColor: "#000000",
     type: 'Bus',
     typePlural: 'Buses',
     typeCode: 'bus',
@@ -274,7 +274,7 @@ export const agencies = {
 export const config = {
   siteTitle: 'Transit Stat.us',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'Transitstat.us v1.8.1',
+  version: 'Transitstat.us v1.8.2',
   additionalWarnings: [],
   globalAlerts: [
     {

@@ -221,6 +221,7 @@ const Trip = () => {
             to={`/${agency}/map?route=${trip.lineCode}`}
             style={{
               textDecoration: "none",
+              color: agencies[agency].textColor,
             }}
           >
             View on Map

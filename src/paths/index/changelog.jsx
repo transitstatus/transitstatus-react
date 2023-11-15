@@ -33,6 +33,14 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-8-2'>
+            <td>v1.8.2</td>
+            <td>
+              <ul>
+                <li>Improved constrast with GA Tech colors.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-8-1'>
             <td>v1.8.1</td>
             <td>

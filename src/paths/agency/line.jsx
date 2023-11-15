@@ -166,7 +166,14 @@ const Line = () => {
             padding: "8px",
           }}
         >
-          <Link to={`/${agency}/map?route=${lineName}`}>View on Map</Link>
+          <Link
+            to={`/${agency}/map?route=${lineName}`}
+            style={{
+              color: agencies[agency].textColor,
+            }}
+          >
+            View on Map
+          </Link>
         </h3>
       </div>
     </>

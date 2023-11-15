@@ -248,6 +248,7 @@ const Agency = () => {
             style={{
               marginTop: "4px",
               marginBottom: "-4px",
+              color: agencies[agency].textColor,
               backgroundColor: agencies[agency].color,
               maxWidth: "384px",
               padding: "4px 8px",
@@ -310,7 +311,14 @@ const Agency = () => {
             marginTop: "4px",
           }}
         >
-          <Link to={`/${agency}/map`}>View on a Map</Link>
+          <Link
+            to={`/${agency}/map`}
+            style={{
+              color: agencies[agency].textColor,
+            }}
+          >
+            View on a Map
+          </Link>
         </h3>
         <h3
           className='route'
