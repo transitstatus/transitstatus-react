@@ -33,6 +33,14 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-8-1'>
+            <td>v1.8.1</td>
+            <td>
+              <ul>
+                <li>Removed ads script for better performance.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-8-0'>
             <td>v1.8.0</td>
             <td>
