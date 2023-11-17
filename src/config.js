@@ -16,6 +16,7 @@ export const agencies = {
     disabled: false,
     useCodeForShortName: false,
     addShortName: false,
+    showArrow: true,
   },
   metra: {
     name: "Metra",
@@ -34,6 +35,7 @@ export const agencies = {
     disabled: false,
     useCodeForShortName: true,
     addShortName: true,
+    showArrow: true,
   },
   southshore: {
     name: "South Shore Line",
@@ -52,6 +54,7 @@ export const agencies = {
     disabled: false,
     useCodeForShortName: false,
     addShortName: true,
+    showArrow: false,
   },
   rutgers: {
     name: "Rutgers",
@@ -70,6 +73,7 @@ export const agencies = {
     disabled: false,
     useCodeForShortName: false,
     addShortName: false,
+    showArrow: true,
   },
   uchicago: {
     name: "UChicago",
@@ -88,6 +92,7 @@ export const agencies = {
     disabled: false,
     useCodeForShortName: false,
     addShortName: false,
+    showArrow: true,
   },
   gcsu: {
     name: "Georgia College & State",
@@ -106,6 +111,7 @@ export const agencies = {
     disabled: false,
     useCodeForShortName: false,
     addShortName: false,
+    showArrow: true,
   },
   'georgiast': {
     name: "Georgia State",
@@ -124,6 +130,7 @@ export const agencies = {
     disabled: false,
     useCodeForShortName: false,
     addShortName: false,
+    showArrow: true,
   },
   'gatech': {
     name: "Georgia Tech",
@@ -142,6 +149,7 @@ export const agencies = {
     disabled: false,
     useCodeForShortName: false,
     addShortName: false,
+    showArrow: true,
   },
   'GASO': {
     name: "Georgia Southern",
@@ -160,6 +168,7 @@ export const agencies = {
     disabled: false,
     useCodeForShortName: false,
     addShortName: false,
+    showArrow: true,
   },
   'MIT': {
     name: "MIT",
@@ -178,6 +187,7 @@ export const agencies = {
     disabled: false,
     useCodeForShortName: false,
     addShortName: false,
+    showArrow: true,
   },
   'uncc': {
     name: "UNC Charlotte",
@@ -196,6 +206,7 @@ export const agencies = {
     disabled: false,
     useCodeForShortName: false,
     addShortName: true,
+    showArrow: true,
   },
   'uncg': {
     name: "UNC Greensboro",
@@ -214,6 +225,7 @@ export const agencies = {
     disabled: false,
     useCodeForShortName: false,
     addShortName: false,
+    showArrow: true,
   },
   'uncw': {
     name: "UNC Wilmington",
@@ -232,6 +244,7 @@ export const agencies = {
     disabled: false,
     useCodeForShortName: false,
     addShortName: false,
+    showArrow: true,
   },
   'bama': {
     name: "University of Alabama",
@@ -250,6 +263,7 @@ export const agencies = {
     disabled: false,
     useCodeForShortName: false,
     addShortName: false,
+    showArrow: true,
   },
   'ncstate': {
     name: "NC State",
@@ -268,6 +282,7 @@ export const agencies = {
     disabled: false,
     useCodeForShortName: false,
     addShortName: false,
+    showArrow: true,
   }
 };
 

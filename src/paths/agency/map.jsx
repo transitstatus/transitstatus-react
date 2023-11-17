@@ -50,8 +50,6 @@ const Map = () => {
           const now = new Date();
           const arrival = new Date(arrivalTime);
 
-          console.log(arrival);
-
           const minutes = Math.floor((arrival - now) / 1000 / 60);
           const hours = Math.floor(minutes / 60);
 
@@ -250,7 +248,6 @@ const Map = () => {
         Object.keys(trainsData).forEach((trainId) => {
           const train = trainsData[trainId];
 
-          console.log(train);
           if (train.lineCode !== singleRouteID && singleRouteID !== "all")
             return;
 
@@ -269,6 +266,7 @@ const Map = () => {
               id: trainId,
               routeColor: train.lineColor,
               lineCode: train.lineCode,
+              heading: train.heading,
             },
             geometry: {
               type: "Point",
@@ -276,6 +274,8 @@ const Map = () => {
             },
           });
         });
+
+        console.log(finalFeaturesInitial);
 
         map.current.addSource("trains", {
           type: "geojson",
@@ -316,6 +316,7 @@ const Map = () => {
                     id: trainId,
                     routeColor: train.lineColor,
                     lineCode: train.lineCode,
+                    heading: train.heading,
                   },
                   geometry: {
                     type: "Point",
@@ -345,9 +346,28 @@ const Map = () => {
                 map.current.loadImage(
                   `${agencies[agency].gtfsRoot}/icons/${imagePath}`,
                   (error, image) => {
-                    if (error) throw error;
-                    console.log(imagePath.split("_")[0]);
+                    if (error)
+                      console.log(
+                        `Error loading image ${imagePath}, probably nothing. Fuck this idk`
+                      );
+                    console.log(imagePath.split(".")[0]);
                     map.current.addImage(imagePath.split("_")[0], image);
+                  }
+                );
+              });
+
+            uniqueData
+              .filter((n) => n.includes("arrow"))
+              .forEach((imagePath) => {
+                map.current.loadImage(
+                  `${agencies[agency].gtfsRoot}/icons/${imagePath}`,
+                  (error, image) => {
+                    if (error)
+                      console.log(
+                        `Error loading image ${imagePath}, probably nothing. Fuck this idk`
+                      );
+                    console.log(imagePath.split(".")[0]);
+                    map.current.addImage(imagePath.split(".")[0], image);
                   }
                 );
               });
@@ -364,6 +384,22 @@ const Map = () => {
               },
               paint: {},
             });
+
+            if (agencies[agency].showArrow) {
+              map.current.addLayer({
+                id: "trains_arrows",
+                type: "symbol",
+                source: "trains",
+                layout: {
+                  "icon-image": ["concat", ["get", "routeColor"], "_arrow"],
+                  "icon-size": 0.5,
+                  "icon-rotate": ["get", "heading"],
+                  "icon-allow-overlap": true,
+                  "text-font": ["Open Sans Regular"],
+                },
+                paint: {},
+              });
+            }
           });
 
         map.current.on("click", (e) => {
@@ -379,15 +415,11 @@ const Map = () => {
             return 0;
           });
 
-          console.log(fSorted);
-
           const feature = fSorted[0];
 
           if (feature.layer.id === "trains") {
             const train = feature.properties;
             const coordinates = feature.geometry.coordinates.slice();
-
-            console.log(train);
 
             let predictionsHTML = "";
 
@@ -480,8 +512,6 @@ const Map = () => {
                   .sort((a, b) => a.actualETA - b.actualETA)
                   .slice(0, 3)
                   .forEach((train) => {
-                    console.log(train);
-
                     finalHTML += `<p class='mapTrainBar' style='color: #${
                       train.lineTextColor
                     }; background-color: #${train.lineColor};'><span><strong>${
@@ -555,6 +585,8 @@ const Map = () => {
 
         console.log("Map initialized");
       } catch (e) {
+        console.log("Error initializing map", e);
+
         dataManager.getData(agency, "shitsFucked").then((raw) => {
           if (raw === "Not found") {
             setLoadingMessage("Error loading data :c");
