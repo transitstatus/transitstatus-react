@@ -18,6 +18,25 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
   },
+  ctab: {
+    name: "CTAB",
+    selectionName: 'Chicago (CTA) Holiday Bus',
+    endpoint: "https://store.transitstat.us/holidaybus",
+    mapShapes: "https://gtfs.piemadd.com/data/cta/shapes/type_3.geojson",
+    gtfsRoot: "https://gtfs.piemadd.com/data/cta",
+    mapDefault: [41.900296392725636, -87.6650873752688, 10],
+    color: "#2166b1",
+    textColor: "#ffffff",
+    type: 'Bus',
+    typePlural: 'Buses',
+    typeCode: 'bus',
+    typeCodePlural: 'buses',
+    addLine: false,
+    disabled: true,
+    useCodeForShortName: false,
+    addShortName: false,
+    showArrow: true,
+  },
   metra: {
     name: "Metra",
     selectionName: 'Metra',
@@ -289,7 +308,7 @@ export const agencies = {
 export const config = {
   siteTitle: 'Transit Stat.us',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'Transitstat.us v1.9.0',
+  version: 'Transitstat.us v1.9.1',
   additionalWarnings: [],
   globalAlerts: [
     {

@@ -292,6 +292,8 @@ const Index = () => {
             return 0;
           })
           .map((agency) => {
+            if (agencies[agency].disabled) return null;
+
             return (
               <Link
                 to={`/${agency}`}
