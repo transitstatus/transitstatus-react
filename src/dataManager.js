@@ -47,7 +47,7 @@ export class DataManager {
   async getData(endpoint, path) {
     const now = new Date().valueOf();
 
-    if (!this._endpoints[endpoint] || this._endpoints[endpoint].lastUpdated < now - 1000 * 15) { //if it doesnt exist yet or if out of date by 30 seconds
+    if (!this._endpoints[endpoint] || !this._data[endpoint] || this._endpoints[endpoint].lastUpdated < now - 1000 * 15) { //if it doesnt exist yet or if out of date by 30 seconds
       this._endpoints[endpoint] = { //creating the record
         lastAccessed: now,
         lastUpdated: now,

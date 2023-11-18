@@ -33,6 +33,14 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-9-2'>
+            <td>v1.9.2</td>
+            <td>
+              <ul>
+                <li>Fixed edge case with data manager.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-9-1'>
             <td>v1.9.1</td>
             <td>
