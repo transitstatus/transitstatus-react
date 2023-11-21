@@ -17,6 +17,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
+    onlyNumberRunNumber: false,
   },
   ctab: {
     name: "CTAB",
@@ -36,6 +37,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
+    onlyNumberRunNumber: false,
   },
   metra: {
     name: "Metra",
@@ -55,6 +57,7 @@ export const agencies = {
     useCodeForShortName: true,
     addShortName: true,
     showArrow: true,
+    onlyNumberRunNumber: true,
   },
   southshore: {
     name: "South Shore Line",
@@ -74,6 +77,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: true,
     showArrow: false,
+    onlyNumberRunNumber: false,
   },
   rutgers: {
     name: "Rutgers",
@@ -93,6 +97,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
+    onlyNumberRunNumber: false,
   },
   uchicago: {
     name: "UChicago",
@@ -112,6 +117,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
+    onlyNumberRunNumber: false,
   },
   gcsu: {
     name: "Georgia College & State",
@@ -131,6 +137,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
+    onlyNumberRunNumber: false,
   },
   'georgiast': {
     name: "Georgia State",
@@ -150,6 +157,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
+    onlyNumberRunNumber: false,
   },
   'gatech': {
     name: "Georgia Tech",
@@ -169,6 +177,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
+    onlyNumberRunNumber: false,
   },
   'GASO': {
     name: "Georgia Southern",
@@ -188,6 +197,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
+    onlyNumberRunNumber: false,
   },
   'MIT': {
     name: "MIT",
@@ -207,6 +217,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
+    onlyNumberRunNumber: false,
   },
   'uncc': {
     name: "UNC Charlotte",
@@ -226,6 +237,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: true,
     showArrow: true,
+    onlyNumberRunNumber: false,
   },
   'uncg': {
     name: "UNC Greensboro",
@@ -245,6 +257,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
+    onlyNumberRunNumber: false,
   },
   'uncw': {
     name: "UNC Wilmington",
@@ -264,6 +277,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
+    onlyNumberRunNumber: false,
   },
   'bama': {
     name: "University of Alabama",
@@ -283,6 +297,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
+    onlyNumberRunNumber: false,
   },
   'ncstate': {
     name: "NC State",
@@ -302,13 +317,14 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
+    onlyNumberRunNumber: false,
   }
 };
 
 export const config = {
   siteTitle: 'Transit Stat.us',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'Transitstat.us v1.9.2',
+  version: 'Transitstat.us v1.9.3',
   additionalWarnings: [],
   globalAlerts: [
     {

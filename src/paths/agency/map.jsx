@@ -451,9 +451,11 @@ const Map = () => {
                   agencies[agency].useCodeForShortName
                     ? train.lineCode
                     : train.line
-                }${agencies[agency].addLine ? " Line " : " "}#${train.id} to ${
-                  train.dest
-                }</h3>${
+                }${agencies[agency].addLine ? " Line " : " "}#${
+                  agencies[agency].onlyNumberRunNumber
+                    ? train.id.replace(/\D/g, "")
+                    : train.id
+                } to ${train.dest}</h3>${
                   extra && (extra.cap || extra.info)
                     ? `<p style='margin-top: -2px;padding-bottom: 4px;'>${
                         extra.info ?? ""
@@ -519,7 +521,9 @@ const Map = () => {
                         ? train.lineCode
                         : train.line
                     }${agencies[agency].addLine ? " Line " : " "}</strong>#${
-                      train.runNumber
+                      agencies[agency].onlyNumberRunNumber
+                        ? train.runNumber.replace(/\D/g, "")
+                        : train.runNumber
                     } to <strong>${destKey}</strong></span><strong>${
                       train.noETA
                         ? "No ETA"

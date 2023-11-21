@@ -194,7 +194,10 @@ const Station = () => {
                                       ? train.lineCode
                                       : train.line}
                                     {agencies[agency].addLine ? " Line " : " "}#
-                                    {train.runNumber} to
+                                    {agencies[agency].onlyNumberRunNumber
+                                      ? train.runNumber.replace(/\D/g, "")
+                                      : train.runNumber}{" "}
+                                    to
                                   </p>
                                   <h3>
                                     {destinationKey

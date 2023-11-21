@@ -33,6 +33,17 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-9-3'>
+            <td>v1.9.3</td>
+            <td>
+              <ul>
+                <li>
+                  Added ability to remove letters from run numbers (currently
+                  only for Metra).
+                </li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-9-2'>
             <td>v1.9.2</td>
             <td>

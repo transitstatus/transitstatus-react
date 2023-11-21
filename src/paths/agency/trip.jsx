@@ -36,7 +36,9 @@ const Trip = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [lastFetched, setLastFetched] = useState(0);
 
-  document.title = `${trip.line} #${tripID} ${agencies[agency].name} | Transitstat.us`;
+  document.title = `${trip.line} #${
+    agencies[agency].onlyNumberRunNumber ? tripID.replace(/\D/g, "") : tripID
+  } ${agencies[agency].name} | Transitstat.us`;
 
   useEffect(() => {
     const fetchData = () => {
@@ -100,7 +102,10 @@ const Trip = () => {
         >
           <h2>
             {trip.line}
-            {agencies[agency].addLine ? " Line " : " "}#{tripID}
+            {agencies[agency].addLine ? " Line " : " "}#
+            {agencies[agency].onlyNumberRunNumber
+              ? tripID.replace(/\D/g, "")
+              : tripID}
           </h2>
           <p>
             As of{" "}
