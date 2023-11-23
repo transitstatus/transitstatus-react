@@ -20,7 +20,7 @@ const Map = () => {
     return routeID;
   }, []);
   const navigate = useNavigate();
-  const dataManager = new DataManager();
+  const dataManager = useMemo(() => new DataManager(), []);
   const [loadingMessage, setLoadingMessage] = useState("Loading data...");
   const [isLoading, setIsLoading] = useState(true);
   const [lastUpdated, setLastUpdated] = useState(new Date());
@@ -79,7 +79,6 @@ const Map = () => {
             sources: {
               protomaps: {
                 type: "vector",
-                /*
                 tiles: [
                   "https://tilea.piemadd.com/tiles/{z}/{x}/{y}.mvt",
                   "https://tileb.piemadd.com/tiles/{z}/{x}/{y}.mvt",
@@ -87,8 +86,7 @@ const Map = () => {
                   "https://tiled.piemadd.com/tiles/{z}/{x}/{y}.mvt",
                   //"http://10.0.0.237:8081/basemap/{z}/{x}/{y}.mvt"
                 ],
-                */
-                url: "pmtiles://https://tiles.transitstat.us/pmtiles/03-06-2023/tiles.pmtiles",
+                //url: "pmtiles://https://tiles.transitstat.us/pmtiles/03-06-2023/tiles.pmtiles",
                 maxzoom: 13,
               },
             },

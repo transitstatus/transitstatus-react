@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import React, { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useMemo } from "react";
 import * as pmtiles from "pmtiles";
 import layers from "protomaps-themes-base";
 import { agencies } from "../../config";
@@ -10,7 +10,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 
 const FullMap = () => {
   const navigate = useNavigate();
-  const dataManager = new DataManager();
+  const dataManager = useMemo(() => new DataManager(), []);
 
   document.title = "Full Map | Transitstat.us";
 

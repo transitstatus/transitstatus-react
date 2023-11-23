@@ -1,5 +1,5 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { agencies } from "../../config";
 import Meta from "../../components/meta";
 import { DataManager } from "../../dataManager";
@@ -30,7 +30,7 @@ const timeFormat = (time) => {
 const Trip = () => {
   const { agency, tripID } = useParams();
   const navigate = useNavigate();
-  const dataManager = new DataManager();
+  const dataManager = useMemo(() => new DataManager(), []);
   const [trip, setTrip] = useState({});
   const [loadingMessage, setLoadingMessage] = useState("Loading trip...");
   const [isLoading, setIsLoading] = useState(true);

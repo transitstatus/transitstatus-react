@@ -1,5 +1,5 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { agencies } from "../../config";
 import StationHeart from "../../components/hearts/stationHeart";
 import Meta from "../../components/meta";
@@ -31,7 +31,7 @@ const timeFormat = (time) => {
 const Station = () => {
   const { agency, stopID } = useParams();
   const navigate = useNavigate();
-  const dataManager = new DataManager();
+  const dataManager = useMemo(() => new DataManager(), []);
   const [station, setStation] = useState({});
   const [lastFetched, setLastFetched] = useState(0);
   const [loadingMessage, setLoadingMessage] = useState("Loading trains...");

@@ -10,7 +10,7 @@ import Oneko from "../../components/extras/oneko";
 const Agency = () => {
   const { agency } = useParams();
   const navigate = useNavigate();
-  const dataManager = new DataManager();
+  const dataManager = useMemo(() => new DataManager(), []);
   const [lines, setLines] = useState({});
   const [loadingMessage, setLoadingMessage] = useState("Loading data...");
   const [isLoading, setIsLoading] = useState(true);

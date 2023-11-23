@@ -33,6 +33,15 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-9-5'>
+            <td>v1.9.5</td>
+            <td>
+              <ul>
+                <li>Rolled back map request changes.</li>
+                <li>Ensuring data manager is only spawned once.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-9-4'>
             <td>v1.9.4</td>
             <td>
