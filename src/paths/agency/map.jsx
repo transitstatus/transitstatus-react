@@ -79,6 +79,7 @@ const Map = () => {
             sources: {
               protomaps: {
                 type: "vector",
+                /*
                 tiles: [
                   "https://tilea.piemadd.com/tiles/{z}/{x}/{y}.mvt",
                   "https://tileb.piemadd.com/tiles/{z}/{x}/{y}.mvt",
@@ -86,6 +87,8 @@ const Map = () => {
                   "https://tiled.piemadd.com/tiles/{z}/{x}/{y}.mvt",
                   //"http://10.0.0.237:8081/basemap/{z}/{x}/{y}.mvt"
                 ],
+                */
+                url: "pmtiles://https://tiles.transitstat.us/pmtiles/03-06-2023/tiles.pmtiles",
                 maxzoom: 13,
               },
             },
@@ -452,8 +455,8 @@ const Map = () => {
                     ? train.lineCode
                     : train.line
                 }${agencies[agency].addLine ? " Line " : " "}#${
-                  agencies[agency].onlyNumberRunNumber
-                    ? train.id.replace(/\D/g, "")
+                  agencies[agency].removeLineCodeFromRunNumber
+                    ? train.id.replace(train.lineCode, "")
                     : train.id
                 } to ${train.dest}</h3>${
                   extra && (extra.cap || extra.info)
@@ -521,8 +524,8 @@ const Map = () => {
                         ? train.lineCode
                         : train.line
                     }${agencies[agency].addLine ? " Line " : " "}</strong>#${
-                      agencies[agency].onlyNumberRunNumber
-                        ? train.runNumber.replace(/\D/g, "")
+                      agencies[agency].removeLineCodeFromRunNumber
+                        ? train.runNumber.replace(train.lineCode, "")
                         : train.runNumber
                     } to <strong>${destKey}</strong></span><strong>${
                       train.noETA
@@ -646,9 +649,16 @@ const Map = () => {
           target='_blank'
           rel='noreferrer'
         >
-          © OpenStreetMap
+          &copy;OpenStreetMap Contributors
         </a>{" "}
-        | <span>© Amtraker Tiles</span>
+        |{" "}
+        <a
+          href='https://piemadd.com'
+          target='_blank'
+          rel='noreferrer'
+        >
+          &copy;Piero
+        </a>
       </div>
       <div
         style={{

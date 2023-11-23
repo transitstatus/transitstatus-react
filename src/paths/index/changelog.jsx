@@ -33,6 +33,18 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-9-4'>
+            <td>v1.9.4</td>
+            <td>
+              <ul>
+                <li>
+                  Modified setting mentioned in 1.9.3 to remove the line short
+                  name, NOT remove all letters.
+                </li>
+                <li>Testing out a new request method for map tiles.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-9-3'>
             <td>v1.9.3</td>
             <td>

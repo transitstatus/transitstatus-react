@@ -17,7 +17,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    onlyNumberRunNumber: false,
+    removeLineCodeFromRunNumber: false,
   },
   ctab: {
     name: "CTAB",
@@ -37,7 +37,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    onlyNumberRunNumber: false,
+    removeLineCodeFromRunNumber: false,
   },
   metra: {
     name: "Metra",
@@ -57,7 +57,7 @@ export const agencies = {
     useCodeForShortName: true,
     addShortName: true,
     showArrow: true,
-    onlyNumberRunNumber: true,
+    removeLineCodeFromRunNumber: true,
   },
   southshore: {
     name: "South Shore Line",
@@ -77,7 +77,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: true,
     showArrow: false,
-    onlyNumberRunNumber: false,
+    removeLineCodeFromRunNumber: false,
   },
   rutgers: {
     name: "Rutgers",
@@ -97,7 +97,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    onlyNumberRunNumber: false,
+    removeLineCodeFromRunNumber: false,
   },
   uchicago: {
     name: "UChicago",
@@ -117,7 +117,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    onlyNumberRunNumber: false,
+    removeLineCodeFromRunNumber: false,
   },
   gcsu: {
     name: "Georgia College & State",
@@ -137,7 +137,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    onlyNumberRunNumber: false,
+    removeLineCodeFromRunNumber: false,
   },
   'georgiast': {
     name: "Georgia State",
@@ -157,7 +157,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    onlyNumberRunNumber: false,
+    removeLineCodeFromRunNumber: false,
   },
   'gatech': {
     name: "Georgia Tech",
@@ -177,7 +177,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    onlyNumberRunNumber: false,
+    removeLineCodeFromRunNumber: false,
   },
   'GASO': {
     name: "Georgia Southern",
@@ -197,7 +197,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    onlyNumberRunNumber: false,
+    removeLineCodeFromRunNumber: false,
   },
   'MIT': {
     name: "MIT",
@@ -217,7 +217,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    onlyNumberRunNumber: false,
+    removeLineCodeFromRunNumber: false,
   },
   'uncc': {
     name: "UNC Charlotte",
@@ -237,7 +237,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: true,
     showArrow: true,
-    onlyNumberRunNumber: false,
+    removeLineCodeFromRunNumber: false,
   },
   'uncg': {
     name: "UNC Greensboro",
@@ -257,7 +257,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    onlyNumberRunNumber: false,
+    removeLineCodeFromRunNumber: false,
   },
   'uncw': {
     name: "UNC Wilmington",
@@ -277,7 +277,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    onlyNumberRunNumber: false,
+    removeLineCodeFromRunNumber: false,
   },
   'bama': {
     name: "University of Alabama",
@@ -297,7 +297,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    onlyNumberRunNumber: false,
+    removeLineCodeFromRunNumber: false,
   },
   'ncstate': {
     name: "NC State",
@@ -317,14 +317,14 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    onlyNumberRunNumber: false,
+    removeLineCodeFromRunNumber: false,
   }
 };
 
 export const config = {
   siteTitle: 'Transit Stat.us',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'Transitstat.us v1.9.3',
+  version: 'Transitstat.us v1.9.4',
   additionalWarnings: [],
   globalAlerts: [
     {

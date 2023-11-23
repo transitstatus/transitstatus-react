@@ -37,7 +37,9 @@ const Trip = () => {
   const [lastFetched, setLastFetched] = useState(0);
 
   document.title = `${trip.line} #${
-    agencies[agency].onlyNumberRunNumber ? tripID.replace(/\D/g, "") : tripID
+    agencies[agency].removeLineCodeFromRunNumber
+      ? tripID.replace(trip.lineCode, "")
+      : tripID
   } ${agencies[agency].name} | Transitstat.us`;
 
   useEffect(() => {
@@ -81,8 +83,6 @@ const Trip = () => {
     setInterval(fetchData, 30000);
   }, [agency, tripID]);
 
-  //console.log(trip);
-
   return (
     <>
       <Oneko />
@@ -103,8 +103,8 @@ const Trip = () => {
           <h2>
             {trip.line}
             {agencies[agency].addLine ? " Line " : " "}#
-            {agencies[agency].onlyNumberRunNumber
-              ? tripID.replace(/\D/g, "")
+            {agencies[agency].removeLineCodeFromRunNumber
+              ? tripID.replace(trip.lineCode, "")
               : tripID}
           </h2>
           <p>
