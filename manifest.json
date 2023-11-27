@@ -15,85 +15,85 @@
   "related_applications": [],
   "screenshots": [
     {
-      "src": "/narrow/home.png",
+      "src": "/screenshots/narrow/home.png",
       "sizes": "424x915",
       "type": "image/png",
       "platform": "narrow"
     },
     {
-      "src": "/narrow/agency.png",
+      "src": "/screenshots/narrow/agency.png",
       "sizes": "424x915",
       "type": "image/png",
       "platform": "narrow"
     },
     {
-      "src": "/narrow/full_map.png",
+      "src": "/screenshots/narrow/full_map.png",
       "sizes": "424x915",
       "type": "image/png",
       "platform": "narrow"
     },
     {
-      "src": "/narrow/line.png",
+      "src": "/screenshots/narrow/line.png",
       "sizes": "424x915",
       "type": "image/png",
       "platform": "narrow"
     },
     {
-      "src": "/narrow/line_map.png",
+      "src": "/screenshots/narrow/line_map.png",
       "sizes": "424x915",
       "type": "image/png",
       "platform": "narrow"
     },
     {
-      "src": "/narrow/station.png",
+      "src": "/screenshots/narrow/station.png",
       "sizes": "424x915",
       "type": "image/png",
       "platform": "narrow"
     },
     {
-      "src": "/narrow/train.png",
+      "src": "/screenshots/narrow/train.png",
       "sizes": "424x915",
       "type": "image/png",
       "platform": "narrow"
     },
     {
-      "src": "/narrow/home.png",
+      "src": "/screenshots/narrow/home.png",
       "sizes": "424x915",
       "type": "image/png",
       "platform": "wide"
     },
     {
-      "src": "/narrow/agency.png",
+      "src": "/screenshots/narrow/agency.png",
       "sizes": "424x915",
       "type": "image/png",
       "platform": "wide"
     },
     {
-      "src": "/narrow/full_map.png",
+      "src": "/screenshots/narrow/full_map.png",
       "sizes": "424x915",
       "type": "image/png",
       "platform": "wide"
     },
     {
-      "src": "/narrow/line.png",
+      "src": "/screenshots/narrow/line.png",
       "sizes": "424x915",
       "type": "image/png",
       "platform": "wide"
     },
     {
-      "src": "/narrow/line_map.png",
+      "src": "/screenshots/narrow/line_map.png",
       "sizes": "424x915",
       "type": "image/png",
       "platform": "wide"
     },
     {
-      "src": "/narrow/station.png",
+      "src": "/screenshots/narrow/station.png",
       "sizes": "424x915",
       "type": "image/png",
       "platform": "wide"
     },
     {
-      "src": "/narrow/train.png",
+      "src": "/screenshots/narrow/train.png",
       "sizes": "424x915",
       "type": "image/png",
       "platform": "wide"

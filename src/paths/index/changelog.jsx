@@ -33,6 +33,14 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-10-1'>
+            <td>v1.10.1</td>
+            <td>
+              <ul>
+                <li>Fixed screenshots path in manifest.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-10-0'>
             <td>v1.10.0</td>
             <td>
