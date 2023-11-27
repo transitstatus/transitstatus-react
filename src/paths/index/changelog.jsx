@@ -33,6 +33,15 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-10-0'>
+            <td>v1.10.0</td>
+            <td>
+              <ul>
+                <li>Updated manifest.</li>
+                <li>Now yeets service worker on code cache clearing.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-9-5'>
             <td>v1.9.5</td>
             <td>

@@ -29,6 +29,13 @@ export default function ErrorPage() {
         caches.keys().then((newKeys) => console.log("new caches:", newKeys));
       });
 
+      //also need to yeet the service worker
+      navigator.serviceWorker.getRegistrations().then(function (registrations) {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+
       setTimeout(() => {
         window.location.reload();
       }, 5000);
@@ -38,8 +45,8 @@ export default function ErrorPage() {
       <div id='error-page'>
         <h1>Oops!</h1>
         <p>
-          Seems like an old version of Transitstat.us tried to load. We'll fix that
-          right up for you and you'll be on your way!
+          Seems like an old version of Transitstat.us tried to load. We'll fix
+          that right up for you and you'll be on your way!
         </p>
         <br />
         <p>Reloading in 5 seconds...</p>

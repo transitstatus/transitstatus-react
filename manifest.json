@@ -1,0 +1,142 @@
+{
+  "name": "Trasitstat.us | Transit Tracker",
+  "short_name": "Transitstat",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#111111",
+  "lang": "en",
+  "scope": "/",
+  "description": "Transitstat.us is a free, open source, and easy to use transit tracker!",
+  "categories": [
+    "travel",
+    "navigation",
+    "utilities"
+  ],
+  "related_applications": [],
+  "screenshots": [
+    {
+      "src": "/narrow/home.png",
+      "sizes": "424x915",
+      "type": "image/png",
+      "platform": "narrow"
+    },
+    {
+      "src": "/narrow/agency.png",
+      "sizes": "424x915",
+      "type": "image/png",
+      "platform": "narrow"
+    },
+    {
+      "src": "/narrow/full_map.png",
+      "sizes": "424x915",
+      "type": "image/png",
+      "platform": "narrow"
+    },
+    {
+      "src": "/narrow/line.png",
+      "sizes": "424x915",
+      "type": "image/png",
+      "platform": "narrow"
+    },
+    {
+      "src": "/narrow/line_map.png",
+      "sizes": "424x915",
+      "type": "image/png",
+      "platform": "narrow"
+    },
+    {
+      "src": "/narrow/station.png",
+      "sizes": "424x915",
+      "type": "image/png",
+      "platform": "narrow"
+    },
+    {
+      "src": "/narrow/train.png",
+      "sizes": "424x915",
+      "type": "image/png",
+      "platform": "narrow"
+    },
+    {
+      "src": "/narrow/home.png",
+      "sizes": "424x915",
+      "type": "image/png",
+      "platform": "wide"
+    },
+    {
+      "src": "/narrow/agency.png",
+      "sizes": "424x915",
+      "type": "image/png",
+      "platform": "wide"
+    },
+    {
+      "src": "/narrow/full_map.png",
+      "sizes": "424x915",
+      "type": "image/png",
+      "platform": "wide"
+    },
+    {
+      "src": "/narrow/line.png",
+      "sizes": "424x915",
+      "type": "image/png",
+      "platform": "wide"
+    },
+    {
+      "src": "/narrow/line_map.png",
+      "sizes": "424x915",
+      "type": "image/png",
+      "platform": "wide"
+    },
+    {
+      "src": "/narrow/station.png",
+      "sizes": "424x915",
+      "type": "image/png",
+      "platform": "wide"
+    },
+    {
+      "src": "/narrow/train.png",
+      "sizes": "424x915",
+      "type": "image/png",
+      "platform": "wide"
+    }
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "transitstat",
+      "url": "/%s"
+    }
+  ],
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/icons/logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icons/logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "display_override": [
+    "window-controls-overlay"
+  ],
+  "theme_color": "#111111",
+  "shortcuts": [
+    {
+      "name": "About",
+      "url": "/about",
+      "description": "About Page"
+    }
+  ],
+  "id": "com.piero.transitstatus",
+  "dir": "ltr",
+  "edge_side_panel": {
+    "preferred_width": 424
+  }
+}

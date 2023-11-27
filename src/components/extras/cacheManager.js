@@ -18,6 +18,13 @@ export const clearCodeCache = async () => {
       }
     }
 
+    //also yeeting the service worker
+    navigator.serviceWorker.getRegistrations().then(function (registrations) {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+
     console.log('Alerting')
 
     window.alert("The code cache has been cleared. The page will reload once you press 'OK'.")
