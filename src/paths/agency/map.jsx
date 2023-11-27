@@ -647,7 +647,7 @@ const Map = () => {
           target='_blank'
           rel='noreferrer'
         >
-          &copy;OpenStreetMap Contributors
+          &copy;OpenStreetMap
         </a>{" "}
         |{" "}
         <a

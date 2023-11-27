@@ -33,6 +33,14 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-10-2'>
+            <td>v1.10.2</td>
+            <td>
+              <ul>
+                <li>Made map attribution slightly shorter.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-10-1'>
             <td>v1.10.1</td>
             <td>
