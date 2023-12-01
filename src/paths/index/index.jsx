@@ -254,6 +254,13 @@ const Index = () => {
                   >
                     {alert.info}
                   </p>
+                  {alert.link && (
+                    <p>
+                      <a href={alert.link} target='__blank'>
+                        {alert.linkText}
+                      </a>
+                    </p>
+                  )}
                 </details>
               );
             })}

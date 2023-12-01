@@ -324,18 +324,15 @@ export const agencies = {
 export const config = {
   siteTitle: 'Transit Stat.us',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'Transitstat.us v1.10.2',
+  version: 'Transitstat.us v1.10.3',
   additionalWarnings: [],
   globalAlerts: [
     {
-      title: 'New Tools in Settings',
-      info: 'In the settings (at the bottom of this page), you\'ll find buttons to clear various caches and storages. If you\'re facing a weird issue, using one of these will probably fix your issue.',
-      expires: 1700200799000
-    },
-    {
-      title: 'Cat Mode :3',
-      info: 'For those who haven\'t noticed, a cat mode has been added (can be activated in the settings) which adds a cat to follow your mouse/finger on the screen. I am working on proper theming for transitstat.us and appreciate any ideas/feedback, which can be sent to ts@piemadd.com. Thanks!',
-      expires: 1700200799000
+      title: 'Transitstat.us Improvement Survey',
+      info: 'Please take some time to complete the following survey to improve Transitstatus.',
+      linkText: 'Survey Link',
+      link: 'https://docs.google.com/forms/d/e/1FAIpQLSc8DdXR6EQ9Gu21Wl1QAW9GM1ZUj_A7nkwGx65aNZyxBJsVUA/viewform?usp=sf_link',
+      expires: 1704866400000
     }
   ]
 };
