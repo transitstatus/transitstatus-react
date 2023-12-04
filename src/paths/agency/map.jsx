@@ -379,6 +379,7 @@ const Map = () => {
               source: "trains",
               layout: {
                 "icon-image": ["get", "routeColor"],
+                "icon-rotation-alignment": "map",
                 "icon-size": 0.5,
                 "icon-allow-overlap": true,
                 "text-font": ["Open Sans Regular"],
@@ -393,6 +394,7 @@ const Map = () => {
                 source: "trains",
                 layout: {
                   "icon-image": ["concat", ["get", "routeColor"], "_arrow"],
+                  "icon-rotation-alignment": "map",
                   "icon-size": 0.5,
                   "icon-rotate": ["get", "heading"],
                   "icon-allow-overlap": true,

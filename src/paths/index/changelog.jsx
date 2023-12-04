@@ -33,6 +33,14 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-10-4'>
+            <td>v1.10.4</td>
+            <td>
+              <ul>
+                <li>Kept icons flat with map upon rotation and pitch.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-10-3'>
             <td>v1.10.3</td>
             <td>
