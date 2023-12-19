@@ -293,3 +293,32 @@ tr:nth-child(even) {
   border-radius: 4px;
   cursor: pointer;
 }
+
+.betterTrainFullHolder {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+}
+
+.betterTrainHolder {
+  display: flex;
+  gap: 4px;
+  flex: 1000;
+  flex-wrap: wrap;
+  overflow: hidden;
+  height: 68px;
+}
+
+.betterTrainMeta {
+  padding: 8px;
+  font-size: 1.2em;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.betterTrain {
+  padding: 8px;
+  font-size: 1.2em;
+  white-space: nowrap;
+  flex: 2;
+}

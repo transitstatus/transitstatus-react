@@ -5,6 +5,7 @@ import StationHeart from "../../components/hearts/stationHeart";
 import Meta from "../../components/meta";
 import { DataManager } from "../../dataManager";
 import Oneko from "../../components/extras/oneko";
+import StationETAs from "../../components/agency/stationETAs";
 
 const hoursMinutesUntilArrival = (arrivalTime) => {
   const now = new Date();
@@ -164,117 +165,13 @@ const Station = () => {
             })
             .map((destinationKey) => {
               return (
-                <div key={destinationKey} className='trains'>
-                  {station.destinations[destinationKey].trains.length > 0 ? (
-                    <>
-                      <h3 className='destination'>Towards {destinationKey}</h3>
-                      {station.destinations[destinationKey].trains
-                        .sort((a, b) => {
-                          if (!a.actualETA) return -1;
-                          if (!b.actualETA) return 1;
-                          return a.actualETA - b.actualETA;
-                        })
-                        .map((train) => {
-                          return (
-                            <Link
-                              to={`/${agency}/track/${train.runNumber}`}
-                              key={train.runNumber}
-                              className='trainLink'
-                            >
-                              <div
-                                className='train'
-                                style={{
-                                  backgroundColor: `#${train.lineColor}`,
-                                  color: `#${train.lineTextColor}`,
-                                }}
-                              >
-                                <span>
-                                  <p>
-                                    {agencies[agency].useCodeForShortName
-                                      ? train.lineCode
-                                      : train.line}
-                                    {agencies[agency].addLine ? " Line " : " "}#
-                                    {agencies[agency]
-                                      .removeLineCodeFromRunNumber
-                                      ? train.runNumber.replace(
-                                          train.lineCode,
-                                          ""
-                                        )
-                                      : train.runNumber}{" "}
-                                    to
-                                  </p>
-                                  <h3>
-                                    {destinationKey
-                                      ? destinationKey
-                                      : train.routeLongName}
-                                  </h3>
-                                  {train.extra && train.extra.info ? (
-                                    <p>{train.extra.info}</p>
-                                  ) : null}
-                                </span>
-                                {!train.noETA ? (
-                                  <span>
-                                    <h3 className='trainLink'>
-                                      {hoursMinutesUntilArrival(
-                                        train.actualETA
-                                      )}
-                                    </h3>
-                                    <p
-                                      className='trainLink'
-                                      style={{
-                                        fontSize: "0.8em",
-                                      }}
-                                    >
-                                      {timeFormat(train.actualETA)}
-                                    </p>
-                                    {train.extra && train.extra.cap ? (
-                                      <p
-                                        className='trainLink'
-                                        style={{
-                                          fontSize: "0.8em",
-                                        }}
-                                      >
-                                        {Math.ceil(
-                                          (train.extra.load / train.extra.cap) *
-                                            100
-                                        )}
-                                        % Full
-                                      </p>
-                                    ) : null}
-                                  </span>
-                                ) : (
-                                  <span>
-                                    <h3 className='trainLink'>No ETA</h3>
-                                    {train.extra && train.extra.cap ? (
-                                      <p
-                                        className='trainLink'
-                                        style={{
-                                          fontSize: "0.8em",
-                                        }}
-                                      >
-                                        {Math.ceil(
-                                          (train.extra.load / train.extra.cap) *
-                                            100
-                                        )}
-                                        % Full
-                                      </p>
-                                    ) : null}
-                                  </span>
-                                )}
-                              </div>
-                            </Link>
-                          );
-                        })}
-                    </>
-                  ) : (
-                    <>
-                      <p className='destination'>
-                        No {agencies[agency].typePlural} towards{" "}
-                        {destinationKey}
-                      </p>
-                    </>
-                  )}
-                </div>
+                <StationETAs
+                  key={destinationKey}
+                  destinationKey={destinationKey}
+                  station={station}
+                  agency={agency}
+                  stopID={stopID}
+                />
               );
             })
         )}
