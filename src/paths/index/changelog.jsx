@@ -33,6 +33,17 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-10-5'>
+            <td>v1.10.5</td>
+            <td>
+              <ul>
+                <li>Added infrastructure to support multi vehicle agencies.</li>
+                <li>Began testing on Bay Area integration.</li>
+                <li>Extended improvement survey end date.</li>
+                <li>Added new years message.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-10-4'>
             <td>v1.10.4</td>
             <td>

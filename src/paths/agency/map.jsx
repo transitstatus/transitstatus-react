@@ -2,6 +2,8 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import React, { useRef, useEffect, useState, useMemo } from "react";
 import * as pmtiles from "pmtiles";
 import layers from "protomaps-themes-base";
+//import mapStyle from "../../components/extras/mapStyle.json";
+//import osmLibertyTransitstatus from "../../components/extras/osm_liberty_-_transitstatus.json";
 import { agencies } from "../../config";
 import { DataManager } from "../../dataManager";
 import Oneko from "../../components/extras/oneko";
@@ -67,13 +69,12 @@ const Map = () => {
         map.current = new maplibregl.Map({
           container: mapContainer.current,
           style: {
-            id: "43f36e14-e3f5-43c1-84c0-50a9c80dc5c7",
-            name: "MapLibre",
             zoom: 0,
             pitch: 0,
             center: [41.884579601743276, -87.6279871036212],
             glyphs:
-              "https://cdn.jsdelivr.net/gh/piemadd/fonts@54b954f510dc79e04ae47068c5c1f2ee39a69216/_output/{fontstack}/{range}.pbf",
+              "https://fonts.transitstat.us/_output/{fontstack}/{range}.pbf",
+            sprite: "https://osml.transitstat.us/sprites/osm-liberty",
             layers: layers("protomaps", "black"),
             bearing: 0,
             sources: {
@@ -88,6 +89,14 @@ const Map = () => {
                 ],
                 //url: "pmtiles://https://tiles.transitstat.us/pmtiles/03-06-2023/tiles.pmtiles",
                 maxzoom: 13,
+              },
+              natural_earth_shaded_relief: {
+                maxzoom: 6,
+                tileSize: 256,
+                tiles: [
+                  "https://naturalearthtiles.transitstat.us/{z}/{x}/{y}.png",
+                ],
+                type: "raster",
               },
             },
             version: 8,
@@ -107,19 +116,28 @@ const Map = () => {
           setIsLoading(false);
         });
 
-        const mapShapes = await fetch(`${agencies[agency].mapShapes}`);
-        const mapShapesData = await mapShapes.json();
+        let fullMapShapes = {
+          type: "FeatureCollection",
+          features: [],
+        };
+        const mapShapeURLs = agencies[agency].mapShapes;
 
-        map.current.addSource("shapes", {
-          type: "geojson",
-          data: {
-            type: "FeatureCollection",
-            features: mapShapesData.features.filter((feature) => {
+        for (let i = 0; i < mapShapeURLs.length; i++) {
+          const mapShapes = await fetch(mapShapeURLs[i]);
+          const mapShapesData = await mapShapes.json();
+
+          fullMapShapes.features.push(
+            ...mapShapesData.features.filter((feature) => {
               if (singleRouteID === "all") return true;
               if (feature.properties.routeID === singleRouteID) return true;
               return false;
-            }),
-          },
+            })
+          );
+        }
+
+        map.current.addSource("shapes", {
+          type: "geojson",
+          data: fullMapShapes,
         });
 
         map.current.addLayer({
@@ -237,7 +255,7 @@ const Map = () => {
           type: "circle",
           source: "stations",
           paint: {
-            "circle-radius": 8,
+            "circle-radius": 6,
             "circle-color": "#fff",
             "circle-stroke-color": "#000",
             "circle-stroke-width": 1,
@@ -652,11 +670,7 @@ const Map = () => {
           &copy;OpenStreetMap
         </a>{" "}
         |{" "}
-        <a
-          href='https://piemadd.com'
-          target='_blank'
-          rel='noreferrer'
-        >
+        <a href='https://piemadd.com' target='_blank' rel='noreferrer'>
           &copy;Piero
         </a>
       </div>
