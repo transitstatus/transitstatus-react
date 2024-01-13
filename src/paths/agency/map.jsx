@@ -1,8 +1,7 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import React, { useRef, useEffect, useState, useMemo } from "react";
 import * as pmtiles from "pmtiles";
-import layers from "protomaps-themes-base";
-//import mapStyle from "../../components/extras/mapStyle.json";
+import layers from "../../components/extras/mapStyle.json";
 //import osmLibertyTransitstatus from "../../components/extras/osm_liberty_-_transitstatus.json";
 import { agencies } from "../../config";
 import { DataManager } from "../../dataManager";
@@ -26,6 +25,41 @@ const Map = () => {
   const [loadingMessage, setLoadingMessage] = useState("Loading data...");
   const [isLoading, setIsLoading] = useState(true);
   const [lastUpdated, setLastUpdated] = useState(new Date());
+
+  if (!agencies[agency]) {
+    document.title = `Agency 404 Map | Transitstat.us`;
+    
+    return (
+      <>
+        <Oneko />
+        <h1>Agency Not Found</h1>
+        <p>
+          The agency you are looking for does not exist. Please choose another
+          agency.
+        </p>
+        <h3
+          className='route'
+          key='backButton'
+          style={{
+            backgroundColor: "#444",
+            color: "#fff",
+            fontSize: "1.3rem",
+            padding: "8px",
+            marginTop: "4px",
+          }}
+          onClick={() => {
+            if (history.state.idx && history.state.idx > 0) {
+              navigate(-1);
+            } else {
+              navigate("/", { replace: true }); //fallback
+            }
+          }}
+        >
+          Choose Another Agency
+        </h3>
+      </>
+    );
+  }
 
   const mapContainer = useRef(null);
   const map = useRef(null);
@@ -75,20 +109,15 @@ const Map = () => {
             glyphs:
               "https://fonts.transitstat.us/_output/{fontstack}/{range}.pbf",
             sprite: "https://osml.transitstat.us/sprites/osm-liberty",
-            layers: layers("protomaps", "black"),
+            layers: layers,
             bearing: 0,
             sources: {
               protomaps: {
                 type: "vector",
-                tiles: [
-                  "https://tilea.piemadd.com/tiles/{z}/{x}/{y}.mvt",
-                  "https://tileb.piemadd.com/tiles/{z}/{x}/{y}.mvt",
-                  "https://tilec.piemadd.com/tiles/{z}/{x}/{y}.mvt",
-                  "https://tiled.piemadd.com/tiles/{z}/{x}/{y}.mvt",
-                  //"http://10.0.0.237:8081/basemap/{z}/{x}/{y}.mvt"
-                ],
-                //url: "pmtiles://https://tiles.transitstat.us/pmtiles/03-06-2023/tiles.pmtiles",
-                maxzoom: 13,
+                url: "pmtiles://https://pm.transitstat.us/20240105.pmtiles",
+                maxzoom: 15,
+                attribution:
+                  "&copy; OpenStreetMap | &copy; Transitstatus | &copy; Protomaps",
               },
               natural_earth_shaded_relief: {
                 maxzoom: 6,
@@ -646,6 +675,7 @@ const Map = () => {
       ></div>
       <div
         style={{
+          display: "none",
           position: "absolute",
           bottom: "0",
           right: "0",

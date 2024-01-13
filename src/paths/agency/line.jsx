@@ -15,7 +15,7 @@ const Line = () => {
   const navigate = useNavigate();
   const dataManager = useMemo(() => new DataManager(), []);
 
-  document.title = `${line.lineNameLong} ${agencies[agency].name} | Transitstat.us`;
+  //document.title = `${line.lineNameLong} ${agencies[agency].name} | Transitstat.us`;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -51,6 +51,40 @@ const Line = () => {
 
     fetchData();
   }, [agency, lineName]);
+
+  if (line === "Not found" || line === undefined) {
+    document.title = `Line 404 ${agencies[agency].name} | Transitstat.us`;
+    return (
+      <>
+        <Oneko />
+        <h1>Line Not Found</h1>
+        <p>
+          The line you were trying to view doesn't exist. Please go back and try
+          again.
+        </p>
+        <h3
+          className='route'
+          key='backButton'
+          style={{
+            backgroundColor: "#444",
+            color: "#fff",
+            fontSize: "1.3rem",
+            padding: "8px",
+            marginTop: "4px",
+          }}
+          onClick={() => {
+            if (history.state.idx && history.state.idx > 0) {
+              navigate(-1);
+            } else {
+              navigate(`/${agency}`, { replace: true }); //fallback
+            }
+          }}
+        >
+          Choose Another Line
+        </h3>
+      </>
+    );
+  }
 
   return (
     <>

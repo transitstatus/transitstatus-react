@@ -36,12 +36,6 @@ const Trip = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [lastFetched, setLastFetched] = useState(0);
 
-  document.title = `${trip.line} #${
-    agencies[agency].removeLineCodeFromRunNumber
-      ? tripID.replace(trip.lineCode, "")
-      : tripID
-  } ${agencies[agency].name} | Transitstat.us`;
-
   useEffect(() => {
     const fetchData = () => {
       dataManager
@@ -82,6 +76,47 @@ const Trip = () => {
     fetchData();
     setInterval(fetchData, 30000);
   }, [agency, tripID]);
+
+  if (trip === "Not found") {
+    document.title = `Trip 404 ${agencies[agency].name} | Transitstat.us`;
+
+    return (
+      <>
+        <Oneko />
+        <h1>Trip Not Found</h1>
+        <p>
+          The trip you were trying to track doesn't exist. Please go back and
+          try again.
+        </p>
+        <h3
+          className='route'
+          key='backButton'
+          style={{
+            backgroundColor: "#444",
+            color: "#fff",
+            fontSize: "1.3rem",
+            padding: "8px",
+            marginTop: "4px",
+          }}
+          onClick={() => {
+            if (history.state.idx && history.state.idx > 0) {
+              navigate(-1);
+            } else {
+              navigate(`/${agency}`, { replace: true }); //fallback
+            }
+          }}
+        >
+          Choose Another Trip
+        </h3>
+      </>
+    );
+  }
+
+  document.title = `${trip.line} #${
+    agencies[agency].removeLineCodeFromRunNumber
+      ? tripID.replace(trip.lineCode, "")
+      : tripID
+  } ${agencies[agency].name} | Transitstat.us`;
 
   return (
     <>

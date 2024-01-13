@@ -28,9 +28,9 @@ const Agency = () => {
     return results;
   }, []);
 
-  document.title = `${agencies[agency].name} | Transitstat.us`;
-
   if (!agencies[agency]) {
+    document.title = `Agency 404 | Transitstat.us`;
+
     return (
       <>
         <Oneko />
@@ -62,6 +62,8 @@ const Agency = () => {
       </>
     );
   }
+
+  document.title = `${agencies[agency].name} | Transitstat.us`;
 
   useEffect(() => {
     const fetchData = () => {

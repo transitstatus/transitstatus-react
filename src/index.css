@@ -293,3 +293,7 @@ tr:nth-child(even) {
   border-radius: 4px;
   cursor: pointer;
 }
+
+.maplibregl-ctrl-attrib-inner {
+  color: #000;
+}

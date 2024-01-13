@@ -37,8 +37,6 @@ const Station = () => {
   const [loadingMessage, setLoadingMessage] = useState("Loading trains...");
   const [isLoading, setIsLoading] = useState(true);
 
-  document.title = `${station.stationName} ${agencies[agency].name} | Transitstat.us`;
-
   useEffect(() => {
     const fetchData = () => {
       dataManager
@@ -78,6 +76,42 @@ const Station = () => {
     fetchData();
     setInterval(fetchData, 30000);
   }, [agency, stopID]);
+
+  if (station === "Not found") {
+    document.title = `Stop 404 ${agencies[agency].name} | Transitstat.us`;
+    return (
+      <>
+        <Oneko />
+        <h1>Stop Not Found</h1>
+        <p>
+          The stop you were trying to view doesn't exist. Please go back and try
+          again.
+        </p>
+        <h3
+          className='route'
+          key='backButton'
+          style={{
+            backgroundColor: "#444",
+            color: "#fff",
+            fontSize: "1.3rem",
+            padding: "8px",
+            marginTop: "4px",
+          }}
+          onClick={() => {
+            if (history.state.idx && history.state.idx > 0) {
+              navigate(-1);
+            } else {
+              navigate(`/${agency}`, { replace: true }); //fallback
+            }
+          }}
+        >
+          Choose Another Stop
+        </h3>
+      </>
+    );
+  }
+  
+  document.title = `${station.stationName} ${agencies[agency].name} | Transitstat.us`;
 
   return (
     <>

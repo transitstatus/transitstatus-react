@@ -33,6 +33,17 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-11-0'>
+            <td>v1.11.0</td>
+            <td>
+              <ul>
+                <li>Replaced map data source.</li>
+                <li>Changed map style.</li>
+                <li>Added Columbia Univeristy.</li>
+                <li>Fixed error logs to be more accurate.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-10-5'>
             <td>v1.10.5</td>
             <td>
