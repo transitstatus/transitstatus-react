@@ -170,6 +170,21 @@ const Map = () => {
         });
 
         map.current.addLayer({
+          id: "shapes-under",
+          type: "line",
+          source: "shapes",
+          layout: {
+            "line-join": "round",
+            "line-round-limit": 0.1,
+          },
+          paint: {
+            "line-color": "#222222",
+            "line-opacity": 1,
+            "line-width": 8
+          }
+        });
+
+        map.current.addLayer({
           id: "shapes",
           type: "line",
           source: "shapes",

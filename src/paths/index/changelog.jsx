@@ -33,6 +33,14 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+        <tr id='1-11-1'>
+            <td>v1.11.1</td>
+            <td>
+              <ul>
+                <li>Added background lines for better contrast on the map.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-11-0'>
             <td>v1.11.0</td>
             <td>
