@@ -28,7 +28,7 @@ const Map = () => {
 
   if (!agencies[agency]) {
     document.title = `Agency 404 Map | Transitstat.us`;
-    
+
     return (
       <>
         <Oneko />
@@ -114,11 +114,17 @@ const Map = () => {
             sources: {
               protomaps: {
                 type: "vector",
-                url: "pmtiles://https://pm.transitstat.us/20240105.pmtiles",
+                tiles: [
+                  "https://tilea.transitstat.us/tiles/{z}/{x}/{y}.mvt",
+                  "https://tileb.transitstat.us/tiles/{z}/{x}/{y}.mvt",
+                  "https://tilec.transitstat.us/tiles/{z}/{x}/{y}.mvt",
+                  "https://tiled.transitstat.us/tiles/{z}/{x}/{y}.mvt",
+                ],
                 maxzoom: 15,
                 attribution:
-                  "&copy; OpenStreetMap | &copy; Transitstatus | &copy; Protomaps",
+                  "Map Data &copy; OpenStreetMap Contributors | &copy; Transitstatus | &copy; Protomaps",
               },
+              /*
               natural_earth_shaded_relief: {
                 maxzoom: 6,
                 tileSize: 256,
@@ -127,6 +133,7 @@ const Map = () => {
                 ],
                 type: "raster",
               },
+              */
             },
             version: 8,
             metadata: {},
@@ -180,8 +187,8 @@ const Map = () => {
           paint: {
             "line-color": "#222222",
             "line-opacity": 1,
-            "line-width": 8
-          }
+            "line-width": 8,
+          },
         });
 
         map.current.addLayer({

@@ -33,7 +33,15 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
-        <tr id='1-11-1'>
+          <tr id='1-11-2'>
+            <td>v1.11.2</td>
+            <td>
+              <ul>
+                <li>Removed loading of unnecessary raster tiles.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr id='1-11-1'>
             <td>v1.11.1</td>
             <td>
               <ul>
