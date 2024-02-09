@@ -371,7 +371,7 @@ export const agencies = {
 export const config = {
   siteTitle: 'Transit Stat.us',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'Transitstat.us v1.11.3',
+  version: 'Transitstat.us v1.11.4',
   additionalWarnings: [],
   globalAlerts: [
     {
@@ -380,11 +380,11 @@ export const config = {
       expires: 1707595364403
     },
     {
-      title: 'Transitstat.us Improvement Survey',
-      info: 'Please take some time to complete the following survey to improve Transitstatus.',
+      title: 'Agencies Temporarily Disabled',
+      info: 'The following agencies have been temporarily disabled to help with server stability. Apologies for the inconvenience: UNCC, UNCG, UNCW, MIT, GA Tech.',
       linkText: 'Survey Link',
       link: 'https://docs.google.com/forms/d/e/1FAIpQLSc8DdXR6EQ9Gu21Wl1QAW9GM1ZUj_A7nkwGx65aNZyxBJsVUA/viewform?usp=sf_link',
-      expires: 1705730400000
+      expires: 1707595364403
     }
   ]
 };
