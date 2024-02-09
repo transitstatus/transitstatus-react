@@ -33,6 +33,14 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-11-3'>
+            <td>v1.11.3</td>
+            <td>
+              <ul>
+                <li>Fixed error handling on agency main page.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-11-2'>
             <td>v1.11.2</td>
             <td>

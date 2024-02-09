@@ -8,7 +8,7 @@ export const agencies = {
       "https://gtfs.piemadd.com/data/RG/shapes/type_1.geojson",
       "https://gtfs.piemadd.com/data/RG/shapes/type_2.geojson",
       "https://gtfs.piemadd.com/data/RG/shapes/type_3.geojson",
-      "https://gtfs.piemadd.com/data/RG/shapes/type_4.geojson", 
+      "https://gtfs.piemadd.com/data/RG/shapes/type_4.geojson",
       "https://gtfs.piemadd.com/data/RG/shapes/type_5.geojson",
     ],
     gtfsRoot: "https://gtfs.piemadd.com/data/RG",
@@ -371,13 +371,13 @@ export const agencies = {
 export const config = {
   siteTitle: 'Transit Stat.us',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'Transitstat.us v1.11.2',
+  version: 'Transitstat.us v1.11.3',
   additionalWarnings: [],
   globalAlerts: [
     {
-      title: 'Happy New Year!',
-      info: 'Happy New Year from the Transitstatus team (ok yeah i\'m just one person, but shhhh)! Big changes coming in 2024, more info to come!',
-      expires: 1704866400000
+      title: 'Passio Go Server Issues',
+      info: 'As of 3PM eastern, requests to Passio\'s servers are intermitently failing. We apologise for these issues and are doing everything in our (very little) power to get things working again.',
+      expires: 1707595364403
     },
     {
       title: 'Transitstat.us Improvement Survey',

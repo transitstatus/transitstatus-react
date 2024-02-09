@@ -72,12 +72,21 @@ const Agency = () => {
         .then((data) => {
           setLines(data);
           setIsLoading(false);
+
+          dataManager.getData(agency, "shitsFucked").then((shitsFucked) => {
+            if (shitsFucked.shitIsFucked === true) {
+              setLoadingMessage(shitsFucked.message);
+              setIsLoading(true);
+            }
+          });
         })
         .catch((error) => {
           console.error(error);
 
           dataManager.getData(agency, "shitsFucked").then((shitsFucked) => {
-            if (shitsFucked.shitIsFucked) {
+            console.log(shitsFucked);
+
+            if (shitsFucked.shitIsFucked === true) {
               setLoadingMessage(shitsFucked.message);
             } else {
               setLoadingMessage(
@@ -127,7 +136,25 @@ const Agency = () => {
           />
         </div>
         {isLoading ? (
-          <p>{loadingMessage}</p>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              maxWidth: "400px",
+              gap: "4px",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "1rem",
+                padding: "4px 8px",
+                color: "#fff",
+                backgroundColor: "#444",
+              }}
+            >
+              {loadingMessage}
+            </p>
+          </div>
         ) : (
           Object.keys(lines)
             .sort((a, b) => {
@@ -176,9 +203,7 @@ const Agency = () => {
               );
             })
         )}
-        {isLoading ? (
-          <p>{loadingMessage}</p>
-        ) : (
+        {isLoading ? null : (
           <details>
             <summary
               style={{
