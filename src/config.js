@@ -371,20 +371,20 @@ export const agencies = {
 export const config = {
   siteTitle: 'Transit Stat.us',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'Transitstat.us v1.11.4',
+  version: 'Transitstat.us v1.11.5',
   additionalWarnings: [],
   globalAlerts: [
     {
-      title: 'Passio Go Server Issues',
-      info: 'As of 3PM eastern, requests to Passio\'s servers are intermitently failing. We apologise for these issues and are doing everything in our (very little) power to get things working again.',
-      expires: 1707595364403
+      title: 'Passio Go Fix!',
+      info: 'We have made some changes to our backend that should have fixed any issues with Passio Go. Universities which were temporarily disabled have been reinstated.',
+      expires: 1707940800403
     },
     {
-      title: 'Agencies Temporarily Disabled',
-      info: 'The following agencies have been temporarily disabled to help with server stability. Apologies for the inconvenience: UNCC, UNCG, UNCW, MIT, GA Tech.',
-      linkText: 'Survey Link',
-      link: 'https://docs.google.com/forms/d/e/1FAIpQLSc8DdXR6EQ9Gu21Wl1QAW9GM1ZUj_A7nkwGx65aNZyxBJsVUA/viewform?usp=sf_link',
-      expires: 1707595364403
+      title: 'Transitstat v2 Early Beta',
+      info: 'Transitstat v2 has hit its beta stage. It is a little unstable and unreliable, but feel free to test it out and send any feedback to piero@piemadd.com.',
+      linkText: 'Beta Link',
+      link: 'https://betamap.transitstat.us/',
+      expires: 253402430399000
     }
   ]
 };

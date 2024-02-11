@@ -33,6 +33,14 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-11-5'>
+            <td>v1.11.5</td>
+            <td>
+              <ul>
+                <li>Re-enabled previously disabled agencies</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-11-4'>
             <td>v1.11.4</td>
             <td>
