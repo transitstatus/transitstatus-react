@@ -1,4 +1,28 @@
 export const agencies = {
+  amtraker: {
+    name: "Amtraker",
+    selectionName: 'Amtraker (Beta)',
+    endpoint: "https://store.transitstat.us/atsa/ts",
+    mapShapes: [
+      "https://gtfs.piemadd.com/data/amtrak/shapes/type_2.geojson",
+      "https://gobbler.transitstat.us/additionalShapes/amtrak.json"
+    ],
+    gtfsRoot: "https://gtfs.piemadd.com/data/amtrak",
+    mapDefault: [37.69061057535559, -122.2893385041706, 5],
+    color: "#024D77",
+    textColor: "#F7F7F7F7",
+    type: 'Train',
+    typePlural: 'Trains',
+    typeCode: 'train',
+    typeCodePlural: 'trains',
+    addLine: false,
+    disabled: true,
+    useCodeForShortName: false,
+    addShortName: false,
+    showArrow: true,
+    removeLineCodeFromRunNumber: false,
+    dontFilterMapLines: true,
+  },
   bay: {
     name: "Bay Area",
     selectionName: 'Bay Area (Minus Bart)',
@@ -25,6 +49,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     removeLineCodeFromRunNumber: false,
+    dontFilterMapLines: false,
   },
   ctat: {
     name: "CTA",
@@ -45,6 +70,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     removeLineCodeFromRunNumber: false,
+    dontFilterMapLines: false,
   },
   ctab: {
     name: "CTAB",
@@ -65,6 +91,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     removeLineCodeFromRunNumber: false,
+    dontFilterMapLines: false,
   },
   metra: {
     name: "Metra",
@@ -84,7 +111,8 @@ export const agencies = {
     useCodeForShortName: true,
     addShortName: true,
     showArrow: true,
-    removeLineCodeFromRunNumber: true,
+    removeLineCodeFromRunNumber: false,
+    dontFilterMapLines: false,
   },
   southshore: {
     name: "South Shore Line",
@@ -105,6 +133,7 @@ export const agencies = {
     addShortName: true,
     showArrow: false,
     removeLineCodeFromRunNumber: false,
+    dontFilterMapLines: false,
   },
   rutgers: {
     name: "Rutgers",
@@ -125,6 +154,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     removeLineCodeFromRunNumber: false,
+    dontFilterMapLines: false,
   },
   columbia: {
     name: "Columbia",
@@ -145,6 +175,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     removeLineCodeFromRunNumber: false,
+    dontFilterMapLines: false,
   },
   uchicago: {
     name: "UChicago",
@@ -165,6 +196,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     removeLineCodeFromRunNumber: false,
+    dontFilterMapLines: false,
   },
   gcsu: {
     name: "Georgia College & State",
@@ -185,6 +217,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     removeLineCodeFromRunNumber: false,
+    dontFilterMapLines: false,
   },
   'georgiast': {
     name: "Georgia State",
@@ -205,6 +238,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     removeLineCodeFromRunNumber: false,
+    dontFilterMapLines: false,
   },
   'gatech': {
     name: "Georgia Tech",
@@ -225,6 +259,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     removeLineCodeFromRunNumber: false,
+    dontFilterMapLines: false,
   },
   'GASO': {
     name: "Georgia Southern",
@@ -245,6 +280,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     removeLineCodeFromRunNumber: false,
+    dontFilterMapLines: false,
   },
   'MIT': {
     name: "MIT",
@@ -265,6 +301,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     removeLineCodeFromRunNumber: false,
+    dontFilterMapLines: false,
   },
   'uncc': {
     name: "UNC Charlotte",
@@ -285,6 +322,7 @@ export const agencies = {
     addShortName: true,
     showArrow: true,
     removeLineCodeFromRunNumber: false,
+    dontFilterMapLines: false,
   },
   'uncg': {
     name: "UNC Greensboro",
@@ -305,6 +343,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     removeLineCodeFromRunNumber: false,
+    dontFilterMapLines: false,
   },
   'uncw': {
     name: "UNC Wilmington",
@@ -325,6 +364,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     removeLineCodeFromRunNumber: false,
+    dontFilterMapLines: false,
   },
   'bama': {
     name: "University of Alabama",
@@ -345,6 +385,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     removeLineCodeFromRunNumber: false,
+    dontFilterMapLines: false,
   },
   'ncstate': {
     name: "NC State",
@@ -365,13 +406,14 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     removeLineCodeFromRunNumber: false,
+    dontFilterMapLines: false,
   }
 };
 
 export const config = {
   siteTitle: 'Transit Stat.us',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'Transitstat.us v1.11.5',
+  version: 'Transitstat.us v1.11.6',
   additionalWarnings: [],
   globalAlerts: [
     {

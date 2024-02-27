@@ -33,6 +33,15 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-11-6'>
+            <td>v1.11.6</td>
+            <td>
+              <ul>
+                <li>Minor change to map config.</li>
+                <li>Added Amtrak beta (transitstat.us/amtraker)</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-11-5'>
             <td>v1.11.5</td>
             <td>

@@ -165,6 +165,7 @@ const Map = () => {
           fullMapShapes.features.push(
             ...mapShapesData.features.filter((feature) => {
               if (singleRouteID === "all") return true;
+              if (agencies[agency].dontFilterMapLines) return true;
               if (feature.properties.routeID === singleRouteID) return true;
               return false;
             })
