@@ -413,13 +413,13 @@ export const agencies = {
 export const config = {
   siteTitle: 'Transit Stat.us',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'Transitstat.us v1.11.6',
+  version: 'Transitstat.us v1.11.7',
   additionalWarnings: [],
   globalAlerts: [
     {
-      title: 'Passio Go Fix!',
-      info: 'We have made some changes to our backend that should have fixed any issues with Passio Go. Universities which were temporarily disabled have been reinstated.',
-      expires: 1707940800403
+      title: 'Temporary Outage',
+      info: 'We apologize for the temporary outage yesterday due to an expired domain. All systems are now fully operational and we have ensured all domains automatically renew from now on.',
+      expires: 1711123200000
     },
     {
       title: 'Transitstat v2 Early Beta',

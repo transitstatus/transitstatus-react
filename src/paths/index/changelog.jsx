@@ -33,6 +33,15 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+        <tr id='1-11-7'>
+            <td>v1.11.7</td>
+            <td>
+              <ul>
+                <li>Hiding inactive routes menu when there are no inactive routes.</li>
+                <li>Used memoization to partially improve performance on the agency index page.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-11-6'>
             <td>v1.11.6</td>
             <td>

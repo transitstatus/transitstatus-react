@@ -15,6 +15,35 @@ const Agency = () => {
   const [loadingMessage, setLoadingMessage] = useState("Loading data...");
   const [isLoading, setIsLoading] = useState(true);
 
+  const sortedLines = useMemo(() => {
+    return Object.keys(lines).sort((a, b) => {
+      const aName = lines[a].lineNameLong;
+      const bName = lines[b].lineNameLong;
+
+      const aNum = parseInt(aName);
+      const bNum = parseInt(bName);
+
+      if (isNaN(aNum) && isNaN(bNum)) return aName.localeCompare(bName);
+
+      if (isNaN(aNum)) return 1;
+      if (isNaN(bNum)) return -1;
+
+      return aNum - bNum;
+    });
+  }, [lines]);
+  const activeLines = useMemo(() => {
+    return sortedLines.filter((lineID) => {
+      if (lines[lineID].hasActiveTrains) return true;
+      return false;
+    });
+  }, [sortedLines]);
+  const inactiveLines = useMemo(() => {
+    return sortedLines.filter((lineID) => {
+      if (!lines[lineID].hasActiveTrains) return true;
+      return false;
+    });
+  }, [sortedLines]);
+
   const favoriteStations = useMemo(() => {
     const results =
       JSON.parse(localStorage.getItem("favorites-transitstatus-v0")) || {};
@@ -156,54 +185,32 @@ const Agency = () => {
             </p>
           </div>
         ) : (
-          Object.keys(lines)
-            .sort((a, b) => {
-              const aName = lines[a].lineNameLong;
-              const bName = lines[b].lineNameLong;
-
-              const aNum = parseInt(aName);
-              const bNum = parseInt(bName);
-
-              if (isNaN(aNum) && isNaN(bNum)) return aName.localeCompare(bName);
-
-              if (isNaN(aNum)) return 1;
-              if (isNaN(bNum)) return -1;
-
-              return aNum - bNum;
-            })
-            .map((lineID) => {
-              const line = lines[lineID];
-
-              if (line.hasActiveTrains === false) {
-                return null;
-              }
-
-              //console.log(line);
-
-              return (
-                <h3 key={line.lineCode}>
-                  <Link
-                    to={`/${agency}/${line.lineCode}`}
-                    className='route'
-                    style={{
-                      fontSize: "1.3rem",
-                      padding: "8px",
-                      backgroundColor: `#${line.routeColor}`,
-                      color: `#${line.routeTextColor}`,
-                    }}
-                  >
-                    {line.lineNameLong}{" "}
-                    {line.lineNameShort.length > 0 &&
-                    agencies[agency].addShortName &&
-                    line.lineNameShort !== line.lineNameLong
-                      ? `(${line.lineNameShort})`
-                      : ""}
-                  </Link>
-                </h3>
-              );
-            })
+          activeLines.map((lineID) => {
+            const line = lines[lineID];
+            return (
+              <h3 key={line.lineCode}>
+                <Link
+                  to={`/${agency}/${line.lineCode}`}
+                  className='route'
+                  style={{
+                    fontSize: "1.3rem",
+                    padding: "8px",
+                    backgroundColor: `#${line.routeColor}`,
+                    color: `#${line.routeTextColor}`,
+                  }}
+                >
+                  {line.lineNameLong}{" "}
+                  {line.lineNameShort.length > 0 &&
+                  agencies[agency].addShortName &&
+                  line.lineNameShort !== line.lineNameLong
+                    ? `(${line.lineNameShort})`
+                    : ""}
+                </Link>
+              </h3>
+            );
+          })
         )}
-        {isLoading ? null : (
+        {isLoading ? null : inactiveLines.length > 0 ? (
           <details>
             <summary
               style={{
@@ -220,56 +227,33 @@ const Agency = () => {
                 marginTop: "4px",
               }}
             >
-              {Object.keys(lines)
-                .sort((a, b) => {
-                  const aName = lines[a].lineNameLong;
-                  const bName = lines[b].lineNameLong;
-
-                  const aNum = parseInt(aName);
-                  const bNum = parseInt(bName);
-
-                  if (isNaN(aNum) && isNaN(bNum))
-                    return aName.localeCompare(bName);
-
-                  if (isNaN(aNum)) return 1;
-                  if (isNaN(bNum)) return -1;
-
-                  return aNum - bNum;
-                })
-                .map((lineID) => {
-                  const line = lines[lineID];
-
-                  if (line.hasActiveTrains === true) {
-                    return null;
-                  }
-
-                  console.log(line);
-
-                  return (
-                    <h3 key={line.lineCode}>
-                      <Link
-                        to={`/${agency}/${line.lineCode}`}
-                        className='route'
-                        style={{
-                          fontSize: "1.3rem",
-                          padding: "8px",
-                          backgroundColor: `#${line.routeColor}`,
-                          color: `#${line.routeTextColor}`,
-                        }}
-                      >
-                        {line.lineNameLong}{" "}
-                        {line.lineNameShort.length > 0 &&
-                        agencies[agency].addShortName &&
-                        line.lineNameShort !== line.lineNameLong
-                          ? `(${line.lineNameShort})`
-                          : ""}
-                      </Link>
-                    </h3>
-                  );
-                })}
+              {inactiveLines.map((lineID) => {
+                const line = lines[lineID];
+                return (
+                  <h3 key={line.lineCode}>
+                    <Link
+                      to={`/${agency}/${line.lineCode}`}
+                      className='route'
+                      style={{
+                        fontSize: "1.3rem",
+                        padding: "8px",
+                        backgroundColor: `#${line.routeColor}`,
+                        color: `#${line.routeTextColor}`,
+                      }}
+                    >
+                      {line.lineNameLong}{" "}
+                      {line.lineNameShort.length > 0 &&
+                      agencies[agency].addShortName &&
+                      line.lineNameShort !== line.lineNameLong
+                        ? `(${line.lineNameShort})`
+                        : ""}
+                    </Link>
+                  </h3>
+                );
+              })}
             </div>
           </details>
-        )}
+        ) : null}
         <div>
           <h2
             style={{
