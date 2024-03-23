@@ -33,12 +33,33 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
-        <tr id='1-11-7'>
+          <tr id='1-11-8'>
+            <td>v1.11.8</td>
+            <td>
+              <ul>
+                <li>Added "Boris" as a cat option for "Show Cat :3".</li>
+                <ul>
+                  <li>
+                    <a href='/boris.jpg' target='__blank'>
+                      Picture of real life Boris
+                    </a>
+                    .
+                  </li>
+                </ul>
+              </ul>
+            </td>
+          </tr>
+          <tr id='1-11-7'>
             <td>v1.11.7</td>
             <td>
               <ul>
-                <li>Hiding inactive routes menu when there are no inactive routes.</li>
-                <li>Used memoization to partially improve performance on the agency index page.</li>
+                <li>
+                  Hiding inactive routes menu when there are no inactive routes.
+                </li>
+                <li>
+                  Used memoization to partially improve performance on the
+                  agency index page.
+                </li>
               </ul>
             </td>
           </tr>

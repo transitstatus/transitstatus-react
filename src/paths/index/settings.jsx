@@ -19,8 +19,14 @@ const Settings = () => {
     let tempSettings =
       JSON.parse(localStorage.getItem("transitstatus_v1_settings")) ?? {};
 
+    console.log('Stored settings:', tempSettings)
+
     if (!tempSettings.showCat) {
       tempSettings.showCat = false;
+    }
+
+    if (!tempSettings.catType) {
+      tempSettings.catType = "onkeo";
     }
 
     console.log("Initial Settings:", tempSettings);
@@ -75,6 +81,30 @@ const Settings = () => {
                 checked={settings.showCat}
               ></input>
               <label htmlFor='setting_showCat'>Show Cat :3</label>
+            </span>
+            <span>
+              <label htmlFor='setting_catType'>Select a Cat:</label>
+              <select
+               onChange={(e) => {
+                setSettings((currentSettings) => {
+                  const newSettings = {
+                    ...currentSettings,
+                    catType: e.target.value,
+                  };
+
+                  console.log("New Settings:", newSettings);
+                  return newSettings;
+                });
+              }}
+                defaultValue={settings.catType}
+              >
+                <option value={"oneko"} id='setting_catType'>
+                  Oneko
+                </option>
+                <option value={"boris"} id='setting_catType'>
+                  Boris
+                </option>
+              </select>
             </span>
             <span>
               <label htmlFor='setting_theme'>Select a Theme:</label>

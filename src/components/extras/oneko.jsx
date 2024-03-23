@@ -91,10 +91,15 @@ const Oneko = () => {
         if (Array.from(document.getElementsByClassName("oneko")).length > 0)
           return;
 
-        const settings =
+        let settings =
           JSON.parse(localStorage.getItem("transitstatus_v1_settings")) ?? {};
 
+        //fallback for oneko type if not defined
+        if (!settings.catType) settings.catType = 'onkeo';
+
+
         console.log("Oneko setting:", settings.showCat);
+        console.log("Onkeko type:", settings.catType)
 
         if (!settings.showCat) return;
 
@@ -104,7 +109,7 @@ const Oneko = () => {
         nekoEl.style.height = "32px";
         nekoEl.style.position = "fixed";
         nekoEl.style.pointerEvents = "none";
-        nekoEl.style.backgroundImage = "url('/oneko.gif')";
+        nekoEl.style.backgroundImage = `url('/${settings.catType}.gif')`;
         nekoEl.style.imageRendering = "pixelated";
         nekoEl.style.left = `${nekoPosX - 16}px`;
         nekoEl.style.top = `${nekoPosY - 16}px`;
