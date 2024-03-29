@@ -10,7 +10,7 @@ const APIDocs = () => {
   const navigate = useNavigate();
 
   const [baseURL, setBaseURL] = useState(
-    "https://store.transitstat.us/cta_trains/transitStatus"
+    "https://store.transitstat.us/atsa/ts"
   );
   const [runNumber, setRunNumber] = useState("");
   const [stationID, setStationID] = useState("");
@@ -501,6 +501,7 @@ const APIDocs = () => {
         <p>Or enter your own:</p>
         <input
           value={baseURL}
+          onChange={(e) => setBaseURL(e.target.value)}
           style={{
             width: "100%",
             backgroundColor: "#444",
@@ -795,6 +796,7 @@ const APIDocs = () => {
       >
         <ul>
           {Object.values(agencies).map((agency) => {
+            console.log(agency.mapShapes.length);
             return (
               <li>
                 <p>{agency.name}</p>
@@ -807,9 +809,21 @@ const APIDocs = () => {
                   </li>
                   <li>
                     System GeoJSON:{" "}
-                    <a href={agency.mapShapes} target='_blank'>
-                      {agency.mapShapes}
-                    </a>
+                    {agency.mapShapes.length === 1 ? (
+                      <a href={agency.mapShapes[0]} target='_blank'>
+                        {agency.mapShapes[0]}
+                      </a>
+                    ) : (
+                      <ul>
+                        {agency.mapShapes.map((url) => (
+                          <li key={url}>
+                            <a href={url} target='_blank'>
+                              {url}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </li>
                 </ul>
               </li>

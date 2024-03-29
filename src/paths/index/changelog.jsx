@@ -33,6 +33,14 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-11-9'>
+            <td>v1.11.9</td>
+            <td>
+              <ul>
+                <li>Fixed API page to account for more than one shape type.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-11-8'>
             <td>v1.11.8</td>
             <td>
