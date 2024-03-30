@@ -200,6 +200,7 @@ const Trip = () => {
                     <p
                       style={{
                         fontSize: "0.8em",
+                        whiteSpace: 'nowrap'
                       }}
                     >
                       {timeFormat(stop.actualETA)}

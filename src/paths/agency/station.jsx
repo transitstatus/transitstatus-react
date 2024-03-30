@@ -257,6 +257,7 @@ const Station = () => {
                                       className='trainLink'
                                       style={{
                                         fontSize: "0.8em",
+                                        whiteSpace: 'nowrap'
                                       }}
                                     >
                                       {timeFormat(train.actualETA)}

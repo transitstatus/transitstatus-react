@@ -179,7 +179,7 @@ const Map = () => {
           paint: {
             "line-color": "#222222",
             "line-opacity": 1,
-            "line-width": 8,
+            "line-width": 4,
           },
         });
 
@@ -194,7 +194,7 @@ const Map = () => {
           paint: {
             "line-color": ["get", "routeColor"],
             "line-opacity": 1,
-            "line-width": 4,
+            "line-width": 2,
           },
         });
 
@@ -298,7 +298,7 @@ const Map = () => {
           type: "circle",
           source: "stations",
           paint: {
-            "circle-radius": 6,
+            "circle-radius": 4,
             "circle-color": "#fff",
             "circle-stroke-color": "#000",
             "circle-stroke-width": 1,
@@ -402,6 +402,7 @@ const Map = () => {
           .then((data) => {
             const uniqueData = [...new Set(data)];
 
+            /*
             uniqueData
               .filter((n) => n.includes(agencies[agency].typeCode))
               .forEach((imagePath) => {
@@ -417,9 +418,10 @@ const Map = () => {
                   }
                 );
               });
+              */
 
             uniqueData
-              .filter((n) => n.includes("arrow"))
+              //.filter((n) => n.includes("arrow"))
               .forEach((imagePath) => {
                 map.current.loadImage(
                   `${agencies[agency].gtfsRoot}/icons/${imagePath}`,
@@ -439,9 +441,9 @@ const Map = () => {
               type: "symbol",
               source: "trains",
               layout: {
-                "icon-image": ["get", "routeColor"],
+                "icon-image": ["concat", ["get", "routeColor"], "_circle"],
                 "icon-rotation-alignment": "map",
-                "icon-size": 0.5,
+                "icon-size": 0.25,
                 "icon-allow-overlap": true,
                 "text-font": ["Open Sans Regular"],
               },
@@ -456,7 +458,7 @@ const Map = () => {
                 layout: {
                   "icon-image": ["concat", ["get", "routeColor"], "_arrow"],
                   "icon-rotation-alignment": "map",
-                  "icon-size": 0.5,
+                  "icon-size": 0.35,
                   "icon-rotate": ["get", "heading"],
                   "icon-allow-overlap": true,
                   "text-font": ["Open Sans Regular"],

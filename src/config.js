@@ -44,7 +44,7 @@ export const agencies = {
     typeCode: 'train',
     typeCodePlural: 'trains',
     addLine: false,
-    disabled: true,
+    disabled: false,
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
@@ -415,7 +415,7 @@ export const agencies = {
 export const config = {
   siteTitle: 'Transit Stat.us',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'Transitstat.us v1.11.10',
+  version: 'Transitstat.us v1.11.11',
   additionalWarnings: [],
   globalAlerts: [
     {

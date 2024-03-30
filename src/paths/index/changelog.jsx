@@ -33,6 +33,19 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-11-11'>
+            <td>v1.11.11</td>
+            <td>
+              <ul>
+                <li>Adjusted map icons and sizes.</li>
+                <li>Re-enabled bay area with bugs fixed.</li>
+                <li>
+                  Fixed text wrapping issues encountered with long station
+                  names.
+                </li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-11-10'>
             <td>v1.11.10</td>
             <td>
