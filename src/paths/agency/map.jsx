@@ -124,16 +124,6 @@ const Map = () => {
                 attribution:
                   "Map Data &copy; OpenStreetMap Contributors | &copy; Transitstatus | &copy; Protomaps",
               },
-              /*
-              natural_earth_shaded_relief: {
-                maxzoom: 6,
-                tileSize: 256,
-                tiles: [
-                  "https://naturalearthtiles.transitstat.us/{z}/{x}/{y}.png",
-                ],
-                type: "raster",
-              },
-              */
             },
             version: 8,
             metadata: {},
@@ -167,6 +157,7 @@ const Map = () => {
               if (singleRouteID === "all") return true;
               if (agencies[agency].dontFilterMapLines) return true;
               if (feature.properties.routeID === singleRouteID) return true;
+              if (feature.properties.routeLongName === singleRouteID) return true;
               return false;
             })
           );

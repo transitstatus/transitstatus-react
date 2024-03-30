@@ -33,6 +33,14 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-11-10'>
+            <td>v1.11.10</td>
+            <td>
+              <ul>
+                <li>Changed map filtering to work better with merged lines.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-11-9'>
             <td>v1.11.9</td>
             <td>
