@@ -33,18 +33,34 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
-          <tr id='1-11-12'>
-            <td>v1.11.12</td>
+          <tr id='1-11-13'>
+            <td>
+              <a href='#1-11-13'>v1.11.13</a>
+            </td>
             <td>
               <ul>
                 <li>
-                  Added snowpiercer.
+                  Made <code>/snowpiercer</code> redirect to{" "}
+                  <code>/snowpiercer/track/PRCR</code>.
                 </li>
+                <li>Added links to changelog.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr id='1-11-12'>
+            <td>
+              <a href='#1-11-12'>v1.11.12</a>
+            </td>
+            <td>
+              <ul>
+                <li>Added snowpiercer.</li>
               </ul>
             </td>
           </tr>
           <tr id='1-11-11'>
-            <td>v1.11.11</td>
+            <td>
+              <a href='#1-11-11'>v1.11.11</a>
+            </td>
             <td>
               <ul>
                 <li>Adjusted map icons and sizes.</li>
@@ -57,7 +73,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-11-10'>
-            <td>v1.11.10</td>
+            <td>
+              <a href='#1-11-10'>v1.11.10</a>
+            </td>
             <td>
               <ul>
                 <li>Changed map filtering to work better with merged lines.</li>
@@ -65,7 +83,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-11-9'>
-            <td>v1.11.9</td>
+            <td>
+              <a href='#1-11-9'>v1.11.9</a>
+            </td>
             <td>
               <ul>
                 <li>Fixed API page to account for more than one shape type.</li>
@@ -73,7 +93,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-11-8'>
-            <td>v1.11.8</td>
+            <td>
+              <a href='#1-11-8'>v1.11.8</a>
+            </td>
             <td>
               <ul>
                 <li>Added "Boris" as a cat option for "Show Cat :3".</li>
@@ -89,7 +111,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-11-7'>
-            <td>v1.11.7</td>
+            <td>
+              <a href='#1-11-7'>v1.11.7</a>
+            </td>
             <td>
               <ul>
                 <li>
@@ -103,7 +127,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-11-6'>
-            <td>v1.11.6</td>
+            <td>
+              <a href='#1-11-6'>v1.11.6</a>
+            </td>
             <td>
               <ul>
                 <li>Minor change to map config.</li>
@@ -112,7 +138,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-11-5'>
-            <td>v1.11.5</td>
+            <td>
+              <a href='#1-11-5'>v1.11.5</a>
+            </td>
             <td>
               <ul>
                 <li>Re-enabled previously disabled agencies</li>
@@ -120,7 +148,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-11-4'>
-            <td>v1.11.4</td>
+            <td>
+              <a href='#1-11-4'>v1.11.4</a>
+            </td>
             <td>
               <ul>
                 <li>Temporarily Disabled:</li>
@@ -135,7 +165,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-11-3'>
-            <td>v1.11.3</td>
+            <td>
+              <a href='#1-11-3'>v1.11.3</a>
+            </td>
             <td>
               <ul>
                 <li>Fixed error handling on agency main page.</li>
@@ -143,7 +175,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-11-2'>
-            <td>v1.11.2</td>
+            <td>
+              <a href='#1-11-2'>v1.11.2</a>
+            </td>
             <td>
               <ul>
                 <li>Removed loading of unnecessary raster tiles.</li>
@@ -151,7 +185,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-11-1'>
-            <td>v1.11.1</td>
+            <td>
+              <a href='#1-11-1'>v1.11.1</a>
+            </td>
             <td>
               <ul>
                 <li>Added background lines for better contrast on the map.</li>
@@ -159,7 +195,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-11-0'>
-            <td>v1.11.0</td>
+            <td>
+              <a href='#1-11-0'>v1.11.0</a>
+            </td>
             <td>
               <ul>
                 <li>Replaced map data source.</li>
@@ -170,7 +208,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-10-5'>
-            <td>v1.10.5</td>
+            <td>
+              <a href='#1-10-5'>v1.10.5</a>
+            </td>
             <td>
               <ul>
                 <li>Added infrastructure to support multi vehicle agencies.</li>
@@ -181,7 +221,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-10-4'>
-            <td>v1.10.4</td>
+            <td>
+              <a href='#1-10-4'>v1.10.4</a>
+            </td>
             <td>
               <ul>
                 <li>Kept icons flat with map upon rotation and pitch.</li>
@@ -189,7 +231,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-10-3'>
-            <td>v1.10.3</td>
+            <td>
+              <a href='#1-10-3'>v1.10.3</a>
+            </td>
             <td>
               <ul>
                 <li>Added improvement survey.</li>
@@ -197,7 +241,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-10-2'>
-            <td>v1.10.2</td>
+            <td>
+              <a href='#1-10-2'>v1.10.2</a>
+            </td>
             <td>
               <ul>
                 <li>Made map attribution slightly shorter.</li>
@@ -205,7 +251,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-10-1'>
-            <td>v1.10.1</td>
+            <td>
+              <a href='#1-10-1'>v1.10.1</a>
+            </td>
             <td>
               <ul>
                 <li>Fixed screenshots path in manifest.</li>
@@ -213,7 +261,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-10-0'>
-            <td>v1.10.0</td>
+            <td>
+              <a href='#1-10-0'>v1.10.0</a>
+            </td>
             <td>
               <ul>
                 <li>Updated manifest.</li>
@@ -222,7 +272,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-9-5'>
-            <td>v1.9.5</td>
+            <td>
+              <a href='#1-9-5'>v1.9.5</a>
+            </td>
             <td>
               <ul>
                 <li>Rolled back map request changes.</li>
@@ -231,7 +283,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-9-4'>
-            <td>v1.9.4</td>
+            <td>
+              <a href='#1-9-4'>v1.9.4</a>
+            </td>
             <td>
               <ul>
                 <li>
@@ -243,7 +297,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-9-3'>
-            <td>v1.9.3</td>
+            <td>
+              <a href='#1-9-3'>v1.9.3</a>
+            </td>
             <td>
               <ul>
                 <li>
@@ -254,7 +310,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-9-2'>
-            <td>v1.9.2</td>
+            <td>
+              <a href='#1-9-2'>v1.9.2</a>
+            </td>
             <td>
               <ul>
                 <li>Fixed edge case with data manager.</li>
@@ -262,7 +320,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-9-1'>
-            <td>v1.9.1</td>
+            <td>
+              <a href='#1-9-1'>v1.9.1</a>
+            </td>
             <td>
               <ul>
                 <li>Began setup for holiday vehicles.</li>
@@ -270,7 +330,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-9-0'>
-            <td>v1.9.0</td>
+            <td>
+              <a href='#1-9-0'>v1.9.0</a>
+            </td>
             <td>
               <ul>
                 <li>Added arrows to map.</li>
@@ -278,7 +340,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-8-2'>
-            <td>v1.8.2</td>
+            <td>
+              <a href='#1-8-2'>v1.8.2</a>
+            </td>
             <td>
               <ul>
                 <li>Improved constrast with GA Tech colors.</li>
@@ -286,7 +350,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-8-1'>
-            <td>v1.8.1</td>
+            <td>
+              <a href='#1-8-1'>v1.8.1</a>
+            </td>
             <td>
               <ul>
                 <li>Removed ads script for better performance.</li>
@@ -294,7 +360,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-8-0'>
-            <td>v1.8.0</td>
+            <td>
+              <a href='#1-8-0'>v1.8.0</a>
+            </td>
             <td>
               <ul>
                 <li>
@@ -311,7 +379,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-7-1'>
-            <td>v1.7.1</td>
+            <td>
+              <a href='#1-7-1'>v1.7.1</a>
+            </td>
             <td>
               <ul>
                 <li>Added cat mode :3</li>
@@ -319,7 +389,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-7-0'>
-            <td>v1.7.0</td>
+            <td>
+              <a href='#1-7-0'>v1.7.0</a>
+            </td>
             <td>
               <ul>
                 <li>Fixed issues with new ETAs system</li>
@@ -335,7 +407,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-6-7'>
-            <td>v1.6.7</td>
+            <td>
+              <a href='#1-6-7'>v1.6.7</a>
+            </td>
             <td>
               <ul>
                 <li>Added expiration time for alerts system</li>
@@ -343,7 +417,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-6-6'>
-            <td>v1.6.6</td>
+            <td>
+              <a href='#1-6-6'>v1.6.6</a>
+            </td>
             <td>
               <ul>
                 <li>Added alerts system</li>
@@ -352,7 +428,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-6-5'>
-            <td>v1.6.5</td>
+            <td>
+              <a href='#1-6-5'>v1.6.5</a>
+            </td>
             <td>
               <ul>
                 <li>Fixed GCSU Typo</li>
@@ -360,7 +438,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-6-4'>
-            <td>v1.6.4</td>
+            <td>
+              <a href='#1-6-4'>v1.6.4</a>
+            </td>
             <td>
               <ul>
                 <li>Sorted Inactive Routes</li>
@@ -370,7 +450,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-6-3'>
-            <td>v1.6.3</td>
+            <td>
+              <a href='#1-6-3'>v1.6.3</a>
+            </td>
             <td>
               <ul>
                 <li>Fixed ETA sorting</li>
@@ -378,7 +460,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-6-2'>
-            <td>v1.6.2</td>
+            <td>
+              <a href='#1-6-2'>v1.6.2</a>
+            </td>
             <td>
               <ul>
                 <li>Fixed 404 error page</li>
@@ -386,7 +470,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-6-1'>
-            <td>v1.6.1</td>
+            <td>
+              <a href='#1-6-1'>v1.6.1</a>
+            </td>
             <td>
               <ul>
                 <li>Fixed API docs title</li>
@@ -394,7 +480,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-6-0'>
-            <td>v1.6.0</td>
+            <td>
+              <a href='#1-6-0'>v1.6.0</a>
+            </td>
             <td>
               <ul>
                 <li>Added API docs</li>
@@ -402,7 +490,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-5-1'>
-            <td>v1.5.1</td>
+            <td>
+              <a href='#1-5-1'>v1.5.1</a>
+            </td>
             <td>
               <ul>
                 <li>Fixed missing line heart</li>
@@ -411,7 +501,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-5-0'>
-            <td>v1.5.0</td>
+            <td>
+              <a href='#1-5-0'>v1.5.0</a>
+            </td>
             <td>
               <ul>
                 <li>Added NC State</li>
@@ -423,7 +515,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-4-1'>
-            <td>v1.4.1</td>
+            <td>
+              <a href='#1-4-1'>v1.4.1</a>
+            </td>
             <td>
               <ul>
                 <li>Fixed commented out code</li>
@@ -431,7 +525,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-4-0'>
-            <td>v1.4.0</td>
+            <td>
+              <a href='#1-4-0'>v1.4.0</a>
+            </td>
             <td>
               <ul>
                 <li>Increased map max zoom level</li>
@@ -440,7 +536,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-3-10'>
-            <td>v1.3.10</td>
+            <td>
+              <a href='#1-3-10'>v1.3.10</a>
+            </td>
             <td>
               <ul>
                 <li>Added bus descriptions</li>
@@ -448,7 +546,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-3-9'>
-            <td>v1.3.9</td>
+            <td>
+              <a href='#1-3-9'>v1.3.9</a>
+            </td>
             <td>
               <ul>
                 <li>Fixed error message typo</li>
@@ -457,7 +557,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-3-8'>
-            <td>v1.3.8</td>
+            <td>
+              <a href='#1-3-8'>v1.3.8</a>
+            </td>
             <td>
               <ul>
                 <li>OK the API actually works this time</li>
@@ -465,7 +567,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-3-7'>
-            <td>v1.3.7</td>
+            <td>
+              <a href='#1-3-7'>v1.3.7</a>
+            </td>
             <td>
               <ul>
                 <li>OH SHIT OH FUCK GO BACK</li>
@@ -473,7 +577,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-3-6'>
-            <td>v1.3.6</td>
+            <td>
+              <a href='#1-3-6'>v1.3.6</a>
+            </td>
             <td>
               <ul>
                 <li>Changed API endpoint root for better analytics</li>
@@ -481,7 +587,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-3-5'>
-            <td>v1.3.5</td>
+            <td>
+              <a href='#1-3-5'>v1.3.5</a>
+            </td>
             <td>
               <ul>
                 <li>More descriptive page titles</li>
@@ -489,7 +597,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-3-4'>
-            <td>v1.3.4</td>
+            <td>
+              <a href='#1-3-4'>v1.3.4</a>
+            </td>
             <td>
               <ul>
                 <li>Page titles</li>
@@ -497,7 +607,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-3-3'>
-            <td>v1.3.3</td>
+            <td>
+              <a href='#1-3-3'>v1.3.3</a>
+            </td>
             <td>
               <ul>
                 <li>Minor map popup formatting</li>
@@ -507,7 +619,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-3-2'>
-            <td>v1.3.2</td>
+            <td>
+              <a href='#1-3-2'>v1.3.2</a>
+            </td>
             <td>
               <ul>
                 <li>Added a small bit to the about section</li>
@@ -515,7 +629,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-3-1'>
-            <td>v1.3.1</td>
+            <td>
+              <a href='#1-3-1'>v1.3.1</a>
+            </td>
             <td>
               <ul>
                 <li>More accurate last updated timestamps</li>
@@ -523,7 +639,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-3-0'>
-            <td>v1.3.0</td>
+            <td>
+              <a href='#1-3-0'>v1.3.0</a>
+            </td>
             <td>
               <ul>
                 <li>Added capacities to passio vehicles</li>
@@ -531,7 +649,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-2-4'>
-            <td>v1.2.4</td>
+            <td>
+              <a href='#1-2-4'>v1.2.4</a>
+            </td>
             <td>
               <ul>
                 <li>Fixed map last updated timestamp</li>
@@ -539,7 +659,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-2-3'>
-            <td>v1.2.3</td>
+            <td>
+              <a href='#1-2-3'>v1.2.3</a>
+            </td>
             <td>
               <ul>
                 <li>Fixed bug in station pages having invalid ETAs</li>
@@ -547,7 +669,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-2-2'>
-            <td>v1.2.2</td>
+            <td>
+              <a href='#1-2-2'>v1.2.2</a>
+            </td>
             <td>
               <ul>
                 <li>Fixed bug in station popups having invalid ETAs</li>
@@ -555,7 +679,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-2-1'>
-            <td>v1.2.1</td>
+            <td>
+              <a href='#1-2-1'>v1.2.1</a>
+            </td>
             <td>
               <ul>
                 <li>Sorted line names in line selector</li>
@@ -563,7 +689,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-2-0'>
-            <td>v1.2.0</td>
+            <td>
+              <a href='#1-2-0'>v1.2.0</a>
+            </td>
             <td>
               <ul>
                 <li>Added more error messages</li>
@@ -575,7 +703,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-1-4'>
-            <td>v1.1.4</td>
+            <td>
+              <a href='#1-1-4'>v1.1.4</a>
+            </td>
             <td>
               <ul>
                 <li>Added oopsy poopsy messages</li>
@@ -583,7 +713,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-1-3'>
-            <td>v1.1.3</td>
+            <td>
+              <a href='#1-1-3'>v1.1.3</a>
+            </td>
             <td>
               <ul>
                 <li>Fixed missing strings in config</li>
@@ -592,7 +724,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-1-2'>
-            <td>v1.1.2</td>
+            <td>
+              <a href='#1-1-2'>v1.1.2</a>
+            </td>
             <td>
               <ul>
                 <li>Ensured icons aren't duplicates</li>
@@ -600,7 +734,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-1-1'>
-            <td>v1.1.1</td>
+            <td>
+              <a href='#1-1-1'>v1.1.1</a>
+            </td>
             <td>
               <ul>
                 <li>Added proper 404 page</li>
@@ -609,7 +745,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-1-0'>
-            <td>v1.1.0</td>
+            <td>
+              <a href='#1-1-0'>v1.1.0</a>
+            </td>
             <td>
               <ul>
                 <li>Added everything map</li>
@@ -617,7 +755,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-0-1'>
-            <td>v1.0.1</td>
+            <td>
+              <a href='#1-0-1'>v1.0.1</a>
+            </td>
             <td>
               <ul>
                 <li>Added changelog IDs</li>
@@ -625,7 +765,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='1-0-0'>
-            <td>v1.0.0</td>
+            <td>
+              <a href='#1-0-0'>v1.0.0</a>
+            </td>
             <td>
               <ul>
                 <li>Fixed manifest short name</li>
@@ -636,7 +778,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-10-2'>
-            <td>v0.10.2 Beta</td>
+            <td>
+              <a href='#0-10-2'>v0.10.2 Beta</a>
+            </td>
             <td>
               <ul>
                 <li>Added icons required for PWA</li>
@@ -645,7 +789,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-10-1'>
-            <td>v0.10.1 Beta</td>
+            <td>
+              <a href='#0-10-1'>v0.10.1 Beta</a>
+            </td>
             <td>
               <ul>
                 <li>Added Georgia College & State Shuttles</li>
@@ -657,7 +803,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-10-0'>
-            <td>v0.10.0 Beta</td>
+            <td>
+              <a href='#0-10-0'>v0.10.0 Beta</a>
+            </td>
             <td>
               <ul>
                 <li>Migrated UChicago Shuttles Endpoint</li>
@@ -666,7 +814,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-9-1'>
-            <td>v0.9.1 Beta</td>
+            <td>
+              <a href='#0-9-1'>v0.9.1 Beta</a>
+            </td>
             <td>
               <ul>
                 <li>Added privacy policy</li>
@@ -676,7 +826,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-9-0'>
-            <td>v0.9.0 Beta</td>
+            <td>
+              <a href='#0-9-0'>v0.9.0 Beta</a>
+            </td>
             <td>
               <ul>
                 <li>Implemented limited PWA functionality</li>
@@ -685,7 +837,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-8-0'>
-            <td>v0.8.0 Beta</td>
+            <td>
+              <a href='#0-8-0'>v0.8.0 Beta</a>
+            </td>
             <td>
               <ul>
                 <li>Added UChicago Shuttles</li>
@@ -695,7 +849,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-7-1'>
-            <td>v0.7.1 Beta</td>
+            <td>
+              <a href='#0-7-1'>v0.7.1 Beta</a>
+            </td>
             <td>
               <ul>
                 <li>Adjusted font sizes</li>
@@ -703,7 +859,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-7-0'>
-            <td>v0.7.0 Beta</td>
+            <td>
+              <a href='#0-7-0'>v0.7.0 Beta</a>
+            </td>
             <td>
               <ul>
                 <li>Added timestamps to predictions</li>
@@ -711,7 +869,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-6-3'>
-            <td>v0.6.3 Beta</td>
+            <td>
+              <a href='#0-6-3'>v0.6.3 Beta</a>
+            </td>
             <td>
               <ul>
                 <li>Fixed map navigation</li>
@@ -720,7 +880,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-6-1'>
-            <td>v0.6.1 Beta</td>
+            <td>
+              <a href='#0-6-1'>v0.6.1 Beta</a>
+            </td>
             <td>
               <ul>
                 <li>Added map controls</li>
@@ -729,7 +891,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-6-0'>
-            <td>v0.6.0 Beta</td>
+            <td>
+              <a href='#0-6-0'>v0.6.0 Beta</a>
+            </td>
             <td>
               <ul>
                 <li>Added map</li>
@@ -737,7 +901,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-5-4'>
-            <td>v0.5.4 Beta</td>
+            <td>
+              <a href='#0-5-4'>v0.5.4 Beta</a>
+            </td>
             <td>
               <ul>
                 <li>Accounted for trains/buses not existing</li>
@@ -746,7 +912,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-5-1'>
-            <td>0.5.1 Beta</td>
+            <td>
+              <a href='#0-5-1'>v0.5.1 Beta</a>
+            </td>
             <td>
               <ul>
                 <li>Ported over Amtraker error handling</li>
@@ -754,7 +922,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-5-0'>
-            <td>v0.5.0 Beta</td>
+            <td>
+              <a href='#0-5-0'>v0.5.0 Beta</a>
+            </td>
             <td>
               <ul>
                 <li>Added support for multiple agencies</li>
@@ -765,7 +935,9 @@ const Changelog = () => {
             </td>
           </tr>
           <tr id='0-4-0'>
-            <td>v0.4.0 Beta</td>
+            <td>
+              <a href='#0-4-0'>v0.4.0 Beta</a>
+            </td>
             <td>
               <ul>
                 <li>Initial Release</li>
