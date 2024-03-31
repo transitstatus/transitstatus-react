@@ -15,7 +15,7 @@ const Agency = () => {
   const [loadingMessage, setLoadingMessage] = useState("Loading data...");
   const [isLoading, setIsLoading] = useState(true);
 
-  if (agency === 'snowpiercer') navigate("/snowpiercer/track/PRCR", { replace: true });
+  //if (agency === 'snowpiercer') navigate("/snowpiercer/track/PRCR", { replace: true });
 
   const sortedLines = useMemo(() => {
     return Object.keys(lines).sort((a, b) => {

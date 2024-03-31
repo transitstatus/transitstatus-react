@@ -89,7 +89,7 @@ export const agencies = {
     disabled: false,
     useCodeForShortName: false,
     addShortName: false,
-    showArrow: false,
+    showArrow: true,
     removeLineCodeFromRunNumber: false,
     dontFilterMapLines: true,
     autoFitMaxZoom: 5,

@@ -33,6 +33,17 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-11-14'>
+            <td>
+              <a href='#1-11-14'>v1.11.14</a>
+            </td>
+            <td>
+              <ul>
+                <li>Removed snowpiercer specific redirect.</li>
+                <li>Enabled snowpiercer heading.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-11-13'>
             <td>
               <a href='#1-11-13'>v1.11.13</a>
