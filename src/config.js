@@ -72,6 +72,28 @@ export const agencies = {
     removeLineCodeFromRunNumber: false,
     dontFilterMapLines: false,
   },
+  snowpiercer: {
+    name: "Snowpiercer",
+    selectionName: 'Snowpiercer',
+    endpoint: "https://store.transitstat.us/snowpiercer/v1",
+    mapShapes: ["https://gobbler.transitstat.us/additionalShapes/snowPiercer.json"],
+    gtfsRoot: "https://gobbler.transitstat.us/piercer",
+    mapDefault: [37.6362722722116, -96.71855316394493, 3],
+    color: "#a5c9d7",
+    textColor: "#000000",
+    type: 'Train',
+    typePlural: 'Trains',
+    typeCode: 'train',
+    typeCodePlural: 'trains',
+    addLine: false,
+    disabled: false,
+    useCodeForShortName: false,
+    addShortName: false,
+    showArrow: false,
+    removeLineCodeFromRunNumber: false,
+    dontFilterMapLines: true,
+    autoFitMaxZoom: 5,
+  },
   /*
   ctab: {
     name: "CTAB",
@@ -415,7 +437,7 @@ export const agencies = {
 export const config = {
   siteTitle: 'Transit Stat.us',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'Transitstat.us v1.11.11',
+  version: 'Transitstat.us v1.11.12',
   additionalWarnings: [],
   globalAlerts: [
     {

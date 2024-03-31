@@ -358,7 +358,10 @@ const Map = () => {
               [minLon, minLat],
               [maxLon, maxLat],
             ],
-            { padding: 50 }
+            {
+              padding: 50,
+              maxZoom: agencies[agency].autoFitMaxZoom ?? 14,
+            }
           );
         }
 
