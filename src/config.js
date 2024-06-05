@@ -138,6 +138,27 @@ export const agencies = {
     removeLineCodeFromRunNumber: false,
     dontFilterMapLines: false,
   },
+  metra: {
+    name: "MARTA",
+    selectionName: 'MARTA (Atlanta Trains)',
+    endpoint: "https://store.transitstat.us/martat/v1",
+    mapShapes: ["https://gtfs.piemadd.com/data/marta/shapes/type_1.geojson"],
+    gtfsRoot: "https://gtfs.piemadd.com/data/marta",
+    mapDefault: [33.7928, -84.3488, 10],
+    color: "#ff7600",
+    textColor: "#000000",
+    type: 'Train',
+    typePlural: 'Trains',
+    typeCode: 'train',
+    typeCodePlural: 'trains',
+    addLine: true,
+    disabled: false,
+    useCodeForShortName: true,
+    addShortName: true,
+    showArrow: false,
+    removeLineCodeFromRunNumber: false,
+    dontFilterMapLines: false,
+  },
   southshore: {
     name: "South Shore Line",
     selectionName: 'South Shore Line',
@@ -437,7 +458,7 @@ export const agencies = {
 export const config = {
   siteTitle: 'Transit Stat.us',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'Transitstat.us v1.11.14',
+  version: 'Transitstat.us v1.11.15',
   additionalWarnings: [],
   globalAlerts: [
     {

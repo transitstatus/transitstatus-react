@@ -33,6 +33,16 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-11-15'>
+            <td>
+              <a href='#1-11-15'>v1.11.15</a>
+            </td>
+            <td>
+              <ul>
+                <li>Added MARTA.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-11-14'>
             <td>
               <a href='#1-11-14'>v1.11.14</a>
