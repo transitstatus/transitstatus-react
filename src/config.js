@@ -138,7 +138,7 @@ export const agencies = {
     removeLineCodeFromRunNumber: false,
     dontFilterMapLines: false,
   },
-  metra: {
+  marta: {
     name: "MARTA",
     selectionName: 'MARTA (Atlanta Trains)',
     endpoint: "https://store.transitstat.us/martat/v1",
