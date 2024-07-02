@@ -264,7 +264,28 @@ export const agencies = {
     removeLineCodeFromRunNumber: false,
     dontFilterMapLines: false,
   },
-  'georgiast': {
+  gobus: {
+    name: "GOBus",
+    selectionName: "GOBus",
+    endpoint: 'https://store.transitstat.us/passio_go/miller',
+    mapShapes: ["https://passio.piemadd.com/data/miller/shapes.json"],
+    gtfsRoot: "https://passio.piemadd.com/data/miller",
+    mapDefault: [40.371579, -82.189678, 6],
+    color: "#084a31",
+    textColor: "#ffffff",
+    type: 'Bus',
+    typePlural: 'Buses',
+    typeCode: 'bus',
+    typeCodePlural: 'buses',
+    addLine: false,
+    disabled: true,
+    useCodeForShortName: false,
+    addShortName: false,
+    showArrow: true,
+    removeLineCodeFromRunNumber: false,
+    dontFilterMapLines: false,
+  },
+  georgiast: {
     name: "Georgia State",
     selectionName: 'Georgia State Shuttles',
     endpoint: "https://store.transitstat.us/passio_go/georgiast",
@@ -458,7 +479,7 @@ export const agencies = {
 export const config = {
   siteTitle: 'Transit Stat.us',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'Transitstat.us v1.11.15',
+  version: 'Transitstat.us v1.12.0',
   additionalWarnings: [],
   globalAlerts: [
     {

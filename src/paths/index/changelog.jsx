@@ -33,7 +33,17 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
-        <tr id='1-11-16'>
+          <tr id='1-12-0'>
+            <td>
+              <a href='#1-12-0'>v1.12.0</a>
+            </td>
+            <td>
+              <ul>
+                <li>Added the ability to track a train/bus via a run/vehicle number.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr id='1-11-16'>
             <td>
               <a href='#1-11-16'>v1.11.16</a>
             </td>

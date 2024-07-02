@@ -14,6 +14,7 @@ const Agency = () => {
   const [lines, setLines] = useState({});
   const [loadingMessage, setLoadingMessage] = useState("Loading data...");
   const [isLoading, setIsLoading] = useState(true);
+  const [runNumber, setRunNumber] = useState('');
 
   //if (agency === 'snowpiercer') navigate("/snowpiercer/track/PRCR", { replace: true });
 
@@ -256,6 +257,65 @@ const Agency = () => {
             </div>
           </details>
         ) : null}
+
+        <div>
+          <h2
+            style={{
+              marginTop: "4px",
+              marginBottom: "-4px",
+              color: agencies[agency].textColor,
+              backgroundColor: agencies[agency].color,
+              maxWidth: "384px",
+              padding: "4px 8px",
+            }}
+          >
+            Track a {agencies[agency].type} by Number
+          </h2>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              maxWidth: "400px",
+              gap: "4px",
+              marginTop: "8px",
+            }}
+          >
+            <input
+              type='text'
+              placeholder={`Run/${agencies[agency].type} Number`}
+              value={runNumber}
+              onChange={(e) => setRunNumber(e.target.value)}
+              style={{
+                fontSize: "1rem",
+                padding: "4px 8px",
+                color: "#fff",
+                backgroundColor: "#444",
+                flex: 1,
+                border: "2px solid #555",
+              }}
+            ></input>
+            <h3
+              className='route'
+              key='onMap'
+              style={{
+                backgroundColor: "#444",
+                color: "#fff",
+                fontSize: "1.3rem",
+                padding: "8px",
+              }}
+            >
+              <Link
+                to={runNumber.length > 0 ? `/${agency}/track/${runNumber}` : ''}
+                style={{
+                  color: agencies[agency].textColor,
+                }}
+              >
+                Track {agencies[agency].type}
+              </Link>
+            </h3>
+          </div>
+        </div>
+
         <div>
           <h2
             style={{
