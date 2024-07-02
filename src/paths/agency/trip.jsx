@@ -112,11 +112,7 @@ const Trip = () => {
     );
   }
 
-  document.title = `${trip.line} #${
-    agencies[agency].removeLineCodeFromRunNumber
-      ? tripID.replace(trip.lineCode, "")
-      : tripID
-  } ${agencies[agency].name} | Transitstat.us`;
+  document.title = `${trip.line} ${agencies[agency].tripIDPrefix}${tripID} ${agencies[agency].name} | Transitstat.us`;
 
   return (
     <>
@@ -137,10 +133,9 @@ const Trip = () => {
         >
           <h2>
             {trip.line}
-            {agencies[agency].addLine ? " Line " : " "}#
-            {agencies[agency].removeLineCodeFromRunNumber
-              ? tripID.replace(trip.lineCode, "")
-              : tripID}
+            {agencies[agency].addLine ? " Line " : " "}
+            {agencies[agency].tripIDPrefix}
+            {tripID}
           </h2>
           <p>
             As of{" "}
@@ -200,7 +195,7 @@ const Trip = () => {
                     <p
                       style={{
                         fontSize: "0.8em",
-                        whiteSpace: 'nowrap'
+                        whiteSpace: "nowrap",
                       }}
                     >
                       {timeFormat(stop.actualETA)}

@@ -520,11 +520,7 @@ const Map = () => {
                   agencies[agency].useCodeForShortName
                     ? train.lineCode
                     : train.line
-                }${agencies[agency].addLine ? " Line " : " "}#${
-                  agencies[agency].removeLineCodeFromRunNumber
-                    ? train.id.replace(train.lineCode, "")
-                    : train.id
-                } to ${train.dest}</h3>${
+                }${agencies[agency].addLine ? " Line " : " "}#${train.id} to ${train.dest}</h3>${
                   extra && (extra.cap || extra.info)
                     ? `<p style='margin-top: -2px;padding-bottom: 4px;'>${
                         extra.info ?? ""
@@ -589,11 +585,7 @@ const Map = () => {
                       agencies[agency].useCodeForShortName
                         ? train.lineCode
                         : train.line
-                    }${agencies[agency].addLine ? " Line " : " "}</strong>#${
-                      agencies[agency].removeLineCodeFromRunNumber
-                        ? train.runNumber.replace(train.lineCode, "")
-                        : train.runNumber
-                    } to <strong>${destKey}</strong></span><strong>${
+                    }${agencies[agency].addLine ? " Line " : " "}</strong>${agencies[agency].tripIDPrefix}${train.runNumber} to <strong>${destKey}</strong></span><strong>${
                       train.noETA
                         ? "No ETA"
                         : hoursMinutesUntilArrival(new Date(train.actualETA))

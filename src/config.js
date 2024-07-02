@@ -20,7 +20,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    removeLineCodeFromRunNumber: false,
+    tripIDPrefix: '#',
     dontFilterMapLines: true,
   },
   bay: {
@@ -48,7 +48,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    removeLineCodeFromRunNumber: false,
+    tripIDPrefix: '#',
     dontFilterMapLines: false,
   },
   ctat: {
@@ -69,7 +69,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    removeLineCodeFromRunNumber: false,
+    tripIDPrefix: '#',
     dontFilterMapLines: false,
   },
   snowpiercer: {
@@ -90,7 +90,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    removeLineCodeFromRunNumber: false,
+    tripIDPrefix: '#',
     dontFilterMapLines: true,
     autoFitMaxZoom: 5,
   },
@@ -113,7 +113,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    removeLineCodeFromRunNumber: false,
+    tripIDPrefix: '#',
     dontFilterMapLines: false,
   },
   */
@@ -135,7 +135,7 @@ export const agencies = {
     useCodeForShortName: true,
     addShortName: true,
     showArrow: true,
-    removeLineCodeFromRunNumber: false,
+    tripIDPrefix: 'Train ',
     dontFilterMapLines: false,
   },
   marta: {
@@ -156,7 +156,7 @@ export const agencies = {
     useCodeForShortName: true,
     addShortName: true,
     showArrow: false,
-    removeLineCodeFromRunNumber: false,
+    tripIDPrefix: '#',
     dontFilterMapLines: false,
   },
   southshore: {
@@ -177,7 +177,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: true,
     showArrow: false,
-    removeLineCodeFromRunNumber: false,
+    tripIDPrefix: '#',
     dontFilterMapLines: false,
   },
   rutgers: {
@@ -198,7 +198,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    removeLineCodeFromRunNumber: false,
+    tripIDPrefix: '#',
     dontFilterMapLines: false,
   },
   columbia: {
@@ -219,7 +219,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    removeLineCodeFromRunNumber: false,
+    tripIDPrefix: '#',
     dontFilterMapLines: false,
   },
   uchicago: {
@@ -240,7 +240,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    removeLineCodeFromRunNumber: false,
+    tripIDPrefix: '#',
     dontFilterMapLines: false,
   },
   gcsu: {
@@ -261,7 +261,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    removeLineCodeFromRunNumber: false,
+    tripIDPrefix: '#',
     dontFilterMapLines: false,
   },
   gobus: {
@@ -282,7 +282,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    removeLineCodeFromRunNumber: false,
+    tripIDPrefix: '#',
     dontFilterMapLines: false,
   },
   georgiast: {
@@ -303,7 +303,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    removeLineCodeFromRunNumber: false,
+    tripIDPrefix: '#',
     dontFilterMapLines: false,
   },
   'gatech': {
@@ -324,7 +324,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    removeLineCodeFromRunNumber: false,
+    tripIDPrefix: '#',
     dontFilterMapLines: false,
   },
   'GASO': {
@@ -345,7 +345,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    removeLineCodeFromRunNumber: false,
+    tripIDPrefix: '#',
     dontFilterMapLines: false,
   },
   'MIT': {
@@ -366,7 +366,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    removeLineCodeFromRunNumber: false,
+    tripIDPrefix: '#',
     dontFilterMapLines: false,
   },
   'uncc': {
@@ -387,7 +387,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: true,
     showArrow: true,
-    removeLineCodeFromRunNumber: false,
+    tripIDPrefix: '#',
     dontFilterMapLines: false,
   },
   'uncg': {
@@ -408,7 +408,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    removeLineCodeFromRunNumber: false,
+    tripIDPrefix: '#',
     dontFilterMapLines: false,
   },
   'uncw': {
@@ -429,7 +429,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    removeLineCodeFromRunNumber: false,
+    tripIDPrefix: '#',
     dontFilterMapLines: false,
   },
   'bama': {
@@ -450,7 +450,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    removeLineCodeFromRunNumber: false,
+    tripIDPrefix: '#',
     dontFilterMapLines: false,
   },
   'ncstate': {
@@ -471,7 +471,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    removeLineCodeFromRunNumber: false,
+    tripIDPrefix: '#',
     dontFilterMapLines: false,
   }
 };
@@ -479,7 +479,7 @@ export const agencies = {
 export const config = {
   siteTitle: 'Transit Stat.us',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'Transitstat.us v1.12.0',
+  version: 'Transitstat.us v1.12.1',
   additionalWarnings: [],
   globalAlerts: [
     {

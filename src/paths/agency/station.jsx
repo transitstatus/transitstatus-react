@@ -110,7 +110,7 @@ const Station = () => {
       </>
     );
   }
-  
+
   document.title = `${station.stationName} ${agencies[agency].name} | Transitstat.us`;
 
   return (
@@ -227,15 +227,9 @@ const Station = () => {
                                     {agencies[agency].useCodeForShortName
                                       ? train.lineCode
                                       : train.line}
-                                    {agencies[agency].addLine ? " Line " : " "}#
-                                    {agencies[agency]
-                                      .removeLineCodeFromRunNumber
-                                      ? train.runNumber.replace(
-                                          train.lineCode,
-                                          ""
-                                        )
-                                      : train.runNumber}{" "}
-                                    to
+                                    {agencies[agency].addLine ? " Line " : " "}
+                                    {agencies[agency].tripIDPrefix}
+                                    {train.runNumber} to
                                   </p>
                                   <h3>
                                     {destinationKey
@@ -257,7 +251,7 @@ const Station = () => {
                                       className='trainLink'
                                       style={{
                                         fontSize: "0.8em",
-                                        whiteSpace: 'nowrap'
+                                        whiteSpace: "nowrap",
                                       }}
                                     >
                                       {timeFormat(train.actualETA)}
