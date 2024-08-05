@@ -33,6 +33,28 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-12-3'>
+            <td>
+              <a href='#1-12-3'>v1.12.3</a>
+            </td>
+            <td>
+              <ul>
+                <li>Updated icons to be a single image.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr id='1-12-2'>
+            <td>
+              <a href='#1-12-2'>v1.12.2</a>
+            </td>
+            <td>
+              <ul>
+                <li>Made map popups to always be above.</li>
+                <li>Added "View Full Station" button to station popups.</li>
+                <li>Modified header to be simpler and smaller.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-12-1'>
             <td>
               <a href='#1-12-1'>v1.12.1</a>

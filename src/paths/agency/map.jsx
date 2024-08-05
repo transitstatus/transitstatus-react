@@ -157,7 +157,8 @@ const Map = () => {
               if (singleRouteID === "all") return true;
               if (agencies[agency].dontFilterMapLines) return true;
               if (feature.properties.routeID === singleRouteID) return true;
-              if (feature.properties.routeLongName === singleRouteID) return true;
+              if (feature.properties.routeLongName === singleRouteID)
+                return true;
               return false;
             })
           );
@@ -423,8 +424,9 @@ const Map = () => {
               });
               */
 
+            // USE AFTER CACHE DELETE
             uniqueData
-              //.filter((n) => n.includes("arrow"))
+              .filter((n) => agencies[agency].showArrow ? n.includes("arrow") : n.includes("circle"))
               .forEach((imagePath) => {
                 map.current.loadImage(
                   `${agencies[agency].gtfsRoot}/icons/${imagePath}`,
@@ -439,27 +441,13 @@ const Map = () => {
                 );
               });
 
-            map.current.addLayer({
-              id: "trains",
-              type: "symbol",
-              source: "trains",
-              layout: {
-                "icon-image": ["concat", ["get", "routeColor"], "_circle"],
-                "icon-rotation-alignment": "map",
-                "icon-size": 0.25,
-                "icon-allow-overlap": true,
-                "text-font": ["Open Sans Regular"],
-              },
-              paint: {},
-            });
-
             if (agencies[agency].showArrow) {
               map.current.addLayer({
-                id: "trains_arrows",
+                id: "trains",
                 type: "symbol",
                 source: "trains",
                 layout: {
-                  "icon-image": ["concat", ["get", "routeColor"], "_arrow"],
+                  "icon-image": ["concat", ["get", "routeColor"], agencies[agency].showArrow ? "_arrow" : "_circle"],
                   "icon-rotation-alignment": "map",
                   "icon-size": 0.35,
                   "icon-rotate": ["get", "heading"],
@@ -513,6 +501,7 @@ const Map = () => {
             const trainPopup = new maplibregl.Popup({
               offset: 12,
               closeButton: true,
+              anchor: "bottom",
             })
               .setLngLat(coordinates)
               .setHTML(
@@ -520,7 +509,9 @@ const Map = () => {
                   agencies[agency].useCodeForShortName
                     ? train.lineCode
                     : train.line
-                }${agencies[agency].addLine ? " Line " : " "}#${train.id} to ${train.dest}</h3>${
+                }${agencies[agency].addLine ? " Line " : " "}#${train.id} to ${
+                  train.dest
+                }</h3>${
                   extra && (extra.cap || extra.info)
                     ? `<p style='margin-top: -2px;padding-bottom: 4px;'>${
                         extra.info ?? ""
@@ -585,7 +576,11 @@ const Map = () => {
                       agencies[agency].useCodeForShortName
                         ? train.lineCode
                         : train.line
-                    }${agencies[agency].addLine ? " Line " : " "}</strong>${agencies[agency].tripIDPrefix}${train.runNumber} to <strong>${destKey}</strong></span><strong>${
+                    }${agencies[agency].addLine ? " Line " : " "}</strong>${
+                      agencies[agency].tripIDPrefix
+                    }${
+                      train.runNumber
+                    } to <strong>${destKey}</strong></span><strong>${
                       train.noETA
                         ? "No ETA"
                         : hoursMinutesUntilArrival(new Date(train.actualETA))
@@ -598,11 +593,12 @@ const Map = () => {
               finalHTML += `<p class='mapTrainBar'>No ${agencies[agency].typeCodePlural} tracking</p>`;
             }
 
-            finalHTML += "</div>";
+            finalHTML += `<p class='mapStationBar' style='color: ${agencies[agency].textColor}; background-color: ${agencies[agency].color};'><strong><a style='color: ${agencies[agency].textColor}; background-color: ${agencies[agency].color};' href='/${agency}/stops/${station.stationID}?prev=map'>View Full Station</a></strong></p></div>`;
 
             const stationPopup = new maplibregl.Popup({
               offset: 12,
               closeButton: true,
+              anchor: "bottom",
             })
               .setLngLat(coordinates)
               .setHTML(finalHTML)

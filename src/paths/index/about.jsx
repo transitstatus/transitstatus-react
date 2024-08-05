@@ -52,11 +52,7 @@ const About = () => {
       </p>
       <h2>Extras</h2>
       <p>
-        If you want to see a full map with every agency and line that
-        transitstatus supports, just click <a href='/fullmap'>here</a>. It is
-        missing a few features that the regular map has due to it having a
-        different codebase. I plan on merging these together at some point, but
-        that's low priority due to a full map not being super useful.
+        Nothing for now :)
       </p>
       <h2>Privacy Policy</h2>
       <p>

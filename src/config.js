@@ -477,9 +477,10 @@ export const agencies = {
 };
 
 export const config = {
-  siteTitle: 'Transit Stat.us',
+  siteTitle: 'Transitstat.us',
+  siteTitleOther: 'Transitstatus',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'Transitstat.us v1.12.1',
+  version: 'v1.12.3',
   additionalWarnings: [],
   globalAlerts: [
     {
@@ -492,7 +493,7 @@ export const config = {
       info: 'Transitstat v2 has hit its beta stage. It is a little unstable and unreliable, but feel free to test it out and send any feedback to piero@piemadd.com.',
       linkText: 'Beta Link',
       link: 'https://betamap.transitstat.us/',
-      expires: 253402430399000
+      expires: -253402430399000
     }
   ]
 };

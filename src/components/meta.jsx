@@ -9,9 +9,7 @@ const Meta = () => {
         marginBottom: "-8px",
       }}
     >
-      <p>by <a href='https://piemadd.com/' target="__blank">Piero</a></p>
-      <p>{config.tagLine}</p>
-      <p>{config.version}</p>
+      <p>{config.siteTitleOther} {config.version} by <a href='https://piemadd.com/' target="_blank">Piero</a></p>
       {config.additionalWarnings.map((warning, i) => {
         return <p key={i}>{warning}</p>;
       })}
