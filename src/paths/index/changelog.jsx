@@ -33,6 +33,17 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-12-4'>
+            <td>
+              <a href='#1-12-4'>v1.12.4</a>
+            </td>
+            <td>
+              <ul>
+                <li>Added RIT.</li>
+                <li>Fixed image loading bug.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-12-3'>
             <td>
               <a href='#1-12-3'>v1.12.3</a>
@@ -177,7 +188,7 @@ const Changelog = () => {
                 <li>Added "Boris" as a cat option for "Show Cat :3".</li>
                 <ul>
                   <li>
-                    <a href='/boris.jpg' target='__blank'>
+                    <a href='/images/boris.jpg' target='__blank'>
                       Picture of real life Boris
                     </a>
                     .

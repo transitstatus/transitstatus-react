@@ -109,7 +109,7 @@ const Oneko = () => {
         nekoEl.style.height = "32px";
         nekoEl.style.position = "fixed";
         nekoEl.style.pointerEvents = "none";
-        nekoEl.style.backgroundImage = `url('/${settings.catType}.gif')`;
+        nekoEl.style.backgroundImage = `url('/images/${settings.catType}.gif')`;
         nekoEl.style.imageRendering = "pixelated";
         nekoEl.style.left = `${nekoPosX - 16}px`;
         nekoEl.style.top = `${nekoPosY - 16}px`;

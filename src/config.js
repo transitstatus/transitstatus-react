@@ -473,6 +473,27 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: '#',
     dontFilterMapLines: false,
+  },
+  'ritech': {
+    name: "RIT",
+    selectionName: 'RIT Shuttles',
+    endpoint: "https://store.transitstat.us/passio_go/ritech",
+    mapShapes: ["https://passio.piemadd.com/data/ritech/shapes.json"],
+    gtfsRoot: "https://passio.piemadd.com/data/ritech",
+    mapDefault: [43.07044242490457, -77.65360867499999, 13],
+    color: "#f76902",
+    textColor: "#ffffff",
+    type: 'Bus',
+    typePlural: 'Buses',
+    typeCode: 'bus',
+    typeCodePlural: 'buses',
+    addLine: false,
+    disabled: false,
+    useCodeForShortName: false,
+    addShortName: false,
+    showArrow: true,
+    tripIDPrefix: '#',
+    dontFilterMapLines: false,
   }
 };
 
@@ -480,7 +501,7 @@ export const config = {
   siteTitle: 'Transitstat.us',
   siteTitleOther: 'Transitstatus',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'v1.12.3',
+  version: 'v1.12.4',
   additionalWarnings: [],
   globalAlerts: [
     {

@@ -14,7 +14,7 @@ const Agency = () => {
   const [lines, setLines] = useState({});
   const [loadingMessage, setLoadingMessage] = useState("Loading data...");
   const [isLoading, setIsLoading] = useState(true);
-  const [runNumber, setRunNumber] = useState('');
+  const [runNumber, setRunNumber] = useState("");
 
   //if (agency === 'snowpiercer') navigate("/snowpiercer/track/PRCR", { replace: true });
 
@@ -102,8 +102,14 @@ const Agency = () => {
       dataManager
         .getData(agency, "lines")
         .then((data) => {
-          setLines(data);
-          setIsLoading(false);
+          if (data === "Not found") {
+            setLoadingMessage(
+              "There was an error loading transit data for this agency."
+            );
+          } else {
+            setLines(data);
+            setIsLoading(false);
+          }
 
           dataManager.getData(agency, "shitsFucked").then((shitsFucked) => {
             if (shitsFucked.shitIsFucked === true) {
@@ -305,7 +311,7 @@ const Agency = () => {
               }}
             >
               <Link
-                to={runNumber.length > 0 ? `/${agency}/track/${runNumber}` : ''}
+                to={runNumber.length > 0 ? `/${agency}/track/${runNumber}` : ""}
                 style={{
                   color: agencies[agency].textColor,
                 }}
