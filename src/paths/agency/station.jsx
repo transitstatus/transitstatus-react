@@ -12,12 +12,16 @@ const hoursMinutesUntilArrival = (arrivalTime) => {
 
   const minutes = Math.floor((arrival - now) / 1000 / 60);
   const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
 
-  if (minutes < 1) return "Due";
-  if (hours === 0) return `${minutes % 60}m`;
-  if (minutes % 60 === 0) return `${hours}h`;
+  let finalString = '';
 
-  return `${hours}h ${minutes % 60}m`;
+  if (minutes < 1 && hours < 1) return 'Due';
+  if (days > 0) finalString += `${days}d `;
+  if (hours % 24 > 0 || days > 0) finalString += `${hours % 24}h `;
+  if (minutes % 60 > 0 || days > 0) finalString += `${minutes % 60}m`;
+
+  return finalString.trim();
 };
 
 const timeFormat = (time) => {

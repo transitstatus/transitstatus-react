@@ -154,6 +154,9 @@ const Line = () => {
         ) : line.stations.length > 0 ? (
           line.stations
             .sort((a, b) => {
+              console.log(stations)
+              console.log(a)
+
               const aName = stations[a].stationName;
               const bName = stations[b].stationName;
 
