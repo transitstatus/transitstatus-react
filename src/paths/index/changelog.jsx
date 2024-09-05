@@ -33,6 +33,24 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-13-0'>
+            <td>
+              <a href='#1-13-0'>v1.13.0</a>
+            </td>
+            <td>
+              <ul>
+                <li>Moved icon generation to the client side.</li>
+                <ul>
+                  <li>Better performance.</li>
+                  <li>Lower bandwidth usage.</li>
+                  <li>
+                    Lower error rate from lag between GTFS processing and
+                    realtime.
+                  </li>
+                </ul>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-12-5'>
             <td>
               <a href='#1-12-5'>v1.12.5</a>

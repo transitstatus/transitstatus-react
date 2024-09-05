@@ -246,7 +246,9 @@ const Station = () => {
                                 </span>
                                 {!train.noETA ? (
                                   <span>
-                                    <h3 className='trainLink'>
+                                    <h3 className='trainLink' style={{
+                                      textAlign: 'right',
+                                    }}>
                                       {hoursMinutesUntilArrival(
                                         train.actualETA
                                       )}
@@ -256,6 +258,7 @@ const Station = () => {
                                       style={{
                                         fontSize: "0.8em",
                                         whiteSpace: "nowrap",
+                                        textAlign: 'right',
                                       }}
                                     >
                                       {timeFormat(train.actualETA)}

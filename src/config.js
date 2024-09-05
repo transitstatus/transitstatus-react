@@ -501,7 +501,7 @@ export const agencies = {
     endpoint: "https://bigboyapi.amtraker.com/",
     mapShapes: [],
     gtfsRoot: "https://gtfs.piemadd.com/data/amtrak",
-    mapDefault: [43.07044242490457, -77.65360867499999, 13],
+    mapDefault: [36.57236484298264, -96.27495103346894, 3],
     color: "#feca00",
     textColor: "#000000",
     type: 'Train',
@@ -522,7 +522,7 @@ export const config = {
   siteTitle: 'Transitstat.us',
   siteTitleOther: 'Transitstatus',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'v1.12.5',
+  version: 'v1.13.0',
   additionalWarnings: [],
   globalAlerts: [
     {
