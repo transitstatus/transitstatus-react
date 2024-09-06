@@ -439,7 +439,7 @@ const Map = () => {
             layout: {
               "icon-image": ["get", "routeColor"],
               "icon-rotation-alignment": "map",
-              "icon-size": 0.35,
+              "icon-size": 1,
               "icon-rotate": ["get", "heading"],
               "icon-allow-overlap": true,
               "text-font": ["Open Sans Regular"],
