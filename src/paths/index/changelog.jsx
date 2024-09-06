@@ -33,6 +33,17 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-13-1'>
+            <td>
+              <a href='#1-13-1'>v1.13.1</a>
+            </td>
+            <td>
+              <ul>
+                <li>Added UP Big Boy shapes.</li>
+                <li>Enabled UP Big Boy.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-13-0'>
             <td>
               <a href='#1-13-0'>v1.13.0</a>

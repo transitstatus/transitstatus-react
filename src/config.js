@@ -499,7 +499,13 @@ export const agencies = {
     name: "UP Big Boy",
     selectionName: 'UP Big Boy',
     endpoint: "https://bigboyapi.amtraker.com/",
-    mapShapes: [],
+    mapShapes: [
+      "https://gobbler.transitstat.us/additionalShapes/bigboypart1.json",
+      "https://gobbler.transitstat.us/additionalShapes/bigboypart2.json",
+      "https://gobbler.transitstat.us/additionalShapes/bigboypart3.json",
+      "https://gobbler.transitstat.us/additionalShapes/bigboypart4.json",
+      "https://gobbler.transitstat.us/additionalShapes/bigboypart5.json",
+    ],
     gtfsRoot: "https://gtfs.piemadd.com/data/amtrak",
     mapDefault: [36.57236484298264, -96.27495103346894, 3],
     color: "#feca00",
@@ -509,7 +515,7 @@ export const agencies = {
     typeCode: 'train',
     typeCodePlural: 'trains',
     addLine: false,
-    disabled: true,
+    disabled: false,
     useCodeForShortName: false,
     addShortName: false,
     showArrow: false,
@@ -522,7 +528,7 @@ export const config = {
   siteTitle: 'Transitstat.us',
   siteTitleOther: 'Transitstatus',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'v1.13.0',
+  version: 'v1.13.1',
   additionalWarnings: [],
   globalAlerts: [
     {
