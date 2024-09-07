@@ -410,27 +410,39 @@ const Map = () => {
             });
           }, 1000 * 10);
 
+          const startTime = Date.now();
+
           //setting up icon type and size
           const shapeToUse = agencies[agency].showArrow ? "arrow" : "circle";
           const iconSize = agencies[agency].showArrow ? 120 : 64;
+          let existingIcons = {};
 
           Object.keys(linesData).forEach((lineKey) => {
+            const line = linesData[lineKey];
+
+            if (existingIcons[line.routeColor]) return; // no need to generate twice
+
             //filling in the template
             const iconText = mapIconTemplates[shapeToUse]
-              .replaceAll("FILL", `#${linesData[lineKey].routeColor}`)
-              .replaceAll("BORDERS", `#${linesData[lineKey].routeTextColor}`);
+              .replaceAll("FILL", `#${line.routeColor}`)
+              .replaceAll("BORDERS", `#${line.routeTextColor}`);
 
             //converting the image and loading it
             const img = new Image(iconSize, iconSize);
             img.onload = () =>
-              map.current.addImage(linesData[lineKey].routeColor, img, {
-                pixelRatio: window.devicePixelRatio,
+              map.current.addImage(line.routeColor, img, {
+                pixelRatio: 1,
               });
             img.onerror = console.log;
             img.src = "data:image/svg+xml;base64," + btoa(iconText);
 
+            existingIcons[line.routeColor] = true;
+
             //console.log(mapIconTemplates);
           });
+
+          console.log(`Done with generating icons in ${Date.now() - startTime}ms`)
+          console.log(`Total number of icons: ${Object.keys(existingIcons).length}`)
 
           map.current.addLayer({
             id: "trains",
@@ -439,7 +451,7 @@ const Map = () => {
             layout: {
               "icon-image": ["get", "routeColor"],
               "icon-rotation-alignment": "map",
-              "icon-size": 1,
+              "icon-size": 0.4,
               "icon-rotate": ["get", "heading"],
               "icon-allow-overlap": true,
               "text-font": ["Open Sans Regular"],
