@@ -9,7 +9,6 @@
     "preview": "vite preview --host --port 3000"
   },
   "dependencies": {
-    "@cloudflare/pages-plugin-vercel-og": "^0.1.2",
     "highlight.js": "^11.9.0",
     "maplibre-gl": "^3.3.0",
     "pmtiles": "^2.10.0",
@@ -18,7 +17,8 @@
     "react-dom": "^18.2.0",
     "react-json-view-lite": "^1.0.0",
     "react-router-dom": "^6.20.1",
-    "vite-plugin-pwa": "^0.16.4"
+    "vite-plugin-pwa": "^0.16.4",
+    "workers-og": "^0.0.24"
   },
   "devDependencies": {
     "@vitejs/plugin-react-swc": "^3.0.0",
