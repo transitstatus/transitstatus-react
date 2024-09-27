@@ -4,6 +4,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import ErrorPage from "./error.jsx";
 import LoadingPage from "./loading";
+import { DataManager } from "./dataManager.js";
+
+console.log(`DM-N: ${window.dataManager}`)
+const dataManager = new DataManager();
+window.dataManager = dataManager;
 
 const Index = React.lazy(() => import("./paths/index/index.jsx"));
 const About = React.lazy(() => import("./paths/index/about.jsx"));

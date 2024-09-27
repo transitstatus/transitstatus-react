@@ -1,7 +1,6 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState, useMemo } from "react";
 import { agencies } from "../../config";
-import { DataManager } from "../../dataManager";
 import Meta from "../../components/meta";
 import AgencyHeart from "../../components/hearts/agencyHeart";
 import FavoritedStation from "../../components/favorites/favoritedStation";
@@ -10,7 +9,6 @@ import Oneko from "../../components/extras/oneko";
 const Agency = () => {
   const { agency } = useParams();
   const navigate = useNavigate();
-  const dataManager = useMemo(() => new DataManager(), []);
   const [lines, setLines] = useState({});
   const [loadingMessage, setLoadingMessage] = useState("Loading data...");
   const [isLoading, setIsLoading] = useState(true);
@@ -99,7 +97,7 @@ const Agency = () => {
 
   useEffect(() => {
     const fetchData = () => {
-      dataManager
+      window.dataManager
         .getData(agency, "lines")
         .then((data) => {
           if (data === "Not found") {
@@ -111,7 +109,7 @@ const Agency = () => {
             setIsLoading(false);
           }
 
-          dataManager.getData(agency, "shitsFucked").then((shitsFucked) => {
+          window.dataManager.getData(agency, "shitsFucked").then((shitsFucked) => {
             if (shitsFucked.shitIsFucked === true) {
               setLoadingMessage(shitsFucked.message);
               setIsLoading(true);
@@ -121,7 +119,7 @@ const Agency = () => {
         .catch((error) => {
           console.error(error);
 
-          dataManager.getData(agency, "shitsFucked").then((shitsFucked) => {
+          window.dataManager.getData(agency, "shitsFucked").then((shitsFucked) => {
             console.log(shitsFucked);
 
             if (shitsFucked.shitIsFucked === true) {

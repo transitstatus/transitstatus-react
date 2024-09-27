@@ -2,8 +2,6 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState, useMemo } from "react";
 import { agencies } from "../../config";
 import Meta from "../../components/meta";
-//import LineHeart from "../../components/hearts/lineHeart";
-import { DataManager } from "../../dataManager";
 import Oneko from "../../components/extras/oneko";
 
 const Line = () => {
@@ -13,14 +11,13 @@ const Line = () => {
   const [loadingMessage, setLoadingMessage] = useState("Loading data...");
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
-  const dataManager = useMemo(() => new DataManager(), []);
 
   //document.title = `${line.lineNameLong} ${agencies[agency].name} | Transitstat.us`;
 
   useEffect(() => {
     const fetchData = async () => {
-      const linesData = await dataManager.getData(agency, "lines");
-      const stationsData = await dataManager.getData(agency, "stations");
+      const linesData = await window.dataManager.getData(agency, "lines");
+      const stationsData = await window.dataManager.getData(agency, "stations");
 
       if (linesData.shitsFucked) {
         setLoadingMessage(data.shitsFuckedMessage);
@@ -31,7 +28,7 @@ const Line = () => {
         Object.keys(stationsData).length === 0
       ) {
         try {
-          const shitsFucked = await dataManager.getData(agency, "shitsFucked");
+          const shitsFucked = await window.dataManager.getData(agency, "shitsFucked");
 
           if (shitsFucked.shitIsFucked) {
             setLoadingMessage(shitsFucked.message);

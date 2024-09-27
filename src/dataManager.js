@@ -1,17 +1,24 @@
 import { agencies } from "./config";
+import localforage from "localforage";
+
+localforage.config({
+  name: "TransitstatOffline",
+  storeName: "TransitstatOfflineStore",
+  version: "3"
+})
 
 export class DataManager {
   constructor() {
     const now = new Date().valueOf();
 
-    this._data = JSON.parse(localStorage.getItem('transitstatus_datamanager_v1_data')) ?? {};
-    this._endpoints = JSON.parse(localStorage.getItem('transitstatus_datamanager_v1_endpoints')) ?? {
+    this._data = localforage.getItem('transitstatus_datamanager_v1_data') ?? {};
+    this._endpoints = localforage.getItem('transitstatus_datamanager_v1_endpoints') ?? {
       rutgers: {
         lastAccessed: 10,
         lastUpdated: 0,
       }
     };
-    this._lastUpdatedEver = localStorage.getItem('transitstatus_datamanager_v1_last_updated') ?? 0;
+    this._lastUpdatedEver = localforage.getItem('transitstatus_datamanager_v1_last_updated') ?? 0;
 
     const updateData = () => {
       Object.keys(this._endpoints).forEach((endpointKey) => {
@@ -35,8 +42,8 @@ export class DataManager {
       })
 
       //i know this is gonna be 1 refresh out of date. fuck you, i don't give a shit
-      localStorage.setItem('transitstatus_datamanager_v1_data', JSON.stringify(this._data));
-      localStorage.setItem('transitstatus_datamanager_v1_endpoints', JSON.stringify(this._endpoints));
+      localforage.setItem('transitstatus_datamanager_v1_data', JSON.stringify(this._data));
+      localforage.setItem('transitstatus_datamanager_v1_endpoints', JSON.stringify(this._endpoints));
     }
 
     setInterval(() => {
@@ -56,7 +63,7 @@ export class DataManager {
       console.log(`DataManager: Endpoint ${endpoint} does not exist or is out of date, adding before returning`)
 
       //saving the record
-      localStorage.setItem('transitstatus_datamanager_v1_endpoints', JSON.stringify(this._endpoints));
+      localforage.setItem('transitstatus_datamanager_v1_endpoints', JSON.stringify(this._endpoints));
 
       try {
         const res = await fetch(new Request(agencies[endpoint].endpoint, {
@@ -68,7 +75,7 @@ export class DataManager {
         this._endpoints[endpoint].lastUpdated = new Date().valueOf();
 
         //saving data
-        localStorage.setItem('transitstatus_datamanager_v1_data', JSON.stringify(this._data));
+        localforage.setItem('transitstatus_datamanager_v1_data', JSON.stringify(this._data));
       } catch (e) {
         console.log(`DataManager: Error with initial request for endpoint ${endpoint}:`, e)
 

@@ -1,3 +1,5 @@
+import localforage from "localforage";
+
 export const clearCodeCache = async () => {
   console.log('Confirming')
   if (window.confirm("Are you sure you would like to clear the code cache?")) {
@@ -37,8 +39,8 @@ export const clearCodeCache = async () => {
 export const clearTransitDataCache = () => {
   console.log('Confirming')
   if (window.confirm("Are you sure you would like to clear the transit data cache?")) {
-    localStorage.removeItem('transitstatus_datamanager_v1_endpoints');
-    localStorage.removeItem('transitstatus_datamanager_v1_data');
+    localforage.removeItem('transitstatus_datamanager_v1_endpoints');
+    localforage.removeItem('transitstatus_datamanager_v1_data');
     console.log('Alerting')
 
     window.alert("The transit data cache has been cleared. The page will reload once you press 'OK'.")

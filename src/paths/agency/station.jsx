@@ -3,7 +3,6 @@ import { useEffect, useState, useMemo } from "react";
 import { agencies } from "../../config";
 import StationHeart from "../../components/hearts/stationHeart";
 import Meta from "../../components/meta";
-import { DataManager } from "../../dataManager";
 import Oneko from "../../components/extras/oneko";
 
 const hoursMinutesUntilArrival = (arrivalTime) => {
@@ -35,7 +34,6 @@ const timeFormat = (time) => {
 const Station = () => {
   const { agency, stopID } = useParams();
   const navigate = useNavigate();
-  const dataManager = useMemo(() => new DataManager(), []);
   const [station, setStation] = useState({});
   const [lastFetched, setLastFetched] = useState(0);
   const [loadingMessage, setLoadingMessage] = useState("Loading trains...");
@@ -43,18 +41,18 @@ const Station = () => {
 
   useEffect(() => {
     const fetchData = () => {
-      dataManager
+      window.dataManager
         .getData(agency, `stations/${stopID}`)
         .then((data) => {
           setStation(data);
-          dataManager.getData(agency, "lastUpdated").then((ts) => {
+          window.dataManager.getData(agency, "lastUpdated").then((ts) => {
             setLastFetched(new Date(ts).valueOf());
             setIsLoading(false);
           });
         })
         .catch((error) => {
           console.error(error);
-          dataManager
+          window.dataManager
             .getData(agency, "shitsFucked")
             .then((raw) => {
               if (raw !== "Not found") {

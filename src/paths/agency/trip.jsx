@@ -2,7 +2,6 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState, useMemo } from "react";
 import { agencies } from "../../config";
 import Meta from "../../components/meta";
-import { DataManager } from "../../dataManager";
 import Oneko from "../../components/extras/oneko";
 
 const hoursMinutesUntilArrival = (arrivalTime) => {
@@ -34,7 +33,6 @@ const timeFormat = (time) => {
 const Trip = () => {
   const { agency, tripID } = useParams();
   const navigate = useNavigate();
-  const dataManager = useMemo(() => new DataManager(), []);
   const [trip, setTrip] = useState({});
   const [loadingMessage, setLoadingMessage] = useState("Loading trip...");
   const [isLoading, setIsLoading] = useState(true);
@@ -42,11 +40,11 @@ const Trip = () => {
 
   useEffect(() => {
     const fetchData = () => {
-      dataManager
+      window.dataManager
         .getData(agency, `trains/${tripID}`)
         .then((data) => {
           setTrip(data);
-          dataManager.getData(agency, "lastUpdated").then((ts) => {
+          window.dataManager.getData(agency, "lastUpdated").then((ts) => {
             setLastFetched(new Date(ts).valueOf());
             setIsLoading(false);
           });
@@ -54,7 +52,7 @@ const Trip = () => {
         .catch((error) => {
           console.error(error);
 
-          dataManager
+          window.dataManager
             .getData(agency, "shitsFucked")
             .then((raw) => {
               if (raw !== "Not found") {

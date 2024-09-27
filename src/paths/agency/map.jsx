@@ -4,7 +4,6 @@ import * as pmtiles from "pmtiles";
 import layers from "../../components/extras/mapStyle.json";
 //import osmLibertyTransitstatus from "../../components/extras/osm_liberty_-_transitstatus.json";
 import { agencies } from "../../config";
-import { DataManager } from "../../dataManager";
 import mapIconTemplates from "../../assets/mapIconTemplates.json";
 import Oneko from "../../components/extras/oneko";
 
@@ -22,7 +21,6 @@ const Map = () => {
     return routeID;
   }, []);
   const navigate = useNavigate();
-  const dataManager = useMemo(() => new DataManager(), []);
   const [loadingMessage, setLoadingMessage] = useState("Loading data...");
   const [isLoading, setIsLoading] = useState(true);
   const [lastUpdated, setLastUpdated] = useState(new Date());
@@ -139,11 +137,11 @@ const Map = () => {
         });
 
         map.current.on("load", async () => {
-          const stationsData = await dataManager.getData(agency, "stations");
-          const trainsData = await dataManager.getData(agency, "trains");
-          const linesData = await dataManager.getData(agency, "lines");
+          const stationsData = await window.dataManager.getData(agency, "stations");
+          const trainsData = await window.dataManager.getData(agency, "trains");
+          const linesData = await window.dataManager.getData(agency, "lines");
 
-          dataManager.getData(agency, "lastUpdated").then((ts) => {
+          window.dataManager.getData(agency, "lastUpdated").then((ts) => {
             setLastUpdated(new Date(ts));
             setIsLoading(false);
           });
@@ -255,7 +253,7 @@ const Map = () => {
           });
 
           setInterval(() => {
-            dataManager.getData(agency, "stations").then((data) => {
+            window.dataManager.getData(agency, "stations").then((data) => {
               map.current.getSource("stations").setData({
                 type: "FeatureCollection",
                 features: Object.keys(data)
@@ -290,7 +288,7 @@ const Map = () => {
                   }),
               });
 
-              dataManager.getData(agency, "lastUpdated").then((ts) => {
+              window.dataManager.getData(agency, "lastUpdated").then((ts) => {
                 setLastUpdated(new Date(ts));
               });
 
@@ -373,7 +371,7 @@ const Map = () => {
           }
 
           setInterval(() => {
-            dataManager.getData(agency, "trains").then((data) => {
+            window.dataManager.getData(agency, "trains").then((data) => {
               let finalFeatures = [];
 
               Object.keys(data).forEach((trainId) => {
@@ -653,7 +651,7 @@ const Map = () => {
       } catch (e) {
         console.log("Error initializing map", e);
 
-        dataManager.getData(agency, "shitsFucked").then((raw) => {
+        window.dataManager.getData(agency, "shitsFucked").then((raw) => {
           if (raw === "Not found") {
             setLoadingMessage("Error loading data :c");
           } else {
