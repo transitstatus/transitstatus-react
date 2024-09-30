@@ -33,13 +33,27 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-14-1'>
+            <td>
+              <a href='#1-14-1'>v1.14.1</a>
+            </td>
+            <td>
+              <ul>
+                <li>Added WMATA.</li>
+                <li>Fixed bug with non arrow icons.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-14-0'>
             <td>
               <a href='#1-14-0'>v1.14.0</a>
             </td>
             <td>
               <ul>
-                <li>Upgraded caching system to use localforage, for better speed and reliability.</li>
+                <li>
+                  Upgraded caching system to use localforage, for better speed
+                  and reliability.
+                </li>
                 <li>Removed opengraph test.</li>
               </ul>
             </td>

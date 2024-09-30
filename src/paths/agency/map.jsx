@@ -412,7 +412,7 @@ const Map = () => {
 
           //setting up icon type and size
           const shapeToUse = agencies[agency].showArrow ? "arrow" : "circle";
-          const iconSize = agencies[agency].showArrow ? 120 : 64;
+          const iconSize = agencies[agency].showArrow ? 120 : 48;
           let existingIcons = {};
 
           Object.keys(linesData).forEach((lineKey) => {
