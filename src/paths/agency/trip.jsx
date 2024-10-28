@@ -172,7 +172,7 @@ const Trip = () => {
             {loadingMessage}
           </p>
         ) : (
-          trip.predictions.map((stop, i) => {
+          trip.predictions.filter((eta) => eta.actualETA >= Date.now() - (1000 * 60 * 5)).map((stop, i) => {
             //console.log(stop);
             return (
               <Link

@@ -23,6 +23,29 @@ export const agencies = {
     tripIDPrefix: '#',
     dontFilterMapLines: true,
   },
+  brightline: {
+    name: "Brightline",
+    selectionName: 'Brightline',
+    endpoint: "https://store.transitstat.us/brightline/v1",
+    mapShapes: [
+      "https://gtfs.piemadd.com/data/brightline/shapes/type_2.geojson",
+    ],
+    gtfsRoot: "https://gtfs.piemadd.com/data/brightline",
+    mapDefault: [27.103015473022282, -80.68149, 6],
+    color: "#F2E205",
+    textColor: "#0A0A0A",
+    type: 'Train',
+    typePlural: 'Trains',
+    typeCode: 'train',
+    typeCodePlural: 'trains',
+    addLine: false,
+    disabled: false,
+    useCodeForShortName: false,
+    addShortName: false,
+    showArrow: true,
+    tripIDPrefix: '#',
+    dontFilterMapLines: true,
+  },
   bay: {
     name: "Bay Area",
     selectionName: 'Bay Area (Minus Bart)',
@@ -573,7 +596,7 @@ export const config = {
   siteTitle: 'Transitstat.us',
   siteTitleOther: 'Transitstatus',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'v1.14.1',
+  version: 'v1.14.2',
   additionalWarnings: [],
   globalAlerts: [
     {

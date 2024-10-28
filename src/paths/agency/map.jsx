@@ -480,6 +480,7 @@ const Map = () => {
 
               JSON.parse(train.predictions)
                 .sort((a, b) => a.actualETA - b.actualETA)
+                .filter((eta) => eta.actualETA >= Date.now() - (1000 * 60 * 5))
                 .slice(0, 5)
                 .forEach((prediction) => {
                   console.log("prediction", prediction);
@@ -548,8 +549,8 @@ const Map = () => {
 
                 dest.trains.forEach((train) => {
                   if (
-                    train.lineCode === singleRouteID ||
-                    singleRouteID === "all"
+                    (train.lineCode === singleRouteID ||
+                    singleRouteID === "all") && train.actualETA >= Date.now() - (1000 * 60 * 5)
                   ) {
                     destHasLineTrains = true;
                   }
@@ -568,6 +569,7 @@ const Map = () => {
                         !train.noETA
                     )
                     .sort((a, b) => a.actualETA - b.actualETA)
+                    .filter((eta) => eta.actualETA >= Date.now() - (1000 * 60 * 5))
                     .slice(0, 3)
                     .forEach((train) => {
                       finalHTML += `<p class='mapTrainBar' style='color: #${

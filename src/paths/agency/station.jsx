@@ -210,6 +210,7 @@ const Station = () => {
                           if (!b.actualETA) return 1;
                           return a.actualETA - b.actualETA;
                         })
+                        .filter((eta) => eta.actualETA >= Date.now() - (1000 * 60 * 5))
                         .map((train) => {
                           return (
                             <Link
