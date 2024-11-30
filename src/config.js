@@ -596,7 +596,7 @@ export const config = {
   siteTitle: 'Transitstat.us',
   siteTitleOther: 'Transitstatus',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'v1.14.2',
+  version: 'v1.14.3',
   additionalWarnings: [],
   globalAlerts: [
     {

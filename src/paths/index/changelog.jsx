@@ -33,9 +33,19 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+        <tr id='1-14-3'>
+            <td>
+              <a href='#1-14-3'>v1.14.3</a>
+            </td>
+            <td>
+              <ul>
+                <li>Added Christmas colors and snowflakes with holiday themed transit vehicles.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-14-2'>
             <td>
-              <a href='#1-14-2'>v1.14.1</a>
+              <a href='#1-14-2'>v1.14.2</a>
             </td>
             <td>
               <ul>
