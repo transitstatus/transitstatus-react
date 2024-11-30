@@ -33,7 +33,17 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
-        <tr id='1-14-4'>
+          <tr id='1-14-5'>
+            <td>
+              <a href='#1-14-5'>v1.14.5</a>
+            </td>
+            <td>
+              <ul>
+                <li>Fixed re-rendering error.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr id='1-14-4'>
             <td>
               <a href='#1-14-4'>v1.14.4</a>
             </td>

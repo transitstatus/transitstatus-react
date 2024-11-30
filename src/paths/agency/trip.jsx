@@ -47,7 +47,7 @@ const Trip = () => {
         .then((data) => {
           setTrip(data);
           console.log(data)
-          if (data.extra?.holidayChristmas) setActivateSnowfall(true);
+          if (data.extra?.holidayChristmas && !activateSnowfall) setActivateSnowfall(true);
           window.dataManager.getData(agency, "lastUpdated").then((ts) => {
             setLastFetched(new Date(ts).valueOf());
             setIsLoading(false);
