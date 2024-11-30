@@ -33,7 +33,17 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
-        <tr id='1-14-3'>
+        <tr id='1-14-4'>
+            <td>
+              <a href='#1-14-4'>v1.14.4</a>
+            </td>
+            <td>
+              <ul>
+                <li>Fixed missing snowfall import.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr id='1-14-3'>
             <td>
               <a href='#1-14-3'>v1.14.3</a>
             </td>

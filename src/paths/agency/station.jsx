@@ -4,6 +4,7 @@ import { agencies } from "../../config";
 import StationHeart from "../../components/hearts/stationHeart";
 import Meta from "../../components/meta";
 import Oneko from "../../components/extras/oneko";
+import Snowfall from "react-snowfall";
 
 const hoursMinutesUntilArrival = (arrivalTime) => {
   const now = new Date();
