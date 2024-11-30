@@ -113,6 +113,32 @@ const Map = () => {
               "https://fonts.transitstat.us/_output/{fontstack}/{range}.pbf",
             sprite: "https://osml.transitstat.us/sprites/osm-liberty",
             layers: layers,
+            projection: { "type": "globe" },
+            sky: {
+              "sky-color": "#199EF3",
+              "sky-horizon-blend": 0.5,
+              "horizon-color": "#ffffff",
+              "horizon-fog-blend": 0.5,
+              "fog-color": "#0000ff",
+              "fog-ground-blend": 0.5,
+              "atmosphere-blend": [
+                "interpolate",
+                ["linear"],
+                ["zoom"],
+                0,
+                1,
+                5,
+                0,
+                12,
+                0
+              ]
+            },
+            light: {
+              anchor: "viewport",
+              color: "#88C6FC",
+              intensity: 0,
+              position: [1, 180, 180]
+            },
             bearing: 0,
             sources: {
               protomaps: {
@@ -303,7 +329,7 @@ const Map = () => {
             type: "circle",
             source: "stations",
             paint: {
-              "circle-radius": 4,
+              "circle-radius": 5,
               "circle-color": "#fff",
               "circle-stroke-color": "#000",
               "circle-stroke-width": 1,
@@ -459,10 +485,13 @@ const Map = () => {
 
           map.current.on("click", (e) => {
             let f = map.current.queryRenderedFeatures(e.point, {
-              layers: ["trains", "stations"],
+              layers: ["stations","trains"],
             });
 
-            if (f.length === 0) return;
+            if (f.length === 0) {
+              console.log('Clicked on nothing');
+              return;
+            }
 
             const fSorted = f.sort((a, b) => {
               if (a.layer.id === "trains") return 1;
@@ -484,15 +513,12 @@ const Map = () => {
                 .slice(0, 5)
                 .forEach((prediction) => {
                   console.log("prediction", prediction);
-                  predictionsHTML += `<p class='mapTrainBar' style='color: #${
-                    train.lineTextColor
-                  }; background-color: #${train.lineColor};'><strong>${
-                    prediction.stationName
-                  }</strong><strong>${
-                    prediction.noETA
+                  predictionsHTML += `<p class='mapTrainBar' style='color: #${train.lineTextColor
+                    }; background-color: #${train.lineColor};'><strong>${prediction.stationName
+                    }</strong><strong>${prediction.noETA
                       ? "No ETA"
                       : hoursMinutesUntilArrival(new Date(prediction.actualETA))
-                  }</strong></p>`;
+                    }</strong></p>`;
                 });
 
               const extra = train.extra ? JSON.parse(train.extra) : null;
@@ -504,34 +530,24 @@ const Map = () => {
               })
                 .setLngLat(coordinates)
                 .setHTML(
-                  `<div class='mapBar'><h3>${
-                    agencies[agency].useCodeForShortName
-                      ? train.lineCode
-                      : train.line
-                  }${agencies[agency].addLine ? " Line " : " "}#${
-                    train.id
-                  } to ${train.dest}</h3>${
-                    extra && (extra.cap || extra.info)
-                      ? `<p style='margin-top: -2px;padding-bottom: 4px;'>${
-                          extra.info ?? ""
-                        }${extra.cap && extra.info ? " | " : ""}${
-                          extra.cap
-                            ? `${Math.ceil(
-                                (extra.load / extra.cap) * 100
-                              )}% Full`
-                            : ""
-                        }</p>`
+                  `<div class='mapBar'><h3>${agencies[agency].useCodeForShortName
+                    ? train.lineCode
+                    : train.line
+                  }${agencies[agency].addLine ? " Line " : " "}#${train.id
+                  } to ${train.dest}</h3>${extra && (extra.cap || extra.info)
+                    ? `<p style='margin-top: -2px;padding-bottom: 4px;'>${extra.info ?? ""
+                    }${extra.cap && extra.info ? " | " : ""}${extra.cap
+                      ? `${Math.ceil(
+                        (extra.load / extra.cap) * 100
+                      )}% Full`
                       : ""
-                  }${predictionsHTML}<p class='mapTrainBar' style='color: #${
-                    train.lineTextColor
-                  }; background-color: #${
-                    train.lineColor
-                  };'><strong><a style='color: #${
-                    train.lineTextColor
-                  }; background-color: #${
-                    train.lineColor
-                  };' href='/${agency}/track/${train.id}?prev=map'>View Full ${
-                    agencies[agency].type
+                    }</p>`
+                    : ""
+                  }${predictionsHTML}<p class='mapTrainBar' style='color: #${train.lineTextColor
+                  }; background-color: #${train.lineColor
+                  };'><strong><a style='color: #${train.lineTextColor
+                  }; background-color: #${train.lineColor
+                  };' href='/${agency}/track/${train.id}?prev=map'>View Full ${agencies[agency].type
                   }</a></strong></p></div>`
                 )
                 .addTo(map.current);
@@ -550,7 +566,7 @@ const Map = () => {
                 dest.trains.forEach((train) => {
                   if (
                     (train.lineCode === singleRouteID ||
-                    singleRouteID === "all") && train.actualETA >= Date.now() - (1000 * 60 * 5)
+                      singleRouteID === "all") && train.actualETA >= Date.now() - (1000 * 60 * 5)
                   ) {
                     destHasLineTrains = true;
                   }
@@ -572,23 +588,17 @@ const Map = () => {
                     .filter((eta) => eta.actualETA >= Date.now() - (1000 * 60 * 5))
                     .slice(0, 3)
                     .forEach((train) => {
-                      finalHTML += `<p class='mapTrainBar' style='color: #${
-                        train.lineTextColor
-                      }; background-color: #${
-                        train.lineColor
-                      };'><span><strong>${
-                        agencies[agency].useCodeForShortName
+                      finalHTML += `<p class='mapTrainBar' style='color: #${train.lineTextColor
+                        }; background-color: #${train.lineColor
+                        };'><span><strong>${agencies[agency].useCodeForShortName
                           ? train.lineCode
                           : train.line
-                      }${agencies[agency].addLine ? " Line " : " "}</strong>${
-                        agencies[agency].tripIDPrefix
-                      }${
-                        train.runNumber
-                      } to <strong>${destKey}</strong></span><strong>${
-                        train.noETA
+                        }${agencies[agency].addLine ? " Line " : " "}</strong>${agencies[agency].tripIDPrefix
+                        }${train.runNumber
+                        } to <strong>${destKey}</strong></span><strong>${train.noETA
                           ? "No ETA"
                           : hoursMinutesUntilArrival(new Date(train.actualETA))
-                      }</strong></p>`;
+                        }</strong></p>`;
                     });
                 }
               });
@@ -736,9 +746,9 @@ const Map = () => {
           {isLoading
             ? loadingMessage
             : `Last Updated at ${lastUpdated.toLocaleTimeString([], {
-                hour: "2-digit",
-                minute: "2-digit",
-              })}`}
+              hour: "2-digit",
+              minute: "2-digit",
+            })}`}
         </p>
         <h3
           key='backButton'
