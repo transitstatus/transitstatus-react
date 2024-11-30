@@ -3,6 +3,7 @@ import { useEffect, useState, useMemo } from "react";
 import { agencies } from "../../config";
 import Meta from "../../components/meta";
 import Oneko from "../../components/extras/oneko";
+import Snowfall from 'react-snowfall';
 
 const hoursMinutesUntilArrival = (arrivalTime) => {
   const now = new Date();
@@ -37,6 +38,7 @@ const Trip = () => {
   const [loadingMessage, setLoadingMessage] = useState("Loading trip...");
   const [isLoading, setIsLoading] = useState(true);
   const [lastFetched, setLastFetched] = useState(0);
+  const [activateSnowfall, setActivateSnowfall] = useState(false);
 
   useEffect(() => {
     const fetchData = () => {
@@ -44,6 +46,8 @@ const Trip = () => {
         .getData(agency, `trains/${tripID}`)
         .then((data) => {
           setTrip(data);
+          console.log(data)
+          if (data.extra?.holidayChristmas) setActivateSnowfall(true);
           window.dataManager.getData(agency, "lastUpdated").then((ts) => {
             setLastFetched(new Date(ts).valueOf());
             setIsLoading(false);
@@ -85,6 +89,7 @@ const Trip = () => {
     return (
       <>
         <Oneko />
+        {activateSnowfall ? <Snowfall /> : null}
         <h1>Trip Not Found</h1>
         <p>
           The trip you were trying to track doesn't exist. Please go back and
@@ -119,6 +124,7 @@ const Trip = () => {
   return (
     <>
       <Oneko />
+      {activateSnowfall ? <Snowfall /> : null}
       <h1>
         {agencies[agency].name} {agencies[agency].type} Tracker
       </h1>
@@ -128,9 +134,10 @@ const Trip = () => {
         <div
           className='trainInfo'
           style={{
-            backgroundColor: `#${trip.lineColor}`,
-            color: `#${trip.lineTextColor}`,
+            background: trip.extra?.holidayChristmas ? "repeating-linear-gradient(135deg, #94000a, #94000a 10px, #077001 10px, #077001 20px)" : `#${trip.lineColor}`,
+            color: trip.extra?.holidayChristmas ? '#ffffff' : `#${trip.lineTextColor}`,
             marginTop: "12px",
+            textShadow: trip.extra?.holidayChristmas ? '0px 0px 2px #000000' : null
           }}
         >
           <h2>
@@ -138,6 +145,7 @@ const Trip = () => {
             {agencies[agency].addLine ? " Line " : " "}
             {agencies[agency].tripIDPrefix}
             {tripID}
+            {trip.extra?.holidayChristmas ? " 🎄" : ""}
           </h2>
           <p>
             As of{" "}
@@ -148,8 +156,8 @@ const Trip = () => {
             })}
             {trip.extra && trip.extra.cap
               ? ` | ${Math.ceil(
-                  (trip.extra.load / trip.extra.cap) * 100
-                )}% Full`
+                (trip.extra.load / trip.extra.cap) * 100
+              )}% Full`
               : null}
           </p>
           {trip.extra && trip.extra.info ? <p>{trip.extra.info}</p> : null}

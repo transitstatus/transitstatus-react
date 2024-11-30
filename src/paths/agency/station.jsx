@@ -38,6 +38,7 @@ const Station = () => {
   const [lastFetched, setLastFetched] = useState(0);
   const [loadingMessage, setLoadingMessage] = useState("Loading trains...");
   const [isLoading, setIsLoading] = useState(true);
+  const [activateSnowfall, setActivateSnowfall] = useState(false);
 
   useEffect(() => {
     const fetchData = () => {
@@ -84,6 +85,7 @@ const Station = () => {
     return (
       <>
         <Oneko />
+        {activateSnowfall ? <Snowfall /> : null}
         <h1>Stop Not Found</h1>
         <p>
           The stop you were trying to view doesn't exist. Please go back and try
@@ -118,6 +120,7 @@ const Station = () => {
   return (
     <>
       <Oneko />
+      {activateSnowfall ? <Snowfall /> : null}
       <h1>
         {agencies[agency].name} {agencies[agency].type} Tracker
       </h1>
@@ -212,6 +215,8 @@ const Station = () => {
                         })
                         .filter((eta) => eta.actualETA >= Date.now() - (1000 * 60 * 5))
                         .map((train) => {
+                          if (train.extra?.holidayChristmas) setActivateSnowfall(true);
+
                           return (
                             <Link
                               to={`/${agency}/track/${train.runNumber}`}
@@ -221,18 +226,22 @@ const Station = () => {
                               <div
                                 className='train'
                                 style={{
-                                  backgroundColor: `#${train.lineColor}`,
-                                  color: `#${train.lineTextColor}`,
+                                  background: train.extra?.holidayChristmas ? "repeating-linear-gradient(135deg, #94000a, #94000a 10px, #077001 10px, #077001 20px)" : `#${train.lineColor}`,
+                                  color: train.extra?.holidayChristmas ? '#ffffff' : `#${train.lineTextColor}`,
                                 }}
                               >
-                                <span>
+                                <span
+                                  style={{
+                                    filter: train.extra?.holidayChristmas ? 'drop-shadow(0px 0px 2px #000000)' : null,
+                                  }}
+                                >
                                   <p>
                                     {agencies[agency].useCodeForShortName
                                       ? train.lineCode
                                       : train.line}
                                     {agencies[agency].addLine ? " Line " : " "}
                                     {agencies[agency].tripIDPrefix}
-                                    {train.runNumber} to
+                                    {train.runNumber}{train.extra?.holidayChristmas ? " 🎄" : ""} to
                                   </p>
                                   <h3>
                                     {destinationKey
@@ -244,7 +253,10 @@ const Station = () => {
                                   ) : null}
                                 </span>
                                 {!train.noETA ? (
-                                  <span>
+                                  <span
+                                    style={{
+                                      filter: train.extra?.holidayChristmas ? 'drop-shadow(0px 0px 2px #000000)' : undefined,
+                                    }}>
                                     <h3 className='trainLink' style={{
                                       textAlign: 'right',
                                     }}>
@@ -271,14 +283,17 @@ const Station = () => {
                                       >
                                         {Math.ceil(
                                           (train.extra.load / train.extra.cap) *
-                                            100
+                                          100
                                         )}
                                         % Full
                                       </p>
                                     ) : null}
                                   </span>
                                 ) : (
-                                  <span>
+                                  <span
+                                    style={{
+                                      filter: train.extra?.holidayChristmas ? 'drop-shadow(0px 0px 2px #000000)' : undefined,
+                                    }}>
                                     <h3 className='trainLink'>No ETA</h3>
                                     {train.extra && train.extra.cap ? (
                                       <p
@@ -289,7 +304,7 @@ const Station = () => {
                                       >
                                         {Math.ceil(
                                           (train.extra.load / train.extra.cap) *
-                                            100
+                                          100
                                         )}
                                         % Full
                                       </p>
