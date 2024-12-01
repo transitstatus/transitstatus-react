@@ -117,7 +117,6 @@ export const agencies = {
     dontFilterMapLines: true,
     autoFitMaxZoom: 5,
   },
-  /*
   ctab: {
     name: "CTAB",
     selectionName: 'Chicago (CTA) Holiday Bus',
@@ -139,7 +138,6 @@ export const agencies = {
     tripIDPrefix: '#',
     dontFilterMapLines: false,
   },
-  */
   metra: {
     name: "Metra",
     selectionName: 'Metra',
@@ -596,7 +594,7 @@ export const config = {
   siteTitle: 'Transitstat.us',
   siteTitleOther: 'Transitstatus',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'v1.14.5',
+  version: 'v1.14.6',
   additionalWarnings: [],
   globalAlerts: [
     {
