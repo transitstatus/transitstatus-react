@@ -118,7 +118,7 @@ export const agencies = {
     autoFitMaxZoom: 5,
   },
   ctab: {
-    name: "CTAB",
+    name: "CTA",
     selectionName: 'Chicago (CTA) Holiday Bus',
     endpoint: "https://store.transitstat.us/holidaybus",
     mapShapes: ["https://gtfs.piemadd.com/data/cta/shapes/type_3.geojson"],
@@ -594,7 +594,7 @@ export const config = {
   siteTitle: 'Transitstat.us',
   siteTitleOther: 'Transitstatus',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'v1.14.6',
+  version: 'v1.14.7',
   additionalWarnings: [],
   globalAlerts: [
     {

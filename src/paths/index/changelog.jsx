@@ -33,9 +33,19 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-14-7'>
+            <td>
+              <a href='#1-14-7'>v1.14.7</a>
+            </td>
+            <td>
+              <ul>
+                <li>Fixed bus naming.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-14-6'>
             <td>
-              <a href='#1-14-6'>v1.14.5</a>
+              <a href='#1-14-6'>v1.14.6</a>
             </td>
             <td>
               <ul>
