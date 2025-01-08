@@ -223,6 +223,9 @@ const Station = () => {
                               to={`/${agency}/track/${train.runNumber}`}
                               key={train.runNumber}
                               className='trainLink'
+                              style={{
+                                pointerEvents: train.realTime ? null : 'none',
+                              }}
                             >
                               <div
                                 className='train'
@@ -241,7 +244,7 @@ const Station = () => {
                                       ? train.lineCode
                                       : train.line}
                                     {agencies[agency].addLine ? " Line " : " "}
-                                    {agencies[agency].tripIDPrefix}
+                                    {train.realTime ? agencies[agency].tripIDPrefix : ''}
                                     {train.runNumber}{train.extra?.holidayChristmas ? " 🎄" : ""} to
                                   </p>
                                   <h3>
