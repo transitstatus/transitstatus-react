@@ -33,6 +33,17 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-14-10'>
+            <td>
+              <a href='#1-14-10'>v1.14.10</a>
+            </td>
+            <td>
+              <ul>
+                <li>Improved scheduled train support.</li>
+                <li>Added support for run number modification on the client side.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-14-9'>
             <td>
               <a href='#1-14-9'>v1.14.9</a>

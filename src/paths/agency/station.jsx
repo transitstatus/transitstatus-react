@@ -41,6 +41,8 @@ const Station = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [activateSnowfall, setActivateSnowfall] = useState(false);
 
+  const agencyMeta = agencies[agency];
+
   useEffect(() => {
     const fetchData = () => {
       window.dataManager
@@ -82,7 +84,7 @@ const Station = () => {
   }, [agency, stopID]);
 
   if (station === "Not found") {
-    document.title = `Stop 404 ${agencies[agency].name} | Transitstat.us`;
+    document.title = `Stop 404 ${agencyMeta.name} | Transitstat.us`;
     return (
       <>
         <Oneko />
@@ -116,14 +118,14 @@ const Station = () => {
     );
   }
 
-  document.title = `${station.stationName} ${agencies[agency].name} | Transitstat.us`;
+  document.title = `${station.stationName} ${agencyMeta.name} | Transitstat.us`;
 
   return (
     <>
       <Oneko />
       {activateSnowfall ? <Snowfall /> : null}
       <h1>
-        {agencies[agency].name} {agencies[agency].type} Tracker
+        {agencyMeta.name} {agencyMeta.type} Tracker
       </h1>
       <Meta />
       <div
@@ -240,12 +242,13 @@ const Station = () => {
                                   }}
                                 >
                                   <p>
-                                    {agencies[agency].useCodeForShortName
+                                    {agencyMeta.useCodeForShortName
                                       ? train.lineCode
                                       : train.line}
-                                    {agencies[agency].addLine ? " Line " : " "}
-                                    {train.realTime ? agencies[agency].tripIDPrefix : ''}
-                                    {train.runNumber}{train.extra?.holidayChristmas ? " 🎄" : ""} to
+                                    {agencyMeta.addLine ? " Line " : " "}
+                                    {train.realTime ? '' : 'Scheduled '}
+                                    {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime) ? agencyMeta.tripIDPrefix : ""}
+                                    {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime) ? (agencyMeta.runNumberConverter ? agencyMeta.runNumberConverter(train.runNumber) : train.runNumber) : ""}{train.extra?.holidayChristmas ? " 🎄" : ""} to
                                   </p>
                                   <h3>
                                     {destinationKey
@@ -323,7 +326,7 @@ const Station = () => {
                   ) : (
                     <>
                       <p className='destination'>
-                        No {agencies[agency].typePlural} towards{" "}
+                        No {agencyMeta.typePlural} towards{" "}
                         {destinationKey}
                       </p>
                     </>
@@ -336,8 +339,8 @@ const Station = () => {
           className='train'
           key='backButton'
           style={{
-            backgroundColor: agencies[agency].color,
-            color: agencies[agency].textColor,
+            backgroundColor: agencyMeta.color,
+            color: agencyMeta.textColor,
             maxWidth: "384px",
           }}
           onClick={() => {

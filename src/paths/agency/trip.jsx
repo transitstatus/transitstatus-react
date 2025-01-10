@@ -119,7 +119,7 @@ const Trip = () => {
     );
   }
 
-  document.title = `${trip.line} ${agencies[agency].tripIDPrefix}${tripID} ${agencies[agency].name} | Transitstat.us`;
+  document.title = `${trip.line} ${agencies[agency].tripIDPrefix}${agencies[agency].runNumberConverter ? agencies[agency].runNumberConverter(tripID) : tripID} ${agencies[agency].name} | Transitstat.us`;
 
   return (
     <>
@@ -144,7 +144,7 @@ const Trip = () => {
             {trip.line}
             {agencies[agency].addLine ? " Line " : " "}
             {agencies[agency].tripIDPrefix}
-            {tripID}
+            {agencies[agency].runNumberConverter ? agencies[agency].runNumberConverter(tripID) : tripID}
             {trip.extra?.holidayChristmas ? " 🎄" : ""}
           </h2>
           <p>
