@@ -617,13 +617,13 @@ export const config = {
   siteTitle: 'Transitstat.us',
   siteTitleOther: 'Transitstatus',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'v1.14.11',
+  version: 'v1.14.11 Patch 1',
   additionalWarnings: [],
   globalAlerts: [
     {
-      title: '',
-      info: 'We apologize for the temporary outage yesterday due to an expired domain. All systems are now fully operational and we have ensured all domains automatically renew from now on.',
-      expires: 1711123200000
+      title: 'Scheduled Trains Test',
+      info: 'We are testing the use of GTFS schedule data to show trains that are not yet running for Metra. If these tests prove to be successful, we will expand the data to other systems.',
+      expires: 1737352799999
     },
     {
       title: 'Transitstat v2 Early Beta',
