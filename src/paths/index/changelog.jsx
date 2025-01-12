@@ -33,6 +33,16 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-14-11'>
+            <td>
+              <a href='#1-14-11'>v1.14.11</a>
+            </td>
+            <td>
+              <ul>
+                <li>Reduced opacity on scheduled trains to better differentiate them from tracking trains.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-14-10'>
             <td>
               <a href='#1-14-10'>v1.14.10</a>

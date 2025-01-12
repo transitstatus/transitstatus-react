@@ -234,6 +234,7 @@ const Station = () => {
                                 style={{
                                   background: train.extra?.holidayChristmas ? "repeating-linear-gradient(135deg, #94000a, #94000a 10px, #077001 10px, #077001 20px)" : `#${train.lineColor}`,
                                   color: train.extra?.holidayChristmas ? '#ffffff' : `#${train.lineTextColor}`,
+                                  opacity: train.realTime ? 1 : 0.7,
                                 }}
                               >
                                 <span
