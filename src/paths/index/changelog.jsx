@@ -33,6 +33,16 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-14-11-patch-1'>
+            <td>
+              <a href='#1-14-11-patch-1'>v1.14.11 Patch 1</a>
+            </td>
+            <td>
+              <ul>
+                <li>Added broadcast message for schedule test.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-14-11'>
             <td>
               <a href='#1-14-11'>v1.14.11</a>
