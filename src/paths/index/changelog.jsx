@@ -33,9 +33,9 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
-          <tr id='1-14-11-patch-1'>
+          <tr id='1-14-12'>
             <td>
-              <a href='#1-14-11-patch-1'>v1.14.11 Patch 1</a>
+              <a href='#1-14-12'>v1.14.12</a>
             </td>
             <td>
               <ul>
