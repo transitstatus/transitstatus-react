@@ -583,7 +583,7 @@ const Map = () => {
                       }${agencies[agency].addLine ? " Line " : " "}</strong>${
                         agencies[agency].tripIDPrefix
                       }${
-                        agencyMeta.runNumberConverter ? agencyMeta.runNumberConverter(train.runNumber) : train.runNumber
+                        agencies[agency].runNumberConverter ? agencies[agency].runNumberConverter(train.runNumber) : train.runNumber
                       } to <strong>${destKey}</strong></span><strong>${
                         train.noETA
                           ? "No ETA"
