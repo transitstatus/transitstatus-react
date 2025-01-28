@@ -160,6 +160,7 @@ export const agencies = {
     showTripIDOnScheduled: true,
     dontFilterMapLines: false,
     runNumberConverter: (runNumber) => runNumber.split('-').slice(-1),
+    useDirectionsInsteadOfDestinations: true,
   },
   WMATA: {
     name: "WMATA",
@@ -617,7 +618,7 @@ export const config = {
   siteTitle: 'Transitstat.us',
   siteTitleOther: 'Transitstatus',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'v1.14.14',
+  version: 'v1.14.15',
   additionalWarnings: [],
   globalAlerts: [
     {

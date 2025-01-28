@@ -560,7 +560,9 @@ const Map = () => {
                   //finalHTML += `<p class='mapTrainBar'>No trains tracking</p>`;
                 } else {
                   noTrainsAtAll = false;
-                  finalHTML += `<p class='mapStationBar'>To <strong>${destKey}</strong></p>`;
+                  finalHTML += agencies[agency].useDirectionsInsteadOfDestinations ? 
+                    `<p class='mapStationBar'><strong>${destKey}</strong></p>` : 
+                    `<p class='mapStationBar'>To <strong>${destKey}</strong></p>`;
                   dest.trains
                     .filter(
                       (train) =>
@@ -584,7 +586,7 @@ const Map = () => {
                         agencies[agency].tripIDPrefix
                       }${
                         agencies[agency].runNumberConverter ? agencies[agency].runNumberConverter(train.runNumber) : train.runNumber
-                      } to <strong>${destKey}</strong></span><strong>${
+                      } to <strong>${train.destination ?? destKey}</strong></span><strong>${
                         train.noETA
                           ? "No ETA"
                           : hoursMinutesUntilArrival(new Date(train.actualETA))

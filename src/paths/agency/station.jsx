@@ -191,7 +191,7 @@ const Station = () => {
                 <div key={destinationKey} className='trains'>
                   {station.destinations[destinationKey].trains.length > 0 ? (
                     <>
-                      <h3 className='destination'>Towards {destinationKey}</h3>
+                      <h3 className='destination'>{agencyMeta.useDirectionsInsteadOfDestinations ? `${destinationKey} ${agencyMeta.typePlural}` : `Towards ${destinationKey}`}</h3>
                       {station.destinations[destinationKey].trains
                         .sort((a, b) => {
                           if (!a.actualETA) return -1;
@@ -307,8 +307,11 @@ const Station = () => {
                   ) : (
                     <>
                       <p className='destination'>
-                        No {agencyMeta.typePlural} towards{" "}
-                        {destinationKey}
+                        {
+                          agencyMeta.useDirectionsInsteadOfDestinations ? 
+                          `No ${destinationKey} ${agencyMeta.typePlural}` : 
+                          `No ${agencyMeta.typePlural} towards ${destinationKey}`
+                        }
                       </p>
                     </>
                   )}

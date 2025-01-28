@@ -33,6 +33,18 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-14-15'>
+            <td>
+              <a href='#1-14-15'>v1.14.15</a>
+            </td>
+            <td>
+              <ul>
+                <li>Fixed "no trains tracking" messages.</li>
+                <li>Fixed train destination headers.</li>
+                <li>Reconfigured map to properly support directions.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-14-14'>
             <td>
               <a href='#1-14-14'>v1.14.14</a>
