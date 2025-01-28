@@ -185,25 +185,7 @@ const Station = () => {
           </p>
         ) : (
           Object.keys(station.destinations)
-            .sort((a, b) => {
-              // if both have no trains, sort alphabetically
-              if (
-                station.destinations[a].trains.length === 0 &&
-                station.destinations[b].trains.length === 0
-              )
-                return a.localeCompare(b);
-
-              // if one has no trains, sort it to the bottom
-              if (station.destinations[a].trains.length === 0) return 1;
-              if (station.destinations[b].trains.length === 0) return -1;
-
-              // if the station is the destination, sort it to the bottom
-              if (a === station.stationName) return 1;
-              if (b === station.stationName) return -1;
-
-              // sort by the first train's arrival time
-              return a.localeCompare(b);
-            })
+            .sort((a, b) => a.localeCompare(b)) // sorting destinations alphabetically
             .map((destinationKey) => {
               return (
                 <div key={destinationKey} className='trains'>
@@ -252,9 +234,7 @@ const Station = () => {
                                     {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime) ? (agencyMeta.runNumberConverter ? agencyMeta.runNumberConverter(train.runNumber) : train.runNumber) : ""}{train.extra?.holidayChristmas ? " 🎄" : ""} to
                                   </p>
                                   <h3>
-                                    {destinationKey
-                                      ? destinationKey
-                                      : train.routeLongName}
+                                    {train.destination ?? destinationKey ?? train.routeLongName}
                                   </h3>
                                   {train.extra && train.extra.info ? (
                                     <p>{train.extra.info}</p>

@@ -33,6 +33,16 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-14-14'>
+            <td>
+              <a href='#1-14-14'>v1.14.14</a>
+            </td>
+            <td>
+              <ul>
+                <li>Proper support for inbound and outbound trains.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-14-13'>
             <td>
               <a href='#1-14-13'>v1.14.12</a>
