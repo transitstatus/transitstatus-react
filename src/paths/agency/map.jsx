@@ -508,8 +508,8 @@ const Map = () => {
                     agencies[agency].useCodeForShortName
                       ? train.lineCode
                       : train.line
-                  }${agencies[agency].addLine ? " Line " : " "}#${
-                    train.id
+                  }${agencies[agency].addLine ? " Line " : " "}${agencies[agency].tripIDPrefix}${
+                    agencies[agency].runNumberConverter ? agencies[agency].runNumberConverter(train.id) : train.id
                   } to ${train.dest}</h3>${
                     extra && (extra.cap || extra.info)
                       ? `<p style='margin-top: -2px;padding-bottom: 4px;'>${

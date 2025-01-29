@@ -198,7 +198,7 @@ const Line = () => {
           }}
         >
           <Link
-            to={`/${agency}/map?route=${lineName}`}
+            to={agencies[agency].dontFilterMapLines ? `/${agency}/map` : `/${agency}/map?route=${lineName}`}
             style={{
               color: agencies[agency].textColor,
             }}

@@ -33,6 +33,17 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-15-0'>
+            <td>
+              <a href='#1-15-0'>v1.15.0</a>
+            </td>
+            <td>
+              <ul>
+                <li>Added BART.</li>
+                <li>Fixed bug with how buttons are rendered with agencies that don't filter lines on the map.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-14-15'>
             <td>
               <a href='#1-14-15'>v1.14.15</a>
