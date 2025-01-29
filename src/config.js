@@ -288,7 +288,7 @@ export const agencies = {
     typeCode: 'bus',
     typeCodePlural: 'buses',
     addLine: true,
-    disabled: false,
+    disabled: true,
     useCodeForShortName: false,
     addShortName: false,
     showArrow: false,
@@ -643,7 +643,7 @@ export const config = {
   siteTitle: 'Transitstat.us',
   siteTitleOther: 'Transitstatus',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'v1.15.0',
+  version: 'v1.15.1',
   additionalWarnings: [],
   globalAlerts: [
     {

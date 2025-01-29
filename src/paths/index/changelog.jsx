@@ -33,6 +33,19 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+        <tr id='1-15-1'>
+            <td>
+              <a href='#1-15-1'>v1.15.1</a>
+            </td>
+            <td>
+              <ul>
+                <li>Disabled MFF.</li>
+                <ul>
+                  <li>Still accessible at <a href="https://transitstat.us/mff">https://transitstat.us/mff</a>.</li>
+                </ul>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-15-0'>
             <td>
               <a href='#1-15-0'>v1.15.0</a>
