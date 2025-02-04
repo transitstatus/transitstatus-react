@@ -174,6 +174,12 @@ const APIDocs = () => {
           often than that will be useless and will just waste your time.
         </li>
         <li>
+          While the required bits shown in this API can be assumed to be returned by each response, some implementations (and by some I mean one, Brightline) <i>don't follow the API spec</i>. Brightline has schedule related data that is required for it to then be ingested by Amtraker's API, which isn't documented here.
+        </li>
+        <li>
+          The BART vehicle positions aren't real, they're interpreted from GTFS and GTFS-RT data, but it's like close enough.
+        </li>
+        <li>
           The API is organized like an object which you can traverse. This will
           become clearer further into the spec, but for example, if{" "}
           <code
@@ -233,7 +239,7 @@ const APIDocs = () => {
           seeing what people build with my APIs.
         </li>
         <li>
-          These docs were written while I was sleep deprived and sick. Please
+          These docs were mostly written while I was sleep deprived and sick. Please
           email me if you find any errors.
         </li>
       </ul>
@@ -429,10 +435,12 @@ const APIDocs = () => {
     runNumber: string, //either the scheduled train number or the physical number on a bus. is usually a number, but can be a string
     actualETA: number, //estimated time of arrival in unix timestamp (ms)
     noETA: boolean, //whether there is no ETA for this train. really only happens when passio go dies
+    realtime: boolean, //true if the vehicle is tracking, false if this is a scheduled trip 
     line: string, //plaintext line name
     lineCode: string, //line code, usually lines up with GTFS
     lineColor: string, //hex line color, minus the "#"
     lineTextColor: string, //text color for said line, also missing the "#"
+    destination?: string, //used on trains where the destination key TransitStatusDestination isn't the actual definition (ie inbound/outbound for Metra)
     extra?: any //same as seen in TransitStatusTrain. 
 }`}
           language='typescript'
@@ -796,7 +804,6 @@ const APIDocs = () => {
       >
         <ul>
           {Object.values(agencies).map((agency) => {
-            console.log(agency.mapShapes.length);
             return (
               <li>
                 <p>{agency.name}</p>

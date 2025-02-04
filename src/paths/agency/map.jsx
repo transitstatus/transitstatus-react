@@ -1,7 +1,7 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import React, { useRef, useEffect, useState, useMemo } from "react";
 import * as pmtiles from "pmtiles";
-import layers from "../../components/extras/mapStyle.json";
+import { layers, sprite, glyphs } from "../../components/extras/mapStyle.json";
 //import osmLibertyTransitstatus from "../../components/extras/osm_liberty_-_transitstatus.json";
 import { agencies } from "../../config";
 import mapIconTemplates from "../../assets/mapIconTemplates.json";
@@ -109,19 +109,18 @@ const Map = () => {
             zoom: 0,
             pitch: 0,
             center: [41.884579601743276, -87.6279871036212],
-            glyphs:
-              "https://fonts.transitstat.us/_output/{fontstack}/{range}.pbf",
-            sprite: "https://osml.transitstat.us/sprites/osm-liberty",
+            glyphs: glyphs,
+            sprite: sprite,
             layers: layers,
             bearing: 0,
             sources: {
               protomaps: {
                 type: "vector",
                 tiles: [
-                  "https://tilea.transitstat.us/tiles/{z}/{x}/{y}.mvt",
-                  "https://tileb.transitstat.us/tiles/{z}/{x}/{y}.mvt",
-                  "https://tilec.transitstat.us/tiles/{z}/{x}/{y}.mvt",
-                  "https://tiled.transitstat.us/tiles/{z}/{x}/{y}.mvt",
+                  "https://v4mapa.transitstat.us/20250127/{z}/{x}/{y}.mvt",
+                  "https://v4mapb.transitstat.us/20250127/{z}/{x}/{y}.mvt",
+                  "https://v4mapc.transitstat.us/20250127/{z}/{x}/{y}.mvt",
+                  "https://v4mapd.transitstat.us/20250127/{z}/{x}/{y}.mvt"
                 ],
                 maxzoom: 15,
                 attribution:
@@ -484,15 +483,12 @@ const Map = () => {
                 .slice(0, 5)
                 .forEach((prediction) => {
                   console.log("prediction", prediction);
-                  predictionsHTML += `<p class='mapTrainBar' style='color: #${
-                    train.lineTextColor
-                  }; background-color: #${train.lineColor};'><strong>${
-                    prediction.stationName
-                  }</strong><strong>${
-                    prediction.noETA
+                  predictionsHTML += `<p class='mapTrainBar' style='color: #${train.lineTextColor
+                    }; background-color: #${train.lineColor};'><strong>${prediction.stationName
+                    }</strong><strong>${prediction.noETA
                       ? "No ETA"
                       : hoursMinutesUntilArrival(new Date(prediction.actualETA))
-                  }</strong></p>`;
+                    }</strong></p>`;
                 });
 
               const extra = train.extra ? JSON.parse(train.extra) : null;
@@ -504,34 +500,24 @@ const Map = () => {
               })
                 .setLngLat(coordinates)
                 .setHTML(
-                  `<div class='mapBar'><h3>${
-                    agencies[agency].useCodeForShortName
-                      ? train.lineCode
-                      : train.line
-                  }${agencies[agency].addLine ? " Line " : " "}${agencies[agency].tripIDPrefix}${
-                    agencies[agency].runNumberConverter ? agencies[agency].runNumberConverter(train.id) : train.id
-                  } to ${train.dest}</h3>${
-                    extra && (extra.cap || extra.info)
-                      ? `<p style='margin-top: -2px;padding-bottom: 4px;'>${
-                          extra.info ?? ""
-                        }${extra.cap && extra.info ? " | " : ""}${
-                          extra.cap
-                            ? `${Math.ceil(
-                                (extra.load / extra.cap) * 100
-                              )}% Full`
-                            : ""
-                        }</p>`
+                  `<div class='mapBar'><h3>${agencies[agency].useCodeForShortName
+                    ? train.lineCode
+                    : train.line
+                  }${agencies[agency].addLine ? " Line " : " "}${agencies[agency].tripIDPrefix}${agencies[agency].runNumberConverter ? agencies[agency].runNumberConverter(train.id) : train.id
+                  } to ${train.dest}</h3>${extra && (extra.cap || extra.info)
+                    ? `<p style='margin-top: -2px;padding-bottom: 4px;'>${extra.info ?? ""
+                    }${extra.cap && extra.info ? " | " : ""}${extra.cap
+                      ? `${Math.ceil(
+                        (extra.load / extra.cap) * 100
+                      )}% Full`
                       : ""
-                  }${predictionsHTML}<p class='mapTrainBar' style='color: #${
-                    train.lineTextColor
-                  }; background-color: #${
-                    train.lineColor
-                  };'><strong><a style='color: #${
-                    train.lineTextColor
-                  }; background-color: #${
-                    train.lineColor
-                  };' href='/${agency}/track/${train.id}?prev=map'>View Full ${
-                    agencies[agency].type
+                    }</p>`
+                    : ""
+                  }${predictionsHTML}<p class='mapTrainBar' style='color: #${train.lineTextColor
+                  }; background-color: #${train.lineColor
+                  };'><strong><a style='color: #${train.lineTextColor
+                  }; background-color: #${train.lineColor
+                  };' href='/${agency}/track/${train.id}?prev=map'>View Full ${agencies[agency].type
                   }</a></strong></p></div>`
                 )
                 .addTo(map.current);
@@ -550,7 +536,7 @@ const Map = () => {
                 dest.trains.forEach((train) => {
                   if (
                     (train.lineCode === singleRouteID ||
-                    singleRouteID === "all") && train.actualETA >= Date.now() - (1000 * 60 * 5)
+                      singleRouteID === "all") && train.actualETA >= Date.now() - (1000 * 60 * 5)
                   ) {
                     destHasLineTrains = true;
                   }
@@ -560,8 +546,8 @@ const Map = () => {
                   //finalHTML += `<p class='mapTrainBar'>No trains tracking</p>`;
                 } else {
                   noTrainsAtAll = false;
-                  finalHTML += agencies[agency].useDirectionsInsteadOfDestinations ? 
-                    `<p class='mapStationBar'><strong>${destKey}</strong></p>` : 
+                  finalHTML += agencies[agency].useDirectionsInsteadOfDestinations ?
+                    `<p class='mapStationBar'><strong>${destKey}</strong></p>` :
                     `<p class='mapStationBar'>To <strong>${destKey}</strong></p>`;
                   dest.trains
                     .filter(
@@ -574,23 +560,17 @@ const Map = () => {
                     .filter((eta) => eta.actualETA >= Date.now() - (1000 * 60 * 5))
                     .slice(0, 3)
                     .forEach((train) => {
-                      finalHTML += `<p class='mapTrainBar' style='color: #${
-                        train.lineTextColor
-                      }; background-color: #${
-                        train.lineColor
-                      };'><span><strong>${
-                        agencies[agency].useCodeForShortName
+                      finalHTML += `<p class='mapTrainBar' style='color: #${train.lineTextColor
+                        }; background-color: #${train.lineColor
+                        };'><span><strong>${agencies[agency].useCodeForShortName
                           ? train.lineCode
                           : train.line
-                      }${agencies[agency].addLine ? " Line " : " "}</strong>${
-                        agencies[agency].tripIDPrefix
-                      }${
-                        agencies[agency].runNumberConverter ? agencies[agency].runNumberConverter(train.runNumber) : train.runNumber
-                      } to <strong>${train.destination ?? destKey}</strong></span><strong>${
-                        train.noETA
+                        }${agencies[agency].addLine ? " Line " : " "}</strong>${agencies[agency].tripIDPrefix
+                        }${agencies[agency].runNumberConverter ? agencies[agency].runNumberConverter(train.runNumber) : train.runNumber
+                        } to <strong>${train.destination ?? destKey}</strong></span><strong>${train.noETA
                           ? "No ETA"
                           : hoursMinutesUntilArrival(new Date(train.actualETA))
-                      }</strong></p>`;
+                        }</strong></p>`;
                     });
                 }
               });
@@ -738,9 +718,9 @@ const Map = () => {
           {isLoading
             ? loadingMessage
             : `Last Updated at ${lastUpdated.toLocaleTimeString([], {
-                hour: "2-digit",
-                minute: "2-digit",
-              })}`}
+              hour: "2-digit",
+              minute: "2-digit",
+            })}`}
         </p>
         <h3
           key='backButton'
