@@ -198,7 +198,7 @@ const Station = () => {
                           if (!b.actualETA) return 1;
                           return a.actualETA - b.actualETA;
                         })
-                        .filter((eta) => eta.actualETA >= Date.now() - (1000 * 60 * 5))
+                        .filter((eta) => eta.actualETA >= Date.now() - (1000 * 60 * 5) || eta.noETA)
                         .map((train) => {
                           if (train.extra?.holidayChristmas && !activateSnowfall) setActivateSnowfall(true);
 

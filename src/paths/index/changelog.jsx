@@ -33,6 +33,16 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+        <tr id='1-15-3'>
+            <td>
+              <a href='#1-15-3'>v1.15.3</a>
+            </td>
+            <td>
+              <ul>
+                <li>Fixed bug where some vehicles without ETA's aren't shown.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-15-2'>
             <td>
               <a href='#1-15-2'>v1.15.2</a>

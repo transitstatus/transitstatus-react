@@ -479,7 +479,7 @@ const Map = () => {
 
               JSON.parse(train.predictions)
                 .sort((a, b) => a.actualETA - b.actualETA)
-                .filter((eta) => eta.actualETA >= Date.now() - (1000 * 60 * 5))
+                .filter((eta) => eta.actualETA >= Date.now() - (1000 * 60 * 5) || eta.noETA)
                 .slice(0, 5)
                 .forEach((prediction) => {
                   console.log("prediction", prediction);
