@@ -79,7 +79,6 @@ export const agencies = {
     selectionName: 'Bay Area Rapid Transit (BART)',
     endpoint: "https://store.transitstat.us/bart/transitStatus",
     mapShapes: [
-      "https://gtfs.piemadd.com/data/bart/shapes/type_0.geojson",
       "https://gtfs.piemadd.com/data/bart/shapes/type_1.geojson",
     ],
     gtfsRoot: "https://gtfs.piemadd.com/data/bart",
@@ -645,7 +644,7 @@ export const config = {
   siteTitle: 'Transitstat.us',
   siteTitleOther: 'Transitstatus',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'v1.15.3',
+  version: 'v1.15.4',
   additionalWarnings: [],
   globalAlerts: [
     {

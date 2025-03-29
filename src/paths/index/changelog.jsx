@@ -33,7 +33,17 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
-        <tr id='1-15-3'>
+        <tr id='1-15-4'>
+            <td>
+              <a href='#1-15-4'>v1.15.4</a>
+            </td>
+            <td>
+              <ul>
+                <li>Fixed BART shapes.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr id='1-15-3'>
             <td>
               <a href='#1-15-3'>v1.15.3</a>
             </td>
