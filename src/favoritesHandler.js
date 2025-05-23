@@ -47,7 +47,7 @@ class FavoritesHandlerV0 {
     const favID = `${operator}-${favorite.stationID}`;
 
     console.log(`Checking if ${favID} is a favorite`)
-    return this.favorites[favID] !== undefined;
+    return this.favorites[favID] != undefined;
   }
 }
 
@@ -104,7 +104,7 @@ class FavoritesHandlerV1 {
     const favID = `${operator}-${favorite.stationID}`;
 
     console.log(`Checking if ${favID} is a favorite`)
-    return this.favorites[favID] !== undefined;
+    return this.favorites[favID] != undefined;
   }
 };
 

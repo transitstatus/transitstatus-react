@@ -50,7 +50,7 @@ const Agency = () => {
       JSON.parse(localStorage.getItem("favorites-transitstatus-v0")) || {};
 
     Object.keys(results).forEach((key) => {
-      if (key.split("-")[0] !== agency) {
+      if (key.split("-")[0] != agency) {
         delete results[key];
       }
     });
@@ -209,7 +209,7 @@ const Agency = () => {
                   {line.lineNameLong}{" "}
                   {line.lineNameShort.length > 0 &&
                   agencies[agency].addShortName &&
-                  line.lineNameShort !== line.lineNameLong
+                  line.lineNameShort != line.lineNameLong
                     ? `(${line.lineNameShort})`
                     : ""}
                 </Link>
@@ -251,7 +251,7 @@ const Agency = () => {
                       {line.lineNameLong}{" "}
                       {line.lineNameShort.length > 0 &&
                       agencies[agency].addShortName &&
-                      line.lineNameShort !== line.lineNameLong
+                      line.lineNameShort != line.lineNameLong
                         ? `(${line.lineNameShort})`
                         : ""}
                     </Link>

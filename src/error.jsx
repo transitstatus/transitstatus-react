@@ -22,7 +22,7 @@ export default function ErrorPage() {
       console.log("clearing cache");
       caches.keys().then((keys) => {
         keys.forEach((key) => {
-          if (key !== "mapbox-tiles") caches.delete(key);
+          if (key != "mapbox-tiles") caches.delete(key);
         });
 
         console.log("cleared cache!");
