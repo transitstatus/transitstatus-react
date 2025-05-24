@@ -468,6 +468,7 @@ const APIDocs = () => {
     stationName: string, //plaintext station name,
     actualETA: number, //estimated time of arrival in unix timestamp (ms)
     noETA: boolean, //whether there is no ETA for this train. really only happens when passio go dies
+    realtime: boolean, //true if the vehicle is tracking, false if this is a scheduled trip
 }`}
           language='typescript'
         />

@@ -217,6 +217,8 @@ const Map = () => {
 
                   const line = linesData[singleRouteID];
 
+                  console.log('line', line)
+
                   //oopsies!
                   if (!line) return false;
 
@@ -227,7 +229,7 @@ const Map = () => {
                 .map((stationId) => {
                   const station = stationsData[stationId];
 
-                  if (station.lat !== 0 && station.lon !== 0) {
+                  if (station.lat != 0 && station.lon != 0) {
                     if (station.lat < minLat) minLat = station.lat;
                     if (station.lat > maxLat) maxLat = station.lat;
                     if (station.lon < minLon) minLon = station.lon;
@@ -314,10 +316,12 @@ const Map = () => {
           Object.keys(trainsData).forEach((trainId) => {
             const train = trainsData[trainId];
 
-            if (train.lineCode !== singleRouteID && singleRouteID !== "all")
+            console.log(train.lineCode)
+
+            if (train.lineCode != singleRouteID && singleRouteID != "all")
               return;
 
-            if (train.lat !== 0 && train.lon !== 0) {
+            if (train.lat != 0 && train.lon != 0) {
               if (train.lat < minLat) minLat = train.lat;
               if (train.lat > maxLat) maxLat = train.lat;
               if (train.lon < minLon) minLon = train.lon;
@@ -352,10 +356,10 @@ const Map = () => {
           });
 
           if (
-            minLat !== 90 &&
-            maxLat !== -90 &&
-            minLon !== 180 &&
-            maxLon !== -180
+            minLat != 90 &&
+            maxLat != -90 &&
+            minLon != 180 &&
+            maxLon != -180
           ) {
             map.current.fitBounds(
               [

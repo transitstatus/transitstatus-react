@@ -59,7 +59,7 @@ const Trip = () => {
           window.dataManager
             .getData(agency, "shitsFucked")
             .then((raw) => {
-              if (raw !== "Not found") {
+              if (raw != "Not found") {
                 const shitsFucked = JSON.parse(raw);
                 if (shitsFucked.shitIsFucked) {
                   setLoadingMessage(shitsFucked.message);
