@@ -33,9 +33,19 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-16-1'>
+            <td>
+              <a href='#1-16-1'>v1.16.1</a>
+            </td>
+            <td>
+              <ul>
+                <li>Switched brightline to using "Northbound" and "Southbound" instead of a train's final destination when sorting trains.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-16-0'>
             <td>
-              <a href='#1-16-0'>v1.15.8</a>
+              <a href='#1-16-0'>v1.16.0</a>
             </td>
             <td>
               <ul>

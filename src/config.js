@@ -47,6 +47,7 @@ export const agencies = {
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: true,
+    useDirectionsInsteadOfDestinations: true,
   },
   bay: {
     name: "Bay Area",
@@ -719,7 +720,7 @@ export const config = {
   siteTitle: 'Transitstat.us',
   siteTitleOther: 'Transitstatus',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'v1.16.0',
+  version: 'v1.16.1',
   additionalWarnings: [],
   globalAlerts: [
     {
