@@ -86,7 +86,7 @@ const Station = () => {
   if (station === "Not found") {
     document.title = `Stop 404 ${agencyMeta.name} | Transitstat.us`;
     return (
-      <>
+      <main>
         <Oneko />
         {activateSnowfall ? <Snowfall /> : null}
         <h1>Stop Not Found</h1>
@@ -114,14 +114,14 @@ const Station = () => {
         >
           Choose Another Stop
         </h3>
-      </>
+      </main>
     );
   }
 
   document.title = `${station.stationName} ${agencyMeta.name} | Transitstat.us`;
 
   return (
-    <>
+    <main>
       <Oneko />
       {activateSnowfall ? <Snowfall /> : null}
       <h1>
@@ -229,7 +229,7 @@ const Station = () => {
                                       ? train.lineCode
                                       : train.line}
                                     {agencyMeta.addLine ? " Line " : " "}
-                                    {train.realTime ? '' : 'Scheduled '}
+                                    {train.realTime ? '' : 'Schd. '}
                                     {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime) ? agencyMeta.tripIDPrefix : ""}
                                     {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime) ? (agencyMeta.runNumberConverter ? agencyMeta.runNumberConverter(train.runNumber) : train.runNumber) : ""}{train.extra?.holidayChristmas ? " 🎄" : ""} to
                                   </p>
@@ -338,7 +338,7 @@ const Station = () => {
           Choose Another Station
         </h3>
       </div>
-    </>
+    </main>
   );
 };
 

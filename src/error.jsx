@@ -42,7 +42,7 @@ export default function ErrorPage() {
     });
 
     return (
-      <div id='error-page'>
+      <main id='error-page'>
         <h1>Oops!</h1>
         <p>
           Seems like an old version of Transitstat.us tried to load. We'll fix
@@ -50,11 +50,11 @@ export default function ErrorPage() {
         </p>
         <br />
         <p>Reloading in 5 seconds...</p>
-      </div>
+      </main>
     );
   } else if (error.status === 404) {
     return (
-      <div id='error-page'>
+      <main id='error-page'>
         <h1>404 - Not Found</h1>
         <p>Seems like that page doens't exist.</p>
         <p>
@@ -75,11 +75,11 @@ export default function ErrorPage() {
             {error.data}
           </i>
         </p>
-      </div>
+      </main>
     );
   } else {
     return (
-      <div id='error-page'>
+      <main id='error-page'>
         <h1>Oops!</h1>
         <p>Sorry, an unexpected error has occurred.</p>
         <p>
@@ -101,7 +101,7 @@ export default function ErrorPage() {
             {errorString}
           </i>
         </p>
-      </div>
+      </main>
     );
   }
 }

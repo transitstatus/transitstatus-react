@@ -21,6 +21,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     tripIDPrefix: '#',
+    tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: true,
   },
   brightline: {
@@ -44,6 +45,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     tripIDPrefix: '#',
+    tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: true,
   },
   bay: {
@@ -72,6 +74,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     tripIDPrefix: '#',
+    tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
   bart: {
@@ -95,6 +98,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     tripIDPrefix: '',
+    tripIDPrefixOnDisplay: '',
     runNumberConverter: (runNumber) => '',
     dontFilterMapLines: true,
   },
@@ -117,6 +121,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     tripIDPrefix: '#',
+    tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
   snowpiercer: {
@@ -138,6 +143,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     tripIDPrefix: '#',
+    tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: true,
     autoFitMaxZoom: 5,
   },
@@ -160,6 +166,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     tripIDPrefix: '#',
+    tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
   metra: {
@@ -181,6 +188,7 @@ export const agencies = {
     addShortName: true,
     showArrow: true,
     tripIDPrefix: 'Train #',
+    tripIDPrefixOnDisplay: '#',
     showTripIDOnScheduled: true,
     dontFilterMapLines: false,
     runNumberConverter: (runNumber) => runNumber.split('-').slice(-1),
@@ -205,6 +213,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     tripIDPrefix: 'Train #',
+    tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
   NJT: {
@@ -229,6 +238,7 @@ export const agencies = {
     addShortName: false,
     showArrow: false,
     tripIDPrefix: 'Train #',
+    tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: true,
   },
   marta: {
@@ -250,6 +260,7 @@ export const agencies = {
     addShortName: true,
     showArrow: false,
     tripIDPrefix: '#',
+    tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
   southshore: {
@@ -271,15 +282,16 @@ export const agencies = {
     addShortName: true,
     showArrow: false,
     tripIDPrefix: '#',
+    tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
-    dekalb_il: {
+  dekalb_il: {
     name: "Dekalb",
     selectionName: 'Dekalb, IL/Huskie Lines',
     endpoint: "https://store.transitstat.us/dekalb_il/transitStatus",
     mapShapes: ["https://gtfs.piemadd.com/data/dekalb_il/shapes/type_3.geojson"],
     gtfsRoot: "https://gtfs.piemadd.com/data/dekalb_il",
-    mapDefault: [41.78803440543757, -86.99159058472856, 9],
+    mapDefault: [41.94112708831645, -88.62625503540039, 11],
     color: "#c8102e",
     textColor: "#ffffff",
     type: 'Bus',
@@ -291,8 +303,11 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    tripIDPrefix: '#',
+    tripIDPrefix: 'Bus #',
+    tripIDPrefixOnDisplay: '#',
+    showTripIDOnScheduled: false,
     dontFilterMapLines: true,
+    useDirectionsInsteadOfDestinations: true,
   },
   mff: {
     name: "MFF",
@@ -313,6 +328,7 @@ export const agencies = {
     addShortName: false,
     showArrow: false,
     tripIDPrefix: '#',
+    tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
   rutgers: {
@@ -334,6 +350,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     tripIDPrefix: '#',
+    tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
   columbia: {
@@ -355,6 +372,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     tripIDPrefix: '#',
+    tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
   uchicago: {
@@ -376,6 +394,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     tripIDPrefix: '#',
+    tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
   gcsu: {
@@ -397,6 +416,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     tripIDPrefix: '#',
+    tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
   uga: {
@@ -418,6 +438,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     tripIDPrefix: '#',
+    tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
   gobus: {
@@ -439,6 +460,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     tripIDPrefix: '#',
+    tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
   georgiast: {
@@ -460,6 +482,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     tripIDPrefix: '#',
+    tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
   'gatech': {
@@ -481,6 +504,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     tripIDPrefix: '#',
+    tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
   'GASO': {
@@ -502,6 +526,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     tripIDPrefix: '#',
+    tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
   'MIT': {
@@ -523,6 +548,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     tripIDPrefix: '#',
+    tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
   'uncc': {
@@ -544,6 +570,7 @@ export const agencies = {
     addShortName: true,
     showArrow: true,
     tripIDPrefix: '#',
+    tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
   'uncg': {
@@ -565,6 +592,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     tripIDPrefix: '#',
+    tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
   'uncw': {
@@ -586,6 +614,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     tripIDPrefix: '#',
+    tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
   'bama': {
@@ -607,6 +636,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     tripIDPrefix: '#',
+    tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
   'ncstate': {
@@ -628,6 +658,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     tripIDPrefix: '#',
+    tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
   'ritech': {
@@ -649,6 +680,7 @@ export const agencies = {
     addShortName: false,
     showArrow: true,
     tripIDPrefix: '#',
+    tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
   /*
@@ -677,6 +709,7 @@ export const agencies = {
     addShortName: false,
     showArrow: false,
     tripIDPrefix: '#',
+    tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   }
   */
@@ -686,7 +719,7 @@ export const config = {
   siteTitle: 'Transitstat.us',
   siteTitleOther: 'Transitstatus',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'v1.15.7',
+  version: 'v1.15.8',
   additionalWarnings: [],
   globalAlerts: [
     {

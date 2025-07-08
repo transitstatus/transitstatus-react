@@ -7,7 +7,7 @@ const About = () => {
   document.title = "About | Transitstat.us";
 
   return (
-    <div>
+    <main>
       <Oneko />
       <h1>About</h1>
       <h2>Why</h2>
@@ -71,7 +71,7 @@ const About = () => {
       >
         Back Home
       </button>
-    </div>
+    </main>
   );
 };
 

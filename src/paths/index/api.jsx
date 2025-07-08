@@ -29,7 +29,7 @@ const APIDocs = () => {
   document.title = "API | Transitstat.us";
 
   return (
-    <div>
+    <main>
       <Oneko />
       <h1>API Guide</h1>
       <button
@@ -852,7 +852,7 @@ const APIDocs = () => {
       >
         Back Home
       </button>
-    </div>
+    </main>
   );
 };
 

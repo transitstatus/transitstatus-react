@@ -62,7 +62,7 @@ const Agency = () => {
     document.title = `Agency 404 | Transitstat.us`;
 
     return (
-      <>
+      <main>
         <Oneko />
         <h1>Agency Not Found</h1>
         <p>
@@ -89,7 +89,7 @@ const Agency = () => {
         >
           Choose Another Agency
         </h3>
-      </>
+      </main>
     );
   }
 
@@ -140,7 +140,7 @@ const Agency = () => {
   }, [agency]);
 
   return (
-    <>
+    <main>
       <Oneko />
       <h1>
         {agencies[agency].name} {agencies[agency].type} Tracker
@@ -418,7 +418,7 @@ const Agency = () => {
           Choose Another Agency
         </h3>
       </div>
-    </>
+    </main>
   );
 };
 

@@ -52,7 +52,7 @@ const Line = () => {
   if (line === "Not found" || line === undefined) {
     document.title = `Line 404 ${agencies[agency].name} | Transitstat.us`;
     return (
-      <>
+      <main>
         <Oneko />
         <h1>Line Not Found</h1>
         <p>
@@ -79,12 +79,12 @@ const Line = () => {
         >
           Choose Another Line
         </h3>
-      </>
+      </main>
     );
   }
 
   return (
-    <>
+    <main>
       <Oneko />
       <h1>
         {agencies[agency].name} {agencies[agency].type} Tracker
@@ -207,7 +207,7 @@ const Line = () => {
           </Link>
         </h3>
       </div>
-    </>
+    </main>
   );
 };
 

@@ -31,7 +31,7 @@ const Index = () => {
   const filteredAlerts = config.globalAlerts.filter((a) => a.expires > now);
 
   return (
-    <>
+    <main>
       <Oneko />
       <h1>{config.siteTitle}</h1>
       <p>{config.siteTitleOther} {config.version} by <a href="https://piemadd.com" target="_blank">Piero</a></p>
@@ -361,7 +361,7 @@ const Index = () => {
           <Link to='/settings'>Settings</Link>
         </p>
       </div>
-    </>
+    </main>
   );
 };
 

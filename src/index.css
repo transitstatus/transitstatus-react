@@ -6,7 +6,9 @@
 
 html,
 body,
-main {
+#root,
+main,
+.stationDisplayPage {
   width: 100%;
   min-height: 100%;
   margin: 0;
@@ -14,6 +16,11 @@ main {
   color: var(--fg);
   background-color: var(--bg-secondary);
   font-family: "Atkinson Hyperlegible", sans-serif;
+}
+
+.stationDisplayPage {
+  height: 100vh;
+  overflow: hidden; 
 }
 
 div.code {
@@ -24,20 +31,18 @@ div.code {
   padding: 0.5rem 0.75rem;
 }
 
-body {
+#root {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
 }
 
 main {
   width: calc(100% - 24px);
   max-width: 800px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--bg-primary);
   padding: 4px 12px 12px 12px;
+  background-color: var(--bg-primary);
 }
 
 h1,
@@ -68,6 +73,19 @@ h2 {
   gap: 4px;
   margin-top: 8px;
   text-align: left;
+}
+
+.trains {
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+
+.trainsDisplay {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+  max-width: none;
+  padding: 4px;
+  font-size-adjust: 1;
 }
 
 .agency,
@@ -117,11 +135,6 @@ a:visited {
 
 .trainLink {
   text-decoration: none !important;
-}
-
-.trains {
-  margin-top: 0;
-  margin-bottom: 4px;
 }
 
 .trainInfo {

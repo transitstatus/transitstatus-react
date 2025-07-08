@@ -7,7 +7,7 @@ const Changelog = () => {
   document.title = "Changelog | Transitstat.us";
 
   return (
-    <div>
+    <main>
       <Oneko />
       <h1>Changelog</h1>
       <button
@@ -33,6 +33,17 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-15-8'>
+            <td>
+              <a href='#1-15-8'>v1.15.8</a>
+            </td>
+            <td>
+              <ul>
+                <li>Testing a station display mode (access by replacing /stops/[stop id] with /stops/display/[stop id]).</li>
+                <li>Fixed Dekalb, IL config slightly.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-15-7'>
             <td>
               <a href='#1-15-7'>v1.15.7</a>
@@ -1361,7 +1372,7 @@ const Changelog = () => {
       >
         Back Home
       </button>
-    </div>
+    </main>
   );
 };
 

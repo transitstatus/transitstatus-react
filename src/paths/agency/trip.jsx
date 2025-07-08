@@ -87,7 +87,7 @@ const Trip = () => {
     document.title = `Trip 404 ${agencies[agency].name} | Transitstat.us`;
 
     return (
-      <>
+      <main>
         <Oneko />
         {activateSnowfall ? <Snowfall /> : null}
         <h1>Trip Not Found</h1>
@@ -115,14 +115,14 @@ const Trip = () => {
         >
           Choose Another Trip
         </h3>
-      </>
+      </main>
     );
   }
 
   document.title = `${trip.line} ${agencies[agency].tripIDPrefix}${agencies[agency].runNumberConverter ? agencies[agency].runNumberConverter(tripID) : tripID} ${agencies[agency].name} | Transitstat.us`;
 
   return (
-    <>
+    <main>
       <Oneko />
       {activateSnowfall ? <Snowfall /> : null}
       <h1>
@@ -277,7 +277,7 @@ const Trip = () => {
           </Link>
         </h3>
       </div>
-    </>
+    </main>
   );
 };
 

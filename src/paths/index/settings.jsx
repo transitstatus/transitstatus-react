@@ -36,7 +36,7 @@ const Settings = () => {
   }, []);
 
   return (
-    <div>
+    <main>
       <Oneko />
       <h1>Settings</h1>
       <p>
@@ -179,7 +179,7 @@ const Settings = () => {
       >
         Back Home
       </button>
-    </div>
+    </main>
   );
 };
 

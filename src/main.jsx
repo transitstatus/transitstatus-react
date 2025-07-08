@@ -19,6 +19,7 @@ const API = React.lazy(() => import("./paths/index/api.jsx"));
 const Agency = React.lazy(() => import("./paths/agency/agency.jsx"));
 const Line = React.lazy(() => import("./paths/agency/line.jsx"));
 const Station = React.lazy(() => import("./paths/agency/station.jsx"));
+const StationDisplay = React.lazy(() => import("./paths/agency/stationDisplay.jsx"));
 const Trip = React.lazy(() => import("./paths/agency/trip.jsx"));
 const Map = React.lazy(() => import("./paths/agency/map.jsx"));
 
@@ -51,6 +52,11 @@ const router = createBrowserRouter([
   {
     path: "/:agency/stops/:stopID",
     element: <Station />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/:agency/stops/display/:stopID",
+    element: <StationDisplay />,
     errorElement: <ErrorPage />,
   },
   {

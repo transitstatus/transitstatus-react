@@ -6,7 +6,7 @@ const Privacy = () => {
   document.title = "Privacy Policy | Transitstat.us";
 
   return (
-    <div>
+    <main>
       <h1>Privacy Policy</h1>
 
       <p>
@@ -288,7 +288,7 @@ const Privacy = () => {
       >
         Back Home
       </p>
-    </div>
+    </main>
   );
 };
 
