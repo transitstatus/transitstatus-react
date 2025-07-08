@@ -296,6 +296,7 @@ const APIDocs = () => {
     lat: number, //latitude coordinate
     lon: number, //longitude coordinate
     heading: number, //if these are a multiple of 90 off, pls email me so i can fix. its fucky
+    realTime: boolean, //true if the vehicle is tracking, false if this is a scheduled trip 
     line: string, //plaintext line name
     lineCode: string, //line code, usually lines up with GTFS
     lineColor: string, //hex line color, minus the "#"
@@ -435,7 +436,7 @@ const APIDocs = () => {
     runNumber: string, //either the scheduled train number or the physical number on a bus. is usually a number, but can be a string
     actualETA: number, //estimated time of arrival in unix timestamp (ms)
     noETA: boolean, //whether there is no ETA for this train. really only happens when passio go dies
-    realtime: boolean, //true if the vehicle is tracking, false if this is a scheduled trip 
+    realTime: boolean, //true if the vehicle is tracking, false if this is a scheduled trip 
     line: string, //plaintext line name
     lineCode: string, //line code, usually lines up with GTFS
     lineColor: string, //hex line color, minus the "#"
@@ -468,7 +469,7 @@ const APIDocs = () => {
     stationName: string, //plaintext station name,
     actualETA: number, //estimated time of arrival in unix timestamp (ms)
     noETA: boolean, //whether there is no ETA for this train. really only happens when passio go dies
-    realtime: boolean, //true if the vehicle is tracking, false if this is a scheduled trip
+    realTime: boolean, //true if the vehicle is tracking, false if this is a scheduled trip
 }`}
           language='typescript'
         />
