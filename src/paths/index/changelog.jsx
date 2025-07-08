@@ -33,6 +33,16 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-16-2'>
+            <td>
+              <a href='#1-16-2'>v1.16.2</a>
+            </td>
+            <td>
+              <ul>
+                <li>Fixed brightline's colors.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-16-1'>
             <td>
               <a href='#1-16-1'>v1.16.1</a>
