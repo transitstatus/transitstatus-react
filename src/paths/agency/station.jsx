@@ -43,6 +43,11 @@ const Station = () => {
 
   const agencyMeta = agencies[agency];
 
+  let settings = JSON.parse(localStorage.getItem("transitstatus_v1_settings")) ?? {};
+
+  //fallback for oneko type if not defined
+  if (!settings.playgroundEnabled) settings.playgroundEnabled = false;
+
   useEffect(() => {
     const fetchData = () => {
       window.dataManager
@@ -131,7 +136,7 @@ const Station = () => {
       <div
         style={{
           maxWidth: "384px",
-          padding: "0px 8px",
+          padding: "0px 8px 4px 8px",
           marginBottom: "4px",
           marginTop: "12px",
           backgroundColor: "#333",
@@ -159,11 +164,7 @@ const Station = () => {
             }}
           />
         </span>
-        <p
-          style={{
-            marginBottom: "8px",
-          }}
-        >
+        <p>
           As of{" "}
           {new Date(lastFetched).toLocaleTimeString([], {
             hour: "2-digit",
@@ -171,6 +172,23 @@ const Station = () => {
           })}
         </p>
       </div>
+      {settings.playgroundEnabled ? (
+        <h3
+          className='train'
+          key='backButton'
+          style={{
+            backgroundColor: agencyMeta.color,
+            color: agencyMeta.textColor,
+            maxWidth: "384px",
+            marginBottom: '4px',
+          }}
+          onClick={() => {
+            const parsedURL = new URL(document.URL);
+            navigate(`${parsedURL.pathname.replace('/stops/', '/stops/display/')}${parsedURL.search}`, { replace: true })
+          }}
+        >
+          Show Station Display
+        </h3>) : null}
       <div>
         {isLoading ? (
           <p
@@ -308,9 +326,9 @@ const Station = () => {
                     <>
                       <p className='destination'>
                         {
-                          agencyMeta.useDirectionsInsteadOfDestinations ? 
-                          `No ${destinationKey} ${agencyMeta.typePlural}` : 
-                          `No ${agencyMeta.typePlural} towards ${destinationKey}`
+                          agencyMeta.useDirectionsInsteadOfDestinations ?
+                            `No ${destinationKey} ${agencyMeta.typePlural}` :
+                            `No ${agencyMeta.typePlural} towards ${destinationKey}`
                         }
                       </p>
                     </>
@@ -328,7 +346,13 @@ const Station = () => {
             maxWidth: "384px",
           }}
           onClick={() => {
-            if (history.state.idx && history.state.idx > 0) {
+            //see if querey string has prev
+            const urlParams = new URLSearchParams(window.location.search);
+            const prev = urlParams.get("prev");
+
+            if (prev) {
+              navigate(-1);
+            } else if (history.state.idx && history.state.idx > 0) {
               navigate(-1);
             } else {
               navigate(`/${agency}`, { replace: true }); //fallback

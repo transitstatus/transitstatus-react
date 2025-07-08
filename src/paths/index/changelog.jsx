@@ -33,13 +33,23 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-16-0'>
+            <td>
+              <a href='#1-16-0'>v1.15.8</a>
+            </td>
+            <td>
+              <ul>
+                <li>Testing a station display mode (access by replacing /stops/[stop id] with /stops/display/[stop id]).</li>
+                <li>Added 'playground' setting toggle to enable experiments like the station display.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-15-8'>
             <td>
               <a href='#1-15-8'>v1.15.8</a>
             </td>
             <td>
               <ul>
-                <li>Testing a station display mode (access by replacing /stops/[stop id] with /stops/display/[stop id]).</li>
                 <li>Fixed Dekalb, IL config slightly.</li>
               </ul>
             </td>

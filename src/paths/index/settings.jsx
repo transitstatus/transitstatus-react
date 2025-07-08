@@ -29,6 +29,10 @@ const Settings = () => {
       tempSettings.catType = "onkeo";
     }
 
+    if (!tempSettings.playgroundEnabled) {
+      tempSettings.playgroundEnabled = false;
+    }
+
     console.log("Initial Settings:", tempSettings);
 
     setSettings(tempSettings);
@@ -58,6 +62,7 @@ const Settings = () => {
           <div className='settingsPage'>
             <h3>Settings</h3>
             <span>
+              <label htmlFor='setting_showCat'>Show Cat :3</label>
               <input
                 id='setting_showCat'
                 type='checkbox'
@@ -80,22 +85,21 @@ const Settings = () => {
                 }}
                 checked={settings.showCat}
               ></input>
-              <label htmlFor='setting_showCat'>Show Cat :3</label>
             </span>
             <span>
               <label htmlFor='setting_catType'>Select a Cat:</label>
               <select
-               onChange={(e) => {
-                setSettings((currentSettings) => {
-                  const newSettings = {
-                    ...currentSettings,
-                    catType: e.target.value,
-                  };
+                onChange={(e) => {
+                  setSettings((currentSettings) => {
+                    const newSettings = {
+                      ...currentSettings,
+                      catType: e.target.value,
+                    };
 
-                  console.log("New Settings:", newSettings);
-                  return newSettings;
-                });
-              }}
+                    console.log("New Settings:", newSettings);
+                    return newSettings;
+                  });
+                }}
                 defaultValue={settings.catType}
               >
                 <option value={"oneko"} id='setting_catType'>
@@ -113,6 +117,25 @@ const Settings = () => {
                   Dark
                 </option>
               </select>
+            </span>
+            <span>
+              <label htmlFor='setting_showCat'>Enable Playground Features?</label>
+              <input
+                id='setting_showCat'
+                type='checkbox'
+                onChange={(e) => {
+                  setSettings((currentSettings) => {
+                    const newSettings = {
+                      ...currentSettings,
+                      playgroundEnabled: e.target.checked,
+                    };
+
+                    console.log("New Settings:", newSettings);
+                    return newSettings;
+                  });
+                }}
+                checked={settings.playgroundEnabled}
+              ></input>
             </span>
             <button
               onClick={() => {
