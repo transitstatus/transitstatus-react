@@ -119,9 +119,9 @@ const Settings = () => {
               </select>
             </span>
             <span>
-              <label htmlFor='setting_showCat'>Enable Playground Features?</label>
+              <label htmlFor='setting_playgroundEnabled'>Enable Playground Features?</label>
               <input
-                id='setting_showCat'
+                id='setting_playgroundEnabled'
                 type='checkbox'
                 onChange={(e) => {
                   setSettings((currentSettings) => {
