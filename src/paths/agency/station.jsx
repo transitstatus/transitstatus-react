@@ -123,7 +123,7 @@ const Station = () => {
     );
   }
 
-  document.title = `${station.stationName} ${agencyMeta.name} | Transitstat.us`;
+  document.title = `${station.stationName} ${agencyMeta.name} Tracker | Transitstat.us`;
 
   return (
     <main>
@@ -225,9 +225,6 @@ const Station = () => {
                               to={`/${agency}/track/${train.runNumber}`}
                               key={train.runNumber}
                               className='trainLink'
-                              style={{
-                                pointerEvents: train.realTime ? null : 'none',
-                              }}
                             >
                               <div
                                 className='train'

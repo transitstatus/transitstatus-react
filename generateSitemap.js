@@ -1,7 +1,5 @@
 import fs from 'fs';
-import agencies from './src/config.js';
-
-const sitemap = fs.createWriteStream('./public/sitemap.xml');
+import { agencies } from './src/config.js';
 
 const now = new Date();
 const year = now.getFullYear();
@@ -9,30 +7,11 @@ const month = (now.getMonth() + 1).toString().padStart(2, '0');
 const day = now.getDate().toString().padStart(2, '0');
 const lastMod = `${year}-${month}-${day}`;
 
-const generateMapForFeed = async (feed) => {
-  const feedData = await fetch(feed.endpoint + '')
-};
+const sitemap = fs.createWriteStream('./public/sitemap.xml');
 
-(async () => {
-  const trainsRes = await fetch('https://api.amtraker.com/v3/trains');
-  const stationsRes = await fetch('https://api.amtraker.com/v3/stations');
-
-  const trainsData = await trainsRes.json();
-  const stationsData = await stationsRes.json();
-
-  const newTrainsData = {
-    ...trainNames,
-    ...trainsData
-  };
-
-  const newStationsData = {
-    ...stationNames,
-    ...stationsData,
-  }
-
-  sitemap.write('<?xml version="1.0" encoding="UTF-8"?>');
-  sitemap.write('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
-  sitemap.write(`
+sitemap.write('<?xml version="1.0" encoding="UTF-8"?>');
+sitemap.write('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
+sitemap.write(`
   <url>
     <loc>https://transitstat.us/</loc>
     <lastmod>${lastMod}</lastmod>
@@ -41,83 +20,71 @@ const generateMapForFeed = async (feed) => {
   </url>
 `);
 
-  // train names
-  /*
-  [...new Set(Object.values(trainNames))].forEach((trainName) => {
-    sitemap.write(`
+const processFeed = async (feed) => {
+  if (feed.disabled) { // feed is hidden, broken, or disabled for some other reason. dont index it.
+    console.log(`Feed is disabled: ${feed.key}`)
+    return;
+  }
+
+  const feedData = await fetch(feed.endpoint)
+    .then((res) => res.json())
+    .catch((e) => console.log(`Feed does not exist: ${feed.key}`));
+
+  if (!feedData) return;
+
+  sitemap.write(`
     <url>
-      <loc>https://amtraker.com/trains/names/${trainName.replaceAll(' ', '%20')}</loc>
-      <lastmod>${year}-${month}-${day}</lastmod>
-      <changefreq>monthly</changefreq>
+      <loc>https://transitstat.us/${feed.key}</loc>
+      <lastmod>${lastMod}</lastmod>
+      <changefreq>daily</changefreq>
       <priority>0.9</priority>
     </url>
   `);
-  });
-  */
 
-  // train numbers
-  [...new Set(Object.keys(newTrainsData))].forEach((trainNum) => {
+  sitemap.write(`
+    <url>
+      <loc>https://transitstat.us/${feed.key}/map</loc>
+      <lastmod>${lastMod}</lastmod>
+      <changefreq>daily</changefreq>
+      <priority>0.8</priority>
+    </url>
+  `);
+
+  Object.values(feedData.lines).forEach((line) => {
     sitemap.write(`
-  <url>
-    <loc>https://amtraker.com/trains/${trainNum}</loc>
-    <lastmod>${year}-${month}-${day}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-`);
+      <url>
+        <loc>https://transitstat.us/${feed.key}/${line.lineCode}</loc>
+        <lastmod>${lastMod}</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+      </url>
+    `);
   });
 
-  // station codes
-  [...new Set(Object.keys(newStationsData))].forEach((station) => {
+  Object.values(feedData.stations).forEach((station) => {
     sitemap.write(`
-  <url>
-    <loc>https://amtraker.com/stations/${station}</loc>
-    <lastmod>${year}-${month}-${day}</lastmod>
-    <changefreq>hourly</changefreq>
-    <priority>0.7</priority>
-  </url>
-`);
+      <url>
+        <loc>https://transitstat.us/${feed.key}/${station.stationID}</loc>
+        <lastmod>${lastMod}</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+      </url>
+    `);
+  });
+};
+
+(async () => {
+  const feeds = Object.keys(agencies).map((agencyKey) => {
+    return {
+      ...agencies[agencyKey],
+      key: agencyKey
+    };
   });
 
-  // train list
-  sitemap.write(`
-  <url>
-    <loc>https://amtraker.com/trains</loc>
-    <lastmod>${year}-${month}-${day}</lastmod>
-    <changefreq>hourly</changefreq>
-    <priority>0.6</priority>
-  </url>
-`);
-
-  // station list
-  sitemap.write(`
-  <url>
-    <loc>https://amtraker.com/stations</loc>
-    <lastmod>${year}-${month}-${day}</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.5</priority>
-  </url>
-`);
-
-  // map
-  sitemap.write(`
-  <url>
-    <loc>https://amtraker.com/map</loc>
-    <lastmod>${year}-${month}-${day}</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.4</priority>
-  </url>
-`);
-
-  // about page
-  sitemap.write(`
-  <url>
-    <loc>https://amtraker.com/about</loc>
-    <lastmod>${year}-${month}-${day}</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.3</priority>
-  </url>
-`);
+  for (let i = 0; i < feeds.length; i++) {
+    await processFeed(feeds[i]);
+    console.log(`Done with ${feeds[i].key}`)
+  };
 
   sitemap.write('</urlset>');
   sitemap.end();

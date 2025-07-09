@@ -46,6 +46,7 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    showTripIDOnScheduled: true,
     dontFilterMapLines: true,
     useDirectionsInsteadOfDestinations: true,
   },
@@ -720,7 +721,7 @@ export const config = {
   siteTitle: 'Transitstat.us',
   siteTitleOther: 'Transitstatus',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'v1.16.3',
+  version: 'v1.16.4',
   additionalWarnings: [],
   globalAlerts: [
     {

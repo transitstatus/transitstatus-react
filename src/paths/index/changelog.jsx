@@ -33,6 +33,18 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-16-4'>
+            <td>
+              <a href='#1-16-4'>v1.16.4</a>
+            </td>
+            <td>
+              <ul>
+                <li>Added sitemap.xml.</li>
+                <li>Fixed Brightline config to show scheduled train numbers.</li>
+                <li>Allowing users to click on scheduled trains on station pages.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-16-3'>
             <td>
               <a href='#1-16-3'>v1.16.3</a>

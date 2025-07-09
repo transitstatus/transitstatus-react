@@ -147,7 +147,7 @@ const Trip = () => {
             {agencies[agency].runNumberConverter ? agencies[agency].runNumberConverter(tripID) : tripID}
             {trip.extra?.holidayChristmas ? " 🎄" : ""}
           </h2>
-          <p>
+          {trip.realTime ? <p>
             As of{" "}
             {new Date(lastFetched).toLocaleTimeString([], {
               hour: "2-digit",
@@ -159,7 +159,8 @@ const Trip = () => {
                 (trip.extra.load / trip.extra.cap) * 100
               )}% Full`
               : null}
-          </p>
+          </p> : <p>Scheduled, Not Yet Tracking</p>}
+
           {trip.extra && trip.extra.info ? <p>{trip.extra.info}</p> : null}
           <p>
             Service to{" "}
@@ -180,7 +181,7 @@ const Trip = () => {
             {loadingMessage}
           </p>
         ) : (
-          trip.predictions.filter((eta) => eta.actualETA >= Date.now() - (1000 * 60 * 5)  || eta.noETA).map((stop, i) => {
+          trip.predictions.filter((eta) => eta.actualETA >= Date.now() - (1000 * 60 * 5) || eta.noETA).map((stop, i) => {
             //console.log(stop);
             return (
               <Link
