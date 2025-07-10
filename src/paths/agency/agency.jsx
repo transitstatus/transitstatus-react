@@ -93,7 +93,7 @@ const Agency = () => {
     );
   }
 
-  document.title = `${agencies[agency].name} Tracker | Transitstat.us`;
+  document.title = `${agencies[agency].name} ${agencies[agency].type} Tracker | Transitstat.us`;
 
   useEffect(() => {
     const fetchData = () => {
