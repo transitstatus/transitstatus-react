@@ -34,7 +34,7 @@ const Index = () => {
     <main>
       <Oneko />
       <h1>{config.siteTitle}</h1>
-      <p>{config.siteTitleOther} {config.version} by <a href="https://piemadd.com" target="_blank">Piero</a></p>
+      <p>{config.siteTitleOther} {config.version} by <a href="https://piemadd.com" target="_blank">Piero&reg;</a></p>
       {config.additionalWarnings.map((warning, i) => {
         return <p key={i}>{warning}</p>;
       })}
