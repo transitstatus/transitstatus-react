@@ -123,7 +123,7 @@ const StationDisplay = () => {
       <div className='trains trainsDisplay'>
         <h3 className='train' style={{ backgroundColor: '#333', gridColumn: '1 / 3'}}>{agencyMeta.name} {station.stationName}</h3>
         <p className='train' style={{ backgroundColor: '#333', gridColumn: '3 / 5' }}>Last Updated {new Date(lastFetched).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", })}</p>
-        <p className='train' style={{ backgroundColor: '#333', gridColumn: '5 / 7' }}>Transitstat.us &copy; Piero 2025</p>
+        <p className='train' style={{ backgroundColor: '#333', gridColumn: '5 / 7' }}>Transitstat.us &copy; Piero&reg; 2025</p>
         <h3 className='train' style={{ backgroundColor: agencyMeta.color, color: agencyMeta.textColor }}>Line</h3>
         <h3 className='train' style={{ backgroundColor: agencyMeta.color, color: agencyMeta.textColor }}>Train No.</h3>
         <h3 className='train' style={{ backgroundColor: agencyMeta.color, color: agencyMeta.textColor }}>Destination</h3>

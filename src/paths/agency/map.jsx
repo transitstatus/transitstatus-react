@@ -699,7 +699,7 @@ const Map = () => {
         </a>{" "}
         |{" "}
         <a href='https://piemadd.com' target='_blank' rel='noreferrer'>
-          &copy;Piero
+          &copy;Piero&reg;
         </a>
       </div>
       <div
