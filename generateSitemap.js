@@ -64,7 +64,7 @@ const processFeed = async (feed) => {
   Object.values(feedData.stations).forEach((station) => {
     sitemap.write(`
       <url>
-        <loc>https://transitstat.us/${feed.key}/${station.stationID}</loc>
+        <loc>https://transitstat.us/${feed.key}/stops/${station.stationID}</loc>
         <lastmod>${lastMod}</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.6</priority>
