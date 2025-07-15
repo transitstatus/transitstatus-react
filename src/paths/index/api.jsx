@@ -9,9 +9,6 @@ import "highlight.js/styles/atom-one-dark.min.css";
 const APIDocs = () => {
   const navigate = useNavigate();
 
-  const [baseURL, setBaseURL] = useState(
-    "https://store.transitstat.us/atsa/ts"
-  );
   const [runNumber, setRunNumber] = useState("");
   const [stationID, setStationID] = useState("");
   const [lineCode, setLineCode] = useState("");
@@ -25,6 +22,15 @@ const APIDocs = () => {
       };
     });
   }, []);
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const defaultAgency = urlParams.get("defaultAgency");
+
+  console.log("defaultAgency", defaultAgency, agencies[defaultAgency])
+
+  const [baseURL, setBaseURL] = useState(
+    agencies[defaultAgency]?.endpoint ?? "https://store.transitstat.us/atsa/ts"
+  );
 
   document.title = "API | Transitstat.us";
 
@@ -494,6 +500,7 @@ const APIDocs = () => {
             marginTop: "2px",
             marginBottom: "4px",
           }}
+          defaultValue={agencies[defaultAgency]?.endpoint}
         >
           {agencyPresets.map((agency) => {
             return (

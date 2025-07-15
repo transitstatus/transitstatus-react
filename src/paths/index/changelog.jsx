@@ -33,6 +33,16 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-16-6'>
+            <td>
+              <a href='#1-16-6'>v1.16.6</a>
+            </td>
+            <td>
+              <ul>
+                <li>Added default query option for API page.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-16-5'>
             <td>
               <a href='#1-16-5'>v1.16.5</a>
