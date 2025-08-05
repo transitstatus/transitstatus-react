@@ -33,6 +33,10 @@ const Settings = () => {
       tempSettings.playgroundEnabled = false;
     }
 
+    if (!tempSettings.speedyPickEnabled) {
+      tempSettings.speedyPickEnabled = false;
+    }
+
     console.log("Initial Settings:", tempSettings);
 
     setSettings(tempSettings);
@@ -137,6 +141,27 @@ const Settings = () => {
                 checked={settings.playgroundEnabled}
               ></input>
             </span>
+            {settings.playgroundEnabled ? (
+              <span>
+                <label htmlFor='setting_speedyPickEnabled'>Enable Speedy Pick?</label>
+                <input
+                  id='setting_speedyPickEnabled'
+                  type='checkbox'
+                  onChange={(e) => {
+                    setSettings((currentSettings) => {
+                      const newSettings = {
+                        ...currentSettings,
+                        speedyPickEnabled: e.target.checked,
+                      };
+
+                      console.log("New Settings:", newSettings);
+                      return newSettings;
+                    });
+                  }}
+                  checked={settings.speedyPickEnabled}
+                ></input>
+              </span>
+            ) : null}
             <button
               onClick={() => {
                 console.log("Saving settings as:", settings);

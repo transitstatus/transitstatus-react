@@ -3,8 +3,6 @@ import { agencies } from "../../config";
 import StationHeart from "../hearts/stationHeart";
 
 const FavoritedStation = ({ agency, station, style }) => {
-  console.log(station);
-
   const agencyObj = agencies[agency];
 
   return (
