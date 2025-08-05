@@ -18,6 +18,7 @@ const ChangeLog = React.lazy(() => import("./paths/index/changelog.jsx"));
 const API = React.lazy(() => import("./paths/index/api.jsx"));
 const Agency = React.lazy(() => import("./paths/agency/agency.jsx"));
 const Line = React.lazy(() => import("./paths/agency/line.jsx"));
+const LineQS = React.lazy(() => import("./paths/agency/lineQS.jsx"));
 const Station = React.lazy(() => import("./paths/agency/station.jsx"));
 const StationDisplay = React.lazy(() => import("./paths/agency/stationDisplay.jsx"));
 const Trip = React.lazy(() => import("./paths/agency/trip.jsx"));
@@ -42,6 +43,11 @@ const router = createBrowserRouter([
   {
     path: "/:agency/:lineName",
     element: <Line />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/:agency/:lineName/qs",
+    element: <LineQS />,
     errorElement: <ErrorPage />,
   },
   {
