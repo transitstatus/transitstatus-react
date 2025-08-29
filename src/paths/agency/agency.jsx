@@ -5,6 +5,7 @@ import Meta from "../../components/meta";
 import AgencyHeart from "../../components/hearts/agencyHeart";
 import FavoritedStation from "../../components/favorites/favoritedStation";
 import Oneko from "../../components/extras/oneko";
+import Line from "./line";
 
 const Agency = () => {
   const { agency } = useParams();
@@ -13,8 +14,6 @@ const Agency = () => {
   const [loadingMessage, setLoadingMessage] = useState("Loading data...");
   const [isLoading, setIsLoading] = useState(true);
   const [runNumber, setRunNumber] = useState("");
-
-  //if (agency === 'snowpiercer') navigate("/snowpiercer/track/PRCR", { replace: true });
 
   const sortedLines = useMemo(() => {
     return Object.keys(lines).sort((a, b) => {
@@ -58,6 +57,7 @@ const Agency = () => {
     return results;
   }, []);
 
+  // agency exists?
   if (!agencies[agency]) {
     document.title = `Agency 404 | Transitstat.us`;
 
@@ -92,6 +92,9 @@ const Agency = () => {
       </main>
     );
   }
+
+  // seeing if we only have 1 line to show
+  if (agencies[agency].onlyUseSingleRouteCode) return <Line lineOverride={agencies[agency].onlyUseSingleRouteCode} />
 
   document.title = `${agencies[agency].name} ${agencies[agency].type} Tracker | Transitstat.us`;
 
@@ -208,8 +211,8 @@ const Agency = () => {
                 >
                   {line.lineNameLong}{" "}
                   {line.lineNameShort.length > 0 &&
-                  agencies[agency].addShortName &&
-                  line.lineNameShort != line.lineNameLong
+                    agencies[agency].addShortName &&
+                    line.lineNameShort != line.lineNameLong
                     ? `(${line.lineNameShort})`
                     : ""}
                 </Link>
@@ -250,8 +253,8 @@ const Agency = () => {
                     >
                       {line.lineNameLong}{" "}
                       {line.lineNameShort.length > 0 &&
-                      agencies[agency].addShortName &&
-                      line.lineNameShort != line.lineNameLong
+                        agencies[agency].addShortName &&
+                        line.lineNameShort != line.lineNameLong
                         ? `(${line.lineNameShort})`
                         : ""}
                     </Link>
@@ -311,7 +314,7 @@ const Agency = () => {
               <Link
                 to={runNumber.length > 0 ? `/${agency}/track/${runNumber}` : ""}
                 style={{
-                  color: agencies[agency].textColor,
+                  color: "#fff",
                 }}
               >
                 Track {agencies[agency].type}

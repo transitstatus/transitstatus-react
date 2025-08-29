@@ -33,6 +33,17 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-17-0'>
+            <td>
+              <a href='#1-17-0'>v1.17.0</a>
+            </td>
+            <td>
+              <ul>
+                <li>Added single line mode for agencies like Brightline.</li>
+                <li>Modified favorite hearts to match agency text color.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-16-6'>
             <td>
               <a href='#1-16-6'>v1.16.6</a>

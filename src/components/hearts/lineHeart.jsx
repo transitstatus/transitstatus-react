@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import fullHeart from "../../assets/heart_full.svg";
-import emptyHeart from "../../assets/heart_empty.svg";
+import HeartSVG from "./heartSVG";
 
 const LineHeart = ({ agency, line, style }) => {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -47,23 +46,15 @@ const LineHeart = ({ agency, line, style }) => {
   };
 
   return isFavorite ? (
-    <img
-      onClick={() => {
-        removeFavorite();
-      }}
-      src={fullHeart}
-      style={style}
-      alt='Remove from favorites'
+    <HeartSVG
+      onClick={() => removeFavorite()}
+      filledIn={true}
     />
   ) : (
-    <img
-      onClick={() => {
-        addFavorite();
-      }}
-      src={emptyHeart}
-      style={style}
-      alt='Add to favorites'
-    ></img>
+    <HeartSVG
+      onClick={() => addFavorite()}
+      filledIn={false}
+    />
   );
 };
 

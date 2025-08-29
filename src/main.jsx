@@ -40,7 +40,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/:agency/:lineName",
+    path: "/:agency/:urlLineName",
     element: <Line />,
     errorElement: <ErrorPage />,
   },

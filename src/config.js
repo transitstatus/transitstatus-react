@@ -49,6 +49,7 @@ export const agencies = {
     showTripIDOnScheduled: true,
     dontFilterMapLines: true,
     useDirectionsInsteadOfDestinations: true,
+    onlyUseSingleRouteCode: '1',
   },
   bay: {
     name: "Bay Area",
@@ -721,7 +722,7 @@ export const config = {
   siteTitle: 'Transitstat.us',
   siteTitleOther: 'Transitstatus',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'v1.16.6',
+  version: 'v1.17.0',
   additionalWarnings: [],
   globalAlerts: [
     {
