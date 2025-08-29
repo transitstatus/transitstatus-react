@@ -44,6 +44,16 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
+          <tr id='1-16-7'>
+            <td>
+              <a href='#1-16-7'>v1.16.7</a>
+            </td>
+            <td>
+              <ul>
+                <li>Testing quick select keyboard (enabled by flag in settings).</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-16-6'>
             <td>
               <a href='#1-16-6'>v1.16.6</a>

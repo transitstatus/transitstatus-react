@@ -15,6 +15,8 @@ const Agency = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [runNumber, setRunNumber] = useState("");
 
+  const settings = JSON.parse(localStorage.getItem("transitstatus_v1_settings")) ?? {};
+
   const sortedLines = useMemo(() => {
     return Object.keys(lines).sort((a, b) => {
       const aName = lines[a].lineNameLong;
@@ -142,6 +144,8 @@ const Agency = () => {
     //dont need to refetch lines
   }, [agency]);
 
+  
+
   return (
     <main>
       <Oneko />
@@ -200,7 +204,7 @@ const Agency = () => {
             return (
               <h3 key={line.lineCode}>
                 <Link
-                  to={`/${agency}/${line.lineCode}`}
+                  to={settings.speedyPickEnabled ? `/${agency}/${line.lineCode}/qs` : `/${agency}/${line.lineCode}`}
                   className='route'
                   style={{
                     fontSize: "1.3rem",
@@ -242,7 +246,7 @@ const Agency = () => {
                 return (
                   <h3 key={line.lineCode}>
                     <Link
-                      to={`/${agency}/${line.lineCode}`}
+                      to={settings.speedyPickEnabled ? `/${agency}/${line.lineCode}/qs` : `/${agency}/${line.lineCode}`}
                       className='route'
                       style={{
                         fontSize: "1.3rem",

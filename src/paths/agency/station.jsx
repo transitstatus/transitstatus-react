@@ -44,8 +44,6 @@ const Station = () => {
   const agencyMeta = agencies[agency];
 
   let settings = JSON.parse(localStorage.getItem("transitstatus_v1_settings")) ?? {};
-
-  //fallback for oneko type if not defined
   if (!settings.playgroundEnabled) settings.playgroundEnabled = false;
 
   useEffect(() => {
