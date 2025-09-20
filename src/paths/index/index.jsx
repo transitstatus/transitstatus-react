@@ -76,13 +76,12 @@ const Index = () => {
               .map((favKey) => {
                 const fav = favoriteStations[favKey];
 
-                console.log(favKey, fav);
-
                 return (
                   <FavoritedStation
                     agency={favKey.split("-")[0]}
                     station={fav}
                     key={favKey}
+                    style={{}}
                   />
                 );
               })}
@@ -189,8 +188,6 @@ const Index = () => {
               .sort()
               .map((favKey) => {
                 const fav = favoriteAgencies[favKey];
-
-                console.log(favKey, fav);
 
                 return (
                   <FavoritedAgency

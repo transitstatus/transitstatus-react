@@ -367,8 +367,6 @@ const Agency = () => {
                   .map((favKey) => {
                     const fav = favoriteStations[favKey];
 
-                    console.log(favKey, fav);
-
                     return (
                       <FavoritedStation
                         agency={favKey.split("-")[0]}
@@ -376,6 +374,7 @@ const Agency = () => {
                         key={favKey}
                         style={{
                           backgroundColor: "#444",
+                          color: "#fff",
                         }}
                       />
                     );

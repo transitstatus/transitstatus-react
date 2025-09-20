@@ -5,8 +5,6 @@ import AgencyHeart from "../hearts/agencyHeart";
 const FavoritedAgency = ({ agency, style }) => {
   const agencyObj = agencies[agency];
 
-  console.log(agencyObj);
-
   return (
     <div
       className='station'
@@ -22,7 +20,7 @@ const FavoritedAgency = ({ agency, style }) => {
       }}
     >
       <h3>
-        <Link to={`/${agency}`}>{agencyObj.selectionName}</Link>
+        <Link to={`/${agency}`} style={{ color: agencyObj.textColor }}>{agencyObj.selectionName}</Link>
       </h3>
       <AgencyHeart
         agency={agency}

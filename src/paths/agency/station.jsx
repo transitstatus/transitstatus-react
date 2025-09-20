@@ -159,6 +159,7 @@ const Station = () => {
             style={{
               width: "26px",
               marginTop: "8px",
+              color: "#fff",
             }}
           />
         </span>

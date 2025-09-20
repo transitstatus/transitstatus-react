@@ -21,7 +21,7 @@ const FavoritedStation = ({ agency, station, style }) => {
       }}
     >
       <h3>
-        <Link to={`/${agency}/stops/${station.stationID}`}>
+        <Link to={`/${agency}/stops/${station.stationID}`} style={{ color: style.color ?? agencyObj.textColor }}>
           {station.stationName}
         </Link>
       </h3>
@@ -30,6 +30,7 @@ const FavoritedStation = ({ agency, station, style }) => {
         station={station}
         style={{
           width: "26px",
+          color: style.color ?? agencyObj.textColor,
         }}
       />
     </div>

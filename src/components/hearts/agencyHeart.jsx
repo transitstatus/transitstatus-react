@@ -53,13 +53,13 @@ const AgencyHeart = ({ agency, style }) => {
     <HeartSVG
       onClick={() => removeFavorite()}
       filledIn={true}
-      strokeColor={agencies[favID].textColor}
+      strokeColor={style.color ?? agencies[favID].textColor}
     />
   ) : (
     <HeartSVG
       onClick={() => addFavorite()}
       filledIn={false}
-      strokeColor={agencies[favID].textColor}
+      strokeColor={style.color ?? agencies[favID].textColor}
     />
   );
 };

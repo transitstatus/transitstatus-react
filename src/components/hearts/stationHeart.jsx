@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import HeartSVG from "./heartSVG";
+import { agencies } from "../../config";
 
 const StationHeart = ({ agency, station, style }) => {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -49,12 +50,14 @@ const StationHeart = ({ agency, station, style }) => {
     <HeartSVG
       onClick={() => removeFavorite()}
       style={style}
+      strokeColor={style.color ?? agencies[agency].textColor}
       filledIn={true}
     />
   ) : (
     <HeartSVG
       onClick={() => addFavorite()}
       style={style}
+      strokeColor={style.color ?? agencies[agency].textColor}
       filledIn={false}
     />
   );
