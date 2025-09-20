@@ -423,8 +423,9 @@ const APIDocs = () => {
         <CodeBlock
           text={`interface TransitStatusAlert { // all items will exist, but could be a nullish value
     id: string, // unique identifier of alert
-    lineCode: string, // not nullish if this alert is for a specific line. if not, it is a system alert
-    runNumber: string, // not nullish if this alert relates to a specific run number. if not, it is for the entire line 
+    lineCode?: string, // not nullish if this alert is for a specific line. if not, it is a system alert
+    runNumber?: string, // not nullish if this alert relates to a specific run number. if not, it is for the entire line 
+    stationID?: string, // not nullish if this alert relates to a specific station. if not, it is for the entire line
     title: string, // not nullish if an alert title exists
     message: string, // actual alert text, will always be *something*
 }`}
