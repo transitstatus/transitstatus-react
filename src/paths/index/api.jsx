@@ -88,6 +88,11 @@ const APIDocs = () => {
               </a>
             </li>
             <li>
+              <a href='#type_TransitStatusAlert'>
+                TransitStatusAlert
+              </a>
+            </li>
+            <li>
               <a href='#type_TransitStatusDestination'>
                 TransitStatusDestination
               </a>
@@ -276,6 +281,7 @@ const APIDocs = () => {
         [key: string]: TransitStatusLine //key is lineCode
     },
     shitsFucked?: TransitStatusShitsFucked,
+    alerts?: TransitStatusAlert[],
     lastUpdated: string //timestamp, *should* be ISO 8601
 }`}
           language='typescript'
@@ -394,6 +400,33 @@ const APIDocs = () => {
           text={`interface TransitStatusShitsFucked {
     shitIsFucked: boolean, //is there something wrong?
     message: string, //empty normally, has an error message if something is wrong
+}`}
+          language='typescript'
+        />
+      </div>
+
+      <div
+        style={{
+          marginLeft: "16px",
+          marginTop: "16px",
+        }}
+      >
+        <h3
+          id='type_TransitStatusAlert'
+          style={{
+            marginTop: "4px",
+            marginBottom: "4px",
+          }}
+        >
+          TransitStatusAlert
+        </h3>
+        <CodeBlock
+          text={`interface TransitStatusAlert { // all items will exist, but could be a nullish value
+    id: string, // unique identifier of alert
+    lineCode: string, // not nullish if this alert is for a specific line. if not, it is a system alert
+    runNumber: string, // not nullish if this alert relates to a specific run number. if not, it is for the entire line 
+    title: string, // not nullish if an alert title exists
+    message: string, // actual alert text, will always be *something*
 }`}
           language='typescript'
         />

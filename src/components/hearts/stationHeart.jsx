@@ -48,13 +48,13 @@ const StationHeart = ({ agency, station, style }) => {
   return isFavorite ? (
     <HeartSVG
       onClick={() => removeFavorite()}
-      style={{ marginTop: '8px' }}
+      style={style}
       filledIn={true}
     />
   ) : (
     <HeartSVG
       onClick={() => addFavorite()}
-      style={{ marginTop: '8px' }}
+      style={style}
       filledIn={false}
     />
   );
