@@ -5,6 +5,7 @@ import StationHeart from "../../components/hearts/stationHeart";
 import Meta from "../../components/meta";
 import Oneko from "../../components/extras/oneko";
 import Snowfall from "react-snowfall";
+import AlertsList from "../../components/alerts/alertsList";
 
 const hoursMinutesUntilArrival = (arrivalTime) => {
   const now = new Date();
@@ -36,6 +37,7 @@ const Station = () => {
   const { agency, stopID } = useParams();
   const navigate = useNavigate();
   const [station, setStation] = useState({});
+  const [alerts, setAlerts] = useState([]);
   const [lastFetched, setLastFetched] = useState(0);
   const [loadingMessage, setLoadingMessage] = useState("Loading trains...");
   const [isLoading, setIsLoading] = useState(true);
@@ -80,10 +82,20 @@ const Station = () => {
               );
             });
         });
+
+      // alerts
+      window.dataManager
+        .getData(agency, "alerts")
+        .then((data) => {
+          if (data === "Not found") return // alerts not supported
+          else {
+            setAlerts(data);
+          }
+        });
     };
 
     fetchData();
-    setInterval(fetchData, 30000);
+    setInterval(fetchData, 5000);
   }, [agency, stopID]);
 
   if (station === "Not found") {
@@ -188,6 +200,7 @@ const Station = () => {
         >
           Show Station Display
         </h3>) : null}
+      <AlertsList alertsArray={alerts} agency={agency} filterType={'stop'} filterID={stopID} style={{ marginBottom: '8px', marginTop: '0px', maxWidth: '400px' }} />
       <div>
         {isLoading ? (
           <p

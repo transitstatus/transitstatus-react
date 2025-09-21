@@ -126,6 +126,7 @@ export const agencies = {
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
+    updateFrequency: 10000,
   },
   snowpiercer: {
     name: "Snowpiercer",
@@ -196,6 +197,7 @@ export const agencies = {
     dontFilterMapLines: false,
     runNumberConverter: (runNumber) => runNumber.split('-').slice(-1),
     useDirectionsInsteadOfDestinations: true,
+    updateFrequency: 10000,
   },
   WMATA: {
     name: "WMATA",
@@ -502,7 +504,7 @@ export const agencies = {
     typeCode: 'bus',
     typeCodePlural: 'buses',
     addLine: false,
-    disabled: false,
+    disabled: true,
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
@@ -722,7 +724,7 @@ export const config = {
   siteTitle: 'Transitstat.us',
   siteTitleOther: 'Transitstatus',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'v1.17.3',
+  version: 'v1.18.0',
   additionalWarnings: [],
   globalAlerts: [
     {

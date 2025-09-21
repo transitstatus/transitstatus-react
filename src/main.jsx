@@ -99,8 +99,11 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(
-  <React.Suspense fallback={<LoadingPage />}>
-    <RouterProvider router={router} />
-  </React.Suspense>
-);
+dataManager.checkDataStatusAndUpdate()
+  .then(() => {
+    root.render(
+      <React.Suspense fallback={<LoadingPage />}>
+        <RouterProvider router={router} />
+      </React.Suspense>
+    );
+  })

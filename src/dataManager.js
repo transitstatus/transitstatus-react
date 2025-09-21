@@ -1,7 +1,7 @@
 import { agencies } from "./config";
-import localforage from "localforage";
+import localForage from "localforage";
 
-localforage.config({
+localForage.config({
   name: "TransitstatOffline",
   storeName: "TransitstatOfflineStore",
   version: "3"
@@ -11,45 +11,48 @@ export class DataManager {
   constructor() {
     const now = new Date().valueOf();
 
-    this._data = localforage.getItem('transitstatus_datamanager_v1_data') ?? {};
-    this._endpoints = localforage.getItem('transitstatus_datamanager_v1_endpoints') ?? {
-      rutgers: {
-        lastAccessed: 10,
-        lastUpdated: 0,
-      }
+    this._data = localForage.getItem('transitstatus_datamanager_v1_data') ?? {};
+    this._endpoints = JSON.parse(localStorage.getItem('transitstatus_datamanager_v1_endpoints') ?? '{}');
+  };
+
+  //if the data hasnt been updated within 5 minute or is null, update it
+  async checkDataStatusAndUpdate() {
+    const endpointKeys = Object.keys(this._endpoints);
+    const tempData = await localForage.getItem('transitstatus_datamanager_v1_data') ?? {};
+
+    const updateFeed = async (endpointKey) => {
+      if (!this._endpoints[endpointKey]) return; //nope
+
+      try {
+        const data = await fetch(`${agencies[endpointKey].endpoint}?t=${Date.now()}`, { cache: 'reload', signal: AbortSignal.timeout(5000) }).then((res) => res.json());
+        this._data[endpointKey] = data;
+        this._endpoints[endpointKey].lastUpdated = new Date().valueOf();
+        localForage.setItem('transitstatus_datamanager_v1_data', JSON.stringify(this._data));
+        console.log(`DataManager: ${endpointKey} ${new Date().toISOString()}`);
+      } catch (e) {
+        console.log(`DataManager: Error updating endpoint ${endpointKey}. Falling back. Most likely a timeout.`);
+        console.log(e)
+        this._data[endpointKey] = tempData[endpointKey];
+        // notably not updating the time of update
+      };
     };
-    this._lastUpdatedEver = localforage.getItem('transitstatus_datamanager_v1_last_updated') ?? 0;
 
-    const updateData = () => {
-      Object.keys(this._endpoints).forEach((endpointKey) => {
-        const endpointMeta = this._endpoints[endpointKey];
-        const endpointConfig = agencies[endpointKey];
+    //prefetching recent agencies
+    for (let i = 0; i < endpointKeys.length; i++) {
+      const endpointKey = endpointKeys[i];
+      const endpoint = this._endpoints[endpointKey];
 
-        if (endpointMeta.lastAccessed > now - 1000 * 60 * 15) { //within the last 15 minutes
-          try {
-            fetch(new Request(endpointConfig.endpoint, {
-              cache: 'reload'
-            }))
-              .then((res) => res.json())
-              .then((data) => {
-                this._data[endpointKey] = data;
-                this._endpoints[endpointKey].lastUpdated = new Date().valueOf();
-              })
-          } catch (e) {
-            console.log(`Error updaing endpoint ${endpointKey}:`, e)
-          }
-        }
-      })
+      if (endpoint.lastAccessed < Date.now() - (1000 * 60 * 15)) continue; // been a while, dont autofetch
+      updateFeed(endpointKey); // fetch new data in the background
+    };
 
-      //i know this is gonna be 1 refresh out of date. fuck you, i don't give a shit
-      localforage.setItem('transitstatus_datamanager_v1_data', JSON.stringify(this._data));
-      localforage.setItem('transitstatus_datamanager_v1_endpoints', JSON.stringify(this._endpoints));
-    }
+    //setting update loops
+    Object.keys(agencies).forEach((endpointKey) => {
+      setInterval(() => updateFeed(endpointKey), agencies[endpointKey].updateFrequency ?? 30000);
+    });
 
-    setInterval(() => {
-      updateData();
-    }, 30000) //every 30 seconds, refresh
-  }
+    return;
+  };
 
   async getData(endpoint, path) {
     const now = new Date().valueOf();
@@ -63,19 +66,19 @@ export class DataManager {
       console.log(`DataManager: Endpoint ${endpoint} does not exist or is out of date, adding before returning`)
 
       //saving the record
-      localforage.setItem('transitstatus_datamanager_v1_endpoints', JSON.stringify(this._endpoints));
+      localStorage.setItem('transitstatus_datamanager_v1_endpoints', JSON.stringify(this._endpoints));
 
       try {
-        const res = await fetch(new Request(agencies[endpoint].endpoint, {
+        const res = await fetch(`${agencies[endpoint].endpoint}?t=${Date.now()}`, {
           cache: 'reload'
-        }));
+        });
         const data = await res.json();
 
         this._data[endpoint] = data;
         this._endpoints[endpoint].lastUpdated = new Date().valueOf();
 
         //saving data
-        localforage.setItem('transitstatus_datamanager_v1_data', JSON.stringify(this._data));
+        localForage.setItem('transitstatus_datamanager_v1_data', JSON.stringify(this._data));
       } catch (e) {
         console.log(`DataManager: Error with initial request for endpoint ${endpoint}:`, e)
 

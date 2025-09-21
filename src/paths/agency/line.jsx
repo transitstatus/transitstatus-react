@@ -5,12 +5,14 @@ import Meta from "../../components/meta";
 import Oneko from "../../components/extras/oneko";
 import AgencyHeart from "../../components/hearts/agencyHeart";
 import FavoritedStation from "../../components/favorites/favoritedStation";
+import AlertsList from "../../components/alerts/alertsList";
 
 const Line = ({ lineOverride = null }) => {
   const { agency, urlLineName } = useParams();
   const lineName = lineOverride ?? urlLineName;
   const [line, setLine] = useState({});
   const [stations, setStations] = useState({});
+  const [alerts, setAlerts] = useState([]);
   const [loadingMessage, setLoadingMessage] = useState("Loading data...");
   const [isLoading, setIsLoading] = useState(true);
   const [runNumber, setRunNumber] = useState("");
@@ -35,6 +37,7 @@ const Line = ({ lineOverride = null }) => {
     const fetchData = async () => {
       const linesData = await window.dataManager.getData(agency, "lines");
       const stationsData = await window.dataManager.getData(agency, "stations");
+      const alertsData = await window.dataManager.getData(agency, "alerts");
 
       if (linesData.shitsFucked) {
         setLoadingMessage(data.shitsFuckedMessage);
@@ -59,6 +62,7 @@ const Line = ({ lineOverride = null }) => {
 
       setLine(linesData[lineName]);
       setStations(stationsData);
+      if (alertsData && alertsData != 'Not found') setAlerts(alertsData);
 
       setIsLoading(false);
     };
@@ -142,6 +146,7 @@ const Line = ({ lineOverride = null }) => {
           }
         </div>
         }
+        <AlertsList alertsArray={alerts} agency={agency} filterType={'line'} filterID={lineName} style={{ marginBottom: '4px', marginTop: '-4px' }} />
         {agencies[agency].onlyUseSingleRouteCode ?
           <h3
             className='route'

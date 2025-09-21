@@ -426,6 +426,8 @@ const APIDocs = () => {
     lineCode?: string, // not nullish if this alert is for a specific line. if not, it is a system alert
     runNumber?: string, // not nullish if this alert relates to a specific run number. if not, it is for the entire line 
     stationID?: string, // not nullish if this alert relates to a specific station. if not, it is for the entire line
+    additionalRunNumbers?: string[], // array of run numbers that this alert could be useful for (ie a stop alert having a run number for trains scheduled to stop there)
+    additionalStationIDs?: string[], // array of additional stations that this alert should be shown at, even if this is not a station specific alert 
     title: string, // not nullish if an alert title exists
     message: string, // actual alert text, will always be *something*
 }`}

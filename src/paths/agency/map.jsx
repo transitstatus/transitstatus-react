@@ -297,7 +297,7 @@ const Map = () => {
 
               //stationsSource.
             });
-          }, 1000 * 30);
+          }, 5000);
 
           map.current.addLayer({
             id: "stations",
@@ -409,7 +409,7 @@ const Map = () => {
 
               console.log("Updated trains data");
             });
-          }, 1000 * 10);
+          }, 5000);
 
           const startTime = Date.now();
 

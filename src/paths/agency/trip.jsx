@@ -80,7 +80,7 @@ const Trip = () => {
     };
 
     fetchData();
-    setInterval(fetchData, 30000);
+    setInterval(fetchData, 5000);
   }, [agency, tripID]);
 
   if (trip === "Not found") {

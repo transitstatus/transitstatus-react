@@ -6,11 +6,13 @@ import AgencyHeart from "../../components/hearts/agencyHeart";
 import FavoritedStation from "../../components/favorites/favoritedStation";
 import Oneko from "../../components/extras/oneko";
 import Line from "./line";
+import AlertsList from "../../components/alerts/alertsList";
 
 const Agency = () => {
   const { agency } = useParams();
   const navigate = useNavigate();
   const [lines, setLines] = useState({});
+  const [alerts, setAlerts] = useState([]);
   const [loadingMessage, setLoadingMessage] = useState("Loading data...");
   const [isLoading, setIsLoading] = useState(true);
   const [runNumber, setRunNumber] = useState("");
@@ -102,6 +104,7 @@ const Agency = () => {
 
   useEffect(() => {
     const fetchData = () => {
+      // data
       window.dataManager
         .getData(agency, "lines")
         .then((data) => {
@@ -137,14 +140,22 @@ const Agency = () => {
             setIsLoading(true);
           });
         });
+
+      // alerts
+      window.dataManager
+        .getData(agency, "alerts")
+        .then((data) => {
+          if (data === "Not found") return // alerts not supported
+          else {
+            setAlerts(data);
+          }
+        });
     };
 
     fetchData();
     //setInterval(fetchData, 10000);
     //dont need to refetch lines
   }, [agency]);
-
-  
 
   return (
     <main>
@@ -327,6 +338,8 @@ const Agency = () => {
           </div>
         </div>
 
+        <AlertsList alertsArray={alerts} agency={agency} filterType={'agency'} style={{ marginBottom: '4px' }} />
+
         <div>
           <h2
             style={{
@@ -383,6 +396,7 @@ const Agency = () => {
             )}
           </div>
         </div>
+
         <h3
           className='route'
           key='onMap'
