@@ -418,28 +418,27 @@ const Map = () => {
           const iconSize = agencies[agency].showArrow ? 120 : 48;
           let existingIcons = {};
 
-          Object.keys(linesData).forEach((lineKey) => {
-            const line = linesData[lineKey];
+          Object.keys(trainsData).forEach((trainKey) => {
+            const train = trainsData[trainKey];
+            const trainColor = `${train.lineColor}_${train.lineTextColor}`;
 
-            if (existingIcons[line.routeColor]) return; // no need to generate twice
+            if (existingIcons[trainColor]) return; // no need to generate twice
 
             //filling in the template
             const iconText = mapIconTemplates[shapeToUse]
-              .replaceAll("FILL", `#${line.routeColor}`)
-              .replaceAll("BORDERS", `#${line.routeTextColor}`);
+              .replaceAll("FILL", `#${train.lineColor}`)
+              .replaceAll("BORDERS", `#${train.lineTextColor}`);
 
-            //converting the image and loading it
             const img = new Image(iconSize, iconSize);
             img.onload = () =>
-              map.current.addImage(line.routeColor, img, {
+              map.current.addImage(trainColor, img, {
                 pixelRatio: 1,
               });
             img.onerror = console.log;
             img.src = "data:image/svg+xml;base64," + btoa(iconText);
 
-            existingIcons[line.routeColor] = true;
+            existingIcons[trainColor] = true;
 
-            //console.log(mapIconTemplates);
           });
 
           console.log(`Done with generating icons in ${Date.now() - startTime}ms`)
@@ -450,7 +449,7 @@ const Map = () => {
             type: "symbol",
             source: "trains",
             layout: {
-              "icon-image": ["get", "routeColor"],
+              "icon-image": ["concat", ["get", "lineColor"], "_", ["get", "lineTextColor"]],
               "icon-rotation-alignment": "map",
               "icon-size": 0.4,
               "icon-rotate": ["get", "heading"],

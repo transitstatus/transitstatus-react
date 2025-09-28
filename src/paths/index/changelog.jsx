@@ -33,6 +33,16 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-18-1'>
+            <td>
+              <a href='#1-18-1'>v1.18.1</a>
+            </td>
+            <td>
+              <ul>
+                <li>Changed map icon color to be based off of individual trains, not the routes they are a part of. This is needed for the CTA where some trains have inverted colors on the green and blue lines based on theier destination.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-18-0'>
             <td>
               <a href='#1-18-0'>v1.18.0</a>
