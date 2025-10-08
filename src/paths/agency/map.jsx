@@ -126,6 +126,20 @@ const Map = () => {
                 attribution:
                   "Map Data &copy; OpenStreetMap Contributors | &copy; Transitstatus | &copy; Protomaps",
               },
+              shapes: {
+                type: 'geojson',
+                data: {
+                  "type": "FeatureCollection",
+                  "features": []
+                }
+              },
+              stations: {
+                type: 'geojson',
+                data: {
+                  "type": "FeatureCollection",
+                  "features": []
+                }
+              }
             },
             version: 8,
             metadata: {},
@@ -167,90 +181,52 @@ const Map = () => {
             );
           }
 
-          map.current.addSource("shapes", {
-            type: "geojson",
-            data: fullMapShapes,
-          });
-
-          map.current.addLayer({
-            id: "shapes-under",
-            type: "line",
-            source: "shapes",
-            layout: {
-              "line-join": "round",
-              "line-round-limit": 0.1,
-            },
-            paint: {
-              "line-color": "#222222",
-              "line-opacity": 1,
-              "line-width": 4,
-            },
-          });
-
-          map.current.addLayer({
-            id: "shapes",
-            type: "line",
-            source: "shapes",
-            layout: {
-              "line-join": "round",
-              "line-round-limit": 0.1,
-            },
-            paint: {
-              "line-color": ["get", "routeColor"],
-              "line-opacity": 1,
-              "line-width": 2,
-            },
-          });
+          map.current.getSource('shapes').setData(fullMapShapes);
 
           let minLat = 90;
           let maxLat = -90;
           let minLon = 180;
           let maxLon = -180;
 
-          map.current.addSource("stations", {
-            type: "geojson",
-            data: {
-              type: "FeatureCollection",
-              features: Object.keys(stationsData)
-                .filter((station) => {
-                  if (singleRouteID === "all") return true;
+          map.current.getSource('stations').setData({
+            type: "FeatureCollection",
+            features: Object.keys(stationsData)
+              .filter((station) => {
+                if (singleRouteID === "all") return true;
 
-                  const line = linesData[singleRouteID];
+                const line = linesData[singleRouteID];
 
-                  console.log('line', line)
+                //oopsies!
+                if (!line) return false;
 
-                  //oopsies!
-                  if (!line) return false;
+                if (line.stations.includes(station)) return true;
 
-                  if (line.stations.includes(station)) return true;
+                return false;
+              })
+              .map((stationId) => {
+                const station = stationsData[stationId];
 
-                  return false;
-                })
-                .map((stationId) => {
-                  const station = stationsData[stationId];
+                if (station.lat != 0 && station.lon != 0) {
+                  if (station.lat < minLat) minLat = station.lat;
+                  if (station.lat > maxLat) maxLat = station.lat;
+                  if (station.lon < minLon) minLon = station.lon;
+                  if (station.lon > maxLon) maxLon = station.lon;
+                }
 
-                  if (station.lat != 0 && station.lon != 0) {
-                    if (station.lat < minLat) minLat = station.lat;
-                    if (station.lat > maxLat) maxLat = station.lat;
-                    if (station.lon < minLon) minLon = station.lon;
-                    if (station.lon > maxLon) maxLon = station.lon;
-                  }
-
-                  return {
-                    type: "Feature",
+                return {
+                  type: "Feature",
+                  id: stationId,
+                  properties: {
                     id: stationId,
-                    properties: {
-                      id: stationId,
-                      name: station.stationName,
-                      stationData: station,
-                    },
-                    geometry: {
-                      type: "Point",
-                      coordinates: [station.lon, station.lat],
-                    },
-                  };
-                }),
-            },
+                    name: station.stationName,
+                    stationData: station,
+                  },
+                  geometry: {
+                    type: "Point",
+                    coordinates: [station.lon, station.lat],
+                  },
+                };
+              }),
           });
 
           setInterval(() => {
@@ -298,18 +274,6 @@ const Map = () => {
               //stationsSource.
             });
           }, 5000);
-
-          map.current.addLayer({
-            id: "stations",
-            type: "circle",
-            source: "stations",
-            paint: {
-              "circle-radius": 4,
-              "circle-color": "#fff",
-              "circle-stroke-color": "#000",
-              "circle-stroke-width": 1,
-            },
-          });
 
           let finalFeaturesInitial = [];
 
