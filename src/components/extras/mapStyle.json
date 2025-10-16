@@ -6,7 +6,7 @@
   "sources": {
     "protomaps": {
       "type": "vector",
-      "url": "https://v4map.transitstat.us/20250127.json"
+      "url": "https://v4map.transitstat.us/20251013.json"
     }
   },
   "sprite": "https://protomaps.github.io/basemaps-assets/sprites/v4/dark",
@@ -291,7 +291,7 @@
         ]
       ],
       "paint": {
-        "fill-color": "#e9e9ed"
+        "fill-color": "#4D4D4D"
       }
     },
     {
