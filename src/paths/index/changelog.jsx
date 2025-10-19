@@ -33,6 +33,19 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+           <tr id='1-18-5'>
+            <td>
+              <a href='#1-18-5'>v1.18.5</a>
+            </td>
+            <td>
+              <ul>
+                <li>Disabled POIs.</li>
+                <ul>
+                  <li>I want to add these back, just with filtering with less needed things.</li>
+                </ul>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-18-4'>
             <td>
               <a href='#1-18-4'>v1.18.4</a>
@@ -43,7 +56,7 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-18-4'>
+          <tr id='1-18-3'>
             <td>
               <a href='#1-18-3'>v1.18.3</a>
             </td>
