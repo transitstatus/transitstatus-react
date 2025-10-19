@@ -6,7 +6,7 @@
   "sources": {
     "protomaps": {
       "type": "vector",
-      "url": "https://v4map.transitstat.us/20251013.json"
+      "url": "https://v4map.transitstat.us/20251018.json"
     }
   },
   "sprite": "https://protomaps.github.io/basemaps-assets/sprites/v4/dark",

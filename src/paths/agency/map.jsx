@@ -117,10 +117,10 @@ const Map = () => {
               protomaps: {
                 type: "vector",
                 tiles: [
-                  "https://v4mapa.transitstat.us/20251013/{z}/{x}/{y}.mvt",
-                  "https://v4mapb.transitstat.us/20251013/{z}/{x}/{y}.mvt",
-                  "https://v4mapc.transitstat.us/20251013/{z}/{x}/{y}.mvt",
-                  "https://v4mapd.transitstat.us/20251013/{z}/{x}/{y}.mvt"
+                  "https://v4mapa.transitstat.us/20251018/{z}/{x}/{y}.mvt",
+                  "https://v4mapb.transitstat.us/20251018/{z}/{x}/{y}.mvt",
+                  "https://v4mapc.transitstat.us/20251018/{z}/{x}/{y}.mvt",
+                  "https://v4mapd.transitstat.us/20251018/{z}/{x}/{y}.mvt"
                 ],
                 maxzoom: 15,
                 attribution:
