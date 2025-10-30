@@ -728,6 +728,11 @@ export const config = {
   additionalWarnings: [],
   globalAlerts: [
     {
+      title: 'Passio Disabled',
+      info: 'We have disabled access to agencies from Passio GO\'s APIs due to a request from Passio Technologies.',
+      expires: 1761969599999
+    },
+    {
       title: 'Scheduled Trains Test',
       info: 'We are testing the use of GTFS schedule data to show trains that are not yet running for Metra. If these tests prove to be successful, we will expand the data to other systems.',
       expires: 1737352799999
