@@ -33,7 +33,17 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
-           <tr id='1-18-5'>
+          <tr id='1-18-6'>
+            <td>
+              <a href='#1-18-6'>v1.18.6</a>
+            </td>
+            <td>
+              <ul>
+                <li>New Passio endpoint. Multiple casualties due to poor GTFS-RT support. I'm sorry :c</li>
+              </ul>
+            </td>
+          </tr>
+          <tr id='1-18-5'>
             <td>
               <a href='#1-18-5'>v1.18.5</a>
             </td>
