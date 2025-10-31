@@ -176,7 +176,7 @@ export const agencies = {
   metra: {
     name: "Metra",
     selectionName: 'Metra',
-    endpoint: "https://store.transitstat.us/metra_new/transitStatus",
+    endpoint: "https://store.transitstat.us/metra/transitStatus",
     mapShapes: ["https://gtfs.piemadd.com/data/metra/shapes/type_2.geojson"],
     gtfsRoot: "https://gtfs.piemadd.com/data/metra",
     mapDefault: [42.00716298759261, -87.9244703152358, 9],
