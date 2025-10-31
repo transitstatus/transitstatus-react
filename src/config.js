@@ -339,7 +339,7 @@ export const agencies = {
   rutgers: {
     name: "Rutgers",
     selectionName: 'Rutgers Shuttles',
-    endpoint: "https://store.transitstat.us/passio_go_beta/rutgers",
+    endpoint: "https://store.transitstat.us/passio_go/rutgers",
     mapShapes: ["https://gtfs.piemadd.com/data/rutgers/shapes/type_3.geojson"],
     gtfsRoot: "https://gtfs.piemadd.com/data/rutgers",
     mapDefault: [40.35417700651374, -74.70768648283568, 9],
