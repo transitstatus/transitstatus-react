@@ -66,7 +66,7 @@ const Settings = () => {
           <div className='settingsPage'>
             <h3>Settings</h3>
             <span>
-              <label htmlFor='setting_showCat'>Show Cat :3</label>
+              <label htmlFor='setting_showCat'>Show Cat</label>
               <input
                 id='setting_showCat'
                 type='checkbox'

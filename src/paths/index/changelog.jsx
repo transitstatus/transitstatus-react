@@ -730,7 +730,7 @@ const Changelog = () => {
             </td>
             <td>
               <ul>
-                <li>Added "Boris" as a cat option for "Show Cat :3".</li>
+                <li>Added "Boris" as a cat option for "Show Cat".</li>
                 <ul>
                   <li>
                     <a href='/images/boris.jpg' target='__blank'>
@@ -1016,7 +1016,7 @@ const Changelog = () => {
             </td>
             <td>
               <ul>
-                <li>Added cat mode :3</li>
+                <li>Added cat mode</li>
               </ul>
             </td>
           </tr>
