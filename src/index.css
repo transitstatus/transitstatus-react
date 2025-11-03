@@ -65,22 +65,22 @@ div.qsKeyboard {
   padding: 2px;
 }
 
-div.qsKeyboard > button  {
+div.qsKeyboard>button {
   color: #fff;
   border: none;
   background-color: #333;
-  font-weight:500;
+  font-weight: 500;
   text-align: center;
 }
 
-div.qsKeyboard > button:disabled  {
+div.qsKeyboard>button:disabled {
   color: #ddd;
   background-color: #222;
 }
 
-div.qsKeyboard > div.qsTextBox {
+div.qsKeyboard>div.qsTextBox {
   background-color: #333;
-  font-weight:500;
+  font-weight: 500;
   padding: 10px;
   text-align: center;
   grid-column: 1 / span 10;
@@ -238,6 +238,15 @@ a:visited {
   justify-content: space-between;
   padding: 6px 8px;
   background-color: #111;
+}
+
+.mapTrainBar strong.smallIdentifier {
+  background-color: #333;
+  color: #fff;
+  padding: 2px 4px;
+  margin: -2px -4px;
+  font-size: 14px;
+  height: 20px;
 }
 
 table {

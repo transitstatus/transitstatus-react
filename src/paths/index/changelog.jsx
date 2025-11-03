@@ -33,6 +33,18 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-19-0'>
+            <td>
+              <a href='#1-19-0'>v1.19.0</a>
+            </td>
+            <td>
+              <ul>
+                <li>Added selector if multiple map features are clicked on at once.</li>
+                <li>Reduced duplicated code from codbase.</li>
+                <li>Removed unused imports from codebase.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-18-6'>
             <td>
               <a href='#1-18-6'>v1.18.6</a>

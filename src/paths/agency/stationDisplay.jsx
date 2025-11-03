@@ -1,28 +1,7 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState, useMemo } from "react";
 import { agencies } from "../../config";
-import StationHeart from "../../components/hearts/stationHeart";
-import Meta from "../../components/meta";
-import Oneko from "../../components/extras/oneko";
-import Snowfall from "react-snowfall";
-
-const hoursMinutesUntilArrival = (arrivalTime) => {
-  const now = new Date();
-  const arrival = new Date(arrivalTime);
-
-  const minutes = Math.floor((arrival - now) / 1000 / 60);
-  const hours = Math.floor(minutes / 60);
-  const days = Math.floor(hours / 24);
-
-  let finalString = '';
-
-  if (minutes < 1 && hours < 1) return 'Due';
-  if (days > 0) finalString += `${days}d `;
-  if (hours % 24 > 0 || days > 0) finalString += `${hours % 24}h `;
-  if (minutes % 60 > 0 || days > 0) finalString += `${minutes % 60}m`;
-
-  return finalString.trim();
-};
+import { hoursMinutesUntilArrival } from "../../components/extras/randomTools";
 
 const timeFormat = (time) => {
   const date = new Date(time);

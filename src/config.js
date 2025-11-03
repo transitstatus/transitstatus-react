@@ -1,5 +1,6 @@
 export const agencies = {
   amtraker: {
+    agencyID: "amtraker",
     name: "Amtraker",
     selectionName: 'Amtraker (Beta)',
     endpoint: "https://store.transitstat.us/atsa/ts",
@@ -25,6 +26,7 @@ export const agencies = {
     dontFilterMapLines: true,
   },
   brightline: {
+    agencyID: "brightline",
     name: "Brightline",
     selectionName: 'Brightline',
     endpoint: "https://store.transitstat.us/brightline/v1",
@@ -52,6 +54,7 @@ export const agencies = {
     onlyUseSingleRouteCode: '1',
   },
   bay: {
+    agencyID: "bay",
     name: "Bay Area",
     selectionName: 'Bay Area (Minus Bart)',
     endpoint: "https://store.transitstat.us/bay",
@@ -81,6 +84,7 @@ export const agencies = {
     dontFilterMapLines: false,
   },
   bart: {
+    agencyID: "bart",
     name: "BART",
     selectionName: 'Bay Area Rapid Transit (BART)',
     endpoint: "https://store.transitstat.us/bart/transitStatus",
@@ -106,6 +110,7 @@ export const agencies = {
     dontFilterMapLines: true,
   },
   ctat: {
+    agencyID: "ctat",
     name: "CTA",
     selectionName: 'Chicago (CTA) Trains',
     endpoint: "https://store.transitstat.us/cta_trains/transitStatus",
@@ -129,6 +134,7 @@ export const agencies = {
     updateFrequency: 10000,
   },
   snowpiercer: {
+    agencyID: "snowpiercer",
     name: "Snowpiercer",
     selectionName: 'Snowpiercer',
     endpoint: "https://store.transitstat.us/snowpiercer/v1",
@@ -152,6 +158,7 @@ export const agencies = {
     autoFitMaxZoom: 5,
   },
   ctab: {
+    agencyID: "ctab",
     name: "CTA",
     selectionName: 'Chicago (CTA) Holiday Bus',
     endpoint: "https://store.transitstat.us/holidaybus",
@@ -174,6 +181,7 @@ export const agencies = {
     dontFilterMapLines: false,
   },
   metra: {
+    agencyID: "metra",
     name: "Metra",
     selectionName: 'Metra',
     endpoint: "https://store.transitstat.us/metra/transitStatus",
@@ -200,6 +208,7 @@ export const agencies = {
     updateFrequency: 10000,
   },
   WMATA: {
+    agencyID: "WMATA",
     name: "WMATA",
     selectionName: 'WMATA MetroRail',
     endpoint: "https://store.transitstat.us/wmata_rail",
@@ -222,6 +231,7 @@ export const agencies = {
     dontFilterMapLines: false,
   },
   NJT: {
+    agencyID: "NJT",
     name: "NJT",
     selectionName: 'New Jersey Transit (Trains)',
     endpoint: "https://store.transitstat.us/njt_rail",
@@ -247,6 +257,7 @@ export const agencies = {
     dontFilterMapLines: true,
   },
   marta: {
+    agencyID: "marta",
     name: "MARTA",
     selectionName: 'MARTA (Atlanta Trains)',
     endpoint: "https://store.transitstat.us/martat/v1",
@@ -269,6 +280,7 @@ export const agencies = {
     dontFilterMapLines: false,
   },
   southshore: {
+    agencyID: "southshore",
     name: "South Shore Line",
     selectionName: 'South Shore Line',
     endpoint: "https://store.transitstat.us/southshore/transitStatus",
@@ -291,6 +303,7 @@ export const agencies = {
     dontFilterMapLines: false,
   },
   dekalb_il: {
+    agencyID: "dekalb_il",
     name: "Dekalb",
     selectionName: 'Dekalb, IL/Huskie Lines',
     endpoint: "https://store.transitstat.us/dekalb_il/transitStatus",
@@ -315,6 +328,7 @@ export const agencies = {
     useDirectionsInsteadOfDestinations: true,
   },
   mff: {
+    agencyID: "mff",
     name: "MFF",
     selectionName: 'Midwest Furry Fest',
     endpoint: "https://store.transitstat.us/mff",
@@ -337,6 +351,7 @@ export const agencies = {
     dontFilterMapLines: false,
   },
   rutgers: {
+    agencyID: "rutgers",
     name: "Rutgers",
     selectionName: 'Rutgers Shuttles',
     endpoint: "https://store.transitstat.us/passio_go/rutgers",
@@ -359,6 +374,7 @@ export const agencies = {
     dontFilterMapLines: false,
   },
   columbia: {
+    agencyID: "columbia",
     name: "Columbia",
     selectionName: 'Columbia (NYC)',
     endpoint: "https://store.transitstat.us/passio_go/columbia",
@@ -381,6 +397,7 @@ export const agencies = {
     dontFilterMapLines: false,
   },
   uchicago: {
+    agencyID: "uchicago",
     name: "UChicago",
     selectionName: 'UChicago Shuttles',
     endpoint: "https://store.transitstat.us/passio_go/chicago",
@@ -403,6 +420,7 @@ export const agencies = {
     dontFilterMapLines: false,
   },
   gcsu: {
+    agencyID: "gcsu",
     name: "Georgia College & State",
     selectionName: 'GCSU Shuttles',
     endpoint: "https://store.transitstat.us/passio_go/gcsu",
@@ -425,6 +443,7 @@ export const agencies = {
     dontFilterMapLines: false,
   },
   uga: {
+    agencyID: "uga",
     name: "UGA",
     selectionName: 'University of Georgia Transit',
     endpoint: "https://store.transitstat.us/passio_go/uga",
@@ -447,6 +466,7 @@ export const agencies = {
     dontFilterMapLines: false,
   },
   gobus: {
+    agencyID: "gobus",
     name: "GOBus",
     selectionName: "GOBus",
     endpoint: 'https://store.transitstat.us/passio_go/miller',
@@ -469,6 +489,7 @@ export const agencies = {
     dontFilterMapLines: false,
   },
   georgiast: {
+    agencyID: "georgiast",
     name: "Georgia State",
     selectionName: 'Georgia State Shuttles',
     endpoint: "https://store.transitstat.us/passio_go/georgiast",
@@ -490,7 +511,8 @@ export const agencies = {
     tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
-  'gatech': {
+  gatech: {
+    agencyID: "gatech",
     name: "Georgia Tech",
     selectionName: 'Georgia Tech Stinger Shuttles',
     endpoint: "https://store.transitstat.us/passio_go/gatech",
@@ -512,7 +534,8 @@ export const agencies = {
     tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
-  'GASO': {
+  GASO: {
+    agencyID: "GASO",
     name: "Georgia Southern",
     selectionName: 'Georgia Southern Shuttles',
     endpoint: "https://store.transitstat.us/passio_go/GASO",
@@ -534,7 +557,8 @@ export const agencies = {
     tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
-  'MIT': {
+  MIT: {
+    agencyID: "MIT",
     name: "MIT",
     selectionName: 'MIT Shuttles',
     endpoint: "https://store.transitstat.us/passio_go/mit",
@@ -556,7 +580,8 @@ export const agencies = {
     tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
-  'uncc': {
+  uncc: {
+    agencyID: "uncc",
     name: "UNC Charlotte",
     selectionName: 'UNC Charlotte Shuttles',
     endpoint: "https://store.transitstat.us/passio_go/uncc",
@@ -578,7 +603,8 @@ export const agencies = {
     tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
-  'uncg': {
+  uncg: {
+    agencyID: "uncg",
     name: "UNC Greensboro",
     selectionName: 'UNC Greensboro Shuttles',
     endpoint: "https://store.transitstat.us/passio_go/uncg",
@@ -600,7 +626,8 @@ export const agencies = {
     tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
-  'uncw': {
+  uncw: {
+    agencyID: "uncw",
     name: "UNC Wilmington",
     selectionName: 'UNC Wilmington Shuttles',
     endpoint: "https://store.transitstat.us/passio_go/uncw",
@@ -622,7 +649,8 @@ export const agencies = {
     tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
-  'bama': {
+  bama: {
+    agencyID: "bama",
     name: "University of Alabama",
     selectionName: 'University of Alabama Shuttles',
     endpoint: "https://store.transitstat.us/passio_go/bamabama",
@@ -644,7 +672,8 @@ export const agencies = {
     tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
-  'ncstate': {
+  ncstate: {
+    agencyID: "ncstate",
     name: "NC State",
     selectionName: 'NC State Shuttles',
     endpoint: "https://store.transitstat.us/passio_go/ncstateuni",
@@ -666,7 +695,8 @@ export const agencies = {
     tripIDPrefixOnDisplay: '#',
     dontFilterMapLines: false,
   },
-  'ritech': {
+  ritech: {
+    agencyID: "ritech",
     name: "RIT",
     selectionName: 'RIT Shuttles',
     endpoint: "https://store.transitstat.us/passio_go/ritech",
@@ -689,7 +719,8 @@ export const agencies = {
     dontFilterMapLines: false,
   },
   /*
-  'bigboy': {
+  bigboy: {
+  agencyID: "bigboy",
     name: "UP Big Boy",
     selectionName: 'UP Big Boy',
     endpoint: "https://bigboyapi.amtraker.com/",
@@ -724,7 +755,7 @@ export const config = {
   siteTitle: 'Transitstat.us',
   siteTitleOther: 'Transitstatus',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'v1.18.6',
+  version: 'v1.19.0',
   additionalWarnings: [],
   globalAlerts: [
     {

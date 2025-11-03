@@ -1,11 +1,12 @@
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import React, { useRef, useEffect, useState, useMemo } from "react";
-import * as pmtiles from "pmtiles";
 import { layers, sprite, glyphs } from "../../components/extras/mapStyle.json";
 //import osmLibertyTransitstatus from "../../components/extras/osm_liberty_-_transitstatus.json";
 import { agencies } from "../../config";
 import mapIconTemplates from "../../assets/mapIconTemplates.json";
 import Oneko from "../../components/extras/oneko";
+import { activateSelectorPopup, activateStationPopup, activateTrainPopup } from "./popups";
+import { hoursMinutesUntilArrival } from "../../components/extras/randomTools";
 
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
@@ -66,9 +67,6 @@ const Map = () => {
   const [lat] = useState(agencies[agency].mapDefault[0] ?? 41.87433196355158);
   const [zoom] = useState(agencies[agency].mapDefault[2] ?? 12.67);
 
-  let protocol = new pmtiles.Protocol();
-  maplibregl.addProtocol("pmtiles", protocol.tile);
-
   document.title = `${agencies[agency].name} Live Map | Transitstat.us`;
 
   useEffect(() => {
@@ -80,24 +78,6 @@ const Map = () => {
           hour: "numeric",
           minute: "numeric",
         });
-
-        const hoursMinutesUntilArrival = (arrivalTime) => {
-          const now = new Date();
-          const arrival = new Date(arrivalTime);
-
-          const minutes = Math.floor((arrival - now) / 1000 / 60);
-          const hours = Math.floor(minutes / 60);
-          const days = Math.floor(hours / 24);
-
-          let finalString = "";
-
-          if (minutes < 1 && hours < 1) return "Due";
-          if (days > 0) finalString += `${days}d `;
-          if (hours % 24 > 0 || days > 0) finalString += `${hours % 24}h `;
-          if (minutes % 60 > 0 || days > 0) finalString += `${minutes % 60}m`;
-
-          return finalString.trim();
-        };
 
         //if (map.current) return; // initialize map only once
 
@@ -219,7 +199,7 @@ const Map = () => {
                   properties: {
                     id: stationId,
                     name: station.stationName,
-                    stationData: station,
+                    ...station
                   },
                   geometry: {
                     type: "Point",
@@ -255,7 +235,7 @@ const Map = () => {
                       properties: {
                         id: stationId,
                         name: station.stationName,
-                        stationData: station,
+                        ...station,
                       },
                       geometry: {
                         type: "Point",
@@ -424,138 +404,28 @@ const Map = () => {
           });
 
           map.current.on("click", (e) => {
-            let f = map.current.queryRenderedFeatures(e.point, {
+            const bbox = [
+              [e.point.x - 4, e.point.y - 4], // southwest
+              [e.point.x + 4, e.point.y + 4], // northeast
+            ];
+
+            let f = map.current.queryRenderedFeatures(bbox, {
               layers: ["trains", "stations"],
             });
 
             if (f.length === 0) return;
 
-            const fSorted = f.sort((a, b) => {
-              if (a.layer.id === "trains") return 1;
-              if (b.layer.id === "trains") return -1;
-              return 0;
-            });
+            if (f.length > 1) {
+              activateSelectorPopup(e, f, map, agencies[agency], singleRouteID)
+              return;
+            }
 
-            const feature = fSorted[0];
+            const feature = f[0];
 
             if (feature.layer.id === "trains") {
-              const train = feature.properties;
-              const coordinates = feature.geometry.coordinates.slice();
-
-              let predictionsHTML = "";
-
-              JSON.parse(train.predictions)
-                .sort((a, b) => a.actualETA - b.actualETA)
-                .filter((eta) => eta.actualETA >= Date.now() - (1000 * 60 * 5) || eta.noETA)
-                .slice(0, 5)
-                .forEach((prediction) => {
-                  console.log("prediction", prediction);
-                  predictionsHTML += `<p class='mapTrainBar' style='color: #${train.lineTextColor
-                    }; background-color: #${train.lineColor};'><strong>${prediction.stationName
-                    }</strong><strong>${prediction.noETA
-                      ? "No ETA"
-                      : hoursMinutesUntilArrival(new Date(prediction.actualETA))
-                    }</strong></p>`;
-                });
-
-              const extra = train.extra ? JSON.parse(train.extra) : null;
-
-              const trainPopup = new maplibregl.Popup({
-                offset: 12,
-                closeButton: true,
-                anchor: "bottom",
-              })
-                .setLngLat(coordinates)
-                .setHTML(
-                  `<div class='mapBar'><h3>${agencies[agency].useCodeForShortName
-                    ? train.lineCode
-                    : train.line
-                  }${agencies[agency].addLine ? " Line " : " "}${agencies[agency].tripIDPrefix}${agencies[agency].runNumberConverter ? agencies[agency].runNumberConverter(train.id) : train.id
-                  } to ${train.dest}</h3>${extra && (extra.cap || extra.info)
-                    ? `<p style='margin-top: -2px;padding-bottom: 4px;'>${extra.info ?? ""
-                    }${extra.cap && extra.info ? " | " : ""}${extra.cap
-                      ? `${Math.ceil(
-                        (extra.load / extra.cap) * 100
-                      )}% Full`
-                      : ""
-                    }</p>`
-                    : ""
-                  }${predictionsHTML}<p class='mapTrainBar' style='color: #${train.lineTextColor
-                  }; background-color: #${train.lineColor
-                  };'><strong><a style='color: #${train.lineTextColor
-                  }; background-color: #${train.lineColor
-                  };' href='/${agency}/track/${train.id}?prev=map'>View Full ${agencies[agency].type
-                  }</a></strong></p></div>`
-                )
-                .addTo(map.current);
+              activateTrainPopup(feature, map, agencies[agency]);
             } else if (feature.layer.id === "stations") {
-              const station = JSON.parse(feature.properties.stationData);
-              const coordinates = feature.geometry.coordinates.slice();
-
-              let finalHTML = `<div class='mapBar'><h3>${station.stationName}</h3>`;
-
-              let noTrainsAtAll = true;
-
-              Object.keys(station.destinations).forEach((destKey) => {
-                const dest = station.destinations[destKey];
-                let destHasLineTrains = false;
-
-                dest.trains.forEach((train) => {
-                  if (
-                    (train.lineCode === singleRouteID ||
-                      singleRouteID === "all") && train.actualETA >= Date.now() - (1000 * 60 * 5)
-                  ) {
-                    destHasLineTrains = true;
-                  }
-                });
-
-                if (dest.trains.length === 0 || !destHasLineTrains) {
-                  //finalHTML += `<p class='mapTrainBar'>No trains tracking</p>`;
-                } else {
-                  noTrainsAtAll = false;
-                  finalHTML += agencies[agency].useDirectionsInsteadOfDestinations ?
-                    `<p class='mapStationBar'><strong>${destKey}</strong></p>` :
-                    `<p class='mapStationBar'>To <strong>${destKey}</strong></p>`;
-                  dest.trains
-                    .filter(
-                      (train) =>
-                        (train.lineCode === singleRouteID ||
-                          singleRouteID === "all") &&
-                        !train.noETA
-                    )
-                    .sort((a, b) => a.actualETA - b.actualETA)
-                    .filter((eta) => eta.actualETA >= Date.now() - (1000 * 60 * 5))
-                    .slice(0, 3)
-                    .forEach((train) => {
-                      finalHTML += `<p class='mapTrainBar' style='color: #${train.lineTextColor
-                        }; background-color: #${train.lineColor
-                        };'><span><strong>${agencies[agency].useCodeForShortName
-                          ? train.lineCode
-                          : train.line
-                        }${agencies[agency].addLine ? " Line " : " "}</strong>${agencies[agency].tripIDPrefix
-                        }${agencies[agency].runNumberConverter ? agencies[agency].runNumberConverter(train.runNumber) : train.runNumber
-                        } to <strong>${train.destination ?? destKey}</strong></span><strong>${train.noETA
-                          ? "No ETA"
-                          : hoursMinutesUntilArrival(new Date(train.actualETA))
-                        }</strong></p>`;
-                    });
-                }
-              });
-
-              if (noTrainsAtAll) {
-                finalHTML += `<p class='mapTrainBar'>No ${agencies[agency].typeCodePlural} tracking</p>`;
-              }
-
-              finalHTML += `<p class='mapStationBar' style='color: ${agencies[agency].textColor}; background-color: ${agencies[agency].color};'><strong><a style='color: ${agencies[agency].textColor}; background-color: ${agencies[agency].color};' href='/${agency}/stops/${station.stationID}?prev=map'>View Full Station</a></strong></p></div>`;
-
-              const stationPopup = new maplibregl.Popup({
-                offset: 12,
-                closeButton: true,
-                anchor: "bottom",
-              })
-                .setLngLat(coordinates)
-                .setHTML(finalHTML)
-                .addTo(map.current);
+              activateStationPopup(feature, map, agencies[agency], singleRouteID);
             }
           });
 
