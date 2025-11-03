@@ -309,6 +309,7 @@ const APIDocs = () => {
     lon: number, //longitude coordinate
     heading: number, //if these are a multiple of 90 off, pls email me so i can fix. its fucky
     realTime: boolean, //true if the vehicle is tracking, false if this is a scheduled trip 
+    deadMileage: boolean, //true if the vehicle isn't associated with any actual line and is just equipment
     line: string, //plaintext line name
     lineCode: string, //line code, usually lines up with GTFS
     lineColor: string, //hex line color, minus the "#"

@@ -26,6 +26,8 @@ const Map = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [lastUpdated, setLastUpdated] = useState(new Date());
 
+  const settings = JSON.parse(localStorage.getItem("transitstatus_v1_settings")) ?? {};
+
   if (!agencies[agency]) {
     document.title = `Agency 404 Map | Transitstat.us`;
 
@@ -260,7 +262,7 @@ const Map = () => {
           Object.keys(trainsData).forEach((trainId) => {
             const train = trainsData[trainId];
 
-            console.log(train.lineCode)
+            if (train.deadMileage && !settings.deadMileageEnabled) return;
 
             if (train.lineCode != singleRouteID && singleRouteID != "all")
               return;
@@ -323,6 +325,8 @@ const Map = () => {
 
               Object.keys(data).forEach((trainId) => {
                 const train = data[trainId];
+
+                if (train.deadMileage && !settings.deadMileageEnabled) return;
 
                 if (
                   train.lineCode === singleRouteID ||

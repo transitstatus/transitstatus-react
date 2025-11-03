@@ -33,6 +33,19 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-19-1'>
+            <td>
+              <a href='#1-19-1'>v1.19.1</a>
+            </td>
+            <td>
+              <ul>
+                <li>Added the ability to see dead mileage on the map.</li>
+                <ul>
+                  <li>This feature needs to be enabled in settings.</li>
+                </ul>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-19-0'>
             <td>
               <a href='#1-19-0'>v1.19.0</a>
