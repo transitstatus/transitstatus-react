@@ -141,48 +141,44 @@ const Settings = () => {
                 checked={settings.playgroundEnabled}
               ></input>
             </span>
-            {settings.playgroundEnabled ? (
-              <>
-              <span>
-                <label htmlFor='setting_deadMileageEnabled'>Enable Dead Mileage Vehicles on Map?</label>
-                <input
-                  id='setting_deadMileageEnabled'
-                  type='checkbox'
-                  onChange={(e) => {
-                    setSettings((currentSettings) => {
-                      const newSettings = {
-                        ...currentSettings,
-                        deadMileageEnabled: e.target.checked,
-                      };
+            <span>
+              <label htmlFor='setting_deadMileageEnabled'>Enable Dead Mileage Vehicles on Map?</label>
+              <input
+                id='setting_deadMileageEnabled'
+                type='checkbox'
+                onChange={(e) => {
+                  setSettings((currentSettings) => {
+                    const newSettings = {
+                      ...currentSettings,
+                      deadMileageEnabled: e.target.checked,
+                    };
 
-                      console.log("New Settings:", newSettings);
-                      return newSettings;
-                    });
-                  }}
-                  checked={settings.deadMileageEnabled}
-                ></input>
-              </span>
-              <span>
-                <label htmlFor='setting_speedyPickEnabled'>Enable Speedy Pick?</label>
-                <input
-                  id='setting_speedyPickEnabled'
-                  type='checkbox'
-                  onChange={(e) => {
-                    setSettings((currentSettings) => {
-                      const newSettings = {
-                        ...currentSettings,
-                        speedyPickEnabled: e.target.checked,
-                      };
+                    console.log("New Settings:", newSettings);
+                    return newSettings;
+                  });
+                }}
+                checked={settings.deadMileageEnabled}
+              ></input>
+            </span>
+            <span>
+              <label htmlFor='setting_speedyPickEnabled'>Enable Speedy Pick?</label>
+              <input
+                id='setting_speedyPickEnabled'
+                type='checkbox'
+                onChange={(e) => {
+                  setSettings((currentSettings) => {
+                    const newSettings = {
+                      ...currentSettings,
+                      speedyPickEnabled: e.target.checked,
+                    };
 
-                      console.log("New Settings:", newSettings);
-                      return newSettings;
-                    });
-                  }}
-                  checked={settings.speedyPickEnabled}
-                ></input>
-              </span>
-              </>
-            ) : null}
+                    console.log("New Settings:", newSettings);
+                    return newSettings;
+                  });
+                }}
+                checked={settings.speedyPickEnabled}
+              ></input>
+            </span>
             <button
               onClick={() => {
                 console.log("Saving settings as:", settings);

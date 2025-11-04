@@ -42,14 +42,12 @@ export class DataManager {
       const endpointKey = endpointKeys[i];
       const endpoint = this._endpoints[endpointKey];
 
+      console.log('lastAccessed', endpoint.lastAccessed, Date.now() - (1000 * 60 * 15), endpoint.lastAccessed < Date.now() - (1000 * 60 * 15) )
+
       if (endpoint.lastAccessed < Date.now() - (1000 * 60 * 15)) continue; // been a while, dont autofetch
       updateFeed(endpointKey); // fetch new data in the background
+      setInterval(() => updateFeed(endpointKey), agencies[endpointKey].updateFrequency ?? 30000); // update loop
     };
-
-    //setting update loops
-    Object.keys(agencies).forEach((endpointKey) => {
-      setInterval(() => updateFeed(endpointKey), agencies[endpointKey].updateFrequency ?? 30000);
-    });
 
     return;
   };

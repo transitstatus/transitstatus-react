@@ -33,6 +33,20 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-19-2'>
+            <td>
+              <a href='#1-19-2'>v1.19.2</a>
+            </td>
+            <td>
+              <ul>
+                <li>Added configuration URL parameters.</li>
+                <ul>
+                  <li>These are undocumented and are for personal use. I might give some info about them later.</li>
+                </ul>
+                <li>Fixed bug with Data Manager that would update every agency, leading to high data usage.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-19-1'>
             <td>
               <a href='#1-19-1'>v1.19.1</a>

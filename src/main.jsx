@@ -99,6 +99,48 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
+const existingURL = new URL(document.location);
+const queryParameters = Object.fromEntries(existingURL.searchParams);
+
+let needToRefreshNow = false;
+
+if (queryParameters.addSettings) {
+  const currentSettings = JSON.parse(localStorage.getItem('transitstatus_v1_settings') ?? '{}');
+  queryParameters.addSettings
+    .split(';')
+    .filter((s) => s.length > 0)
+    .map((settingRaw) => settingRaw.split(':'))
+    .forEach((settingArray) => {
+      if (settingArray.length != 2) console.log('Something is wrong with settingArray', settingArray);
+      else currentSettings[settingArray[0]] = JSON.parse(settingArray[1]); // not the fastest, but auto converts types for me
+    });
+  delete queryParameters['addSettings'];
+  needToRefreshNow = true;
+  localStorage.setItem('transitstatus_v1_settings', JSON.stringify(currentSettings));
+}
+
+if (queryParameters.addFavoriteAgency) {
+  const currentFavoriteAgencies = JSON.parse(localStorage.getItem('favorites-transitstatus-v1-agencies') ?? '{}');
+  queryParameters.addFavoriteAgency
+    .split(';')
+    .filter((s) => s.length > 0)
+    .forEach((agencyKey) => {
+      currentFavoriteAgencies[agencyKey] = agencyKey;
+    });
+  delete queryParameters['addFavoriteAgency'];
+  needToRefreshNow = true;
+  localStorage.setItem('favorites-transitstatus-v1-agencies', JSON.stringify(currentFavoriteAgencies));
+}
+
+console.log(Object.keys(queryParameters))
+
+if (needToRefreshNow) {
+  const originAndPathName = existingURL.origin + existingURL.pathname;
+  const optionalQuestionMark = Object.keys(queryParameters).length > 0 ? '?' : '';
+  const newQueryParameters = new URLSearchParams(queryParameters).toString();
+  location.replace(`${originAndPathName}${optionalQuestionMark}${newQueryParameters}`)
+}
+
 dataManager.checkDataStatusAndUpdate()
   .then(() => {
     root.render(
