@@ -3,7 +3,7 @@ import { useEffect, useState, useMemo } from "react";
 import { agencies } from "../../config";
 import Meta from "../../components/meta";
 import Oneko from "../../components/extras/oneko";
-import Snowfall from 'react-snowfall';
+import PieroSnowfall from "../../components/snowFall";
 import { hoursMinutesUntilArrival } from "../../components/extras/randomTools";
 
 const timeFormat = (time) => {
@@ -29,7 +29,6 @@ const Trip = () => {
         .getData(agency, `trains/${tripID}`)
         .then((data) => {
           setTrip(data);
-          console.log(data)
           if (data.extra?.holidayChristmas && !activateSnowfall) setActivateSnowfall(true);
           window.dataManager.getData(agency, "lastUpdated").then((ts) => {
             setLastFetched(new Date(ts).valueOf());
@@ -72,7 +71,7 @@ const Trip = () => {
     return (
       <main>
         <Oneko />
-        {activateSnowfall ? <Snowfall /> : null}
+        {activateSnowfall ? <PieroSnowfall /> : null}
         <h1>Trip Not Found</h1>
         <p>
           The trip you were trying to track doesn't exist. Please go back and
@@ -107,7 +106,7 @@ const Trip = () => {
   return (
     <main>
       <Oneko />
-      {activateSnowfall ? <Snowfall /> : null}
+      {activateSnowfall ? <PieroSnowfall /> : null}
       <h1>
         {agencies[agency].name} {agencies[agency].type} Tracker
       </h1>
@@ -149,6 +148,9 @@ const Trip = () => {
             Service to{" "}
             {trip.dest ??
               trip.predictions[trip.predictions.length - 1].stationName}
+            {trip.extra && trip.extra.cabCar
+              ? ` | Car ${trip.extra.cabCar}`
+              : null}
           </p>
         </div>
       )}

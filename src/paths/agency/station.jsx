@@ -4,9 +4,9 @@ import { agencies } from "../../config";
 import StationHeart from "../../components/hearts/stationHeart";
 import Meta from "../../components/meta";
 import Oneko from "../../components/extras/oneko";
-import Snowfall from "react-snowfall";
 import AlertsList from "../../components/alerts/alertsList";
 import { hoursMinutesUntilArrival } from "../../components/extras/randomTools";
+import PieroSnowfall from "../../components/snowFall";
 
 const timeFormat = (time) => {
   const date = new Date(time);
@@ -28,7 +28,7 @@ const Station = () => {
 
   const agencyMeta = agencies[agency];
 
-  let settings = JSON.parse(localStorage.getItem("transitstatus_v1_settings")) ?? {};
+  let settings = JSON.parse(localStorage.getItem("transitstatus_v1_settings") ?? '{}');
   if (!settings.playgroundEnabled) settings.playgroundEnabled = false;
 
   useEffect(() => {
@@ -86,7 +86,7 @@ const Station = () => {
     return (
       <main>
         <Oneko />
-        {activateSnowfall ? <Snowfall /> : null}
+        {activateSnowfall ? <PieroSnowfall /> : null}
         <h1>Stop Not Found</h1>
         <p>
           The stop you were trying to view doesn't exist. Please go back and try
@@ -121,7 +121,7 @@ const Station = () => {
   return (
     <main>
       <Oneko />
-      {activateSnowfall ? <Snowfall /> : null}
+      {activateSnowfall ? <PieroSnowfall /> : null}
       <h1>
         {agencyMeta.name} {agencyMeta.type} Tracker
       </h1>

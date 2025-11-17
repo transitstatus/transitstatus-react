@@ -26,7 +26,15 @@ const Settings = () => {
     }
 
     if (!tempSettings.catType) {
-      tempSettings.catType = "onkeo";
+      tempSettings.catType = "oneko";
+    }
+
+    if (!tempSettings.snowMultiplier) {
+      tempSettings.snowMultiplier = 1;
+    }
+
+    if (!tempSettings.alwaysHolidayChristmas) {
+      tempSettings.alwaysHolidayChristmas = false;
     }
 
     if (!tempSettings.playgroundEnabled) {
@@ -122,6 +130,48 @@ const Settings = () => {
                 </option>
               </select>
             </span>
+            <span>
+              <label htmlFor='setting_snowMultiplier'>Enter a Snow Multiplier (Shown on winter holiday themed vehicles):</label>
+              <input
+                id="snowMultiplier"
+                type="number"
+                step={0.25}
+                min={0}
+                onChange={(e) => {
+                  setSettings((currentSettings) => {
+                    const newSettings = {
+                      ...currentSettings,
+                      snowMultiplier: e.target.value,
+                    };
+
+                    console.log("New Settings:", newSettings);
+                    return newSettings;
+                  });
+                }}
+                defaultValue={settings.snowMultiplier}
+              ></input>
+            </span>
+            {/*}
+            <span>
+              <label htmlFor='setting_alwaysHolidayChristmas'>Make every vehicle a winter holiday vehicle (warning, lots of snow)?</label>
+              <input
+                id='setting_alwaysHolidayChristmas'
+                type='checkbox'
+                onChange={(e) => {
+                  setSettings((currentSettings) => {
+                    const newSettings = {
+                      ...currentSettings,
+                      alwaysHolidayChristmas: e.target.checked,
+                    };
+
+                    console.log("New Settings:", newSettings);
+                    return newSettings;
+                  });
+                }}
+                checked={settings.alwaysHolidayChristmas}
+              ></input>
+            </span>
+            {*/}
             <span>
               <label htmlFor='setting_playgroundEnabled'>Enable Playground Features?</label>
               <input

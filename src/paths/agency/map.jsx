@@ -71,6 +71,47 @@ const Map = () => {
 
   document.title = `${agencies[agency].name} Live Map | Transitstat.us`;
 
+  const generateImages = (trainsData) => {
+    const startTime = Date.now();
+
+    //setting up icon type and size
+    const shapeToUse = agencies[agency].showArrow ? "arrow" : "circle";
+    const iconSize = agencies[agency].showArrow ? 120 : 48;
+    let existingIcons = {};
+
+    //populating existing icons
+    Object.keys(map.current.style.imageManager.images).forEach((key) => existingIcons[key] = true);
+
+    Object.keys(trainsData).forEach((trainKey) => {
+      const train = trainsData[trainKey];
+      const isHoldayChristmas = train.extra && train.extra.holidayChristmas == true;
+
+      const trainColor = `${train.lineColor}_${train.lineTextColor}${isHoldayChristmas ? '_candyCane' : ''}`;
+      const modifiedShapeToUse = `${shapeToUse}${isHoldayChristmas ? 'CandyCane' : ''}`
+
+      if (existingIcons[trainColor]) return; // no need to generate twice
+
+      //filling in the template
+      const iconText = mapIconTemplates[modifiedShapeToUse]
+        .replaceAll("FILL", `#${train.lineColor}`)
+        .replaceAll("BORDERS", `#${train.lineTextColor}`)
+        .replaceAll("ROTATE_DEG", "0");
+
+      const img = new Image(iconSize, iconSize);
+      img.onload = () =>
+        map.current.addImage(trainColor, img, {
+          pixelRatio: 1,
+        });
+      img.onerror = console.log;
+      img.src = "data:image/svg+xml;base64," + btoa(iconText);
+
+      existingIcons[trainColor] = true;
+    });
+
+    console.log(`Done with generating icons in ${Date.now() - startTime}ms`)
+    console.log(`Total number of icons: ${Object.keys(existingIcons).length}`)
+  };
+
   useEffect(() => {
     (async () => {
       try {
@@ -283,6 +324,9 @@ const Map = () => {
                 routeColor: train.lineColor,
                 lineCode: train.lineCode,
                 heading: train.heading,
+                holidayAddition: train.extra ? // allows for expansion in the future, though this is a bit sloppy
+                  (train.extra.holidayChristmas == true ? '_candyCane' : '')
+                  : '',
               },
               geometry: {
                 type: "Point",
@@ -290,8 +334,6 @@ const Map = () => {
               },
             });
           });
-
-          console.log(finalFeaturesInitial);
 
           map.current.addSource("trains", {
             type: "geojson",
@@ -323,6 +365,8 @@ const Map = () => {
             window.dataManager.getData(agency, "trains").then((data) => {
               let finalFeatures = [];
 
+              generateImages(data);
+
               Object.keys(data).forEach((trainId) => {
                 const train = data[trainId];
 
@@ -341,6 +385,9 @@ const Map = () => {
                       routeColor: train.lineColor,
                       lineCode: train.lineCode,
                       heading: train.heading,
+                      holidayAddition: train.extra ? // allows for expansion in the future, though this is a bit sloppy
+                        (train.extra.holidayChristmas == true ? '_candyCane' : '')
+                        : '',
                     },
                     geometry: {
                       type: "Point",
@@ -359,45 +406,19 @@ const Map = () => {
             });
           }, 5000);
 
-          const startTime = Date.now();
-
-          //setting up icon type and size
-          const shapeToUse = agencies[agency].showArrow ? "arrow" : "circle";
-          const iconSize = agencies[agency].showArrow ? 120 : 48;
-          let existingIcons = {};
-
-          Object.keys(trainsData).forEach((trainKey) => {
-            const train = trainsData[trainKey];
-            const trainColor = `${train.lineColor}_${train.lineTextColor}`;
-
-            if (existingIcons[trainColor]) return; // no need to generate twice
-
-            //filling in the template
-            const iconText = mapIconTemplates[shapeToUse]
-              .replaceAll("FILL", `#${train.lineColor}`)
-              .replaceAll("BORDERS", `#${train.lineTextColor}`);
-
-            const img = new Image(iconSize, iconSize);
-            img.onload = () =>
-              map.current.addImage(trainColor, img, {
-                pixelRatio: 1,
-              });
-            img.onerror = console.log;
-            img.src = "data:image/svg+xml;base64," + btoa(iconText);
-
-            existingIcons[trainColor] = true;
-
-          });
-
-          console.log(`Done with generating icons in ${Date.now() - startTime}ms`)
-          console.log(`Total number of icons: ${Object.keys(existingIcons).length}`)
+          generateImages(trainsData);
 
           map.current.addLayer({
             id: "trains",
             type: "symbol",
             source: "trains",
             layout: {
-              "icon-image": ["concat", ["get", "lineColor"], "_", ["get", "lineTextColor"]],
+              "icon-image": ["concat",
+                ["get", "lineColor"],
+                "_",
+                ["get", "lineTextColor"],
+                ["get", "holidayAddition"]
+              ],
               "icon-rotation-alignment": "map",
               "icon-size": 0.4,
               "icon-rotate": ["get", "heading"],

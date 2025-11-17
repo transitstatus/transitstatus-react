@@ -132,8 +132,6 @@ if (queryParameters.addFavoriteAgency) {
   localStorage.setItem('favorites-transitstatus-v1-agencies', JSON.stringify(currentFavoriteAgencies));
 }
 
-console.log(Object.keys(queryParameters))
-
 if (needToRefreshNow) {
   const originAndPathName = existingURL.origin + existingURL.pathname;
   const optionalQuestionMark = Object.keys(queryParameters).length > 0 ? '?' : '';

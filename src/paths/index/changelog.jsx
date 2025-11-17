@@ -33,6 +33,19 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-20-0'>
+            <td>
+              <a href='#1-20-0'>v1.20.0</a>
+            </td>
+            <td>
+              <ul>
+                <li>Fixed bug where snow (when enabled) doesn't fill the entire page when they are larger than the screen.</li>
+                <li>Added setting to multiply the amount of snow on the page (as low as 0x and as high as you'd like).</li>
+                <li>Added candy cane to christmas themed vehicles on the map.</li>
+                <li>Made changes to codebase to support further specially themed vehicles in the future (halloween, new years, easter, heritage units, etc).</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-19-3'>
             <td>
               <a href='#1-19-3'>v1.19.3</a>
