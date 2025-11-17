@@ -187,7 +187,7 @@ export const agencies = {
     endpoint: "https://store.transitstat.us/lirr/transitStatus",
     mapShapes: ["https://gtfs.piemadd.com/data/lirr/shapes/type_2.geojson"],
     gtfsRoot: "https://gtfs.piemadd.com/data/lirr",
-    mapDefault: [42.00716298759261, -87.9244703152358, 9],
+    mapDefault: [40.84543468920131, -72.97558196777345, 8],
     color: "#0039A6",
     textColor: "#ffffff",
     type: 'Train',
