@@ -199,7 +199,7 @@ export const agencies = {
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
-    tripIDPrefix: 'Train #',
+    tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
     showTripIDOnScheduled: true,
     dontFilterMapLines: false,
