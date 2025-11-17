@@ -214,7 +214,7 @@ const Trip = () => {
               }}
             >
               <p>
-                <strong>No Predictions available :c</strong>
+                <strong>No Predictions available</strong>
               </p>
             </div>
           </>

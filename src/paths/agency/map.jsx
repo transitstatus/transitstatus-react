@@ -87,7 +87,7 @@ const Map = () => {
       const isHoldayChristmas = train.extra && train.extra.holidayChristmas == true;
 
       const trainColor = `${train.lineColor}_${train.lineTextColor}${isHoldayChristmas ? '_candyCane' : ''}`;
-      const modifiedShapeToUse = `${shapeToUse}${isHoldayChristmas ? 'CandyCane' : ''}`
+      const modifiedShapeToUse = `${shapeToUse}${isHoldayChristmas ? 'SpiralCandy' : ''}`
 
       if (existingIcons[trainColor]) return; // no need to generate twice
 
@@ -499,14 +499,14 @@ const Map = () => {
 
         window.dataManager.getData(agency, "shitsFucked").then((raw) => {
           if (raw === "Not found") {
-            setLoadingMessage("Error loading data :c");
+            setLoadingMessage("Error loading data");
           } else {
             const data = JSON.parse(raw);
 
             if (data.shitIsFucked) {
               setLoadingMessage(data.message);
             } else {
-              setLoadingMessage("Error loading data :c");
+              setLoadingMessage("Error loading data");
             }
           }
           setIsLoading(true);

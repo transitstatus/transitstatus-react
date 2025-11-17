@@ -52,8 +52,7 @@ const About = () => {
       </p>
       <h2>Extras</h2>
       <p>
-        Nothing for now :)
-      </p>
+        The candy logo used on the map occasionally is under the MIT license from Twemoji. the source of the svg, along with the full license text, can be found <a href="https://www.svgrepo.com/svg/404924/candy" target="_blank">here</a>.      </p>
       <h2>Privacy Policy</h2>
       <p>
         The privacy policy can be found <a href='/privacy'>here</a>.
