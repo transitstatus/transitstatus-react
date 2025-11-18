@@ -33,6 +33,17 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-20-3'>
+            <td>
+              <a href='#1-20-3'>v1.20.3</a>
+            </td>
+            <td>
+              <ul>
+                <li>Added Metro North.</li>
+                <li>Added whimsy and fun to holiday vehicle popups.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-20-2'>
             <td>
               <a href='#1-20-2'>v1.20.2</a>

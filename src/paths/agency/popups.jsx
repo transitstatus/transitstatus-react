@@ -44,13 +44,19 @@ export const activateSelectorPopup = (e, features, map, agencyData, singleRouteI
           return <p
             key={i}
             className='mapTrainBar'
-            style={{ color: `#${train.lineTextColor}`, backgroundColor: `#${train.lineColor}`, cursor: 'pointer' }}
+            style={{
+              color: train.holidayAddition == "_candyCane" ? '#ffffff' : `#${train.lineTextColor}`,
+              background: train.holidayAddition == "_candyCane" ? "repeating-linear-gradient(135deg, #94000a, #94000a 10px, #077001 10px, #077001 20px)" : `#${train.lineColor}`,
+              cursor: 'pointer'
+            }}
             onClick={() => {
               selectorPopup.remove();
               activateTrainPopup(item, map, agencyData);
             }}
           >
-            <strong>
+            <strong
+              style={{ filter: train.holidayAddition == '_candyCane' ? 'drop-shadow(0px 0px 2px #000000)' : null, }}
+            >
               {agencyData.useCodeForShortName ? train.lineCode : train.line}
               {agencyData.addLine ? " Line " : " "}
               {agencyData.tripIDPrefix}
@@ -114,11 +120,17 @@ export const activateTrainPopup = (feature, map, agencyData) => {
       {extra.cap ? `${Math.ceil((extra.load / extra.cap) * 100)}% Full` : ""}
     </p> : null}
     {predictions}
-    <p className='mapTrainBar' style={{ color: `#${train.lineTextColor}`, backgroundColor: `#${train.lineColor}` }}>
-      <strong>
+    <p className='mapTrainBar' style={{
+      color: train.holidayAddition == "_candyCane" ? '#ffffff' : `#${train.lineTextColor}`,
+      background: train.holidayAddition == "_candyCane" ? "repeating-linear-gradient(135deg, #94000a, #94000a 10px, #077001 10px, #077001 20px)" : `#${train.lineColor}`,
+    }}>
+      <strong style={{ filter: train.holidayAddition == '_candyCane' ? 'drop-shadow(0px 0px 2px #000000)' : null }}>
         <a
           href={`/${agencyData.agencyID}/track/${train.id}?prev=map`}
-          style={{ color: `#${train.lineTextColor}`, backgroundColor: `#${train.lineColor}` }}>
+          style={{
+            color: train.holidayAddition == '_candyCane' ? '#ffffff' : `#${train.lineTextColor}`,
+            backgroundColor: train.holidayAddition == '_candyCane' ? '#00000000' : `#${train.lineColor}`
+          }}>
           View Full {agencyData.type}
         </a>
       </strong>
