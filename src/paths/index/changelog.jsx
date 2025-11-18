@@ -41,6 +41,7 @@ const Changelog = () => {
               <ul>
                 <li>Added Metro North.</li>
                 <li>Added whimsy and fun to holiday vehicle popups.</li>
+                <li>Updated sitemap.</li>
               </ul>
             </td>
           </tr>
