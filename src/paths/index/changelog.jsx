@@ -33,6 +33,17 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-20-4'>
+            <td>
+              <a href='#1-20-4'>v1.20.4</a>
+            </td>
+            <td>
+              <ul>
+                <li>Added support for locomotive numbers.</li>
+                <li>Improved LIRR and Metro North schedule info.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-20-3'>
             <td>
               <a href='#1-20-3'>v1.20.3</a>

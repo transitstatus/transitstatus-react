@@ -151,6 +151,9 @@ const Trip = () => {
             {trip.extra && trip.extra.cabCar
               ? ` | Car ${trip.extra.cabCar}`
               : null}
+            {trip.extra && trip.extra.engine
+              ? ` | Engine ${trip.extra.engine}`
+              : null}
           </p>
         </div>
       )}
