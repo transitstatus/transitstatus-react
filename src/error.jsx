@@ -38,7 +38,7 @@ export default function ErrorPage() {
 
       setTimeout(() => {
         window.location.reload();
-      }, 5000);
+      }, 1000);
     });
 
     return (
@@ -49,7 +49,7 @@ export default function ErrorPage() {
           that right up for you and you'll be on your way!
         </p>
         <br />
-        <p>Reloading in 5 seconds...</p>
+        <p>Reloading...</p>
       </main>
     );
   } else if (error.status === 404) {
