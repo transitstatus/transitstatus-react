@@ -213,7 +213,7 @@ export const agencies = {
     endpoint: "https://store.transitstat.us/mnrr/transitStatus",
     mapShapes: ["https://gtfs.piemadd.com/data/mnrr/shapes/type_2.geojson"],
     gtfsRoot: "https://gtfs.piemadd.com/data/mnrr",
-    mapDefault: [40.84543468920131, -72.97558196777345, 8],
+    mapDefault: [41.28601941310751, -73.45314000000002, 8],
     color: "#0039A6",
     textColor: "#ffffff",
     type: 'Train',
