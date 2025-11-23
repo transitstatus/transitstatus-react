@@ -119,6 +119,11 @@ export const activateTrainPopup = (feature, map, agencyData) => {
       {extra.cap && extra.info ? " | " : ""}
       {extra.cap ? `${Math.ceil((extra.load / extra.cap) * 100)}% Full` : ""}
     </p> : null}
+    {extra && (extra.last_update || extra.last_station) ? <p style={{ marginTop: '-2px', paddingBottom: '4px' }}>
+      {extra.last_update ? `Last Updated ${extra.last_update}`: ""}
+      {extra.last_update && extra.last_station ? " | " : ""}
+      {extra.last_station ? `Last Station ${extra.last_station}` : ""}
+    </p> : null}
     {predictions}
     <p className='mapTrainBar' style={{
       color: train.holidayAddition == "_candyCane" ? '#ffffff' : `#${train.lineTextColor}`,
