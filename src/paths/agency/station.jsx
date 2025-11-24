@@ -6,7 +6,7 @@ import Meta from "../../components/meta";
 import Oneko from "../../components/extras/oneko";
 import AlertsList from "../../components/alerts/alertsList";
 import { hoursMinutesUntilArrival } from "../../components/extras/randomTools";
-import PieroSnowfall from "../../components/snowFall";
+import PieroSnowfall from "../../components/snowFallPiero";
 
 const timeFormat = (time) => {
   const date = new Date(time);

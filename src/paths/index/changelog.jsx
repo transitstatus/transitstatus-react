@@ -33,6 +33,20 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-20-7'>
+            <td>
+              <a href='#1-20-7'>v1.20.7</a>
+            </td>
+            <td>
+              <ul>
+                <li>Added MBTA.</li>
+                <ul>
+                  <li>Feed is disabled and for testing only.</li>
+                  <li>Will be enabled upon confirmation of stability.</li>
+                </ul>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-20-6'>
             <td>
               <a href='#1-20-6'>v1.20.6</a>

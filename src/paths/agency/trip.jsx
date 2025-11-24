@@ -3,7 +3,7 @@ import { useEffect, useState, useMemo } from "react";
 import { agencies } from "../../config";
 import Meta from "../../components/meta";
 import Oneko from "../../components/extras/oneko";
-import PieroSnowfall from "../../components/snowFall";
+import PieroSnowfall from "../../components/snowFallPiero";
 import { hoursMinutesUntilArrival } from "../../components/extras/randomTools";
 
 const timeFormat = (time) => {
