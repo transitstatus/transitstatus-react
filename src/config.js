@@ -23,6 +23,7 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     dontFilterMapLines: true,
   },
   brightline: {
@@ -48,6 +49,7 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     showTripIDOnScheduled: true,
     dontFilterMapLines: true,
     useDirectionsInsteadOfDestinations: true,
@@ -81,6 +83,7 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     dontFilterMapLines: false,
   },
   bart: {
@@ -106,6 +109,7 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: '',
     tripIDPrefixOnDisplay: '',
+    tripIDPrefixMinimal: '',
     runNumberConverter: (runNumber) => '',
     dontFilterMapLines: true,
   },
@@ -130,6 +134,7 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     dontFilterMapLines: false,
     updateFrequency: 10000,
   },
@@ -154,6 +159,7 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     dontFilterMapLines: true,
     autoFitMaxZoom: 5,
   },
@@ -178,12 +184,13 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     dontFilterMapLines: false,
   },
   lirr: {
     agencyID: "lirr",
     name: "LIRR",
-    selectionName: 'Long Island Railraod (LIRR)',
+    selectionName: 'Long Island Rail Road (LIRR)',
     endpoint: "https://store.transitstat.us/lirr/transitStatus",
     mapShapes: ["https://gtfs.piemadd.com/data/lirr/shapes/type_2.geojson"],
     gtfsRoot: "https://gtfs.piemadd.com/data/lirr",
@@ -201,6 +208,7 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     showTripIDOnScheduled: true,
     dontFilterMapLines: false,
     useDirectionsInsteadOfDestinations: true,
@@ -232,6 +240,7 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     showTripIDOnScheduled: true,
     dontFilterMapLines: false,
     useDirectionsInsteadOfDestinations: true,
@@ -258,6 +267,7 @@ export const agencies = {
     showArrow: false,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     showTripIDOnScheduled: true,
     dontFilterMapLines: false,
     useDirectionsInsteadOfDestinations: true,
@@ -284,6 +294,7 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: 'Train #',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     showTripIDOnScheduled: true,
     dontFilterMapLines: false,
     runNumberConverter: (runNumber) => runNumber.split('-').slice(-1),
@@ -311,6 +322,7 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: 'Train #',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     dontFilterMapLines: false,
   },
   NJT: {
@@ -337,6 +349,7 @@ export const agencies = {
     showArrow: false,
     tripIDPrefix: 'Train #',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     dontFilterMapLines: true,
   },
   marta: {
@@ -360,6 +373,7 @@ export const agencies = {
     showArrow: false,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     dontFilterMapLines: false,
   },
   southshore: {
@@ -383,6 +397,7 @@ export const agencies = {
     showArrow: false,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     dontFilterMapLines: false,
   },
   dekalb_il: {
@@ -406,6 +421,7 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: 'Bus #',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     showTripIDOnScheduled: false,
     dontFilterMapLines: true,
     useDirectionsInsteadOfDestinations: true,
@@ -431,9 +447,10 @@ export const agencies = {
     showArrow: false,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     dontFilterMapLines: false,
   },
-   cpkc_holiday: {
+  cpkc_holiday: {
     agencyID: "cpkc_holiday",
     name: "CPKC Holiday",
     selectionName: 'CPKC Holiday Train',
@@ -453,6 +470,7 @@ export const agencies = {
     showArrow: false,
     tripIDPrefix: 'Train CP',
     tripIDPrefixOnDisplay: 'CP',
+    tripIDPrefixMinimal: 'CP',
     dontFilterMapLines: false,
     useDirectionsInsteadOfDestinations: true,
   },
@@ -477,6 +495,7 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     dontFilterMapLines: false,
   },
   columbia: {
@@ -500,6 +519,7 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     dontFilterMapLines: false,
   },
   uchicago: {
@@ -523,6 +543,7 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     dontFilterMapLines: false,
   },
   gcsu: {
@@ -546,6 +567,7 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     dontFilterMapLines: false,
   },
   uga: {
@@ -569,6 +591,7 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     dontFilterMapLines: false,
   },
   gobus: {
@@ -592,6 +615,7 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     dontFilterMapLines: false,
   },
   georgiast: {
@@ -615,6 +639,7 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     dontFilterMapLines: false,
   },
   gatech: {
@@ -638,6 +663,7 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     dontFilterMapLines: false,
   },
   GASO: {
@@ -661,6 +687,7 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     dontFilterMapLines: false,
   },
   MIT: {
@@ -684,6 +711,7 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     dontFilterMapLines: false,
   },
   uncc: {
@@ -707,6 +735,7 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     dontFilterMapLines: false,
   },
   uncg: {
@@ -730,6 +759,7 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     dontFilterMapLines: false,
   },
   uncw: {
@@ -753,6 +783,7 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     dontFilterMapLines: false,
   },
   bama: {
@@ -776,6 +807,7 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     dontFilterMapLines: false,
   },
   ncstate: {
@@ -799,6 +831,7 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     dontFilterMapLines: false,
   },
   ritech: {
@@ -822,6 +855,7 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     dontFilterMapLines: false,
   },
   secret_piero: {
@@ -845,6 +879,7 @@ export const agencies = {
     showArrow: true,
     tripIDPrefix: 'Train #',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     showTripIDOnScheduled: true,
     dontFilterMapLines: true,
     useDirectionsInsteadOfDestinations: true,
@@ -879,6 +914,7 @@ export const agencies = {
     showArrow: false,
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
     dontFilterMapLines: false,
   }
   */

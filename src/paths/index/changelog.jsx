@@ -33,6 +33,17 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-20-8'>
+            <td>
+              <a href='#1-20-8'>v1.20.8</a>
+            </td>
+            <td>
+              <ul>
+                <li>Fixed LIRR name typo.</li>
+                <li>Made slight adjustments to how DeadMileage vehicles are displayed on maps.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-20-7'>
             <td>
               <a href='#1-20-7'>v1.20.7</a>

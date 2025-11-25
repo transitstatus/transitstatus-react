@@ -59,8 +59,8 @@ export const activateSelectorPopup = (e, features, map, agencyData, singleRouteI
             >
               {agencyData.useCodeForShortName ? train.lineCode : train.line}
               {agencyData.addLine ? " Line " : " "}
-              {agencyData.tripIDPrefix}
-              {agencyData.runNumberConverter ? agencyData.runNumberConverter(train.id) : train.id} to {train.dest}
+              {agencyData.tripIDPrefixMinimal}
+              {agencyData.runNumberConverter ? agencyData.runNumberConverter(train.id) : train.id}{!train.deadMileage ? <> to {train.dest}</> : null}
             </strong>
             <strong className='smallIdentifier'>{agencyData.type}</strong>
           </p>
@@ -112,7 +112,7 @@ export const activateTrainPopup = (feature, map, agencyData) => {
       {agencyData.useCodeForShortName ? train.lineCode : train.line}
       {agencyData.addLine ? " Line " : " "}
       {agencyData.tripIDPrefix}
-      {agencyData.runNumberConverter ? agencyData.runNumberConverter(train.id) : train.id} to {train.dest}
+      {agencyData.runNumberConverter ? agencyData.runNumberConverter(train.id) : train.id}{!train.deadMileage ? <> to {train.dest}</> : null}
     </h3>
     {extra && (extra.cap || extra.info) ? <p style={{ marginTop: '-2px', paddingBottom: '4px' }}>
       {extra.info ?? ""}
