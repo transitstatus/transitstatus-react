@@ -429,7 +429,7 @@ export const agencies = {
   mff: {
     agencyID: "mff",
     name: "MFF",
-    selectionName: 'Midwest Furry Fest',
+    selectionName: 'Midwest FurFest',
     endpoint: "https://store.transitstat.us/mff",
     mapShapes: ["https://gobblerstatic.transitstat.us/additionalShapes/mff.json"],
     //gtfsRoot: "https://gtfs.piemadd.com/data/southshore",
