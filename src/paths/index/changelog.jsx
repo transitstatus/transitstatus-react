@@ -33,6 +33,16 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-20-9'>
+            <td>
+              <a href='#1-20-9'>v1.20.9</a>
+            </td>
+            <td>
+              <ul>
+                <li>Enabled MFF.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-20-8'>
             <td>
               <a href='#1-20-8'>v1.20.8</a>
