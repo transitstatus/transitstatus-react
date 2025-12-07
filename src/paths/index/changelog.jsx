@@ -33,6 +33,21 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-20-10'>
+            <td>
+              <a href='#1-20-10'>v1.20.10</a>
+            </td>
+            <td>
+              <ul>
+                <li>Put a cap on default snow count of 12,500.</li>
+                <ul>
+                  <li>
+                    This can be adjusted via the snow multiplier setting.
+                  </li>
+                </ul>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-20-9'>
             <td>
               <a href='#1-20-9'>v1.20.9</a>
