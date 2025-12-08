@@ -235,6 +235,7 @@ const Agency = () => {
             );
           })
         )}
+
         {isLoading ? null : inactiveLines.length > 0 ? (
           <details>
             <summary
@@ -278,6 +279,29 @@ const Agency = () => {
               })}
             </div>
           </details>
+        ) : null}
+
+        {settings.playgroundEnabled || agencies[agency].alwaysShowAllTrainsList ? (
+          <h3
+            className='route'
+            key='onMap'
+            style={{
+              backgroundColor: agencies[agency].color,
+              color: agencies[agency].textColor,
+              fontSize: "1.3rem",
+              padding: "8px",
+              marginTop: "4px",
+            }}
+          >
+            <Link
+              to={`/${agency}/track/all`}
+              style={{
+                color: agencies[agency].textColor,
+              }}
+            >
+              View all {agencies[agency].typePlural}
+            </Link>
+          </h3>
         ) : null}
 
         <div>
@@ -417,6 +441,7 @@ const Agency = () => {
             View on a Map
           </Link>
         </h3>
+
         <h3
           className='route'
           key='backButton'

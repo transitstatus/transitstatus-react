@@ -178,7 +178,7 @@ const Station = () => {
           }}
           onClick={() => {
             const parsedURL = new URL(document.URL);
-            navigate(`${parsedURL.pathname.replace('/stops/', '/stops/display/')}${parsedURL.search}`, { replace: true })
+            navigate(`${parsedURL.pathname.replace('/stops/', '/stops/display/')}${parsedURL.search}`, { replace: false })
           }}
         >
           Show Station Display

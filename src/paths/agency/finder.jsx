@@ -166,23 +166,6 @@ const Station = () => {
           })}
         </p>
       </div>
-      {settings.playgroundEnabled ? (
-        <h3
-          className='train'
-          key='backButton'
-          style={{
-            backgroundColor: agencyMeta.color,
-            color: agencyMeta.textColor,
-            maxWidth: "384px",
-            marginBottom: '4px',
-          }}
-          onClick={() => {
-            const parsedURL = new URL(document.URL);
-            navigate(`${parsedURL.pathname.replace('/stops/', '/stops/display/')}${parsedURL.search}`, { replace: true })
-          }}
-        >
-          Show Station Display
-        </h3>) : null}
       <AlertsList alertsArray={alerts} agency={agency} filterType={'stop'} filterID={stopID} style={{ marginBottom: '8px', marginTop: '0px', maxWidth: '400px' }} />
       <div>
         {isLoading ? (

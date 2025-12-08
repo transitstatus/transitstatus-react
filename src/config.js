@@ -885,6 +885,7 @@ export const agencies = {
     useDirectionsInsteadOfDestinations: true,
     runNumberConverter: (runNumber) => runNumber.split('-').slice(-1),
     updateFrequency: 10000,
+    alwaysShowAllTrainsList: true,
   },
   /*
   bigboy: {
@@ -924,7 +925,7 @@ export const config = {
   siteTitle: 'Transitstat.us',
   siteTitleOther: 'Transitstatus',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'v1.20.10',
+  version: 'v1.20.11',
   additionalWarnings: [],
   globalAlerts: [
     {

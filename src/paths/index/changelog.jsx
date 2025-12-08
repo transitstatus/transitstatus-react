@@ -33,6 +33,21 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id='1-20-11'>
+            <td>
+              <a href='#1-20-11'>v1.20.11</a>
+            </td>
+            <td>
+              <ul>
+                <li>Added a link to a list of all vehicles on each agency home page.</li>
+                <ul>
+                  <li>
+                    This must be enabled in the "enable playground features" setting.
+                  </li>
+                </ul>
+              </ul>
+            </td>
+          </tr>
           <tr id='1-20-10'>
             <td>
               <a href='#1-20-10'>v1.20.10</a>
