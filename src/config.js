@@ -860,7 +860,7 @@ export const agencies = {
   },
   secret_piero: {
     agencyID: "secret_piero",
-    name: "Secret Piero",
+    name: "Piero",
     selectionName: 'SUPER SECRET PIERO TRACKER',
     endpoint: "https://store.transitstat.us/piero/v1",
     mapShapes: ["https://gtfs.piemadd.com/data/metra/shapes/type_2.geojson"],
