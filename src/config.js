@@ -441,7 +441,7 @@ export const agencies = {
     typeCode: 'bus',
     typeCodePlural: 'buses',
     addLine: true,
-    disabled: false,
+    disabled: true,
     useCodeForShortName: false,
     addShortName: false,
     showArrow: false,
