@@ -342,7 +342,7 @@ const Agency = () => {
             ></input>
             <h3
               className='route'
-              key='onMap'
+              key='goTo'
               style={{
                 backgroundColor: "#444",
                 color: "#fff",
@@ -423,7 +423,7 @@ const Agency = () => {
 
         <h3
           className='route'
-          key='onMap'
+          key='viewAll'
           style={{
             backgroundColor: agencies[agency].color,
             color: agencies[agency].textColor,
