@@ -160,7 +160,7 @@ export const agencies = {
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
     tripIDPrefixMinimal: '#',
-    dontFilterMapLines: true,
+    dontFilterMapLines: false,
     autoFitMaxZoom: 5,
   },
   ctab: {
@@ -255,6 +255,33 @@ export const agencies = {
     gtfsRoot: "https://gtfs.piemadd.com/data/mnrr",
     mapDefault: [41.28601941310751, -73.45314000000002, 8],
     color: "#0039A6",
+    textColor: "#ffffff",
+    type: 'Train',
+    typePlural: 'Trains',
+    typeCode: 'train',
+    typeCodePlural: 'trains',
+    addLine: false,
+    disabled: false,
+    useCodeForShortName: false,
+    addShortName: false,
+    showArrow: false,
+    tripIDPrefix: '#',
+    tripIDPrefixOnDisplay: '#',
+    tripIDPrefixMinimal: '#',
+    showTripIDOnScheduled: true,
+    dontFilterMapLines: false,
+    useDirectionsInsteadOfDestinations: true,
+    updateFrequency: 10000,
+  },
+  ctrail: {
+    agencyID: "ctrail",
+    name: "CTRail",
+    selectionName: 'CTRail',
+    endpoint: "https://store.transitstat.us/ctrail/transitStatus",
+    mapShapes: ["https://gtfs.piemadd.com/data/ctrail_hartford/shapes/type_2.geojson"],
+    gtfsRoot: "https://gtfs.piemadd.com/data/ctrail_hartford",
+    mapDefault: [41.28601941310751, -73.45314000000002, 8],
+    color: "#ea0a2a",
     textColor: "#ffffff",
     type: 'Train',
     typePlural: 'Trains',
@@ -887,20 +914,14 @@ export const agencies = {
     updateFrequency: 10000,
     alwaysShowAllTrainsList: true,
   },
-  /*
   bigboy: {
   agencyID: "bigboy",
     name: "UP Big Boy",
     selectionName: 'UP Big Boy',
     endpoint: "https://bigboyapi.amtraker.com/",
     mapShapes: [
-      "https://gobbler.transitstat.us/additionalShapes/bigboypart1.json",
-      "https://gobbler.transitstat.us/additionalShapes/bigboypart2.json",
-      "https://gobbler.transitstat.us/additionalShapes/bigboypart3.json",
-      "https://gobbler.transitstat.us/additionalShapes/bigboypart4.json",
-      "https://gobbler.transitstat.us/additionalShapes/bigboypart5.json",
+      "https://gobblerstatic.transitstat.us/additionalShapes/bigboy_west_2026.json",
     ],
-    gtfsRoot: "https://gtfs.piemadd.com/data/amtrak",
     mapDefault: [36.57236484298264, -96.27495103346894, 3],
     color: "#feca00",
     textColor: "#000000",
@@ -917,17 +938,22 @@ export const agencies = {
     tripIDPrefixOnDisplay: '#',
     tripIDPrefixMinimal: '#',
     dontFilterMapLines: false,
+    useDirectionsInsteadOfDestinations: true,
   }
-  */
 };
 
 export const config = {
   siteTitle: 'Transitstat.us',
   siteTitleOther: 'Transitstatus',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'v1.20.11',
+  version: 'v1.20.12',
   additionalWarnings: [],
   globalAlerts: [
+    {
+      title: 'UP Big Boy Tracking',
+      info: 'The Union Pacific Big Boy Tracker has been reactivated! Please be patient, as stops need to be added manually, but within a week of today (3/30) all of them should be added.',
+      expires: 1776398399000
+    },
     {
       title: 'Passio Re-Enabled, at a cost',
       info: 'We have been able to migrate some of the Passio endpoints to a new data source. That being said, most Passio go agencies don\'t have valid GTFS-RT feeds, so the list is quite limited.',
