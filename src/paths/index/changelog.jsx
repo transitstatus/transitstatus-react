@@ -18,7 +18,7 @@ const Changelog = () => {
             navigate("/", { replace: true }); //fallback
           }
         }}
-        className='settingsButton'
+        className="settingsButton"
         style={{
           marginTop: "0.5rem",
         }}
@@ -33,9 +33,19 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
-          <tr id='1-20-12'>
+          <tr id="1-20-13">
             <td>
-              <a href='#1-20-12'>v1.20.12</a>
+              <a href="#1-20-13">v1.20.13</a>
+            </td>
+            <td>
+              <ul>
+                <li>Switched UP BigBoy to single route mode.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr id="1-20-12">
+            <td>
+              <a href="#1-20-12">v1.20.12</a>
             </td>
             <td>
               <ul>
@@ -43,39 +53,41 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-20-11'>
+          <tr id="1-20-11">
             <td>
-              <a href='#1-20-11'>v1.20.11</a>
+              <a href="#1-20-11">v1.20.11</a>
             </td>
             <td>
               <ul>
-                <li>Added a link to a list of all vehicles on each agency home page.</li>
+                <li>
+                  Added a link to a list of all vehicles on each agency home
+                  page.
+                </li>
                 <ul>
                   <li>
-                    This must be enabled in the "enable playground features" setting.
+                    This must be enabled in the "enable playground features"
+                    setting.
                   </li>
                 </ul>
               </ul>
             </td>
           </tr>
-          <tr id='1-20-10'>
+          <tr id="1-20-10">
             <td>
-              <a href='#1-20-10'>v1.20.10</a>
+              <a href="#1-20-10">v1.20.10</a>
             </td>
             <td>
               <ul>
                 <li>Put a cap on default snow count of 12,500.</li>
                 <ul>
-                  <li>
-                    This can be adjusted via the snow multiplier setting.
-                  </li>
+                  <li>This can be adjusted via the snow multiplier setting.</li>
                 </ul>
               </ul>
             </td>
           </tr>
-          <tr id='1-20-9'>
+          <tr id="1-20-9">
             <td>
-              <a href='#1-20-9'>v1.20.9</a>
+              <a href="#1-20-9">v1.20.9</a>
             </td>
             <td>
               <ul>
@@ -83,20 +95,23 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-20-8'>
+          <tr id="1-20-8">
             <td>
-              <a href='#1-20-8'>v1.20.8</a>
+              <a href="#1-20-8">v1.20.8</a>
             </td>
             <td>
               <ul>
                 <li>Fixed LIRR name typo.</li>
-                <li>Made slight adjustments to how DeadMileage vehicles are displayed on maps.</li>
+                <li>
+                  Made slight adjustments to how DeadMileage vehicles are
+                  displayed on maps.
+                </li>
               </ul>
             </td>
           </tr>
-          <tr id='1-20-7'>
+          <tr id="1-20-7">
             <td>
-              <a href='#1-20-7'>v1.20.7</a>
+              <a href="#1-20-7">v1.20.7</a>
             </td>
             <td>
               <ul>
@@ -108,19 +123,21 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-20-6'>
+          <tr id="1-20-6">
             <td>
-              <a href='#1-20-6'>v1.20.6</a>
+              <a href="#1-20-6">v1.20.6</a>
             </td>
             <td>
               <ul>
-                <li>Added extra features specific to the CPKC holiday trains.</li>
+                <li>
+                  Added extra features specific to the CPKC holiday trains.
+                </li>
               </ul>
             </td>
           </tr>
-          <tr id='1-20-5'>
+          <tr id="1-20-5">
             <td>
-              <a href='#1-20-5'>v1.20.5</a>
+              <a href="#1-20-5">v1.20.5</a>
             </td>
             <td>
               <ul>
@@ -128,9 +145,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-20-4'>
+          <tr id="1-20-4">
             <td>
-              <a href='#1-20-4'>v1.20.4</a>
+              <a href="#1-20-4">v1.20.4</a>
             </td>
             <td>
               <ul>
@@ -139,9 +156,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-20-3'>
+          <tr id="1-20-3">
             <td>
-              <a href='#1-20-3'>v1.20.3</a>
+              <a href="#1-20-3">v1.20.3</a>
             </td>
             <td>
               <ul>
@@ -151,9 +168,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-20-2'>
+          <tr id="1-20-2">
             <td>
-              <a href='#1-20-2'>v1.20.2</a>
+              <a href="#1-20-2">v1.20.2</a>
             </td>
             <td>
               <ul>
@@ -161,9 +178,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-20-1'>
+          <tr id="1-20-1">
             <td>
-              <a href='#1-20-1'>v1.20.1</a>
+              <a href="#1-20-1">v1.20.1</a>
             </td>
             <td>
               <ul>
@@ -172,22 +189,34 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-20-0'>
+          <tr id="1-20-0">
             <td>
-              <a href='#1-20-0'>v1.20.0</a>
+              <a href="#1-20-0">v1.20.0</a>
             </td>
             <td>
               <ul>
-                <li>Fixed bug where snow (when enabled) doesn't fill the entire page when they are larger than the screen.</li>
-                <li>Added setting to multiply the amount of snow on the page (as low as 0x and as high as you'd like).</li>
-                <li>Added candy cane to christmas themed vehicles on the map.</li>
-                <li>Made changes to codebase to support further specially themed vehicles in the future (halloween, new years, easter, heritage units, etc).</li>
+                <li>
+                  Fixed bug where snow (when enabled) doesn't fill the entire
+                  page when they are larger than the screen.
+                </li>
+                <li>
+                  Added setting to multiply the amount of snow on the page (as
+                  low as 0x and as high as you'd like).
+                </li>
+                <li>
+                  Added candy cane to christmas themed vehicles on the map.
+                </li>
+                <li>
+                  Made changes to codebase to support further specially themed
+                  vehicles in the future (halloween, new years, easter, heritage
+                  units, etc).
+                </li>
               </ul>
             </td>
           </tr>
-          <tr id='1-19-3'>
+          <tr id="1-19-3">
             <td>
-              <a href='#1-19-3'>v1.19.3</a>
+              <a href="#1-19-3">v1.19.3</a>
             </td>
             <td>
               <ul>
@@ -195,23 +224,29 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-19-2'>
+          <tr id="1-19-2">
             <td>
-              <a href='#1-19-2'>v1.19.2</a>
+              <a href="#1-19-2">v1.19.2</a>
             </td>
             <td>
               <ul>
                 <li>Added configuration URL parameters.</li>
                 <ul>
-                  <li>These are undocumented and are for personal use. I might give some info about them later.</li>
+                  <li>
+                    These are undocumented and are for personal use. I might
+                    give some info about them later.
+                  </li>
                 </ul>
-                <li>Fixed bug with Data Manager that would update every agency, leading to high data usage.</li>
+                <li>
+                  Fixed bug with Data Manager that would update every agency,
+                  leading to high data usage.
+                </li>
               </ul>
             </td>
           </tr>
-          <tr id='1-19-1'>
+          <tr id="1-19-1">
             <td>
-              <a href='#1-19-1'>v1.19.1</a>
+              <a href="#1-19-1">v1.19.1</a>
             </td>
             <td>
               <ul>
@@ -222,44 +257,53 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-19-0'>
+          <tr id="1-19-0">
             <td>
-              <a href='#1-19-0'>v1.19.0</a>
+              <a href="#1-19-0">v1.19.0</a>
             </td>
             <td>
               <ul>
-                <li>Added selector if multiple map features are clicked on at once.</li>
+                <li>
+                  Added selector if multiple map features are clicked on at
+                  once.
+                </li>
                 <li>Reduced duplicated code from codbase.</li>
                 <li>Removed unused imports from codebase.</li>
               </ul>
             </td>
           </tr>
-          <tr id='1-18-6'>
+          <tr id="1-18-6">
             <td>
-              <a href='#1-18-6'>v1.18.6</a>
+              <a href="#1-18-6">v1.18.6</a>
             </td>
             <td>
               <ul>
-                <li>New Passio endpoint. Multiple casualties due to poor GTFS-RT support. I'm sorry :c</li>
+                <li>
+                  New Passio endpoint. Multiple casualties due to poor GTFS-RT
+                  support. I'm sorry :c
+                </li>
               </ul>
             </td>
           </tr>
-          <tr id='1-18-5'>
+          <tr id="1-18-5">
             <td>
-              <a href='#1-18-5'>v1.18.5</a>
+              <a href="#1-18-5">v1.18.5</a>
             </td>
             <td>
               <ul>
                 <li>Disabled POIs.</li>
                 <ul>
-                  <li>I want to add these back, just with filtering with less needed things.</li>
+                  <li>
+                    I want to add these back, just with filtering with less
+                    needed things.
+                  </li>
                 </ul>
               </ul>
             </td>
           </tr>
-          <tr id='1-18-4'>
+          <tr id="1-18-4">
             <td>
-              <a href='#1-18-4'>v1.18.4</a>
+              <a href="#1-18-4">v1.18.4</a>
             </td>
             <td>
               <ul>
@@ -267,9 +311,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-18-3'>
+          <tr id="1-18-3">
             <td>
-              <a href='#1-18-3'>v1.18.3</a>
+              <a href="#1-18-3">v1.18.3</a>
             </td>
             <td>
               <ul>
@@ -278,9 +322,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-18-2'>
+          <tr id="1-18-2">
             <td>
-              <a href='#1-18-2'>v1.18.2</a>
+              <a href="#1-18-2">v1.18.2</a>
             </td>
             <td>
               <ul>
@@ -288,19 +332,24 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-18-1'>
+          <tr id="1-18-1">
             <td>
-              <a href='#1-18-1'>v1.18.1</a>
+              <a href="#1-18-1">v1.18.1</a>
             </td>
             <td>
               <ul>
-                <li>Changed map icon color to be based off of individual trains, not the routes they are a part of. This is needed for the CTA where some trains have inverted colors on the green and blue lines based on theier destination.</li>
+                <li>
+                  Changed map icon color to be based off of individual trains,
+                  not the routes they are a part of. This is needed for the CTA
+                  where some trains have inverted colors on the green and blue
+                  lines based on theier destination.
+                </li>
               </ul>
             </td>
           </tr>
-          <tr id='1-18-0'>
+          <tr id="1-18-0">
             <td>
-              <a href='#1-18-0'>v1.18.0</a>
+              <a href="#1-18-0">v1.18.0</a>
             </td>
             <td>
               <ul>
@@ -308,9 +357,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-17-3'>
+          <tr id="1-17-3">
             <td>
-              <a href='#1-17-3'>v1.17.3</a>
+              <a href="#1-17-3">v1.17.3</a>
             </td>
             <td>
               <ul>
@@ -318,9 +367,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-17-2'>
+          <tr id="1-17-2">
             <td>
-              <a href='#1-17-2'>v1.17.2</a>
+              <a href="#1-17-2">v1.17.2</a>
             </td>
             <td>
               <ul>
@@ -328,9 +377,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-17-1'>
+          <tr id="1-17-1">
             <td>
-              <a href='#1-17-1'>v1.17.1</a>
+              <a href="#1-17-1">v1.17.1</a>
             </td>
             <td>
               <ul>
@@ -338,9 +387,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-17-0'>
+          <tr id="1-17-0">
             <td>
-              <a href='#1-17-0'>v1.17.0</a>
+              <a href="#1-17-0">v1.17.0</a>
             </td>
             <td>
               <ul>
@@ -349,19 +398,21 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-16-7'>
+          <tr id="1-16-7">
             <td>
-              <a href='#1-16-7'>v1.16.7</a>
+              <a href="#1-16-7">v1.16.7</a>
             </td>
             <td>
               <ul>
-                <li>Testing quick select keyboard (enabled by flag in settings).</li>
+                <li>
+                  Testing quick select keyboard (enabled by flag in settings).
+                </li>
               </ul>
             </td>
           </tr>
-          <tr id='1-16-6'>
+          <tr id="1-16-6">
             <td>
-              <a href='#1-16-6'>v1.16.6</a>
+              <a href="#1-16-6">v1.16.6</a>
             </td>
             <td>
               <ul>
@@ -369,9 +420,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-16-5'>
+          <tr id="1-16-5">
             <td>
-              <a href='#1-16-5'>v1.16.5</a>
+              <a href="#1-16-5">v1.16.5</a>
             </td>
             <td>
               <ul>
@@ -379,21 +430,25 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-16-4'>
+          <tr id="1-16-4">
             <td>
-              <a href='#1-16-4'>v1.16.4</a>
+              <a href="#1-16-4">v1.16.4</a>
             </td>
             <td>
               <ul>
                 <li>Added sitemap.xml.</li>
-                <li>Fixed Brightline config to show scheduled train numbers.</li>
-                <li>Allowing users to click on scheduled trains on station pages.</li>
+                <li>
+                  Fixed Brightline config to show scheduled train numbers.
+                </li>
+                <li>
+                  Allowing users to click on scheduled trains on station pages.
+                </li>
               </ul>
             </td>
           </tr>
-          <tr id='1-16-3'>
+          <tr id="1-16-3">
             <td>
-              <a href='#1-16-3'>v1.16.3</a>
+              <a href="#1-16-3">v1.16.3</a>
             </td>
             <td>
               <ul>
@@ -401,9 +456,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-16-2'>
+          <tr id="1-16-2">
             <td>
-              <a href='#1-16-2'>v1.16.2</a>
+              <a href="#1-16-2">v1.16.2</a>
             </td>
             <td>
               <ul>
@@ -411,30 +466,39 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-16-1'>
+          <tr id="1-16-1">
             <td>
-              <a href='#1-16-1'>v1.16.1</a>
+              <a href="#1-16-1">v1.16.1</a>
             </td>
             <td>
               <ul>
-                <li>Switched brightline to using "Northbound" and "Southbound" instead of a train's final destination when sorting trains.</li>
+                <li>
+                  Switched brightline to using "Northbound" and "Southbound"
+                  instead of a train's final destination when sorting trains.
+                </li>
               </ul>
             </td>
           </tr>
-          <tr id='1-16-0'>
+          <tr id="1-16-0">
             <td>
-              <a href='#1-16-0'>v1.16.0</a>
+              <a href="#1-16-0">v1.16.0</a>
             </td>
             <td>
               <ul>
-                <li>Testing a station display mode (access by replacing /stops/[stop id] with /stops/display/[stop id]).</li>
-                <li>Added 'playground' setting toggle to enable experiments like the station display.</li>
+                <li>
+                  Testing a station display mode (access by replacing
+                  /stops/[stop id] with /stops/display/[stop id]).
+                </li>
+                <li>
+                  Added 'playground' setting toggle to enable experiments like
+                  the station display.
+                </li>
               </ul>
             </td>
           </tr>
-          <tr id='1-15-8'>
+          <tr id="1-15-8">
             <td>
-              <a href='#1-15-8'>v1.15.8</a>
+              <a href="#1-15-8">v1.15.8</a>
             </td>
             <td>
               <ul>
@@ -442,9 +506,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-15-7'>
+          <tr id="1-15-7">
             <td>
-              <a href='#1-15-7'>v1.15.7</a>
+              <a href="#1-15-7">v1.15.7</a>
             </td>
             <td>
               <ul>
@@ -452,9 +516,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-15-6'>
+          <tr id="1-15-6">
             <td>
-              <a href='#1-15-6'>v1.15.6</a>
+              <a href="#1-15-6">v1.15.6</a>
             </td>
             <td>
               <ul>
@@ -462,9 +526,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-15-5'>
+          <tr id="1-15-5">
             <td>
-              <a href='#1-15-5'>v1.15.5</a>
+              <a href="#1-15-5">v1.15.5</a>
             </td>
             <td>
               <ul>
@@ -472,9 +536,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-15-5'>
+          <tr id="1-15-5">
             <td>
-              <a href='#1-15-4'>v1.15.4</a>
+              <a href="#1-15-4">v1.15.4</a>
             </td>
             <td>
               <ul>
@@ -482,19 +546,21 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-15-3'>
+          <tr id="1-15-3">
             <td>
-              <a href='#1-15-3'>v1.15.3</a>
+              <a href="#1-15-3">v1.15.3</a>
             </td>
             <td>
               <ul>
-                <li>Fixed bug where some vehicles without ETA's aren't shown.</li>
+                <li>
+                  Fixed bug where some vehicles without ETA's aren't shown.
+                </li>
               </ul>
             </td>
           </tr>
-          <tr id='1-15-2'>
+          <tr id="1-15-2">
             <td>
-              <a href='#1-15-2'>v1.15.2</a>
+              <a href="#1-15-2">v1.15.2</a>
             </td>
             <td>
               <ul>
@@ -503,33 +569,42 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-15-1'>
+          <tr id="1-15-1">
             <td>
-              <a href='#1-15-1'>v1.15.1</a>
+              <a href="#1-15-1">v1.15.1</a>
             </td>
             <td>
               <ul>
                 <li>Disabled MFF.</li>
                 <ul>
-                  <li>Still accessible at <a href="https://transitstat.us/mff">https://transitstat.us/mff</a>.</li>
+                  <li>
+                    Still accessible at{" "}
+                    <a href="https://transitstat.us/mff">
+                      https://transitstat.us/mff
+                    </a>
+                    .
+                  </li>
                 </ul>
               </ul>
             </td>
           </tr>
-          <tr id='1-15-0'>
+          <tr id="1-15-0">
             <td>
-              <a href='#1-15-0'>v1.15.0</a>
+              <a href="#1-15-0">v1.15.0</a>
             </td>
             <td>
               <ul>
                 <li>Added BART.</li>
-                <li>Fixed bug with how buttons are rendered with agencies that don't filter lines on the map.</li>
+                <li>
+                  Fixed bug with how buttons are rendered with agencies that
+                  don't filter lines on the map.
+                </li>
               </ul>
             </td>
           </tr>
-          <tr id='1-14-15'>
+          <tr id="1-14-15">
             <td>
-              <a href='#1-14-15'>v1.14.15</a>
+              <a href="#1-14-15">v1.14.15</a>
             </td>
             <td>
               <ul>
@@ -539,9 +614,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-14-14'>
+          <tr id="1-14-14">
             <td>
-              <a href='#1-14-14'>v1.14.14</a>
+              <a href="#1-14-14">v1.14.14</a>
             </td>
             <td>
               <ul>
@@ -549,19 +624,22 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-14-13'>
+          <tr id="1-14-13">
             <td>
-              <a href='#1-14-13'>v1.14.12</a>
+              <a href="#1-14-13">v1.14.12</a>
             </td>
             <td>
               <ul>
-                <li>Fixed station popups not appearing on map due to misnamed variable.</li>
+                <li>
+                  Fixed station popups not appearing on map due to misnamed
+                  variable.
+                </li>
               </ul>
             </td>
           </tr>
-          <tr id='1-14-12'>
+          <tr id="1-14-12">
             <td>
-              <a href='#1-14-12'>v1.14.12</a>
+              <a href="#1-14-12">v1.14.12</a>
             </td>
             <td>
               <ul>
@@ -569,30 +647,35 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-14-11'>
+          <tr id="1-14-11">
             <td>
-              <a href='#1-14-11'>v1.14.11</a>
+              <a href="#1-14-11">v1.14.11</a>
             </td>
             <td>
               <ul>
-                <li>Reduced opacity on scheduled trains to better differentiate them from tracking trains.</li>
+                <li>
+                  Reduced opacity on scheduled trains to better differentiate
+                  them from tracking trains.
+                </li>
               </ul>
             </td>
           </tr>
-          <tr id='1-14-10'>
+          <tr id="1-14-10">
             <td>
-              <a href='#1-14-10'>v1.14.10</a>
+              <a href="#1-14-10">v1.14.10</a>
             </td>
             <td>
               <ul>
                 <li>Improved scheduled train support.</li>
-                <li>Added support for run number modification on the client side.</li>
+                <li>
+                  Added support for run number modification on the client side.
+                </li>
               </ul>
             </td>
           </tr>
-          <tr id='1-14-9'>
+          <tr id="1-14-9">
             <td>
-              <a href='#1-14-9'>v1.14.9</a>
+              <a href="#1-14-9">v1.14.9</a>
             </td>
             <td>
               <ul>
@@ -600,9 +683,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-14-8'>
+          <tr id="1-14-8">
             <td>
-              <a href='#1-14-8'>v1.14.8</a>
+              <a href="#1-14-8">v1.14.8</a>
             </td>
             <td>
               <ul>
@@ -610,9 +693,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-14-7'>
+          <tr id="1-14-7">
             <td>
-              <a href='#1-14-7'>v1.14.7</a>
+              <a href="#1-14-7">v1.14.7</a>
             </td>
             <td>
               <ul>
@@ -620,9 +703,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-14-6'>
+          <tr id="1-14-6">
             <td>
-              <a href='#1-14-6'>v1.14.6</a>
+              <a href="#1-14-6">v1.14.6</a>
             </td>
             <td>
               <ul>
@@ -630,9 +713,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-14-5'>
+          <tr id="1-14-5">
             <td>
-              <a href='#1-14-5'>v1.14.5</a>
+              <a href="#1-14-5">v1.14.5</a>
             </td>
             <td>
               <ul>
@@ -640,9 +723,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-14-4'>
+          <tr id="1-14-4">
             <td>
-              <a href='#1-14-4'>v1.14.4</a>
+              <a href="#1-14-4">v1.14.4</a>
             </td>
             <td>
               <ul>
@@ -650,19 +733,22 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-14-3'>
+          <tr id="1-14-3">
             <td>
-              <a href='#1-14-3'>v1.14.3</a>
+              <a href="#1-14-3">v1.14.3</a>
             </td>
             <td>
               <ul>
-                <li>Added Christmas colors and snowflakes with holiday themed transit vehicles.</li>
+                <li>
+                  Added Christmas colors and snowflakes with holiday themed
+                  transit vehicles.
+                </li>
               </ul>
             </td>
           </tr>
-          <tr id='1-14-2'>
+          <tr id="1-14-2">
             <td>
-              <a href='#1-14-2'>v1.14.2</a>
+              <a href="#1-14-2">v1.14.2</a>
             </td>
             <td>
               <ul>
@@ -670,9 +756,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-14-1'>
+          <tr id="1-14-1">
             <td>
-              <a href='#1-14-1'>v1.14.1</a>
+              <a href="#1-14-1">v1.14.1</a>
             </td>
             <td>
               <ul>
@@ -681,9 +767,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-14-0'>
+          <tr id="1-14-0">
             <td>
-              <a href='#1-14-0'>v1.14.0</a>
+              <a href="#1-14-0">v1.14.0</a>
             </td>
             <td>
               <ul>
@@ -695,9 +781,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-13-3'>
+          <tr id="1-13-3">
             <td>
-              <a href='#1-13-3'>v1.13.2</a>
+              <a href="#1-13-3">v1.13.2</a>
             </td>
             <td>
               <ul>
@@ -705,9 +791,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-13-2'>
+          <tr id="1-13-2">
             <td>
-              <a href='#1-13-2'>v1.13.2</a>
+              <a href="#1-13-2">v1.13.2</a>
             </td>
             <td>
               <ul>
@@ -715,9 +801,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-13-1'>
+          <tr id="1-13-1">
             <td>
-              <a href='#1-13-1'>v1.13.1</a>
+              <a href="#1-13-1">v1.13.1</a>
             </td>
             <td>
               <ul>
@@ -726,9 +812,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-13-0'>
+          <tr id="1-13-0">
             <td>
-              <a href='#1-13-0'>v1.13.0</a>
+              <a href="#1-13-0">v1.13.0</a>
             </td>
             <td>
               <ul>
@@ -744,9 +830,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-12-5'>
+          <tr id="1-12-5">
             <td>
-              <a href='#1-12-5'>v1.12.5</a>
+              <a href="#1-12-5">v1.12.5</a>
             </td>
             <td>
               <ul>
@@ -754,9 +840,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-12-4'>
+          <tr id="1-12-4">
             <td>
-              <a href='#1-12-4'>v1.12.4</a>
+              <a href="#1-12-4">v1.12.4</a>
             </td>
             <td>
               <ul>
@@ -765,9 +851,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-12-3'>
+          <tr id="1-12-3">
             <td>
-              <a href='#1-12-3'>v1.12.3</a>
+              <a href="#1-12-3">v1.12.3</a>
             </td>
             <td>
               <ul>
@@ -775,9 +861,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-12-2'>
+          <tr id="1-12-2">
             <td>
-              <a href='#1-12-2'>v1.12.2</a>
+              <a href="#1-12-2">v1.12.2</a>
             </td>
             <td>
               <ul>
@@ -787,9 +873,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-12-1'>
+          <tr id="1-12-1">
             <td>
-              <a href='#1-12-1'>v1.12.1</a>
+              <a href="#1-12-1">v1.12.1</a>
             </td>
             <td>
               <ul>
@@ -797,9 +883,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-12-0'>
+          <tr id="1-12-0">
             <td>
-              <a href='#1-12-0'>v1.12.0</a>
+              <a href="#1-12-0">v1.12.0</a>
             </td>
             <td>
               <ul>
@@ -810,9 +896,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-11-16'>
+          <tr id="1-11-16">
             <td>
-              <a href='#1-11-16'>v1.11.16</a>
+              <a href="#1-11-16">v1.11.16</a>
             </td>
             <td>
               <ul>
@@ -820,9 +906,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-11-15'>
+          <tr id="1-11-15">
             <td>
-              <a href='#1-11-15'>v1.11.15</a>
+              <a href="#1-11-15">v1.11.15</a>
             </td>
             <td>
               <ul>
@@ -830,9 +916,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-11-14'>
+          <tr id="1-11-14">
             <td>
-              <a href='#1-11-14'>v1.11.14</a>
+              <a href="#1-11-14">v1.11.14</a>
             </td>
             <td>
               <ul>
@@ -841,9 +927,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-11-13'>
+          <tr id="1-11-13">
             <td>
-              <a href='#1-11-13'>v1.11.13</a>
+              <a href="#1-11-13">v1.11.13</a>
             </td>
             <td>
               <ul>
@@ -855,9 +941,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-11-12'>
+          <tr id="1-11-12">
             <td>
-              <a href='#1-11-12'>v1.11.12</a>
+              <a href="#1-11-12">v1.11.12</a>
             </td>
             <td>
               <ul>
@@ -865,9 +951,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-11-11'>
+          <tr id="1-11-11">
             <td>
-              <a href='#1-11-11'>v1.11.11</a>
+              <a href="#1-11-11">v1.11.11</a>
             </td>
             <td>
               <ul>
@@ -880,9 +966,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-11-10'>
+          <tr id="1-11-10">
             <td>
-              <a href='#1-11-10'>v1.11.10</a>
+              <a href="#1-11-10">v1.11.10</a>
             </td>
             <td>
               <ul>
@@ -890,9 +976,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-11-9'>
+          <tr id="1-11-9">
             <td>
-              <a href='#1-11-9'>v1.11.9</a>
+              <a href="#1-11-9">v1.11.9</a>
             </td>
             <td>
               <ul>
@@ -900,16 +986,16 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-11-8'>
+          <tr id="1-11-8">
             <td>
-              <a href='#1-11-8'>v1.11.8</a>
+              <a href="#1-11-8">v1.11.8</a>
             </td>
             <td>
               <ul>
                 <li>Added "Boris" as a cat option for "Show Cat".</li>
                 <ul>
                   <li>
-                    <a href='/images/boris.jpg' target='__blank'>
+                    <a href="/images/boris.jpg" target="__blank">
                       Picture of real life Boris
                     </a>
                     .
@@ -918,9 +1004,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-11-7'>
+          <tr id="1-11-7">
             <td>
-              <a href='#1-11-7'>v1.11.7</a>
+              <a href="#1-11-7">v1.11.7</a>
             </td>
             <td>
               <ul>
@@ -934,9 +1020,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-11-6'>
+          <tr id="1-11-6">
             <td>
-              <a href='#1-11-6'>v1.11.6</a>
+              <a href="#1-11-6">v1.11.6</a>
             </td>
             <td>
               <ul>
@@ -945,9 +1031,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-11-5'>
+          <tr id="1-11-5">
             <td>
-              <a href='#1-11-5'>v1.11.5</a>
+              <a href="#1-11-5">v1.11.5</a>
             </td>
             <td>
               <ul>
@@ -955,9 +1041,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-11-4'>
+          <tr id="1-11-4">
             <td>
-              <a href='#1-11-4'>v1.11.4</a>
+              <a href="#1-11-4">v1.11.4</a>
             </td>
             <td>
               <ul>
@@ -972,9 +1058,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-11-3'>
+          <tr id="1-11-3">
             <td>
-              <a href='#1-11-3'>v1.11.3</a>
+              <a href="#1-11-3">v1.11.3</a>
             </td>
             <td>
               <ul>
@@ -982,9 +1068,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-11-2'>
+          <tr id="1-11-2">
             <td>
-              <a href='#1-11-2'>v1.11.2</a>
+              <a href="#1-11-2">v1.11.2</a>
             </td>
             <td>
               <ul>
@@ -992,9 +1078,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-11-1'>
+          <tr id="1-11-1">
             <td>
-              <a href='#1-11-1'>v1.11.1</a>
+              <a href="#1-11-1">v1.11.1</a>
             </td>
             <td>
               <ul>
@@ -1002,9 +1088,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-11-0'>
+          <tr id="1-11-0">
             <td>
-              <a href='#1-11-0'>v1.11.0</a>
+              <a href="#1-11-0">v1.11.0</a>
             </td>
             <td>
               <ul>
@@ -1015,9 +1101,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-10-5'>
+          <tr id="1-10-5">
             <td>
-              <a href='#1-10-5'>v1.10.5</a>
+              <a href="#1-10-5">v1.10.5</a>
             </td>
             <td>
               <ul>
@@ -1028,9 +1114,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-10-4'>
+          <tr id="1-10-4">
             <td>
-              <a href='#1-10-4'>v1.10.4</a>
+              <a href="#1-10-4">v1.10.4</a>
             </td>
             <td>
               <ul>
@@ -1038,9 +1124,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-10-3'>
+          <tr id="1-10-3">
             <td>
-              <a href='#1-10-3'>v1.10.3</a>
+              <a href="#1-10-3">v1.10.3</a>
             </td>
             <td>
               <ul>
@@ -1048,9 +1134,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-10-2'>
+          <tr id="1-10-2">
             <td>
-              <a href='#1-10-2'>v1.10.2</a>
+              <a href="#1-10-2">v1.10.2</a>
             </td>
             <td>
               <ul>
@@ -1058,9 +1144,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-10-1'>
+          <tr id="1-10-1">
             <td>
-              <a href='#1-10-1'>v1.10.1</a>
+              <a href="#1-10-1">v1.10.1</a>
             </td>
             <td>
               <ul>
@@ -1068,9 +1154,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-10-0'>
+          <tr id="1-10-0">
             <td>
-              <a href='#1-10-0'>v1.10.0</a>
+              <a href="#1-10-0">v1.10.0</a>
             </td>
             <td>
               <ul>
@@ -1079,9 +1165,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-9-5'>
+          <tr id="1-9-5">
             <td>
-              <a href='#1-9-5'>v1.9.5</a>
+              <a href="#1-9-5">v1.9.5</a>
             </td>
             <td>
               <ul>
@@ -1090,9 +1176,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-9-4'>
+          <tr id="1-9-4">
             <td>
-              <a href='#1-9-4'>v1.9.4</a>
+              <a href="#1-9-4">v1.9.4</a>
             </td>
             <td>
               <ul>
@@ -1104,9 +1190,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-9-3'>
+          <tr id="1-9-3">
             <td>
-              <a href='#1-9-3'>v1.9.3</a>
+              <a href="#1-9-3">v1.9.3</a>
             </td>
             <td>
               <ul>
@@ -1117,9 +1203,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-9-2'>
+          <tr id="1-9-2">
             <td>
-              <a href='#1-9-2'>v1.9.2</a>
+              <a href="#1-9-2">v1.9.2</a>
             </td>
             <td>
               <ul>
@@ -1127,9 +1213,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-9-1'>
+          <tr id="1-9-1">
             <td>
-              <a href='#1-9-1'>v1.9.1</a>
+              <a href="#1-9-1">v1.9.1</a>
             </td>
             <td>
               <ul>
@@ -1137,9 +1223,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-9-0'>
+          <tr id="1-9-0">
             <td>
-              <a href='#1-9-0'>v1.9.0</a>
+              <a href="#1-9-0">v1.9.0</a>
             </td>
             <td>
               <ul>
@@ -1147,9 +1233,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-8-2'>
+          <tr id="1-8-2">
             <td>
-              <a href='#1-8-2'>v1.8.2</a>
+              <a href="#1-8-2">v1.8.2</a>
             </td>
             <td>
               <ul>
@@ -1157,9 +1243,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-8-1'>
+          <tr id="1-8-1">
             <td>
-              <a href='#1-8-1'>v1.8.1</a>
+              <a href="#1-8-1">v1.8.1</a>
             </td>
             <td>
               <ul>
@@ -1167,9 +1253,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-8-0'>
+          <tr id="1-8-0">
             <td>
-              <a href='#1-8-0'>v1.8.0</a>
+              <a href="#1-8-0">v1.8.0</a>
             </td>
             <td>
               <ul>
@@ -1186,9 +1272,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-7-1'>
+          <tr id="1-7-1">
             <td>
-              <a href='#1-7-1'>v1.7.1</a>
+              <a href="#1-7-1">v1.7.1</a>
             </td>
             <td>
               <ul>
@@ -1196,9 +1282,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-7-0'>
+          <tr id="1-7-0">
             <td>
-              <a href='#1-7-0'>v1.7.0</a>
+              <a href="#1-7-0">v1.7.0</a>
             </td>
             <td>
               <ul>
@@ -1214,9 +1300,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-6-7'>
+          <tr id="1-6-7">
             <td>
-              <a href='#1-6-7'>v1.6.7</a>
+              <a href="#1-6-7">v1.6.7</a>
             </td>
             <td>
               <ul>
@@ -1224,9 +1310,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-6-6'>
+          <tr id="1-6-6">
             <td>
-              <a href='#1-6-6'>v1.6.6</a>
+              <a href="#1-6-6">v1.6.6</a>
             </td>
             <td>
               <ul>
@@ -1235,9 +1321,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-6-5'>
+          <tr id="1-6-5">
             <td>
-              <a href='#1-6-5'>v1.6.5</a>
+              <a href="#1-6-5">v1.6.5</a>
             </td>
             <td>
               <ul>
@@ -1245,9 +1331,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-6-4'>
+          <tr id="1-6-4">
             <td>
-              <a href='#1-6-4'>v1.6.4</a>
+              <a href="#1-6-4">v1.6.4</a>
             </td>
             <td>
               <ul>
@@ -1257,9 +1343,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-6-3'>
+          <tr id="1-6-3">
             <td>
-              <a href='#1-6-3'>v1.6.3</a>
+              <a href="#1-6-3">v1.6.3</a>
             </td>
             <td>
               <ul>
@@ -1267,9 +1353,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-6-2'>
+          <tr id="1-6-2">
             <td>
-              <a href='#1-6-2'>v1.6.2</a>
+              <a href="#1-6-2">v1.6.2</a>
             </td>
             <td>
               <ul>
@@ -1277,9 +1363,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-6-1'>
+          <tr id="1-6-1">
             <td>
-              <a href='#1-6-1'>v1.6.1</a>
+              <a href="#1-6-1">v1.6.1</a>
             </td>
             <td>
               <ul>
@@ -1287,9 +1373,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-6-0'>
+          <tr id="1-6-0">
             <td>
-              <a href='#1-6-0'>v1.6.0</a>
+              <a href="#1-6-0">v1.6.0</a>
             </td>
             <td>
               <ul>
@@ -1297,9 +1383,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-5-1'>
+          <tr id="1-5-1">
             <td>
-              <a href='#1-5-1'>v1.5.1</a>
+              <a href="#1-5-1">v1.5.1</a>
             </td>
             <td>
               <ul>
@@ -1308,9 +1394,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-5-0'>
+          <tr id="1-5-0">
             <td>
-              <a href='#1-5-0'>v1.5.0</a>
+              <a href="#1-5-0">v1.5.0</a>
             </td>
             <td>
               <ul>
@@ -1322,9 +1408,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-4-1'>
+          <tr id="1-4-1">
             <td>
-              <a href='#1-4-1'>v1.4.1</a>
+              <a href="#1-4-1">v1.4.1</a>
             </td>
             <td>
               <ul>
@@ -1332,9 +1418,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-4-0'>
+          <tr id="1-4-0">
             <td>
-              <a href='#1-4-0'>v1.4.0</a>
+              <a href="#1-4-0">v1.4.0</a>
             </td>
             <td>
               <ul>
@@ -1343,9 +1429,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-3-10'>
+          <tr id="1-3-10">
             <td>
-              <a href='#1-3-10'>v1.3.10</a>
+              <a href="#1-3-10">v1.3.10</a>
             </td>
             <td>
               <ul>
@@ -1353,9 +1439,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-3-9'>
+          <tr id="1-3-9">
             <td>
-              <a href='#1-3-9'>v1.3.9</a>
+              <a href="#1-3-9">v1.3.9</a>
             </td>
             <td>
               <ul>
@@ -1364,9 +1450,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-3-8'>
+          <tr id="1-3-8">
             <td>
-              <a href='#1-3-8'>v1.3.8</a>
+              <a href="#1-3-8">v1.3.8</a>
             </td>
             <td>
               <ul>
@@ -1374,9 +1460,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-3-7'>
+          <tr id="1-3-7">
             <td>
-              <a href='#1-3-7'>v1.3.7</a>
+              <a href="#1-3-7">v1.3.7</a>
             </td>
             <td>
               <ul>
@@ -1384,9 +1470,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-3-6'>
+          <tr id="1-3-6">
             <td>
-              <a href='#1-3-6'>v1.3.6</a>
+              <a href="#1-3-6">v1.3.6</a>
             </td>
             <td>
               <ul>
@@ -1394,9 +1480,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-3-5'>
+          <tr id="1-3-5">
             <td>
-              <a href='#1-3-5'>v1.3.5</a>
+              <a href="#1-3-5">v1.3.5</a>
             </td>
             <td>
               <ul>
@@ -1404,9 +1490,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-3-4'>
+          <tr id="1-3-4">
             <td>
-              <a href='#1-3-4'>v1.3.4</a>
+              <a href="#1-3-4">v1.3.4</a>
             </td>
             <td>
               <ul>
@@ -1414,9 +1500,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-3-3'>
+          <tr id="1-3-3">
             <td>
-              <a href='#1-3-3'>v1.3.3</a>
+              <a href="#1-3-3">v1.3.3</a>
             </td>
             <td>
               <ul>
@@ -1426,9 +1512,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-3-2'>
+          <tr id="1-3-2">
             <td>
-              <a href='#1-3-2'>v1.3.2</a>
+              <a href="#1-3-2">v1.3.2</a>
             </td>
             <td>
               <ul>
@@ -1436,9 +1522,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-3-1'>
+          <tr id="1-3-1">
             <td>
-              <a href='#1-3-1'>v1.3.1</a>
+              <a href="#1-3-1">v1.3.1</a>
             </td>
             <td>
               <ul>
@@ -1446,9 +1532,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-3-0'>
+          <tr id="1-3-0">
             <td>
-              <a href='#1-3-0'>v1.3.0</a>
+              <a href="#1-3-0">v1.3.0</a>
             </td>
             <td>
               <ul>
@@ -1456,9 +1542,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-2-4'>
+          <tr id="1-2-4">
             <td>
-              <a href='#1-2-4'>v1.2.4</a>
+              <a href="#1-2-4">v1.2.4</a>
             </td>
             <td>
               <ul>
@@ -1466,9 +1552,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-2-3'>
+          <tr id="1-2-3">
             <td>
-              <a href='#1-2-3'>v1.2.3</a>
+              <a href="#1-2-3">v1.2.3</a>
             </td>
             <td>
               <ul>
@@ -1476,9 +1562,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-2-2'>
+          <tr id="1-2-2">
             <td>
-              <a href='#1-2-2'>v1.2.2</a>
+              <a href="#1-2-2">v1.2.2</a>
             </td>
             <td>
               <ul>
@@ -1486,9 +1572,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-2-1'>
+          <tr id="1-2-1">
             <td>
-              <a href='#1-2-1'>v1.2.1</a>
+              <a href="#1-2-1">v1.2.1</a>
             </td>
             <td>
               <ul>
@@ -1496,9 +1582,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-2-0'>
+          <tr id="1-2-0">
             <td>
-              <a href='#1-2-0'>v1.2.0</a>
+              <a href="#1-2-0">v1.2.0</a>
             </td>
             <td>
               <ul>
@@ -1510,9 +1596,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-1-4'>
+          <tr id="1-1-4">
             <td>
-              <a href='#1-1-4'>v1.1.4</a>
+              <a href="#1-1-4">v1.1.4</a>
             </td>
             <td>
               <ul>
@@ -1520,9 +1606,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-1-3'>
+          <tr id="1-1-3">
             <td>
-              <a href='#1-1-3'>v1.1.3</a>
+              <a href="#1-1-3">v1.1.3</a>
             </td>
             <td>
               <ul>
@@ -1531,9 +1617,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-1-2'>
+          <tr id="1-1-2">
             <td>
-              <a href='#1-1-2'>v1.1.2</a>
+              <a href="#1-1-2">v1.1.2</a>
             </td>
             <td>
               <ul>
@@ -1541,9 +1627,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-1-1'>
+          <tr id="1-1-1">
             <td>
-              <a href='#1-1-1'>v1.1.1</a>
+              <a href="#1-1-1">v1.1.1</a>
             </td>
             <td>
               <ul>
@@ -1552,9 +1638,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-1-0'>
+          <tr id="1-1-0">
             <td>
-              <a href='#1-1-0'>v1.1.0</a>
+              <a href="#1-1-0">v1.1.0</a>
             </td>
             <td>
               <ul>
@@ -1562,9 +1648,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-0-1'>
+          <tr id="1-0-1">
             <td>
-              <a href='#1-0-1'>v1.0.1</a>
+              <a href="#1-0-1">v1.0.1</a>
             </td>
             <td>
               <ul>
@@ -1572,9 +1658,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='1-0-0'>
+          <tr id="1-0-0">
             <td>
-              <a href='#1-0-0'>v1.0.0</a>
+              <a href="#1-0-0">v1.0.0</a>
             </td>
             <td>
               <ul>
@@ -1585,9 +1671,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='0-10-2'>
+          <tr id="0-10-2">
             <td>
-              <a href='#0-10-2'>v0.10.2 Beta</a>
+              <a href="#0-10-2">v0.10.2 Beta</a>
             </td>
             <td>
               <ul>
@@ -1596,9 +1682,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='0-10-1'>
+          <tr id="0-10-1">
             <td>
-              <a href='#0-10-1'>v0.10.1 Beta</a>
+              <a href="#0-10-1">v0.10.1 Beta</a>
             </td>
             <td>
               <ul>
@@ -1610,9 +1696,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='0-10-0'>
+          <tr id="0-10-0">
             <td>
-              <a href='#0-10-0'>v0.10.0 Beta</a>
+              <a href="#0-10-0">v0.10.0 Beta</a>
             </td>
             <td>
               <ul>
@@ -1621,9 +1707,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='0-9-1'>
+          <tr id="0-9-1">
             <td>
-              <a href='#0-9-1'>v0.9.1 Beta</a>
+              <a href="#0-9-1">v0.9.1 Beta</a>
             </td>
             <td>
               <ul>
@@ -1633,9 +1719,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='0-9-0'>
+          <tr id="0-9-0">
             <td>
-              <a href='#0-9-0'>v0.9.0 Beta</a>
+              <a href="#0-9-0">v0.9.0 Beta</a>
             </td>
             <td>
               <ul>
@@ -1644,9 +1730,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='0-8-0'>
+          <tr id="0-8-0">
             <td>
-              <a href='#0-8-0'>v0.8.0 Beta</a>
+              <a href="#0-8-0">v0.8.0 Beta</a>
             </td>
             <td>
               <ul>
@@ -1656,9 +1742,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='0-7-1'>
+          <tr id="0-7-1">
             <td>
-              <a href='#0-7-1'>v0.7.1 Beta</a>
+              <a href="#0-7-1">v0.7.1 Beta</a>
             </td>
             <td>
               <ul>
@@ -1666,9 +1752,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='0-7-0'>
+          <tr id="0-7-0">
             <td>
-              <a href='#0-7-0'>v0.7.0 Beta</a>
+              <a href="#0-7-0">v0.7.0 Beta</a>
             </td>
             <td>
               <ul>
@@ -1676,9 +1762,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='0-6-3'>
+          <tr id="0-6-3">
             <td>
-              <a href='#0-6-3'>v0.6.3 Beta</a>
+              <a href="#0-6-3">v0.6.3 Beta</a>
             </td>
             <td>
               <ul>
@@ -1687,9 +1773,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='0-6-1'>
+          <tr id="0-6-1">
             <td>
-              <a href='#0-6-1'>v0.6.1 Beta</a>
+              <a href="#0-6-1">v0.6.1 Beta</a>
             </td>
             <td>
               <ul>
@@ -1698,9 +1784,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='0-6-0'>
+          <tr id="0-6-0">
             <td>
-              <a href='#0-6-0'>v0.6.0 Beta</a>
+              <a href="#0-6-0">v0.6.0 Beta</a>
             </td>
             <td>
               <ul>
@@ -1708,9 +1794,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='0-5-4'>
+          <tr id="0-5-4">
             <td>
-              <a href='#0-5-4'>v0.5.4 Beta</a>
+              <a href="#0-5-4">v0.5.4 Beta</a>
             </td>
             <td>
               <ul>
@@ -1719,9 +1805,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='0-5-1'>
+          <tr id="0-5-1">
             <td>
-              <a href='#0-5-1'>v0.5.1 Beta</a>
+              <a href="#0-5-1">v0.5.1 Beta</a>
             </td>
             <td>
               <ul>
@@ -1729,9 +1815,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='0-5-0'>
+          <tr id="0-5-0">
             <td>
-              <a href='#0-5-0'>v0.5.0 Beta</a>
+              <a href="#0-5-0">v0.5.0 Beta</a>
             </td>
             <td>
               <ul>
@@ -1742,9 +1828,9 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-          <tr id='0-4-0'>
+          <tr id="0-4-0">
             <td>
-              <a href='#0-4-0'>v0.4.0 Beta</a>
+              <a href="#0-4-0">v0.4.0 Beta</a>
             </td>
             <td>
               <ul>
@@ -1763,7 +1849,7 @@ const Changelog = () => {
             navigate("/", { replace: true }); //fallback
           }
         }}
-        className='settingsButton'
+        className="settingsButton"
         style={{
           marginTop: "0.5rem",
         }}

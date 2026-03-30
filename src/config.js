@@ -939,6 +939,7 @@ export const agencies = {
     tripIDPrefixMinimal: '#',
     dontFilterMapLines: false,
     useDirectionsInsteadOfDestinations: true,
+    onlyUseSingleRouteCode: 'bigboy',
   }
 };
 
@@ -946,7 +947,7 @@ export const config = {
   siteTitle: 'Transitstat.us',
   siteTitleOther: 'Transitstatus',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'v1.20.12',
+  version: 'v1.20.13',
   additionalWarnings: [],
   globalAlerts: [
     {
