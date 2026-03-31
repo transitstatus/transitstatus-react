@@ -33,6 +33,16 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id="1-20-14">
+            <td>
+              <a href="#1-20-14">v1.20.14</a>
+            </td>
+            <td>
+              <ul>
+                <li>Fixed south shore line and swtiched to new endpoint.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id="1-20-13">
             <td>
               <a href="#1-20-13">v1.20.13</a>

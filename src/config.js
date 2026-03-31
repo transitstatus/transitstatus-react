@@ -407,7 +407,7 @@ export const agencies = {
     agencyID: "southshore",
     name: "South Shore Line",
     selectionName: 'South Shore Line',
-    endpoint: "https://store.transitstat.us/southshore/transitStatus",
+    endpoint: "https://store.transitstat.us/southshore/v1",
     mapShapes: ["https://gtfs.piemadd.com/data/southshore/shapes/type_2.geojson"],
     gtfsRoot: "https://gtfs.piemadd.com/data/southshore",
     mapDefault: [41.78803440543757, -86.99159058472856, 9],
@@ -947,7 +947,7 @@ export const config = {
   siteTitle: 'Transitstat.us',
   siteTitleOther: 'Transitstatus',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'v1.20.13',
+  version: 'v1.20.14',
   additionalWarnings: [],
   globalAlerts: [
     {
