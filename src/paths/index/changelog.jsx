@@ -33,6 +33,16 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id="1-20-15">
+            <td>
+              <a href="#1-20-15">v1.20.15</a>
+            </td>
+            <td>
+              <ul>
+                <li>Testing custom font sizing per agency to improve screen usage.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id="1-20-14">
             <td>
               <a href="#1-20-14">v1.20.14</a>

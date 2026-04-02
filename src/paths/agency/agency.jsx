@@ -160,7 +160,9 @@ const Agency = () => {
   return (
     <main>
       <Oneko />
-      <h1>
+      <h1 style={{
+        fontSize: agencies[agency].customFontSizes?.name ?? 32,
+      }}>
         {agencies[agency].name} {agencies[agency].type} Tracker
       </h1>
       <Meta />
