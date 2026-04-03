@@ -219,9 +219,9 @@ const AllTrains = () => {
                             ? train.lineCode
                             : train.line}
                           {agencyMeta.addLine ? " Line " : " "}
-                          {train.realTime ? '' : train.predictions.length > 0 ? 'Sch. ' : ""}
                           {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime) ? agencyMeta.tripIDPrefix : ""}
                           {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime) ? (agencyMeta.runNumberConverter ? agencyMeta.runNumberConverter(train.runNumber) : train.runNumber) : ""}{train.extra?.holidayChristmas ? " 🎄" : ""}
+                          {train.realTime ? '' : train.predictions.length > 0 ? ' ⏲ ' : ""}
                           {train.deadMileage && train.predictions.length == 0 ? null : " to"}
                         </p>
                         {train.deadMileage && train.predictions.length == 0 ? null : <h3>{train.dest ?? train.routeLongName}</h3>}

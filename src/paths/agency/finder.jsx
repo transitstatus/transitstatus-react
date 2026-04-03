@@ -222,9 +222,9 @@ const Station = () => {
                                       ? train.lineCode
                                       : train.line}
                                     {agencyMeta.addLine ? " Line " : " "}
-                                    {train.realTime ? '' : 'Sch. '}
                                     {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime) ? agencyMeta.tripIDPrefix : ""}
-                                    {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime) ? (agencyMeta.runNumberConverter ? agencyMeta.runNumberConverter(train.runNumber) : train.runNumber) : ""}{train.extra?.holidayChristmas ? " 🎄" : ""} to
+                                    {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime) ? (agencyMeta.runNumberConverter ? agencyMeta.runNumberConverter(train.runNumber) : train.runNumber) : ""}{train.extra?.holidayChristmas ? " 🎄" : ""}
+                                    {train.realTime ? '' : ' ⏲ '} to
                                   </p>
                                   <h3>
                                     {train.destination ?? destinationKey ?? train.routeLongName}

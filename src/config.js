@@ -425,6 +425,7 @@ export const agencies = {
     tripIDPrefix: '#',
     tripIDPrefixOnDisplay: '#',
     tripIDPrefixMinimal: '#',
+    showTripIDOnScheduled: true,
     dontFilterMapLines: false,
     customFontSizes: {
       name: 28,
@@ -950,7 +951,7 @@ export const config = {
   siteTitle: 'Transitstat.us',
   siteTitleOther: 'Transitstatus',
   tagLine: 'Open source, free, and easy transit tracker.',
-  version: 'v1.20.15',
+  version: 'v1.20.16',
   additionalWarnings: [],
   globalAlerts: [
     {
