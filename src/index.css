@@ -15,7 +15,7 @@ main,
   padding: 0;
   color: var(--fg);
   background-color: var(--bg-secondary);
-  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-family: "Atkinson Hyperlegible Next", sans-serif;
 }
 
 .stationDisplayPage {
@@ -363,4 +363,14 @@ tr:nth-child(even) {
 
 .maplibregl-ctrl-attrib-inner {
   color: #000;
+}
+
+.noto-emoji-outline {
+  font-family: "Noto Emoji", sans-serif;
+}
+
+.smaller-emoji {
+  font-size: 12px;
+  line-height: 12px;
+  alignment-baseline: middle;
 }

@@ -33,6 +33,17 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+           <tr id="1-20-17">
+            <td>
+              <a href="#1-20-17">v1.20.17</a>
+            </td>
+            <td>
+              <ul>
+                <li>Changed "⏲" to "🕓" because unlike on my computer&tm;, that turns into a timer emoji on phones and some computers.</li>
+              <li>Centered aforementioned emoji.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id="1-20-16">
             <td>
               <a href="#1-20-16">v1.20.16</a>

@@ -241,7 +241,7 @@ const Station = () => {
                                     {agencyMeta.addLine ? " Line " : " "}
                                     {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime) ? agencyMeta.tripIDPrefix : ""}
                                     {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime) ? (agencyMeta.runNumberConverter ? agencyMeta.runNumberConverter(train.runNumber) : train.runNumber) : ""}{train.extra?.holidayChristmas ? " 🎄" : ""}
-                                    {train.realTime ? '' : ' ⏲ '} to
+                                    {train.realTime ? null : <span className="noto-emoji-outline smaller-emoji"> 🕓 </span>} to
                                   </p>
                                   <h3>
                                     {train.destination ?? destinationKey ?? train.routeLongName}
