@@ -39,7 +39,7 @@ const Changelog = () => {
             </td>
             <td>
               <ul>
-                <li>Changed "⏲" to "🕓" because unlike on my computer&tm;, that turns into a timer emoji on phones and some computers.</li>
+                <li>Changed "⏲" to "🕓" because unlike on my computer&trade;, that turns into a timer emoji on phones and some computers.</li>
               <li>Centered aforementioned emoji.</li>
               </ul>
             </td>
@@ -383,7 +383,7 @@ const Changelog = () => {
                   Changed map icon color to be based off of individual trains,
                   not the routes they are a part of. This is needed for the CTA
                   where some trains have inverted colors on the green and blue
-                  lines based on theier destination.
+                  lines based on their destination.
                 </li>
               </ul>
             </td>
