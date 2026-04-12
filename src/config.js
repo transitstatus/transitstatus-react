@@ -957,7 +957,7 @@ export const config = {
     {
       title: 'UP Big Boy Tracking',
       info: 'The Union Pacific Big Boy Tracker has been reactivated! Please be patient, as stops need to be added manually, but within a week of today (3/30) all of them should be added.',
-      expires: 1776398399000
+      expires: -1776398399000
     },
     {
       title: 'Passio Re-Enabled, at a cost',
