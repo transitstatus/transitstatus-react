@@ -125,6 +125,7 @@ const Trip = () => {
           <h2>
             {trip.line}
             {agencies[agency].addLine ? " Line " : " "}
+            {agencies[agency].addType ? `${agencies[agency].type} ` : ""}
             {agencies[agency].tripIDPrefix}
             {agencies[agency].runNumberConverter ? agencies[agency].runNumberConverter(tripID) : tripID}
             {trip.extra?.holidayChristmas ? " 🎄" : ""}

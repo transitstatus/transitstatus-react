@@ -33,14 +33,28 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
-           <tr id="1-20-17">
+          <tr id="1-20-18">
+            <td>
+              <a href="#1-20-18">v1.20.18</a>
+            </td>
+            <td>
+              <ul>
+                <li>Disabled inactive agencies.</li>
+                <li>Added NYC subway beta.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr id="1-20-17">
             <td>
               <a href="#1-20-17">v1.20.17</a>
             </td>
             <td>
               <ul>
-                <li>Changed "⏲" to "🕓" because unlike on my computer&trade;, that turns into a timer emoji on phones and some computers.</li>
-              <li>Centered aforementioned emoji.</li>
+                <li>
+                  Changed "⏲" to "🕓" because unlike on my computer&trade;, that
+                  turns into a timer emoji on phones and some computers.
+                </li>
+                <li>Centered aforementioned emoji.</li>
               </ul>
             </td>
           </tr>
@@ -60,7 +74,9 @@ const Changelog = () => {
             </td>
             <td>
               <ul>
-                <li>Testing custom font sizing per agency to improve screen usage.</li>
+                <li>
+                  Testing custom font sizing per agency to improve screen usage.
+                </li>
               </ul>
             </td>
           </tr>

@@ -59,6 +59,7 @@ export const activateSelectorPopup = (e, features, map, agencyData, singleRouteI
             >
               {agencyData.useCodeForShortName ? train.lineCode : train.line}
               {agencyData.addLine ? " Line " : " "}
+              {agencyData.addType ? `${agencyData.type} ` : ""}
               {agencyData.tripIDPrefixMinimal}
               {agencyData.runNumberConverter ? agencyData.runNumberConverter(train.id) : train.id}{!train.deadMileage ? <> to {train.dest}</> : null}
             </strong>
@@ -111,6 +112,7 @@ export const activateTrainPopup = (feature, map, agencyData) => {
     <h3>
       {agencyData.useCodeForShortName ? train.lineCode : train.line}
       {agencyData.addLine ? " Line " : " "}
+      {agencyData.addType ? `${agencyData.type} ` : ""}
       {agencyData.tripIDPrefix}
       {agencyData.runNumberConverter ? agencyData.runNumberConverter(train.id) : train.id}{!train.deadMileage ? <> to {train.dest}</> : null}
     </h3>
@@ -189,7 +191,7 @@ export const activateStationPopup = (feature, map, agencyData, singleRouteID) =>
           .map((train, j) => {
             return <p key={j} className='mapTrainBar' style={{ color: `#${train.lineTextColor}`, backgroundColor: `#${train.lineColor}` }}>
               <span>
-                <strong>{agencyData.useCodeForShortName ? train.lineCode : train.line}{agencyData.addLine ? " Line " : " "}</strong>
+                <strong>{agencyData.useCodeForShortName ? train.lineCode : train.line}{agencyData.addLine ? " Line " : " "}{agencyData.addType ? `${agencyData.type} ` : ""}</strong>
                 {agencyData.tripIDPrefix}
                 {agencyData.runNumberConverter ? agencyData.runNumberConverter(train.runNumber) : train.runNumber} to <strong>{train.destination ?? destKey}</strong>
               </span>

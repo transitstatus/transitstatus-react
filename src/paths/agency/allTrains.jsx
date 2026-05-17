@@ -219,6 +219,7 @@ const AllTrains = () => {
                             ? train.lineCode
                             : train.line}
                           {agencyMeta.addLine ? " Line " : " "}
+                          {agencyMeta.addType ? `${agencyMeta.type} ` : ""}
                           {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime) ? agencyMeta.tripIDPrefix : ""}
                           {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime) ? (agencyMeta.runNumberConverter ? agencyMeta.runNumberConverter(train.runNumber) : train.runNumber) : ""}{train.extra?.holidayChristmas ? " 🎄" : ""}
                           {train.realTime ? null : <span className="noto-emoji-outline smaller-emoji"> 🕓 </span>}

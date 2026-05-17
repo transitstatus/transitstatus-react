@@ -28,7 +28,9 @@ const Station = () => {
 
   const agencyMeta = agencies[agency];
 
-  let settings = JSON.parse(localStorage.getItem("transitstatus_v1_settings") ?? '{}');
+  let settings = JSON.parse(
+    localStorage.getItem("transitstatus_v1_settings") ?? "{}",
+  );
   if (!settings.playgroundEnabled) settings.playgroundEnabled = false;
 
   useEffect(() => {
@@ -53,7 +55,7 @@ const Station = () => {
                   setLoadingMessage(shitsFucked.message);
                 } else {
                   setLoadingMessage(
-                    "Error loading data. Please try again later or choose another station."
+                    "Error loading data. Please try again later or choose another station.",
                   );
                 }
               }
@@ -61,20 +63,19 @@ const Station = () => {
             })
             .catch((e) => {
               setLoadingMessage(
-                "Error loading data. Please try again later or choose another station."
+                "Error loading data. Please try again later or choose another station.",
               );
             });
         });
 
       // alerts
-      window.dataManager
-        .getData(agency, "alerts")
-        .then((data) => {
-          if (data === "Not found") return // alerts not supported
-          else {
-            setAlerts(data);
-          }
-        });
+      window.dataManager.getData(agency, "alerts").then((data) => {
+        if (data === "Not found")
+          return; // alerts not supported
+        else {
+          setAlerts(data);
+        }
+      });
     };
 
     fetchData();
@@ -93,8 +94,8 @@ const Station = () => {
           again.
         </p>
         <h3
-          className='route'
-          key='backButton'
+          className="route"
+          key="backButton"
           style={{
             backgroundColor: "#444",
             color: "#fff",
@@ -168,22 +169,32 @@ const Station = () => {
       </div>
       {settings.playgroundEnabled ? (
         <h3
-          className='train'
-          key='backButton'
+          className="train"
+          key="backButton"
           style={{
             backgroundColor: agencyMeta.color,
             color: agencyMeta.textColor,
             maxWidth: "384px",
-            marginBottom: '4px',
+            marginBottom: "4px",
           }}
           onClick={() => {
             const parsedURL = new URL(document.URL);
-            navigate(`${parsedURL.pathname.replace('/stops/', '/stops/display/')}${parsedURL.search}`, { replace: false })
+            navigate(
+              `${parsedURL.pathname.replace("/stops/", "/stops/display/")}${parsedURL.search}`,
+              { replace: false },
+            );
           }}
         >
           Show Station Display
-        </h3>) : null}
-      <AlertsList alertsArray={alerts} agency={agency} filterType={'stop'} filterID={stopID} style={{ marginBottom: '8px', marginTop: '0px', maxWidth: '400px' }} />
+        </h3>
+      ) : null}
+      <AlertsList
+        alertsArray={alerts}
+        agency={agency}
+        filterType={"stop"}
+        filterID={stopID}
+        style={{ marginBottom: "8px", marginTop: "0px", maxWidth: "400px" }}
+      />
       <div>
         {isLoading ? (
           <p
@@ -201,37 +212,55 @@ const Station = () => {
             .sort((a, b) => a.localeCompare(b)) // sorting destinations alphabetically
             .map((destinationKey) => {
               return (
-                <div key={destinationKey} className='trains'>
+                <div key={destinationKey} className="trains">
                   {station.destinations[destinationKey].trains.length > 0 ? (
                     <>
-                      <h3 className='destination'>{agencyMeta.useDirectionsInsteadOfDestinations ? `${destinationKey} ${agencyMeta.typePlural}` : `Towards ${destinationKey}`}</h3>
+                      <h3 className="destination">
+                        {agencyMeta.useDirectionsInsteadOfDestinations
+                          ? `${destinationKey} ${agencyMeta.typePlural}`
+                          : `Towards ${destinationKey}`}
+                      </h3>
                       {station.destinations[destinationKey].trains
                         .sort((a, b) => {
                           if (!a.actualETA) return -1;
                           if (!b.actualETA) return 1;
                           return a.actualETA - b.actualETA;
                         })
-                        .filter((eta) => eta.actualETA >= Date.now() - (1000 * 60 * 5) || eta.noETA)
+                        .filter(
+                          (eta) =>
+                            eta.actualETA >= Date.now() - 1000 * 60 * 5 ||
+                            eta.noETA,
+                        )
                         .map((train) => {
-                          if (train.extra?.holidayChristmas && !activateSnowfall) setActivateSnowfall(true);
+                          if (
+                            train.extra?.holidayChristmas &&
+                            !activateSnowfall
+                          )
+                            setActivateSnowfall(true);
 
                           return (
                             <Link
                               to={`/${agency}/track/${train.runNumber}`}
                               key={train.runNumber}
-                              className='trainLink'
+                              className="trainLink"
                             >
                               <div
-                                className='train'
+                                className="train"
                                 style={{
-                                  background: train.extra?.holidayChristmas ? "repeating-linear-gradient(135deg, #94000a, #94000a 10px, #077001 10px, #077001 20px)" : `#${train.lineColor}`,
-                                  color: train.extra?.holidayChristmas ? '#ffffff' : `#${train.lineTextColor}`,
+                                  background: train.extra?.holidayChristmas
+                                    ? "repeating-linear-gradient(135deg, #94000a, #94000a 10px, #077001 10px, #077001 20px)"
+                                    : `#${train.lineColor}`,
+                                  color: train.extra?.holidayChristmas
+                                    ? "#ffffff"
+                                    : `#${train.lineTextColor}`,
                                   opacity: train.realTime ? 1 : 0.7,
                                 }}
                               >
                                 <span
                                   style={{
-                                    filter: train.extra?.holidayChristmas ? 'drop-shadow(0px 0px 2px #000000)' : null,
+                                    filter: train.extra?.holidayChristmas
+                                      ? "drop-shadow(0px 0px 2px #000000)"
+                                      : null,
                                   }}
                                 >
                                   <p>
@@ -239,49 +268,98 @@ const Station = () => {
                                       ? train.lineCode
                                       : train.line}
                                     {agencyMeta.addLine ? " Line " : " "}
-                                    {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime) ? agencyMeta.tripIDPrefix : ""}
-                                    {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime) ? (agencyMeta.runNumberConverter ? agencyMeta.runNumberConverter(train.runNumber) : train.runNumber) : ""}{train.extra?.holidayChristmas ? " 🎄" : ""}
-                                    {train.realTime ? null : <span className="noto-emoji-outline smaller-emoji"> 🕓 </span>} to
+                                    {agencyMeta.addType
+                                      ? `${agencyMeta.type} `
+                                      : ""}
+                                    {train.realTime ||
+                                    (agencyMeta.showTripIDOnScheduled &&
+                                      !train.realTime)
+                                      ? agencyMeta.tripIDPrefix
+                                      : ""}
+                                    {train.realTime ||
+                                    (agencyMeta.showTripIDOnScheduled &&
+                                      !train.realTime)
+                                      ? agencyMeta.runNumberConverter
+                                        ? agencyMeta.runNumberConverter(
+                                            train.runNumber,
+                                          )
+                                        : train.runNumber
+                                      : ""}
+                                    {train.extra?.holidayChristmas ? " 🎄" : ""}
+                                    {train.realTime ? null : (
+                                      <span className="noto-emoji-outline smaller-emoji">
+                                        {" "}
+                                        🕓{" "}
+                                      </span>
+                                    )}{" "}
+                                    to
                                   </p>
                                   <h3>
-                                    {train.destination ?? destinationKey ?? train.routeLongName}
+                                    {train.destination ??
+                                      destinationKey ??
+                                      train.routeLongName}
                                   </h3>
                                   {train.extra && train.extra.info ? (
                                     <p>{train.extra.info}</p>
+                                  ) : null}
+                                  {train.extra?.consist &&
+                                  train.extra?.consist.length > 0 ? (
+                                    <span className="consist">
+                                      {train.extra.consist.map(
+                                        (car, carIndex) => (
+                                          <>
+                                            {carIndex == 0 ? (
+                                              <span className="consist-car">
+                                                {car.type}
+                                              </span>
+                                            ) : null}
+                                            <span className="consist-car">
+                                              {car.number}
+                                            </span>
+                                          </>
+                                        ),
+                                      )}
+                                    </span>
                                   ) : null}
                                 </span>
                                 {!train.noETA ? (
                                   <span
                                     style={{
-                                      filter: train.extra?.holidayChristmas ? 'drop-shadow(0px 0px 2px #000000)' : undefined,
-                                    }}>
-                                    <h3 className='trainLink' style={{
-                                      textAlign: 'right',
-                                    }}>
+                                      filter: train.extra?.holidayChristmas
+                                        ? "drop-shadow(0px 0px 2px #000000)"
+                                        : undefined,
+                                    }}
+                                  >
+                                    <h3
+                                      className="trainLink"
+                                      style={{
+                                        textAlign: "right",
+                                      }}
+                                    >
                                       {hoursMinutesUntilArrival(
-                                        train.actualETA
+                                        train.actualETA,
                                       )}
                                     </h3>
                                     <p
-                                      className='trainLink'
+                                      className="trainLink"
                                       style={{
                                         fontSize: "0.8em",
                                         whiteSpace: "nowrap",
-                                        textAlign: 'right',
+                                        textAlign: "right",
                                       }}
                                     >
                                       {timeFormat(train.actualETA)}
                                     </p>
                                     {train.extra && train.extra.cap ? (
                                       <p
-                                        className='trainLink'
+                                        className="trainLink"
                                         style={{
                                           fontSize: "0.8em",
                                         }}
                                       >
                                         {Math.ceil(
                                           (train.extra.load / train.extra.cap) *
-                                          100
+                                            100,
                                         )}
                                         % Full
                                       </p>
@@ -290,19 +368,22 @@ const Station = () => {
                                 ) : (
                                   <span
                                     style={{
-                                      filter: train.extra?.holidayChristmas ? 'drop-shadow(0px 0px 2px #000000)' : undefined,
-                                    }}>
-                                    <h3 className='trainLink'>No ETA</h3>
+                                      filter: train.extra?.holidayChristmas
+                                        ? "drop-shadow(0px 0px 2px #000000)"
+                                        : undefined,
+                                    }}
+                                  >
+                                    <h3 className="trainLink">No ETA</h3>
                                     {train.extra && train.extra.cap ? (
                                       <p
-                                        className='trainLink'
+                                        className="trainLink"
                                         style={{
                                           fontSize: "0.8em",
                                         }}
                                       >
                                         {Math.ceil(
                                           (train.extra.load / train.extra.cap) *
-                                          100
+                                            100,
                                         )}
                                         % Full
                                       </p>
@@ -316,12 +397,10 @@ const Station = () => {
                     </>
                   ) : (
                     <>
-                      <p className='destination'>
-                        {
-                          agencyMeta.useDirectionsInsteadOfDestinations ?
-                            `No ${destinationKey} ${agencyMeta.typePlural}` :
-                            `No ${agencyMeta.typePlural} towards ${destinationKey}`
-                        }
+                      <p className="destination">
+                        {agencyMeta.useDirectionsInsteadOfDestinations
+                          ? `No ${destinationKey} ${agencyMeta.typePlural}`
+                          : `No ${agencyMeta.typePlural} towards ${destinationKey}`}
                       </p>
                     </>
                   )}
@@ -330,8 +409,8 @@ const Station = () => {
             })
         )}
         <h3
-          className='train'
-          key='backButton'
+          className="train"
+          key="backButton"
           style={{
             backgroundColor: agencyMeta.color,
             color: agencyMeta.textColor,
