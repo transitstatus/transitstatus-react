@@ -77,7 +77,7 @@ export const agencies = {
     typeCode: "train",
     typeCodePlural: "trains",
     addLine: false,
-    disabled: false,
+    disabled: true,
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
