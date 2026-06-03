@@ -177,7 +177,7 @@ const AllTrains = () => {
               .sort((a, b) => { // sorting trains by whether they're tracking and the time of their next stop
                 if (a.realTime && b.realTime) { // sort by number of predictions
                   if (a.predictions.length > 0 && b.predictions.length > 0) { // now sort by the time of their next stop
-                    return a.predictions[0].actualETA - b.predictions[0].actualETA;
+                    return a.predictions.at(-1).actualETA - b.predictions.at(-1).actualETA;
                   }
                   if (a.predictions.length > 0 && b.predictions.length == 0) return -1; // a has predictions
                   if (a.predictions.length == 0 && b.predictions.length > 0) return 1; // b has predictions
@@ -240,7 +240,7 @@ const AllTrains = () => {
                           }}>
                             {train.predictions.length > 0 ?
                               hoursMinutesUntilArrival(
-                                train.predictions[0].actualETA
+                                train.predictions.at(-1).actualETA
                               ) : null}
                           </h3>
                           <p

@@ -134,7 +134,7 @@ export const agencies = {
     tripIDPrefixOnDisplay: "#",
     tripIDPrefixMinimal: "#",
     dontFilterMapLines: false,
-    updateFrequency: 10000,
+    updateFrequency: 15000,
   },
   snowpiercer: {
     agencyID: "snowpiercer",
@@ -968,7 +968,7 @@ export const agencies = {
     selectionName: "UP Big Boy",
     endpoint: "https://bigboyapi.amtraker.com/",
     mapShapes: [
-      "https://gobblerstatic.transitstat.us/additionalShapes/bigboy_west_2026.json",
+      "https://gobblerstatic.transitstat.us/additionalShapes/bigboy_all_2026.json",
     ],
     mapDefault: [36.57236484298264, -96.27495103346894, 3],
     color: "#feca00",
