@@ -8,10 +8,7 @@ import { hoursMinutesUntilArrival } from "../../components/extras/randomTools";
 
 const timeFormat = (time) => {
   const date = new Date(time);
-  return date.toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+  return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 };
 
 const Trip = () => {
@@ -46,17 +43,13 @@ const Trip = () => {
                 if (shitsFucked.shitIsFucked) {
                   setLoadingMessage(shitsFucked.message);
                 } else {
-                  setLoadingMessage(
-                    "Error loading data. Please try again later or choose another trip."
-                  );
+                  setLoadingMessage("Error loading data. Please try again later or choose another trip.");
                 }
               }
               setIsLoading(true);
             })
             .catch((e) => {
-              setLoadingMessage(
-                "Error loading data. Please try again later or choose another trip."
-              );
+              setLoadingMessage("Error loading data. Please try again later or choose another trip.");
             });
         });
     };
@@ -73,20 +66,11 @@ const Trip = () => {
         <Oneko />
         {activateSnowfall ? <PieroSnowfall /> : null}
         <h1>Trip Not Found</h1>
-        <p>
-          The trip you were trying to track doesn't exist. Please go back and
-          try again.
-        </p>
+        <p>The trip you were trying to track doesn't exist. Please go back and try again.</p>
         <h3
-          className='route'
-          key='backButton'
-          style={{
-            backgroundColor: "#444",
-            color: "#fff",
-            fontSize: "1.3rem",
-            padding: "8px",
-            marginTop: "4px",
-          }}
+          className="route"
+          key="backButton"
+          style={{ backgroundColor: "#444", color: "#fff", fontSize: "1.3rem", padding: "8px", marginTop: "4px" }}
           onClick={() => {
             if (history.state.idx && history.state.idx > 0) {
               navigate(-1);
@@ -114,12 +98,16 @@ const Trip = () => {
 
       {isLoading ? null : (
         <div
-          className='trainInfo'
+          className="trainInfo"
           style={{
-            background: trip.extra?.holidayChristmas ? "repeating-linear-gradient(135deg, #94000a, #94000a 10px, #077001 10px, #077001 20px)" : `#${trip.lineColor}`,
-            color: trip.extra?.holidayChristmas ? '#ffffff' : `#${trip.lineTextColor}`,
+            background: trip.extra?.holidayChristmas
+              ? "repeating-linear-gradient(135deg, #94000a, #94000a 10px, #077001 10px, #077001 20px)"
+              : trip.extra?.holidayGay
+                ? "repeating-linear-gradient(135deg, #e22016 0px 10px, #f28917 10px 20px, #efe524 20px 30px, #78b801 30px 40px, #2c58a4 40px 50px, #6d2380 50px 60px, #000 60px 70px, #945516 70px 80px, #7bcce5 80px 90px, #f4aec8 90px 100px, #fff 100px 110px, #fdd817 110px 120px, #66338b 120px 130px)"
+                : `#${trip.lineColor}`,
+            color: trip.extra?.holidayChristmas || trip.extra?.holidayGay ? "#ffffff" : `#${trip.lineTextColor}`,
             marginTop: "12px",
-            textShadow: trip.extra?.holidayChristmas ? '0px 0px 2px #000000' : null
+            textShadow: trip.extra?.holidayChristmas || trip.extra?.holidayGay ? "-1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000, 1px -1px 0 #000000, 0px 0px 2px #000000" : null
           }}
         >
           <h2>
@@ -128,95 +116,63 @@ const Trip = () => {
             {agencies[agency].addType ? `${agencies[agency].type} ` : ""}
             {agencies[agency].tripIDPrefix}
             {agencies[agency].runNumberConverter ? agencies[agency].runNumberConverter(tripID) : tripID}
-            {trip.extra?.holidayChristmas ? " 🎄" : ""}
+            {trip.extra?.holidayChristmas ? " 🎄" : (trip.extra?.holidayGay ? " 🏳️‍🌈" : "")}
           </h2>
-          {trip.realTime ? <p>
-            As of{" "}
-            {new Date(lastFetched).toLocaleTimeString([], {
-              hour: "2-digit",
-              minute: "2-digit",
-              second: "2-digit",
-            })}
-            {trip.extra && trip.extra.cap
-              ? ` | ${Math.ceil(
-                (trip.extra.load / trip.extra.cap) * 100
-              )}% Full`
-              : null}
-          </p> : <p>Scheduled, Not Yet Tracking</p>}
+          {trip.realTime ? (
+            <p>
+              As of{" "}
+              {new Date(lastFetched).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" })}
+              {trip.extra && trip.extra.cap ? ` | ${Math.ceil((trip.extra.load / trip.extra.cap) * 100)}% Full` : null}
+            </p>
+          ) : (
+            <p>Scheduled, Not Yet Tracking</p>
+          )}
 
           {trip.extra && trip.extra.info ? <p>{trip.extra.info}</p> : null}
           <p>
-            Service to{" "}
-            {trip.dest ??
-              trip.predictions[trip.predictions.length - 1].stationName}
-            {trip.extra && trip.extra.cabCar
-              ? ` | Car ${trip.extra.cabCar}`
-              : null}
-            {trip.extra && trip.extra.engine
-              ? ` | Engine ${trip.extra.engine}`
-              : null}
+            Service to {trip.dest ?? trip.predictions[trip.predictions.length - 1].stationName}
+            {trip.extra && trip.extra.cabCar ? ` | Car ${trip.extra.cabCar}` : null}
+            {trip.extra && trip.extra.engine ? ` | Engine ${trip.extra.engine}` : null}
           </p>
         </div>
       )}
-      <div className='trains'>
+      <div className="trains">
         {isLoading ? (
-          <p
-            style={{
-              marginTop: "12px",
-              marginBottom: "2px",
-              marginLeft: "2px",
-            }}
-          >
-            {loadingMessage}
-          </p>
+          <p style={{ marginTop: "12px", marginBottom: "2px", marginLeft: "2px" }}>{loadingMessage}</p>
         ) : (
-          trip.predictions.filter((eta) => eta.actualETA >= Date.now() - (1000 * 60 * 5) || eta.noETA).map((stop, i) => {
-            //console.log(stop);
-            return (
-              <Link
-                to={`/${agency}/stops/${stop.stationID}`}
-                className='train'
-                key={`${stop.stationID}-${i}`}
-                style={{
-                  backgroundColor: "#444",
-                  color: "#fff",
-                }}
-              >
-                <p>
-                  <strong>{stop.stationName}</strong>
-                </p>
-                {stop.noETA ? (
-                  <span>
-                    <h3>No ETA</h3>
-                  </span>
-                ) : (
-                  <span>
-                    <h3 style={{
-                      textAlign: 'right'
-                    }}>{hoursMinutesUntilArrival(stop.actualETA)}</h3>
-                    <p
-                      style={{
-                        fontSize: "0.8em",
-                        whiteSpace: "nowrap",
-                        textAlign: 'right'
-                      }}
-                    >
-                      {timeFormat(stop.actualETA)}
-                    </p>
-                  </span>
-                )}
-              </Link>
-            );
-          })
+          trip.predictions
+            .filter((eta) => eta.actualETA >= Date.now() - 1000 * 60 * 5 || eta.noETA)
+            .map((stop, i) => {
+              //console.log(stop);
+              return (
+                <Link
+                  to={`/${agency}/stops/${stop.stationID}`}
+                  className="train"
+                  key={`${stop.stationID}-${i}`}
+                  style={{ backgroundColor: "#444", color: "#fff" }}
+                >
+                  <p>
+                    <strong>{stop.stationName}</strong>
+                  </p>
+                  {stop.noETA ? (
+                    <span>
+                      <h3>No ETA</h3>
+                    </span>
+                  ) : (
+                    <span>
+                      <h3 style={{ textAlign: "right" }}>{hoursMinutesUntilArrival(stop.actualETA)}</h3>
+                      <p style={{ fontSize: "0.8em", whiteSpace: "nowrap", textAlign: "right" }}>
+                        {timeFormat(stop.actualETA)}
+                      </p>
+                    </span>
+                  )}
+                </Link>
+              );
+            })
         )}
         {!isLoading && trip.predictions.length === 0 ? (
           <>
-            <div
-              className='train'
-              style={{
-                backgroundColor: "#444",
-              }}
-            >
+            <div className="train" style={{ backgroundColor: "#444" }}>
               <p>
                 <strong>No Predictions available</strong>
               </p>
@@ -224,12 +180,9 @@ const Trip = () => {
           </>
         ) : null}
         <h3
-          className='train'
-          key='backButton'
-          style={{
-            backgroundColor: agencies[agency].color,
-            color: agencies[agency].textColor,
-          }}
+          className="train"
+          key="backButton"
+          style={{ backgroundColor: agencies[agency].color, color: agencies[agency].textColor }}
           onClick={() => {
             //see if querey string has prev
             const urlParams = new URLSearchParams(window.location.search);
@@ -247,21 +200,18 @@ const Trip = () => {
           Choose Another {agencies[agency].type}
         </h3>
         <h3
-          className='train'
-          key='viewMap'
+          className="train"
+          key="viewMap"
           style={{
             backgroundColor: agencies[agency].color,
             color: agencies[agency].textColor,
             padding: "8px",
-            textDecoration: "none",
+            textDecoration: "none"
           }}
         >
           <Link
             to={agencies[agency].dontFilterMapLines ? `/${agency}/map` : `/${agency}/map?route=${trip.lineCode}`}
-            style={{
-              textDecoration: "none",
-              color: agencies[agency].textColor,
-            }}
+            style={{ textDecoration: "none", color: agencies[agency].textColor }}
           >
             View on Map
           </Link>

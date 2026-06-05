@@ -35,20 +35,11 @@ const Map = () => {
       <>
         <Oneko />
         <h1>Agency Not Found</h1>
-        <p>
-          The agency you are looking for does not exist. Please choose another
-          agency.
-        </p>
+        <p>The agency you are looking for does not exist. Please choose another agency.</p>
         <h3
-          className='route'
-          key='backButton'
-          style={{
-            backgroundColor: "#444",
-            color: "#fff",
-            fontSize: "1.3rem",
-            padding: "8px",
-            marginTop: "4px",
-          }}
+          className="route"
+          key="backButton"
+          style={{ backgroundColor: "#444", color: "#fff", fontSize: "1.3rem", padding: "8px", marginTop: "4px" }}
           onClick={() => {
             if (history.state.idx && history.state.idx > 0) {
               navigate(-1);
@@ -80,14 +71,15 @@ const Map = () => {
     let existingIcons = {};
 
     //populating existing icons
-    Object.keys(map.current.style.imageManager.images).forEach((key) => existingIcons[key] = true);
+    Object.keys(map.current.style.imageManager.images).forEach((key) => (existingIcons[key] = true));
 
     Object.keys(trainsData).forEach((trainKey) => {
       const train = trainsData[trainKey];
       const isHoldayChristmas = train.extra && train.extra.holidayChristmas == true;
+      const isHolidayGay = train.extra && train.extra.holidayGay == true;
 
-      const trainColor = `${train.lineColor}_${train.lineTextColor}${isHoldayChristmas ? '_candyCane' : ''}`;
-      const modifiedShapeToUse = `${shapeToUse}${isHoldayChristmas ? 'SpiralCandy' : ''}`
+      const trainColor = `${train.lineColor}_${train.lineTextColor}${isHoldayChristmas ? "_candyCane" : ""}${isHolidayGay ? "_gayFlag" : ""}`;
+      const modifiedShapeToUse = `${shapeToUse}${isHoldayChristmas ? "SpiralCandy" : ""}${isHolidayGay ? "SpiralGay" : ""}`;
 
       if (existingIcons[trainColor]) return; // no need to generate twice
 
@@ -98,18 +90,15 @@ const Map = () => {
         .replaceAll("ROTATE_DEG", "0");
 
       const img = new Image(iconSize, iconSize);
-      img.onload = () =>
-        map.current.addImage(trainColor, img, {
-          pixelRatio: 1,
-        });
+      img.onload = () => map.current.addImage(trainColor, img, { pixelRatio: 1 });
       img.onerror = console.log;
       img.src = "data:image/svg+xml;base64," + btoa(iconText);
 
       existingIcons[trainColor] = true;
     });
 
-    console.log(`Done with generating icons in ${Date.now() - startTime}ms`)
-    console.log(`Total number of icons: ${Object.keys(existingIcons).length}`)
+    console.log(`Done with generating icons in ${Date.now() - startTime}ms`);
+    console.log(`Total number of icons: ${Object.keys(existingIcons).length}`);
   };
 
   useEffect(() => {
@@ -119,7 +108,7 @@ const Map = () => {
           month: "short",
           day: "numeric",
           hour: "numeric",
-          minute: "numeric",
+          minute: "numeric"
         });
 
         //if (map.current) return; // initialize map only once
@@ -146,31 +135,19 @@ const Map = () => {
                   "https://v4mapd.transitstat.us/20251018/{z}/{x}/{y}.mvt"
                 ],
                 maxzoom: 15,
-                attribution:
-                  "Map Data &copy; OpenStreetMap Contributors | &copy; Transitstatus | &copy; Protomaps",
+                attribution: "Map Data &copy; OpenStreetMap Contributors | &copy; Transitstatus | &copy; Protomaps"
               },
-              shapes: {
-                type: 'geojson',
-                data: {
-                  "type": "FeatureCollection",
-                  "features": []
-                }
-              },
-              stations: {
-                type: 'geojson',
-                data: {
-                  "type": "FeatureCollection",
-                  "features": []
-                }
-              }
+              shapes: { type: "geojson", data: { type: "FeatureCollection", features: [] } },
+              stations: { type: "geojson", data: { type: "FeatureCollection", features: [] } }
             },
             version: 8,
-            metadata: {},
+            metadata: {}
           },
           center: [lng, lat],
           zoom: zoom,
-          maxZoom: 20,
+          maxZoom: 20
         });
+        window.map = map.current;
 
         map.current.on("load", async () => {
           const stationsData = await window.dataManager.getData(agency, "stations");
@@ -182,10 +159,7 @@ const Map = () => {
             setIsLoading(false);
           });
 
-          let fullMapShapes = {
-            type: "FeatureCollection",
-            features: [],
-          };
+          let fullMapShapes = { type: "FeatureCollection", features: [] };
           const mapShapeURLs = agencies[agency].mapShapes;
 
           for (let i = 0; i < mapShapeURLs.length; i++) {
@@ -197,21 +171,20 @@ const Map = () => {
                 if (singleRouteID === "all") return true;
                 if (agencies[agency].dontFilterMapLines) return true;
                 if (feature.properties.routeID === singleRouteID) return true;
-                if (feature.properties.routeLongName === singleRouteID)
-                  return true;
+                if (feature.properties.routeLongName === singleRouteID) return true;
                 return false;
               })
             );
           }
 
-          map.current.getSource('shapes').setData(fullMapShapes);
+          map.current.getSource("shapes").setData(fullMapShapes);
 
           let minLat = 90;
           let maxLat = -90;
           let minLon = 180;
           let maxLon = -180;
 
-          map.current.getSource('stations').setData({
+          map.current.getSource("stations").setData({
             type: "FeatureCollection",
             features: Object.keys(stationsData)
               .filter((station) => {
@@ -239,17 +212,10 @@ const Map = () => {
                 return {
                   type: "Feature",
                   id: stationId,
-                  properties: {
-                    id: stationId,
-                    name: station.stationName,
-                    ...station
-                  },
-                  geometry: {
-                    type: "Point",
-                    coordinates: [station.lon, station.lat],
-                  },
+                  properties: { id: stationId, name: station.stationName, ...station },
+                  geometry: { type: "Point", coordinates: [station.lon, station.lat] }
                 };
-              }),
+              })
           });
 
           setInterval(() => {
@@ -275,17 +241,10 @@ const Map = () => {
                     return {
                       type: "Feature",
                       id: stationId,
-                      properties: {
-                        id: stationId,
-                        name: station.stationName,
-                        ...station,
-                      },
-                      geometry: {
-                        type: "Point",
-                        coordinates: [station.lon, station.lat],
-                      },
+                      properties: { id: stationId, name: station.stationName, ...station },
+                      geometry: { type: "Point", coordinates: [station.lon, station.lat] }
                     };
-                  }),
+                  })
               });
 
               window.dataManager.getData(agency, "lastUpdated").then((ts) => {
@@ -305,8 +264,7 @@ const Map = () => {
 
             if (train.deadMileage && !settings.deadMileageEnabled) return;
 
-            if (train.lineCode != singleRouteID && singleRouteID != "all")
-              return;
+            if (train.lineCode != singleRouteID && singleRouteID != "all") return;
 
             if (train.lat != 0 && train.lon != 0) {
               if (train.lat < minLat) minLat = train.lat;
@@ -324,40 +282,30 @@ const Map = () => {
                 routeColor: train.lineColor,
                 lineCode: train.lineCode,
                 heading: train.heading,
-                holidayAddition: train.extra ? // allows for expansion in the future, though this is a bit sloppy
-                  (train.extra.holidayChristmas == true ? '_candyCane' : '')
-                  : '',
+                holidayAddition: train.extra // allows for expansion in the future, though this is a bit sloppy
+                  ? train.extra.holidayGay == true
+                    ? "_gayFlag"
+                    : train.extra.holidayChristmas == true
+                      ? "_candyCane"
+                      : ""
+                  : ""
               },
-              geometry: {
-                type: "Point",
-                coordinates: [train.lon, train.lat],
-              },
+              geometry: { type: "Point", coordinates: [train.lon, train.lat] }
             });
           });
 
           map.current.addSource("trains", {
             type: "geojson",
-            data: {
-              type: "FeatureCollection",
-              features: finalFeaturesInitial,
-            },
+            data: { type: "FeatureCollection", features: finalFeaturesInitial }
           });
 
-          if (
-            minLat != 90 &&
-            maxLat != -90 &&
-            minLon != 180 &&
-            maxLon != -180
-          ) {
+          if (minLat != 90 && maxLat != -90 && minLon != 180 && maxLon != -180) {
             map.current.fitBounds(
               [
                 [minLon, minLat],
-                [maxLon, maxLat],
+                [maxLon, maxLat]
               ],
-              {
-                padding: 50,
-                maxZoom: agencies[agency].autoFitMaxZoom ?? 14,
-              }
+              { padding: 50, maxZoom: agencies[agency].autoFitMaxZoom ?? 14 }
             );
           }
 
@@ -372,10 +320,7 @@ const Map = () => {
 
                 if (train.deadMileage && !settings.deadMileageEnabled) return;
 
-                if (
-                  train.lineCode === singleRouteID ||
-                  singleRouteID === "all"
-                ) {
+                if (train.lineCode === singleRouteID || singleRouteID === "all") {
                   finalFeatures.push({
                     type: "Feature",
                     id: trainId,
@@ -385,22 +330,20 @@ const Map = () => {
                       routeColor: train.lineColor,
                       lineCode: train.lineCode,
                       heading: train.heading,
-                      holidayAddition: train.extra ? // allows for expansion in the future, though this is a bit sloppy
-                        (train.extra.holidayChristmas == true ? '_candyCane' : '')
-                        : '',
+                      holidayAddition: train.extra // allows for expansion in the future, though this is a bit sloppy
+                        ? train.extra.holidayGay == true
+                          ? "_gayFlag"
+                          : train.extra.holidayChristmas == true
+                            ? "_candyCane"
+                            : ""
+                        : ""
                     },
-                    geometry: {
-                      type: "Point",
-                      coordinates: [train.lon, train.lat],
-                    },
+                    geometry: { type: "Point", coordinates: [train.lon, train.lat] }
                   });
                 }
               });
 
-              map.current.getSource("trains").setData({
-                type: "FeatureCollection",
-                features: finalFeatures,
-              });
+              map.current.getSource("trains").setData({ type: "FeatureCollection", features: finalFeatures });
 
               console.log("Updated trains data");
             });
@@ -413,35 +356,28 @@ const Map = () => {
             type: "symbol",
             source: "trains",
             layout: {
-              "icon-image": ["concat",
-                ["get", "lineColor"],
-                "_",
-                ["get", "lineTextColor"],
-                ["get", "holidayAddition"]
-              ],
+              "icon-image": ["concat", ["get", "lineColor"], "_", ["get", "lineTextColor"], ["get", "holidayAddition"]],
               "icon-rotation-alignment": "map",
               "icon-size": 0.4,
               "icon-rotate": ["get", "heading"],
               "icon-allow-overlap": true,
-              "text-font": ["Open Sans Regular"],
+              "text-font": ["Open Sans Regular"]
             },
-            paint: {},
+            paint: {}
           });
 
           map.current.on("click", (e) => {
             const bbox = [
               [e.point.x - 4, e.point.y - 4], // southwest
-              [e.point.x + 4, e.point.y + 4], // northeast
+              [e.point.x + 4, e.point.y + 4] // northeast
             ];
 
-            let f = map.current.queryRenderedFeatures(bbox, {
-              layers: ["trains", "stations"],
-            });
+            let f = map.current.queryRenderedFeatures(bbox, { layers: ["trains", "stations"] });
 
             if (f.length === 0) return;
 
             if (f.length > 1) {
-              activateSelectorPopup(e, f, map, agencies[agency], singleRouteID)
+              activateSelectorPopup(e, f, map, agencies[agency], singleRouteID);
               return;
             }
 
@@ -471,25 +407,13 @@ const Map = () => {
           });
 
           map.current.on("moveend", () => {
-            console.log(
-              `Map moved to ${map.current.getCenter()} with zoom ${map.current.getZoom()}`
-            );
+            console.log(`Map moved to ${map.current.getCenter()} with zoom ${map.current.getZoom()}`);
           });
 
-          map.current.addControl(
-            new maplibregl.NavigationControl({
-              visualizePitch: true,
-            }),
-            "top-right"
-          );
+          map.current.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), "top-right");
           map.current.addControl(new maplibregl.FullscreenControl());
           map.current.addControl(
-            new maplibregl.GeolocateControl({
-              positionOptions: {
-                enableHighAccuracy: true,
-              },
-              trackUserLocation: true,
-            })
+            new maplibregl.GeolocateControl({ positionOptions: { enableHighAccuracy: true }, trackUserLocation: true })
           );
 
           console.log("Map initialized");
@@ -520,14 +444,8 @@ const Map = () => {
       <Oneko />
       <div
         ref={mapContainer}
-        className='map'
-        style={{
-          position: "absolute",
-          top: "0",
-          left: "0",
-          width: "100vw",
-          height: "calc(100vh - 80px)",
-        }}
+        className="map"
+        style={{ position: "absolute", top: "0", left: "0", width: "100vw", height: "calc(100vh - 80px)" }}
       ></div>
       <div
         style={{
@@ -541,32 +459,22 @@ const Map = () => {
           padding: "4px 8px",
           color: "#fff",
           backgroundColor: "#333",
-          borderStartStartRadius: "8px",
+          borderStartStartRadius: "8px"
         }}
       >
-        <a href='https://protomaps.com' target='_blank' rel='noreferrer'>
+        <a href="https://protomaps.com" target="_blank" rel="noreferrer">
           Protomaps
         </a>{" "}
         |{" "}
-        <a
-          href='https://openstreetmap.org/copyright'
-          target='_blank'
-          rel='noreferrer'
-        >
+        <a href="https://openstreetmap.org/copyright" target="_blank" rel="noreferrer">
           &copy;OpenStreetMap
         </a>{" "}
         |{" "}
-        <a href='https://piemadd.com' target='_blank' rel='noreferrer'>
+        <a href="https://piemadd.com" target="_blank" rel="noreferrer">
           &copy;Piero&reg;
         </a>
       </div>
-      <div
-        style={{
-          position: "absolute",
-          bottom: "0",
-          left: "0",
-        }}
-      >
+      <div style={{ position: "absolute", bottom: "0", left: "0" }}>
         <p
           style={{
             height: "32px",
@@ -574,18 +482,15 @@ const Map = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            backgroundColor: "#444",
+            backgroundColor: "#444"
           }}
         >
           {isLoading
             ? loadingMessage
-            : `Last Updated at ${lastUpdated.toLocaleTimeString([], {
-              hour: "2-digit",
-              minute: "2-digit",
-            })}`}
+            : `Last Updated at ${lastUpdated.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`}
         </p>
         <h3
-          key='backButton'
+          key="backButton"
           style={{
             display: "flex",
             alignItems: "center",
@@ -597,7 +502,7 @@ const Map = () => {
             fontSize: "1.3rem",
             padding: "8px",
             width: "calc(100vw - 16px)",
-            height: "32px",
+            height: "32px"
           }}
           onClick={() => {
             if (history.state.idx && history.state.idx > 0) {

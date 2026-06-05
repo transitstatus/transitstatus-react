@@ -4,15 +4,12 @@ import { agencies } from "../../config";
 import Meta from "../../components/meta";
 import Oneko from "../../components/extras/oneko";
 import AlertsList from "../../components/alerts/alertsList";
-import { hoursMinutesUntilArrival } from "../../components/extras/randomTools"; 
+import { hoursMinutesUntilArrival } from "../../components/extras/randomTools";
 import PieroSnowfall from "../../components/snowFallPiero";
 
 const timeFormat = (time) => {
   const date = new Date(time);
-  return date.toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+  return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 };
 
 const AllTrains = () => {
@@ -27,7 +24,7 @@ const AllTrains = () => {
 
   const agencyMeta = agencies[agency];
 
-  let settings = JSON.parse(localStorage.getItem("transitstatus_v1_settings") ?? '{}');
+  let settings = JSON.parse(localStorage.getItem("transitstatus_v1_settings") ?? "{}");
   if (!settings.playgroundEnabled) settings.playgroundEnabled = false;
 
   useEffect(() => {
@@ -51,29 +48,24 @@ const AllTrains = () => {
                 if (shitsFucked.shitIsFucked) {
                   setLoadingMessage(shitsFucked.message);
                 } else {
-                  setLoadingMessage(
-                    "Error loading data. Please try again later or choose another agency."
-                  );
+                  setLoadingMessage("Error loading data. Please try again later or choose another agency.");
                 }
               }
               setIsLoading(true);
             })
             .catch((e) => {
-              setLoadingMessage(
-                "Error loading data. Please try again later or choose another agency."
-              );
+              setLoadingMessage("Error loading data. Please try again later or choose another agency.");
             });
         });
 
       // alerts
-      window.dataManager
-        .getData(agency, "alerts")
-        .then((data) => {
-          if (data === "Not found") return // alerts not supported
-          else {
-            setAlerts(data);
-          }
-        });
+      window.dataManager.getData(agency, "alerts").then((data) => {
+        if (data === "Not found")
+          return; // alerts not supported
+        else {
+          setAlerts(data);
+        }
+      });
     };
 
     fetchData();
@@ -87,20 +79,11 @@ const AllTrains = () => {
         <Oneko />
         {activateSnowfall ? null /*<PieroSnowfall />*/ : null}
         <h1>Trains Not Found</h1>
-        <p>
-          The agency you were trying to view doesn't exist. Please go back and try
-          again.
-        </p>
+        <p>The agency you were trying to view doesn't exist. Please go back and try again.</p>
         <h3
-          className='route'
-          key='backButton'
-          style={{
-            backgroundColor: "#444",
-            color: "#fff",
-            fontSize: "1.3rem",
-            padding: "8px",
-            marginTop: "4px",
-          }}
+          className="route"
+          key="backButton"
+          style={{ backgroundColor: "#444", color: "#fff", fontSize: "1.3rem", padding: "8px", marginTop: "4px" }}
           onClick={() => {
             if (history.state.idx && history.state.idx > 0) {
               navigate(-1);
@@ -132,36 +115,25 @@ const AllTrains = () => {
           marginBottom: "4px",
           marginTop: "12px",
           backgroundColor: agencies[agency].color,
-          color: agencies[agency].textColor,
+          color: agencies[agency].textColor
         }}
       >
-        <span
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-        >
-          <h2
-            style={{
-              marginTop: "4px",
-            }}
-          >
+        <span style={{ display: "flex", justifyContent: "space-between" }}>
+          <h2 style={{ marginTop: "4px" }}>
             All {agencyMeta.name} {agencyMeta.typePlural}
           </h2>
         </span>
       </div>
-      <AlertsList alertsArray={alerts} agency={agency} filterType={'agency'} style={{ marginBottom: '8px', marginTop: '0px', maxWidth: '400px' }} />
+      <AlertsList
+        alertsArray={alerts}
+        agency={agency}
+        filterType={"agency"}
+        style={{ marginBottom: "8px", marginTop: "0px", maxWidth: "400px" }}
+      />
       <div>
-        <div key={'key'} className='trains'>
+        <div key={"key"} className="trains">
           {isLoading ? (
-            <p
-              style={{
-                maxWidth: "384px",
-                padding: "8px",
-                marginBottom: "4px",
-                background: "#333",
-              }}
-            >
+            <p style={{ maxWidth: "384px", padding: "8px", marginBottom: "4px", background: "#333" }}>
               {loadingMessage}
             </p>
           ) : (
@@ -169,14 +141,14 @@ const AllTrains = () => {
               .map((runNumber) => {
                 if (trains[runNumber].extra?.holidayChristmas && !activateSnowfall) setActivateSnowfall(true);
 
-                return {
-                  ...trains[runNumber],
-                  runNumber,
-                }
+                return { ...trains[runNumber], runNumber };
               })
-              .sort((a, b) => { // sorting trains by whether they're tracking and the time of their next stop
-                if (a.realTime && b.realTime) { // sort by number of predictions
-                  if (a.predictions.length > 0 && b.predictions.length > 0) { // now sort by the time of their next stop
+              .sort((a, b) => {
+                // sorting trains by whether they're tracking and the time of their next stop
+                if (a.realTime && b.realTime) {
+                  // sort by number of predictions
+                  if (a.predictions.length > 0 && b.predictions.length > 0) {
+                    // now sort by the time of their next stop
                     return a.predictions.at(-1).actualETA - b.predictions.at(-1).actualETA;
                   }
                   if (a.predictions.length > 0 && b.predictions.length == 0) return -1; // a has predictions
@@ -186,7 +158,8 @@ const AllTrains = () => {
                 if (a.realTime && !b.realTime) return -1; // a positive number prioritizes a
                 if (!a.realTime && b.realTime) return 1; // a negative number prioritizes b
                 if (!a.realTime && !b.realTime) {
-                  if (a.predictions.length > 0 && b.predictions.length > 0) { // now sort by the time of their next stop
+                  if (a.predictions.length > 0 && b.predictions.length > 0) {
+                    // now sort by the time of their next stop
                     return a.predictions[0].actualETA - b.predictions[0].actualETA;
                   }
                   if (a.predictions.length > 0 && b.predictions.length == 0) return -1; // a has predictions
@@ -196,99 +169,79 @@ const AllTrains = () => {
               })
               .map((train) => {
                 return (
-                  <Link
-                    to={`/${agency}/track/${train.runNumber}`}
-                    key={train.runNumber}
-                    className='trainLink'
-                  >
+                  <Link to={`/${agency}/track/${train.runNumber}`} key={train.runNumber} className="trainLink">
                     <div
-                      className='train'
+                      className="train"
                       style={{
-                        background: train.extra?.holidayChristmas ? "repeating-linear-gradient(135deg, #94000a, #94000a 10px, #077001 10px, #077001 20px)" : `#${train.lineColor}`,
-                        color: train.extra?.holidayChristmas ? '#ffffff' : `#${train.lineTextColor}`,
-                        opacity: train.realTime ? 1 : 0.7,
+                        background: train.extra?.holidayChristmas
+                          ? "repeating-linear-gradient(135deg, #94000a, #94000a 10px, #077001 10px, #077001 20px)"
+                          : train.extra?.holidayGay
+                            ? "repeating-linear-gradient(135deg, #e22016 0px 10px, #f28917 10px 20px, #efe524 20px 30px, #78b801 30px 40px, #2c58a4 40px 50px, #6d2380 50px 60px, #000 60px 70px, #945516 70px 80px, #7bcce5 80px 90px, #f4aec8 90px 100px, #fff 100px 110px, #fdd817 110px 120px, #66338b 120px 130px)"
+                            : `#${train.lineColor}`,
+                        color:
+                          train.extra?.holidayChristmas || train.extra?.holidayGay
+                            ? "#ffffff"
+                            : `#${train.lineTextColor}`,
+                        opacity: train.realTime ? 1 : 0.7
                       }}
                     >
                       <span
-                        style={{
-                          filter: train.extra?.holidayChristmas ? 'drop-shadow(0px 0px 2px #000000)' : null,
-                        }}
+                        style={{ filter: train.extra?.holidayChristmas || train.extra?.holidayGay ? "drop-shadow(0px 0px 1px #000000) drop-shadow(0px 0px 2px #000000) drop-shadow(0px 0px 2px #000000)" : null }}
                       >
                         <p>
-                          {agencyMeta.useCodeForShortName
-                            ? train.lineCode
-                            : train.line}
+                          {agencyMeta.useCodeForShortName ? train.lineCode : train.line}
                           {agencyMeta.addLine ? " Line " : " "}
                           {agencyMeta.addType ? `${agencyMeta.type} ` : ""}
-                          {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime) ? agencyMeta.tripIDPrefix : ""}
-                          {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime) ? (agencyMeta.runNumberConverter ? agencyMeta.runNumberConverter(train.runNumber) : train.runNumber) : ""}{train.extra?.holidayChristmas ? " 🎄" : ""}
+                          {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime)
+                            ? agencyMeta.tripIDPrefix
+                            : ""}
+                          {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime)
+                            ? agencyMeta.runNumberConverter
+                              ? agencyMeta.runNumberConverter(train.runNumber)
+                              : train.runNumber
+                            : ""}
+                          {train.extra?.holidayChristmas ? " 🎄" : (train.extra?.holidayGay ? " 🏳️‍🌈" : "")}
                           {train.realTime ? null : <span className="noto-emoji-outline smaller-emoji"> 🕓 </span>}
                           {train.deadMileage && train.predictions.length == 0 ? null : " to"}
                         </p>
-                        {train.deadMileage && train.predictions.length == 0 ? null : <h3>{train.dest ?? train.routeLongName}</h3>}
-                        {train.extra && train.extra.info ? (
-                          <p>{train.extra.info}</p>
-                        ) : null}
+                        {train.deadMileage && train.predictions.length == 0 ? null : (
+                          <h3>{train.dest ?? train.routeLongName}</h3>
+                        )}
+                        {train.extra && train.extra.info ? <p>{train.extra.info}</p> : null}
                       </span>
                       {!train.noETA ? (
                         <span
                           style={{
-                            filter: train.extra?.holidayChristmas ? 'drop-shadow(0px 0px 2px #000000)' : undefined,
-                          }}>
-                          <h3 className='trainLink' style={{
-                            textAlign: 'right',
-                          }}>
-                            {train.predictions.length > 0 ?
-                              hoursMinutesUntilArrival(
-                                train.predictions.at(-1).actualETA
-                              ) : null}
+                            filter: train.extra?.holidayChristmas || train.extra?.holidayGay ? "drop-shadow(0px 0px 1px #000000) drop-shadow(0px 0px 2px #000000) drop-shadow(0px 0px 2px #000000)" : undefined
+                          }}
+                        >
+                          <h3 className="trainLink" style={{ textAlign: "right" }}>
+                            {train.predictions.length > 0
+                              ? hoursMinutesUntilArrival(train.predictions.at(-1).actualETA)
+                              : null}
                           </h3>
                           <p
-                            className='trainLink'
-                            style={{
-                              fontSize: "0.8em",
-                              whiteSpace: "nowrap",
-                              textAlign: 'right',
-                            }}
+                            className="trainLink"
+                            style={{ fontSize: "0.8em", whiteSpace: "nowrap", textAlign: "right" }}
                           >
-                            {train.predictions.length > 0 ?
-                              timeFormat(
-                                train.predictions[0].actualETA
-                              ) : 'No Schedule'}
+                            {train.predictions.length > 0 ? timeFormat(train.predictions[0].actualETA) : "No Schedule"}
                           </p>
                           {train.extra && train.extra.cap ? (
-                            <p
-                              className='trainLink'
-                              style={{
-                                fontSize: "0.8em",
-                              }}
-                            >
-                              {Math.ceil(
-                                (train.extra.load / train.extra.cap) *
-                                100
-                              )}
-                              % Full
+                            <p className="trainLink" style={{ fontSize: "0.8em" }}>
+                              {Math.ceil((train.extra.load / train.extra.cap) * 100)}% Full
                             </p>
                           ) : null}
                         </span>
                       ) : (
                         <span
                           style={{
-                            filter: train.extra?.holidayChristmas ? 'drop-shadow(0px 0px 2px #000000)' : undefined,
-                          }}>
-                          <h3 className='trainLink'>No ETA</h3>
+                            filter: train.extra?.holidayChristmas ? "drop-shadow(0px 0px 2px #000000)" : undefined
+                          }}
+                        >
+                          <h3 className="trainLink">No ETA</h3>
                           {train.extra && train.extra.cap ? (
-                            <p
-                              className='trainLink'
-                              style={{
-                                fontSize: "0.8em",
-                              }}
-                            >
-                              {Math.ceil(
-                                (train.extra.load / train.extra.cap) *
-                                100
-                              )}
-                              % Full
+                            <p className="trainLink" style={{ fontSize: "0.8em" }}>
+                              {Math.ceil((train.extra.load / train.extra.cap) * 100)}% Full
                             </p>
                           ) : null}
                         </span>
@@ -300,13 +253,9 @@ const AllTrains = () => {
           )}
         </div>
         <h3
-          className='train'
-          key='backButton'
-          style={{
-            backgroundColor: agencyMeta.color,
-            color: agencyMeta.textColor,
-            maxWidth: "384px",
-          }}
+          className="train"
+          key="backButton"
+          style={{ backgroundColor: agencyMeta.color, color: agencyMeta.textColor, maxWidth: "384px" }}
           onClick={() => {
             //see if querey string has prev
             const urlParams = new URLSearchParams(window.location.search);

@@ -55,7 +55,7 @@ export const activateSelectorPopup = (e, features, map, agencyData, singleRouteI
             }}
           >
             <strong
-              style={{ filter: train.holidayAddition == '_candyCane' ? 'drop-shadow(0px 0px 2px #000000)' : null, }}
+              style={{ filter: train.holidayAddition == '_candyCane' || train.holidayAddition == '_gayFlag' ? 'drop-shadow(0px 0px 1px #000000) drop-shadow(0px 0px 2px #000000) drop-shadow(0px 0px 2px #000000)' : null, }}
             >
               {agencyData.useCodeForShortName ? train.lineCode : train.line}
               {agencyData.addLine ? " Line " : " "}
@@ -131,7 +131,7 @@ export const activateTrainPopup = (feature, map, agencyData) => {
       color: train.holidayAddition == "_candyCane" ? '#ffffff' : `#${train.lineTextColor}`,
       background: train.holidayAddition == "_candyCane" ? "repeating-linear-gradient(135deg, #94000a, #94000a 10px, #077001 10px, #077001 20px)" : `#${train.lineColor}`,
     }}>
-      <strong style={{ filter: train.holidayAddition == '_candyCane' ? 'drop-shadow(0px 0px 2px #000000)' : null }}>
+      <strong style={{ filter: train.holidayAddition == '_candyCane' || train.holidayAddition == '_gayFlag' ? 'drop-shadow(0px 0px 1px #000000) drop-shadow(0px 0px 2px #000000) drop-shadow(0px 0px 2px #000000)' : null }}>
         <a
           href={`/${agencyData.agencyID}/track/${train.id}?prev=map`}
           style={{

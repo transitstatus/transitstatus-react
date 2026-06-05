@@ -964,8 +964,8 @@ export const agencies = {
   },
   bigboy: {
     agencyID: "bigboy",
-    name: "UP Big Boy",
-    selectionName: "UP Big Boy",
+    name: "Union Pacific Big Boy",
+    selectionName: "Union Pacific Big Boy",
     endpoint: "https://bigboyapi.amtraker.com/",
     mapShapes: [
       "https://gobblerstatic.transitstat.us/additionalShapes/bigboy_all_2026.json",
@@ -995,7 +995,7 @@ export const config = {
   siteTitle: "Transitstat.us",
   siteTitleOther: "Transitstatus",
   tagLine: "Open source, free, and easy transit tracker.",
-  version: "v1.20.17",
+  version: "v1.21.0",
   additionalWarnings: [],
   globalAlerts: [
     {

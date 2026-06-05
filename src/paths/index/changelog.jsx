@@ -33,6 +33,18 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id="1-21-0">
+            <td>
+              <a href="#1-21-0">v1.21.0</a>
+            </td>
+            <td>
+              <ul>
+                <li>Added support for pride trains.</li>
+                <li>Slightly improved SEO.</li>
+                <li>Patches.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id="1-20-18">
             <td>
               <a href="#1-20-18">v1.20.18</a>

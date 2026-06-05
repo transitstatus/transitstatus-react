@@ -12,10 +12,7 @@ import PieroSnowfall from "../../components/snowFallPiero";
 
 const timeFormat = (time) => {
   const date = new Date(time);
-  return date.toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+  return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 };
 
 const Station = () => {
@@ -37,7 +34,7 @@ const Station = () => {
     }
   };
 
-  let settings = JSON.parse(localStorage.getItem("transitstatus_v1_settings") ?? '{}');
+  let settings = JSON.parse(localStorage.getItem("transitstatus_v1_settings") ?? "{}");
   if (!settings.playgroundEnabled) settings.playgroundEnabled = false;
 
   useEffect(() => {
@@ -61,29 +58,24 @@ const Station = () => {
                 if (shitsFucked.shitIsFucked) {
                   setLoadingMessage(shitsFucked.message);
                 } else {
-                  setLoadingMessage(
-                    "Error loading data. Please try again later or choose another station."
-                  );
+                  setLoadingMessage("Error loading data. Please try again later or choose another station.");
                 }
               }
               setIsLoading(true);
             })
             .catch((e) => {
-              setLoadingMessage(
-                "Error loading data. Please try again later or choose another station."
-              );
+              setLoadingMessage("Error loading data. Please try again later or choose another station.");
             });
         });
 
       // alerts
-      window.dataManager
-        .getData(agency, "alerts")
-        .then((data) => {
-          if (data === "Not found") return // alerts not supported
-          else {
-            setAlerts(data);
-          }
-        });
+      window.dataManager.getData(agency, "alerts").then((data) => {
+        if (data === "Not found")
+          return; // alerts not supported
+        else {
+          setAlerts(data);
+        }
+      });
     };
 
     fetchData();
@@ -97,20 +89,11 @@ const Station = () => {
         <Oneko />
         {activateSnowfall ? <PieroSnowfall /> : null}
         <h1>Stop Not Found</h1>
-        <p>
-          The stop you were trying to view doesn't exist. Please go back and try
-          again.
-        </p>
+        <p>The stop you were trying to view doesn't exist. Please go back and try again.</p>
         <h3
-          className='route'
-          key='backButton'
-          style={{
-            backgroundColor: "#444",
-            color: "#fff",
-            fontSize: "1.3rem",
-            padding: "8px",
-            marginTop: "4px",
-          }}
+          className="route"
+          key="backButton"
+          style={{ backgroundColor: "#444", color: "#fff", fontSize: "1.3rem", padding: "8px", marginTop: "4px" }}
           onClick={() => {
             if (history.state.idx && history.state.idx > 0) {
               navigate(-1);
@@ -141,60 +124,44 @@ const Station = () => {
           padding: "0px 8px 4px 8px",
           marginBottom: "4px",
           marginTop: "12px",
-          backgroundColor: "#333",
+          backgroundColor: "#333"
         }}
       >
-        <span
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-        >
-          <h2
-            style={{
-              marginTop: "4px",
-            }}
-          >
-            {station.stationName}
-          </h2>
+        <span style={{ display: "flex", justifyContent: "space-between" }}>
+          <h2 style={{ marginTop: "4px" }}>{station.stationName}</h2>
         </span>
-        <p>
-          As of{" "}
-          {new Date(lastFetched).toLocaleTimeString([], {
-            hour: "2-digit",
-            minute: "2-digit",
-          })}
-        </p>
+        <p>As of {new Date(lastFetched).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</p>
       </div>
-      <AlertsList alertsArray={alerts} agency={agency} filterType={'stop'} filterID={stopID} style={{ marginBottom: '8px', marginTop: '0px', maxWidth: '400px' }} />
+      <AlertsList
+        alertsArray={alerts}
+        agency={agency}
+        filterType={"stop"}
+        filterID={stopID}
+        style={{ marginBottom: "8px", marginTop: "0px", maxWidth: "400px" }}
+      />
       <div>
         {isLoading ? (
-          <p
-            style={{
-              maxWidth: "384px",
-              padding: "8px",
-              marginBottom: "4px",
-              background: "#333",
-            }}
-          >
-            {loadingMessage}
-          </p>
+          <p style={{ maxWidth: "384px", padding: "8px", marginBottom: "4px", background: "#333" }}>{loadingMessage}</p>
         ) : (
           Object.keys(station.destinations)
             .sort((a, b) => a.localeCompare(b)) // sorting destinations alphabetically
             .map((destinationKey) => {
               return (
-                <div key={destinationKey} className='trains'>
+                <div key={destinationKey} className="trains">
                   {station.destinations[destinationKey].trains.length > 0 ? (
                     <>
-                      <h3 className='destination'>{agencyMeta.useDirectionsInsteadOfDestinations ? `${destinationKey} ${agencyMeta.typePlural}` : `Towards ${destinationKey}`}</h3>
+                      <h3 className="destination">
+                        {agencyMeta.useDirectionsInsteadOfDestinations
+                          ? `${destinationKey} ${agencyMeta.typePlural}`
+                          : `Towards ${destinationKey}`}
+                      </h3>
                       {station.destinations[destinationKey].trains
                         .sort((a, b) => {
                           if (!a.actualETA) return -1;
                           if (!b.actualETA) return 1;
                           return a.actualETA - b.actualETA;
                         })
-                        .filter((eta) => eta.actualETA >= Date.now() - (1000 * 60 * 5) || eta.noETA)
+                        .filter((eta) => eta.actualETA >= Date.now() - 1000 * 60 * 5 || eta.noETA)
                         .map((train) => {
                           if (train.extra?.holidayChristmas && !activateSnowfall) setActivateSnowfall(true);
 
@@ -202,93 +169,89 @@ const Station = () => {
                             <Link
                               to={`/${agency}/track/${train.runNumber}`}
                               key={train.runNumber}
-                              className='trainLink'
+                              className="trainLink"
                             >
                               <div
-                                className='train'
+                                className="train"
                                 style={{
-                                  background: train.extra?.holidayChristmas ? "repeating-linear-gradient(135deg, #94000a, #94000a 10px, #077001 10px, #077001 20px)" : `#${train.lineColor}`,
-                                  color: train.extra?.holidayChristmas ? '#ffffff' : `#${train.lineTextColor}`,
-                                  opacity: train.realTime ? 1 : 0.7,
+                                  background: train.extra?.holidayChristmas
+                                    ? "repeating-linear-gradient(135deg, #94000a, #94000a 10px, #077001 10px, #077001 20px)"
+                                    : train.extra?.holidayGay
+                                      ? "repeating-linear-gradient(135deg, #e22016 0px 10px, #f28917 10px 20px, #efe524 20px 30px, #78b801 30px 40px, #2c58a4 40px 50px, #6d2380 50px 60px, #000 60px 70px, #945516 70px 80px, #7bcce5 80px 90px, #f4aec8 90px 100px, #fff 100px 110px, #fdd817 110px 120px, #66338b 120px 130px)"
+                                      : `#${train.lineColor}`,
+                                  color:
+                                    train.extra?.holidayChristmas || train.extra?.holidayGay
+                                      ? "#ffffff"
+                                      : `#${train.lineTextColor}`,
+                                  opacity: train.realTime ? 1 : 0.7
                                 }}
                               >
                                 <span
                                   style={{
-                                    filter: train.extra?.holidayChristmas ? 'drop-shadow(0px 0px 2px #000000)' : null,
+                                    filter:
+                                      train.extra?.holidayChristmas || train.extra?.holidayGay
+                                        ? "drop-shadow(0px 0px 1px #000000) drop-shadow(0px 0px 2px #000000) drop-shadow(0px 0px 2px #000000)"
+                                        : null
                                   }}
                                 >
                                   <p>
-                                    {agencyMeta.useCodeForShortName
-                                      ? train.lineCode
-                                      : train.line}
+                                    {agencyMeta.useCodeForShortName ? train.lineCode : train.line}
                                     {agencyMeta.addLine ? " Line " : " "}
                                     {agencyMeta.addType ? `${agencyMeta.type} ` : ""}
-                                    {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime) ? agencyMeta.tripIDPrefix : ""}
-                                    {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime) ? (agencyMeta.runNumberConverter ? agencyMeta.runNumberConverter(train.runNumber) : train.runNumber) : ""}{train.extra?.holidayChristmas ? " 🎄" : ""}
-                                    {train.realTime ? null : <span className="noto-emoji-outline smaller-emoji"> 🕓 </span>} to
+                                    {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime)
+                                      ? agencyMeta.tripIDPrefix
+                                      : ""}
+                                    {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime)
+                                      ? agencyMeta.runNumberConverter
+                                        ? agencyMeta.runNumberConverter(train.runNumber)
+                                        : train.runNumber
+                                      : ""}
+                                    {train.extra?.holidayChristmas ? " 🎄" : (train.extra?.holidayGay ? " 🏳️‍🌈" : "")}
+                                    {train.realTime ? null : (
+                                      <span className="noto-emoji-outline smaller-emoji"> 🕓 </span>
+                                    )}{" "}
+                                    to
                                   </p>
-                                  <h3>
-                                    {train.destination ?? destinationKey ?? train.routeLongName}
-                                  </h3>
-                                  {train.extra && train.extra.info ? (
-                                    <p>{train.extra.info}</p>
-                                  ) : null}
+                                  <h3>{train.destination ?? destinationKey ?? train.routeLongName}</h3>
+                                  {train.extra && train.extra.info ? <p>{train.extra.info}</p> : null}
                                 </span>
                                 {!train.noETA ? (
                                   <span
                                     style={{
-                                      filter: train.extra?.holidayChristmas ? 'drop-shadow(0px 0px 2px #000000)' : undefined,
-                                    }}>
-                                    <h3 className='trainLink' style={{
-                                      textAlign: 'right',
-                                    }}>
-                                      {hoursMinutesUntilArrival(
-                                        train.actualETA
-                                      )}
+                                      filter:
+                                        train.extra?.holidayChristmas || train.extra?.holidayGay
+                                          ? "drop-shadow(0px 0px 1px #000000) drop-shadow(0px 0px 2px #000000) drop-shadow(0px 0px 2px #000000)"
+                                          : null
+                                    }}
+                                  >
+                                    <h3 className="trainLink" style={{ textAlign: "right" }}>
+                                      {hoursMinutesUntilArrival(train.actualETA)}
                                     </h3>
                                     <p
-                                      className='trainLink'
-                                      style={{
-                                        fontSize: "0.8em",
-                                        whiteSpace: "nowrap",
-                                        textAlign: 'right',
-                                      }}
+                                      className="trainLink"
+                                      style={{ fontSize: "0.8em", whiteSpace: "nowrap", textAlign: "right" }}
                                     >
                                       {timeFormat(train.actualETA)}
                                     </p>
                                     {train.extra && train.extra.cap ? (
-                                      <p
-                                        className='trainLink'
-                                        style={{
-                                          fontSize: "0.8em",
-                                        }}
-                                      >
-                                        {Math.ceil(
-                                          (train.extra.load / train.extra.cap) *
-                                          100
-                                        )}
-                                        % Full
+                                      <p className="trainLink" style={{ fontSize: "0.8em" }}>
+                                        {Math.ceil((train.extra.load / train.extra.cap) * 100)}% Full
                                       </p>
                                     ) : null}
                                   </span>
                                 ) : (
                                   <span
                                     style={{
-                                      filter: train.extra?.holidayChristmas ? 'drop-shadow(0px 0px 2px #000000)' : undefined,
-                                    }}>
-                                    <h3 className='trainLink'>No ETA</h3>
+                                      filter:
+                                        train.extra?.holidayChristmas || train.extra?.holidayGay
+                                          ? "drop-shadow(0px 0px 1px #000000) drop-shadow(0px 0px 2px #000000) drop-shadow(0px 0px 2px #000000)"
+                                          : null
+                                    }}
+                                  >
+                                    <h3 className="trainLink">No ETA</h3>
                                     {train.extra && train.extra.cap ? (
-                                      <p
-                                        className='trainLink'
-                                        style={{
-                                          fontSize: "0.8em",
-                                        }}
-                                      >
-                                        {Math.ceil(
-                                          (train.extra.load / train.extra.cap) *
-                                          100
-                                        )}
-                                        % Full
+                                      <p className="trainLink" style={{ fontSize: "0.8em" }}>
+                                        {Math.ceil((train.extra.load / train.extra.cap) * 100)}% Full
                                       </p>
                                     ) : null}
                                   </span>
@@ -300,12 +263,10 @@ const Station = () => {
                     </>
                   ) : (
                     <>
-                      <p className='destination'>
-                        {
-                          agencyMeta.useDirectionsInsteadOfDestinations ?
-                            `No ${destinationKey} ${agencyMeta.typePlural}` :
-                            `No ${agencyMeta.typePlural} towards ${destinationKey}`
-                        }
+                      <p className="destination">
+                        {agencyMeta.useDirectionsInsteadOfDestinations
+                          ? `No ${destinationKey} ${agencyMeta.typePlural}`
+                          : `No ${agencyMeta.typePlural} towards ${destinationKey}`}
                       </p>
                     </>
                   )}
@@ -314,13 +275,9 @@ const Station = () => {
             })
         )}
         <h3
-          className='train'
-          key='backButton'
-          style={{
-            backgroundColor: agencyMeta.color,
-            color: agencyMeta.textColor,
-            maxWidth: "384px",
-          }}
+          className="train"
+          key="backButton"
+          style={{ backgroundColor: agencyMeta.color, color: agencyMeta.textColor, maxWidth: "384px" }}
           onClick={() => {
             //see if querey string has prev
             const urlParams = new URLSearchParams(window.location.search);
