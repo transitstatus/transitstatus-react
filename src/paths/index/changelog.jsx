@@ -33,6 +33,17 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id="1-21-1">
+            <td>
+              <a href="#1-21-1">v1.21.1</a>
+            </td>
+            <td>
+              <ul>
+                <li>Fixed visual glitches related to pride train map support.</li>
+                <li>Added support for using 'Track by Number' as a crude search tool.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id="1-21-0">
             <td>
               <a href="#1-21-0">v1.21.0</a>

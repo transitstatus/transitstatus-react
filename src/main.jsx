@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
 import "./index.css";
 import ErrorPage from "./error.jsx";
 import LoadingPage from "./loading";
@@ -24,6 +24,7 @@ const Station = React.lazy(() => import("./paths/agency/station.jsx"));
 const StationDisplay = React.lazy(() => import("./paths/agency/stationDisplay.jsx"));
 const Trip = React.lazy(() => import("./paths/agency/trip.jsx"));
 const Map = React.lazy(() => import("./paths/agency/map.jsx"));
+const Finder = React.lazy(() => import("./paths/agency/finder.jsx"));
 
 const router = createBrowserRouter([
   {
@@ -42,8 +43,13 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
+    path: "/:agency/finder",
+    element: <Finder />,
+    errorElement: <ErrorPage />,
+  },
+  {
     path: "/:agency/track/all",
-    element: <AllTrains/>,
+    element: <Navigate to="../../finder" replace={true} relative="path"/>,
     errorElement: <ErrorPage />,
   },
   {
