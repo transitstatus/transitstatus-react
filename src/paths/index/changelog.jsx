@@ -33,6 +33,16 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id="1-21-2">
+            <td>
+              <a href="#1-21-2">v1.21.2</a>
+            </td>
+            <td>
+              <ul>
+                <li>Updated PWA config.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id="1-21-1">
             <td>
               <a href="#1-21-1">v1.21.1</a>
