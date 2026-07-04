@@ -40,6 +40,7 @@ const Changelog = () => {
             <td>
               <ul>
                 <li>Implemented a crude "fuzzy search" for "track this run number" on agency home page instead of the former exact match search from before.</li>
+                <li>Slightly changed vehicle formatting on finder to show both the next stop and the final stop instead of just the final stop.</li>
               </ul>
             </td>
           </tr>
