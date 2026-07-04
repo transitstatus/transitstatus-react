@@ -33,6 +33,16 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id="1-21-4">
+            <td>
+              <a href="#1-21-4">v1.21.4</a>
+            </td>
+            <td>
+              <ul>
+                <li>Added "startsWith" and "endsWith" filter types for .</li>
+              </ul>
+            </td>
+          </tr>
           <tr id="1-21-3">
             <td>
               <a href="#1-21-3">v1.21.3</a>

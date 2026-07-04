@@ -74,6 +74,12 @@ const Finder = () => {
                   case "includes":
                     return { objectKey: filterSplit[1], filterOperation: (string) => string.includes(filterSplit[2]) };
                     break;
+                  case "startsWith":
+                    return { objectKey: filterSplit[1], filterOperation: (string) => string.startsWith(filterSplit[2]) };
+                    break;
+                  case "endsWith":
+                    return { objectKey: filterSplit[1], filterOperation: (string) => string.endsWith(filterSplit[2]) };
+                    break;
                   default:
                     return { objectKey: filterSplit[1], filterOperation: (string) => false };
                 }
