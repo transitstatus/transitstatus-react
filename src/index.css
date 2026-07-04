@@ -65,7 +65,7 @@ div.qsKeyboard {
   padding: 2px;
 }
 
-div.qsKeyboard>button {
+div.qsKeyboard > button {
   color: #fff;
   border: none;
   background-color: #333;
@@ -73,12 +73,12 @@ div.qsKeyboard>button {
   text-align: center;
 }
 
-div.qsKeyboard>button:disabled {
+div.qsKeyboard > button:disabled {
   color: #ddd;
   background-color: #222;
 }
 
-div.qsKeyboard>div.qsTextBox {
+div.qsKeyboard > div.qsTextBox {
   background-color: #333;
   font-weight: 500;
   padding: 10px;
@@ -347,7 +347,8 @@ tr:nth-child(even) {
   background-color: #444;
 }
 
-.settingsPage select, .settingsPage input[type="number"] {
+.settingsPage select,
+.settingsPage input[type="number"] {
   font-size: 1.2rem;
   color: #fff;
   background-color: #222;
@@ -378,7 +379,7 @@ tr:nth-child(even) {
 .consist {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px
+  gap: 4px;
 }
 
 .consist-car {
@@ -386,4 +387,23 @@ tr:nth-child(even) {
   background-color: #333;
   color: #fff;
   padding: 2px 4px;
+}
+
+div.etaCombo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+div.etaCombo span {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background-color: #222;
+  color: #fff;
+  padding: 2px 4px;
+}
+
+div.etaCombo span p {
 }

@@ -46,7 +46,12 @@ const Finder = () => {
           const prefiltered = Object.keys(data).map((runNumber) => {
             const train = data[runNumber];
 
-            return { ...train, runNumber, finalStop: train.predictions.length > 0 ? train.predictions.at(-1) : null };
+            return {
+              ...train,
+              runNumber,
+              nextStop: train.predictions.length > 1 ? train.predictions[0] : null,
+              finalStop: train.predictions.length > 0 ? train.predictions.at(-1) : null
+            };
           });
 
           //filtering logic here
@@ -114,13 +119,13 @@ const Finder = () => {
                 if (shitsFucked.shitIsFucked) {
                   setLoadingMessage(shitsFucked.message);
                 } else {
-                  setLoadingMessage("Error loading data. Please try again later or choose another station.");
+                  setLoadingMessage("Error loading data. Please try again later.");
                 }
               }
               setIsLoading(true);
             })
             .catch((e) => {
-              setLoadingMessage("Error loading data. Please try again later or choose another station.");
+              setLoadingMessage("Error loading data. Please try again later.");
             });
         });
     };
@@ -130,6 +135,45 @@ const Finder = () => {
   }, [agency]);
 
   document.title = `${agencyMeta.name} ${agencyMeta.type} Finder | Transitstat.us`;
+
+  const SingleETAFinder = ({ train, stop, gapTop = false }) => {
+    return (
+      <div className="etaCombo" style={{ marginTop: gapTop ? "4px" : "0px" }}>
+        {stop && !stop.noETA ? (
+          <>
+            <h3>{stop.stationName}</h3>
+            <span
+              style={{
+                filter:
+                  train.extra?.holidayChristmas || train.extra?.holidayGay
+                    ? "drop-shadow(0px 0px 1px #000000) drop-shadow(0px 0px 2px #000000) drop-shadow(0px 0px 2px #000000)"
+                    : null
+              }}
+            >
+              <p className="trainLink">{hoursMinutesUntilArrival(stop.actualETA)}</p>
+              <p className="trainLink" style={{ fontSize: "0.8em", whiteSpace: "nowrap" }}>
+                {timeFormat(stop.actualETA)}
+              </p>
+            </span>
+          </>
+        ) : (
+          <>
+            <h3>{train.dest}</h3>
+            <span
+              style={{
+                filter:
+                  train.extra?.holidayChristmas || train.extra?.holidayGay
+                    ? "drop-shadow(0px 0px 1px #000000) drop-shadow(0px 0px 2px #000000) drop-shadow(0px 0px 2px #000000)"
+                    : null
+              }}
+            >
+              <h3 className="trainLink">No ETA</h3>
+            </span>
+          </>
+        )}
+      </div>
+    );
+  };
 
   return (
     <main>
@@ -149,13 +193,37 @@ const Finder = () => {
         }}
       >
         <span style={{ display: "flex", justifyContent: "space-between" }}>
-          <h2 style={{ marginTop: "4px" }}>{station.stationName}</h2>
+          <h2 style={{ marginTop: "4px" }}>Train Finder</h2>
         </span>
         <p>As of {new Date(lastFetched).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</p>
       </div>
+      <h3
+        className="train"
+        key="backButton"
+        style={{
+          backgroundColor: agencyMeta.color,
+          color: agencyMeta.textColor,
+          maxWidth: "384px",
+          marginBottom: "4px"
+        }}
+        onClick={() => {
+          //see if querey string has prev
+          const prev = urlParams.get("prev");
+
+          if (prev) {
+            navigate(-1);
+          } else if (history.state.idx && history.state.idx > 0) {
+            navigate(-1);
+          } else {
+            navigate(`/${agency}`, { replace: true }); //fallback
+          }
+        }}
+      >
+        Go Back
+      </h3>
       <div className="trains">
         {isLoading ? (
-          <p style={{ maxWidth: "384px", padding: "8px", marginBottom: "4px", background: "#333" }}>{loadingMessage}</p>
+          <p style={{ maxWidth: "384px", padding: "8px", background: "#333" }}>{loadingMessage}</p>
         ) : (
           filteredTrains
             .sort((a, b) => {
@@ -185,6 +253,7 @@ const Finder = () => {
                   >
                     <span
                       style={{
+                        width: "100%",
                         filter:
                           train.extra?.holidayChristmas || train.extra?.holidayGay
                             ? "drop-shadow(0px 0px 1px #000000) drop-shadow(0px 0px 2px #000000) drop-shadow(0px 0px 2px #000000)"
@@ -204,76 +273,16 @@ const Finder = () => {
                             : train.runNumber
                           : ""}
                         {train.extra?.holidayChristmas ? " 🎄" : train.extra?.holidayGay ? " 🏳️‍🌈" : ""}
-                        {train.realTime ? null : <span className="noto-emoji-outline smaller-emoji"> 🕓 </span>} to
+                        {train.realTime ? null : <span className="noto-emoji-outline smaller-emoji"> 🕓 </span>}
                       </p>
-                      <h3>{train.dest}</h3>
-                      {train.extra && train.extra.info ? <p>{train.extra.info}</p> : null}
+                      {train.nextStop ? <SingleETAFinder train={train} stop={train.nextStop} /> : null}
+                      <SingleETAFinder train={train} stop={train.finalStop} gapTop={train.nextStop} />
                     </span>
-                    {train.finalStop && !train.finalStop.noETA ? (
-                      <span
-                        style={{
-                          filter:
-                            train.extra?.holidayChristmas || train.extra?.holidayGay
-                              ? "drop-shadow(0px 0px 1px #000000) drop-shadow(0px 0px 2px #000000) drop-shadow(0px 0px 2px #000000)"
-                              : null
-                        }}
-                      >
-                        <h3 className="trainLink" style={{ textAlign: "right" }}>
-                          {hoursMinutesUntilArrival(train.finalStop.actualETA)}
-                        </h3>
-                        <p
-                          className="trainLink"
-                          style={{ fontSize: "0.8em", whiteSpace: "nowrap", textAlign: "right" }}
-                        >
-                          {timeFormat(train.finalStop.actualETA)}
-                        </p>
-                        {train.extra && train.extra.cap ? (
-                          <p className="trainLink" style={{ fontSize: "0.8em" }}>
-                            {Math.ceil((train.extra.load / train.extra.cap) * 100)}% Full
-                          </p>
-                        ) : null}
-                      </span>
-                    ) : (
-                      <span
-                        style={{
-                          filter:
-                            train.extra?.holidayChristmas || train.extra?.holidayGay
-                              ? "drop-shadow(0px 0px 1px #000000) drop-shadow(0px 0px 2px #000000) drop-shadow(0px 0px 2px #000000)"
-                              : null
-                        }}
-                      >
-                        <h3 className="trainLink">No ETA</h3>
-                        {train.extra && train.extra.cap ? (
-                          <p className="trainLink" style={{ fontSize: "0.8em" }}>
-                            {Math.ceil((train.extra.load / train.extra.cap) * 100)}% Full
-                          </p>
-                        ) : null}
-                      </span>
-                    )}
                   </div>
                 </Link>
               );
             })
         )}
-        <h3
-          className="train"
-          key="backButton"
-          style={{ backgroundColor: agencyMeta.color, color: agencyMeta.textColor, maxWidth: "384px" }}
-          onClick={() => {
-            //see if querey string has prev
-            const prev = urlParams.get("prev");
-
-            if (prev) {
-              navigate(-1);
-            } else if (history.state.idx && history.state.idx > 0) {
-              navigate(-1);
-            } else {
-              navigate(`/${agency}`, { replace: true }); //fallback
-            }
-          }}
-        >
-          Go Back
-        </h3>
       </div>
     </main>
   );

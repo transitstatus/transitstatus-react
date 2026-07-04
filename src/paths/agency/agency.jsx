@@ -296,7 +296,7 @@ const Agency = () => {
             }}
           >
             <Link
-              to={`/${agency}/track/all`}
+              to={`/${agency}/finder`}
               style={{
                 color: agencies[agency].textColor,
               }}
@@ -353,7 +353,7 @@ const Agency = () => {
               }}
             >
               <Link
-                to={runNumber.length > 0 ? `/${agency}/track/${runNumber}` : ""}
+                to={`/${agency}/finder?filters=includes:runNumber:${runNumber};&filterType=OR`}
                 style={{
                   color: "#fff",
                 }}

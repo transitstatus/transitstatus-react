@@ -33,6 +33,16 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id="1-21-3">
+            <td>
+              <a href="#1-21-3">v1.21.3</a>
+            </td>
+            <td>
+              <ul>
+                <li>Implemented a crude "fuzzy search" for "track this run number" on agency home page instead of the former exact match search from before.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id="1-21-2">
             <td>
               <a href="#1-21-2">v1.21.2</a>
