@@ -33,13 +33,23 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id="1-21-5">
+            <td>
+              <a href="#1-21-5">v1.21.5</a>
+            </td>
+            <td>
+              <ul>
+                <li>Visual glitch fix for scheduled train icon.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id="1-21-4">
             <td>
               <a href="#1-21-4">v1.21.4</a>
             </td>
             <td>
               <ul>
-                <li>Added "startsWith" and "endsWith" filter types for .</li>
+                <li>Added "startsWith" and "endsWith" filter types for finder.</li>
               </ul>
             </td>
           </tr>

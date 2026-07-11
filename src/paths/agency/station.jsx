@@ -206,7 +206,7 @@ const Station = () => {
                                           : null
                                     }}
                                   >
-                                  <p>
+                                  <p className="text-vertical-align">
                                     {agencyMeta.useCodeForShortName ? train.lineCode : train.line}
                                     {agencyMeta.addLine ? " Line " : " "}
                                     {agencyMeta.addType ? `${agencyMeta.type} ` : ""}

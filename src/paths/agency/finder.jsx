@@ -18,6 +18,7 @@ const Finder = () => {
   const { agency } = useParams();
   const navigate = useNavigate();
   const [station, setStation] = useState({});
+  const [trainFilters, setTrainFilters] = useState([]);
   const [filteredTrains, setFilteredtrains] = useState([]);
   const [lastFetched, setLastFetched] = useState(0);
   const [loadingMessage, setLoadingMessage] = useState("Loading trains...");
@@ -38,6 +39,10 @@ const Finder = () => {
   let settings = JSON.parse(localStorage.getItem("transitstatus_v1_settings") ?? "{}");
   if (!settings.playgroundEnabled) settings.playgroundEnabled = false;
 
+  const updateFilters = (filters) => {
+    
+  };
+
   useEffect(() => {
     const fetchData = () => {
       window.dataManager
@@ -53,10 +58,6 @@ const Finder = () => {
               finalStop: train.predictions.length > 0 ? train.predictions.at(-1) : null
             };
           });
-
-          //filtering logic here
-
-          console.log(urlParams, urlParams.size);
 
           if (urlParams.size == 0 || !urlParams.get("filters")) {
             setFilteredtrains(prefiltered);
@@ -266,7 +267,7 @@ const Finder = () => {
                             : null
                       }}
                     >
-                      <p>
+                      <p className="text-vertical-align">
                         {agencyMeta.useCodeForShortName ? train.lineCode : train.line}
                         {agencyMeta.addLine ? " Line " : " "}
                         {agencyMeta.addType ? `${agencyMeta.type} ` : ""}

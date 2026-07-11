@@ -372,8 +372,13 @@ tr:nth-child(even) {
 
 .smaller-emoji {
   font-size: 12px;
-  line-height: 12px;
-  alignment-baseline: middle;
+  margin-bottom: 2px;
+}
+
+.text-vertical-align {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .consist {

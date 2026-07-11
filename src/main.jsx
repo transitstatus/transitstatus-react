@@ -17,7 +17,6 @@ const Privacy = React.lazy(() => import("./paths/index/privacy.jsx"));
 const ChangeLog = React.lazy(() => import("./paths/index/changelog.jsx"));
 const API = React.lazy(() => import("./paths/index/api.jsx"));
 const Agency = React.lazy(() => import("./paths/agency/agency.jsx"));
-const AllTrains = React.lazy(() => import("./paths/agency/allTrains.jsx"));
 const Line = React.lazy(() => import("./paths/agency/line.jsx"));
 const LineQS = React.lazy(() => import("./paths/agency/lineQS.jsx"));
 const Station = React.lazy(() => import("./paths/agency/station.jsx"));
