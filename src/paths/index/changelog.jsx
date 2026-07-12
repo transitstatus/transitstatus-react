@@ -33,6 +33,16 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id="1-21-6">
+            <td>
+              <a href="#1-21-6">v1.21.6</a>
+            </td>
+            <td>
+              <ul>
+                <li>Enabled "view all trains" for all users.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id="1-21-5">
             <td>
               <a href="#1-21-5">v1.21.5</a>

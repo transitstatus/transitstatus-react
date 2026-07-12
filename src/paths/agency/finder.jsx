@@ -200,7 +200,7 @@ const Finder = () => {
         }}
       >
         <span style={{ display: "flex", justifyContent: "space-between" }}>
-          <h2 style={{ marginTop: "4px" }}>Train Finder</h2>
+          <h2 style={{ marginTop: "4px" }}>{agencyMeta.type} Finder</h2>
         </span>
         <p>As of {new Date(lastFetched).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</p>
       </div>
