@@ -21,8 +21,7 @@ const Line = ({ lineOverride = null }) => {
   document.title = `${agencies[agency].name} ${agencies[agency].onlyUseSingleRouteCode ? agencies[agency].type : line.lineNameLong} Tracker | Transitstat.us`;
 
   const favoriteStations = useMemo(() => {
-    const results =
-      JSON.parse(localStorage.getItem("favorites-transitstatus-v0")) || {};
+    const results = JSON.parse(localStorage.getItem("favorites-transitstatus-v0")) || {};
 
     Object.keys(results).forEach((key) => {
       if (key.split("-")[0] != agency) {
@@ -43,10 +42,7 @@ const Line = ({ lineOverride = null }) => {
         setLoadingMessage(data.shitsFuckedMessage);
       }
 
-      if (
-        Object.keys(linesData).length === 0 ||
-        Object.keys(stationsData).length === 0
-      ) {
+      if (Object.keys(linesData).length === 0 || Object.keys(stationsData).length === 0) {
         try {
           const shitsFucked = await window.dataManager.getData(agency, "shitsFucked");
 
@@ -62,7 +58,7 @@ const Line = ({ lineOverride = null }) => {
 
       setLine(linesData[lineName]);
       setStations(stationsData);
-      if (alertsData && alertsData != 'Not found') setAlerts(alertsData);
+      if (alertsData && alertsData != "Not found") setAlerts(alertsData);
 
       setIsLoading(false);
     };
@@ -76,20 +72,11 @@ const Line = ({ lineOverride = null }) => {
       <main>
         <Oneko />
         <h1>Line Not Found</h1>
-        <p>
-          The line you were trying to view doesn't exist. Please go back and try
-          again.
-        </p>
+        <p>The line you were trying to view doesn't exist. Please go back and try again.</p>
         <h3
-          className='route'
-          key='backButton'
-          style={{
-            backgroundColor: "#444",
-            color: "#fff",
-            fontSize: "1.3rem",
-            padding: "8px",
-            marginTop: "4px",
-          }}
+          className="route"
+          key="backButton"
+          style={{ backgroundColor: "#444", color: "#fff", fontSize: "1.3rem", padding: "8px", marginTop: "4px" }}
           onClick={() => {
             if (history.state.idx && history.state.idx > 0) {
               navigate(-1);
@@ -111,70 +98,75 @@ const Line = ({ lineOverride = null }) => {
         {agencies[agency].name} {agencies[agency].type} Tracker
       </h1>
       <Meta />
-      <div className='stations'>
+      <div className="stations">
         {isLoading ? (
           <h2>Loading line...</h2>
-        ) : <div
-          style={{
-            marginTop: "4px",
-            padding: "8px 8px",
-            backgroundColor: `#${line.routeColor}`,
-            color: `#${line.routeTextColor}`,
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-        >
-          {agencies[agency].onlyUseSingleRouteCode ?
-            <>
+        ) : (
+          <div
+            style={{
+              marginTop: "4px",
+              padding: "8px 8px",
+              backgroundColor: `#${line.routeColor}`,
+              color: `#${line.routeTextColor}`,
+              display: "flex",
+              justifyContent: "space-between"
+            }}
+          >
+            {agencies[agency].onlyUseSingleRouteCode ? (
+              <>
+                <h2 style={{ marginTop: 0 }}>
+                  {agencies[agency].name} {agencies[agency].type} Tracker
+                </h2>
+                <AgencyHeart agency={agency} style={{ width: "26px" }} />
+              </>
+            ) : (
               <h2 style={{ marginTop: 0 }}>
-                {agencies[agency].name} {agencies[agency].type} Tracker
-              </h2>
-              <AgencyHeart
-                agency={agency}
-                style={{
-                  width: "26px",
-                }}
-              />
-            </> : <h2 style={{ marginTop: 0 }}>
-              {line.lineNameLong}{" "}
-              {line.lineNameShort.length > 0 &&
+                {line.lineNameLong}{" "}
+                {line.lineNameShort.length > 0 &&
                 agencies[agency].addShortName &&
                 line.lineNameShort != line.lineNameLong
-                ? `(${line.lineNameShort})`
-                : ""}
-            </h2>
-          }
-        </div>
-        }
-        <AlertsList alertsArray={alerts} agency={agency} filterType={'line'} filterID={lineName} style={{ marginBottom: '4px', marginTop: '-4px' }} />
-        {agencies[agency].onlyUseSingleRouteCode ?
+                  ? `(${line.lineNameShort})`
+                  : ""}
+              </h2>
+            )}
+          </div>
+        )}
+        <AlertsList
+          alertsArray={alerts}
+          agency={agency}
+          filterType={"line"}
+          filterID={lineName}
+          style={{ marginBottom: "4px", marginTop: "-4px" }}
+        />
+        {agencies[agency].onlyUseSingleRouteCode ? (
           <h3
-            className='route'
-            key='backButton'
+            className="route"
+            key="backButton"
             style={{
               backgroundColor: agencies[agency].color,
               color: agencies[agency].textColor,
               fontSize: "1.3rem",
-              padding: "8px",
+              padding: "8px"
             }}
             onClick={() => {
               if (history.state.idx && history.state.idx > 0) {
                 navigate(-1);
               } else {
-                navigate('', { replace: true }); //fallback
+                navigate("", { replace: true }); //fallback
               }
             }}
           >
             Choose Another Agency
-          </h3> :
+          </h3>
+        ) : (
           <h3
-            className='route'
-            key='backButton'
+            className="route"
+            key="backButton"
             style={{
               backgroundColor: agencies[agency].color,
               color: agencies[agency].textColor,
               fontSize: "1.3rem",
-              padding: "8px",
+              padding: "8px"
             }}
             onClick={() => {
               if (history.state.idx && history.state.idx > 0) {
@@ -186,7 +178,7 @@ const Line = ({ lineOverride = null }) => {
           >
             Choose Another Line
           </h3>
-        }
+        )}
         {isLoading ? (
           <p>{loadingMessage}</p>
         ) : line.stations.length > 0 ? (
@@ -211,11 +203,8 @@ const Line = ({ lineOverride = null }) => {
                 <h3 key={station.stationID}>
                   <Link
                     to={`/${agency}/stops/${station.stationID}`}
-                    className='station'
-                    style={{
-                      fontSize: "1.3rem",
-                      padding: "8px",
-                    }}
+                    className="station"
+                    style={{ fontSize: "1.3rem", padding: "8px" }}
                   >
                     {station.stationName}
                   </Link>
@@ -223,13 +212,10 @@ const Line = ({ lineOverride = null }) => {
               );
             })
         ) : (
-          <p>
-            No stations have {agencies[agency].typeCodePlural} tracking for this
-            line currently.
-          </p>
+          <p>No stations have {agencies[agency].typeCodePlural} tracking for this line currently.</p>
         )}
 
-        {agencies[agency].onlyUseSingleRouteCode ?
+        {agencies[agency].onlyUseSingleRouteCode ? (
           <>
             <div>
               <h2
@@ -239,22 +225,14 @@ const Line = ({ lineOverride = null }) => {
                   color: agencies[agency].textColor,
                   backgroundColor: agencies[agency].color,
                   maxWidth: "384px",
-                  padding: "4px 8px",
+                  padding: "4px 8px"
                 }}
               >
                 Track a {agencies[agency].type} by Number
               </h2>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  maxWidth: "400px",
-                  gap: "4px",
-                  marginTop: "8px",
-                }}
-              >
+              <div style={{ display: "flex", flexDirection: "row", maxWidth: "400px", gap: "4px", marginTop: "8px" }}>
                 <input
-                  type='text'
+                  type="text"
                   placeholder={`Run/${agencies[agency].type} Number`}
                   value={runNumber}
                   onChange={(e) => setRunNumber(e.target.value)}
@@ -264,24 +242,17 @@ const Line = ({ lineOverride = null }) => {
                     color: "#fff",
                     backgroundColor: "#444",
                     flex: 1,
-                    border: "2px solid #555",
+                    border: "2px solid #555"
                   }}
                 ></input>
                 <h3
-                  className='route'
-                  key='onMap'
-                  style={{
-                    backgroundColor: "#444",
-                    color: "#fff",
-                    fontSize: "1.3rem",
-                    padding: "8px",
-                  }}
+                  className="route"
+                  key="onMap"
+                  style={{ backgroundColor: "#444", color: "#fff", fontSize: "1.3rem", padding: "8px" }}
                 >
                   <Link
-                    to={runNumber.length > 0 ? `/${agency}/track/${runNumber}` : ""}
-                    style={{
-                      color: "#fff",
-                    }}
+                    to={`/${agency}/finder?filters=includes:runNumber:${runNumber};&filterType=OR`}
+                    style={{ color: "#fff" }}
                   >
                     Track {agencies[agency].type}
                   </Link>
@@ -296,29 +267,16 @@ const Line = ({ lineOverride = null }) => {
                   color: agencies[agency].textColor,
                   backgroundColor: agencies[agency].color,
                   maxWidth: "384px",
-                  padding: "4px 8px",
+                  padding: "4px 8px"
                 }}
               >
                 Favorite Stops
               </h2>
               <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  maxWidth: "400px",
-                  gap: "4px",
-                  marginTop: "8px",
-                }}
+                style={{ display: "flex", flexDirection: "column", maxWidth: "400px", gap: "4px", marginTop: "8px" }}
               >
                 {Object.keys(favoriteStations).length === 0 ? (
-                  <p
-                    style={{
-                      fontSize: "1rem",
-                      padding: "4px 8px",
-                      color: "#fff",
-                      backgroundColor: "#444",
-                    }}
-                  >
+                  <p style={{ fontSize: "1rem", padding: "4px 8px", color: "#fff", backgroundColor: "#444" }}>
                     No favorite stops yet.
                   </p>
                 ) : (
@@ -333,10 +291,7 @@ const Line = ({ lineOverride = null }) => {
                             agency={favKey.split("-")[0]}
                             station={fav}
                             key={favKey}
-                            style={{
-                              backgroundColor: "#444",
-                              color: "#fff",
-                            }}
+                            style={{ backgroundColor: "#444", color: "#fff" }}
                           />
                         );
                       })}
@@ -344,24 +299,23 @@ const Line = ({ lineOverride = null }) => {
                 )}
               </div>
             </div>
-          </> : null}
+          </>
+        ) : null}
 
         <div>
           <h3
-            className='route'
-            key='viewMap'
+            className="route"
+            key="viewMap"
             style={{
               backgroundColor: agencies[agency].color,
               color: agencies[agency].textColor,
               fontSize: "1.3rem",
-              padding: "8px",
+              padding: "8px"
             }}
           >
             <Link
               to={agencies[agency].dontFilterMapLines ? `/${agency}/map` : `/${agency}/map?route=${lineName}`}
-              style={{
-                color: agencies[agency].textColor,
-              }}
+              style={{ color: agencies[agency].textColor }}
             >
               View on a Map
             </Link>

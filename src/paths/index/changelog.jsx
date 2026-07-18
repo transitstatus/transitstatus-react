@@ -19,9 +19,7 @@ const Changelog = () => {
           }
         }}
         className="settingsButton"
-        style={{
-          marginTop: "0.5rem",
-        }}
+        style={{ marginTop: "0.5rem" }}
       >
         Back Home
       </button>
@@ -33,13 +31,23 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id="1-21-7">
+            <td>
+              <a href="#1-21-7">v1.21.7</a>
+            </td>
+            <td>
+              <ul>
+                <li>Fixed bug affecting "Track Train by Number" when on Brightline agency page.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id="1-21-6">
             <td>
               <a href="#1-21-6">v1.21.6</a>
             </td>
             <td>
               <ul>
-                <li>Enabled "view all trains" for all users.</li>
+                <li>Enabled "View All Trains" for all users.</li>
               </ul>
             </td>
           </tr>
@@ -69,8 +77,14 @@ const Changelog = () => {
             </td>
             <td>
               <ul>
-                <li>Implemented a crude "fuzzy search" for "track this run number" on agency home page instead of the former exact match search from before.</li>
-                <li>Slightly changed vehicle formatting on finder to show both the next stop and the final stop instead of just the final stop.</li>
+                <li>
+                  Implemented a crude "fuzzy search" for "track this run number" on agency home page instead of the
+                  former exact match search from before.
+                </li>
+                <li>
+                  Slightly changed vehicle formatting on finder to show both the next stop and the final stop instead of
+                  just the final stop.
+                </li>
               </ul>
             </td>
           </tr>
@@ -125,8 +139,8 @@ const Changelog = () => {
             <td>
               <ul>
                 <li>
-                  Changed "⏲" to "🕓" because unlike on my computer&trade;, that
-                  turns into a timer emoji on phones and some computers.
+                  Changed "⏲" to "🕓" because unlike on my computer&trade;, that turns into a timer emoji on phones and
+                  some computers.
                 </li>
                 <li>Centered aforementioned emoji.</li>
               </ul>
@@ -148,9 +162,7 @@ const Changelog = () => {
             </td>
             <td>
               <ul>
-                <li>
-                  Testing custom font sizing per agency to improve screen usage.
-                </li>
+                <li>Testing custom font sizing per agency to improve screen usage.</li>
               </ul>
             </td>
           </tr>
@@ -190,15 +202,9 @@ const Changelog = () => {
             </td>
             <td>
               <ul>
-                <li>
-                  Added a link to a list of all vehicles on each agency home
-                  page.
-                </li>
+                <li>Added a link to a list of all vehicles on each agency home page.</li>
                 <ul>
-                  <li>
-                    This must be enabled in the "enable playground features"
-                    setting.
-                  </li>
+                  <li>This must be enabled in the "enable playground features" setting.</li>
                 </ul>
               </ul>
             </td>
@@ -233,10 +239,7 @@ const Changelog = () => {
             <td>
               <ul>
                 <li>Fixed LIRR name typo.</li>
-                <li>
-                  Made slight adjustments to how DeadMileage vehicles are
-                  displayed on maps.
-                </li>
+                <li>Made slight adjustments to how DeadMileage vehicles are displayed on maps.</li>
               </ul>
             </td>
           </tr>
@@ -260,9 +263,7 @@ const Changelog = () => {
             </td>
             <td>
               <ul>
-                <li>
-                  Added extra features specific to the CPKC holiday trains.
-                </li>
+                <li>Added extra features specific to the CPKC holiday trains.</li>
               </ul>
             </td>
           </tr>
@@ -327,20 +328,15 @@ const Changelog = () => {
             <td>
               <ul>
                 <li>
-                  Fixed bug where snow (when enabled) doesn't fill the entire
-                  page when they are larger than the screen.
+                  Fixed bug where snow (when enabled) doesn't fill the entire page when they are larger than the screen.
                 </li>
                 <li>
-                  Added setting to multiply the amount of snow on the page (as
-                  low as 0x and as high as you'd like).
+                  Added setting to multiply the amount of snow on the page (as low as 0x and as high as you'd like).
                 </li>
+                <li>Added candy cane to christmas themed vehicles on the map.</li>
                 <li>
-                  Added candy cane to christmas themed vehicles on the map.
-                </li>
-                <li>
-                  Made changes to codebase to support further specially themed
-                  vehicles in the future (halloween, new years, easter, heritage
-                  units, etc).
+                  Made changes to codebase to support further specially themed vehicles in the future (halloween, new
+                  years, easter, heritage units, etc).
                 </li>
               </ul>
             </td>
@@ -363,15 +359,9 @@ const Changelog = () => {
               <ul>
                 <li>Added configuration URL parameters.</li>
                 <ul>
-                  <li>
-                    These are undocumented and are for personal use. I might
-                    give some info about them later.
-                  </li>
+                  <li>These are undocumented and are for personal use. I might give some info about them later.</li>
                 </ul>
-                <li>
-                  Fixed bug with Data Manager that would update every agency,
-                  leading to high data usage.
-                </li>
+                <li>Fixed bug with Data Manager that would update every agency, leading to high data usage.</li>
               </ul>
             </td>
           </tr>
@@ -394,10 +384,7 @@ const Changelog = () => {
             </td>
             <td>
               <ul>
-                <li>
-                  Added selector if multiple map features are clicked on at
-                  once.
-                </li>
+                <li>Added selector if multiple map features are clicked on at once.</li>
                 <li>Reduced duplicated code from codbase.</li>
                 <li>Removed unused imports from codebase.</li>
               </ul>
@@ -409,10 +396,7 @@ const Changelog = () => {
             </td>
             <td>
               <ul>
-                <li>
-                  New Passio endpoint. Multiple casualties due to poor GTFS-RT
-                  support. I'm sorry :c
-                </li>
+                <li>New Passio endpoint. Multiple casualties due to poor GTFS-RT support. I'm sorry :c</li>
               </ul>
             </td>
           </tr>
@@ -424,10 +408,7 @@ const Changelog = () => {
               <ul>
                 <li>Disabled POIs.</li>
                 <ul>
-                  <li>
-                    I want to add these back, just with filtering with less
-                    needed things.
-                  </li>
+                  <li>I want to add these back, just with filtering with less needed things.</li>
                 </ul>
               </ul>
             </td>
@@ -470,10 +451,9 @@ const Changelog = () => {
             <td>
               <ul>
                 <li>
-                  Changed map icon color to be based off of individual trains,
-                  not the routes they are a part of. This is needed for the CTA
-                  where some trains have inverted colors on the green and blue
-                  lines based on their destination.
+                  Changed map icon color to be based off of individual trains, not the routes they are a part of. This
+                  is needed for the CTA where some trains have inverted colors on the green and blue lines based on
+                  their destination.
                 </li>
               </ul>
             </td>
@@ -535,9 +515,7 @@ const Changelog = () => {
             </td>
             <td>
               <ul>
-                <li>
-                  Testing quick select keyboard (enabled by flag in settings).
-                </li>
+                <li>Testing quick select keyboard (enabled by flag in settings).</li>
               </ul>
             </td>
           </tr>
@@ -568,12 +546,8 @@ const Changelog = () => {
             <td>
               <ul>
                 <li>Added sitemap.xml.</li>
-                <li>
-                  Fixed Brightline config to show scheduled train numbers.
-                </li>
-                <li>
-                  Allowing users to click on scheduled trains on station pages.
-                </li>
+                <li>Fixed Brightline config to show scheduled train numbers.</li>
+                <li>Allowing users to click on scheduled trains on station pages.</li>
               </ul>
             </td>
           </tr>
@@ -604,8 +578,8 @@ const Changelog = () => {
             <td>
               <ul>
                 <li>
-                  Switched brightline to using "Northbound" and "Southbound"
-                  instead of a train's final destination when sorting trains.
+                  Switched brightline to using "Northbound" and "Southbound" instead of a train's final destination when
+                  sorting trains.
                 </li>
               </ul>
             </td>
@@ -617,13 +591,9 @@ const Changelog = () => {
             <td>
               <ul>
                 <li>
-                  Testing a station display mode (access by replacing
-                  /stops/[stop id] with /stops/display/[stop id]).
+                  Testing a station display mode (access by replacing /stops/[stop id] with /stops/display/[stop id]).
                 </li>
-                <li>
-                  Added 'playground' setting toggle to enable experiments like
-                  the station display.
-                </li>
+                <li>Added 'playground' setting toggle to enable experiments like the station display.</li>
               </ul>
             </td>
           </tr>
@@ -683,9 +653,7 @@ const Changelog = () => {
             </td>
             <td>
               <ul>
-                <li>
-                  Fixed bug where some vehicles without ETA's aren't shown.
-                </li>
+                <li>Fixed bug where some vehicles without ETA's aren't shown.</li>
               </ul>
             </td>
           </tr>
@@ -709,11 +677,7 @@ const Changelog = () => {
                 <li>Disabled MFF.</li>
                 <ul>
                   <li>
-                    Still accessible at{" "}
-                    <a href="https://transitstat.us/mff">
-                      https://transitstat.us/mff
-                    </a>
-                    .
+                    Still accessible at <a href="https://transitstat.us/mff">https://transitstat.us/mff</a>.
                   </li>
                 </ul>
               </ul>
@@ -726,10 +690,7 @@ const Changelog = () => {
             <td>
               <ul>
                 <li>Added BART.</li>
-                <li>
-                  Fixed bug with how buttons are rendered with agencies that
-                  don't filter lines on the map.
-                </li>
+                <li>Fixed bug with how buttons are rendered with agencies that don't filter lines on the map.</li>
               </ul>
             </td>
           </tr>
@@ -761,10 +722,7 @@ const Changelog = () => {
             </td>
             <td>
               <ul>
-                <li>
-                  Fixed station popups not appearing on map due to misnamed
-                  variable.
-                </li>
+                <li>Fixed station popups not appearing on map due to misnamed variable.</li>
               </ul>
             </td>
           </tr>
@@ -784,10 +742,7 @@ const Changelog = () => {
             </td>
             <td>
               <ul>
-                <li>
-                  Reduced opacity on scheduled trains to better differentiate
-                  them from tracking trains.
-                </li>
+                <li>Reduced opacity on scheduled trains to better differentiate them from tracking trains.</li>
               </ul>
             </td>
           </tr>
@@ -798,9 +753,7 @@ const Changelog = () => {
             <td>
               <ul>
                 <li>Improved scheduled train support.</li>
-                <li>
-                  Added support for run number modification on the client side.
-                </li>
+                <li>Added support for run number modification on the client side.</li>
               </ul>
             </td>
           </tr>
@@ -870,10 +823,7 @@ const Changelog = () => {
             </td>
             <td>
               <ul>
-                <li>
-                  Added Christmas colors and snowflakes with holiday themed
-                  transit vehicles.
-                </li>
+                <li>Added Christmas colors and snowflakes with holiday themed transit vehicles.</li>
               </ul>
             </td>
           </tr>
@@ -904,10 +854,7 @@ const Changelog = () => {
             </td>
             <td>
               <ul>
-                <li>
-                  Upgraded caching system to use localforage, for better speed
-                  and reliability.
-                </li>
+                <li>Upgraded caching system to use localforage, for better speed and reliability.</li>
                 <li>Removed opengraph test.</li>
               </ul>
             </td>
@@ -953,10 +900,7 @@ const Changelog = () => {
                 <ul>
                   <li>Better performance.</li>
                   <li>Lower bandwidth usage.</li>
-                  <li>
-                    Lower error rate from lag between GTFS processing and
-                    realtime.
-                  </li>
+                  <li>Lower error rate from lag between GTFS processing and realtime.</li>
                 </ul>
               </ul>
             </td>
@@ -1020,10 +964,7 @@ const Changelog = () => {
             </td>
             <td>
               <ul>
-                <li>
-                  Added the ability to track a train/bus via a run/vehicle
-                  number.
-                </li>
+                <li>Added the ability to track a train/bus via a run/vehicle number.</li>
               </ul>
             </td>
           </tr>
@@ -1065,8 +1006,7 @@ const Changelog = () => {
             <td>
               <ul>
                 <li>
-                  Made <code>/snowpiercer</code> redirect to{" "}
-                  <code>/snowpiercer/track/PRCR</code>.
+                  Made <code>/snowpiercer</code> redirect to <code>/snowpiercer/track/PRCR</code>.
                 </li>
                 <li>Added links to changelog.</li>
               </ul>
@@ -1090,10 +1030,7 @@ const Changelog = () => {
               <ul>
                 <li>Adjusted map icons and sizes.</li>
                 <li>Re-enabled bay area with bugs fixed.</li>
-                <li>
-                  Fixed text wrapping issues encountered with long station
-                  names.
-                </li>
+                <li>Fixed text wrapping issues encountered with long station names.</li>
               </ul>
             </td>
           </tr>
@@ -1141,13 +1078,8 @@ const Changelog = () => {
             </td>
             <td>
               <ul>
-                <li>
-                  Hiding inactive routes menu when there are no inactive routes.
-                </li>
-                <li>
-                  Used memoization to partially improve performance on the
-                  agency index page.
-                </li>
+                <li>Hiding inactive routes menu when there are no inactive routes.</li>
+                <li>Used memoization to partially improve performance on the agency index page.</li>
               </ul>
             </td>
           </tr>
@@ -1313,10 +1245,7 @@ const Changelog = () => {
             </td>
             <td>
               <ul>
-                <li>
-                  Modified setting mentioned in 1.9.3 to remove the line short
-                  name, NOT remove all letters.
-                </li>
+                <li>Modified setting mentioned in 1.9.3 to remove the line short name, NOT remove all letters.</li>
                 <li>Testing out a new request method for map tiles.</li>
               </ul>
             </td>
@@ -1327,10 +1256,7 @@ const Changelog = () => {
             </td>
             <td>
               <ul>
-                <li>
-                  Added ability to remove letters from run numbers (currently
-                  only for Metra).
-                </li>
+                <li>Added ability to remove letters from run numbers (currently only for Metra).</li>
               </ul>
             </td>
           </tr>
@@ -1981,9 +1907,7 @@ const Changelog = () => {
           }
         }}
         className="settingsButton"
-        style={{
-          marginTop: "0.5rem",
-        }}
+        style={{ marginTop: "0.5rem" }}
       >
         Back Home
       </button>
