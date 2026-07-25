@@ -31,6 +31,16 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id="1-21-8">
+            <td>
+              <a href="#1-21-8">v1.21.8</a>
+            </td>
+            <td>
+              <ul>
+                <li>Updated map style and source data.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id="1-21-7">
             <td>
               <a href="#1-21-7">v1.21.7</a>

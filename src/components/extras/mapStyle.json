@@ -6,11 +6,11 @@
   "sources": {
     "protomaps": {
       "type": "vector",
-      "url": "https://v4map.transitstat.us/20251018.json"
+      "url": "https://v4map.amtraker.com/20260723.json"
     }
   },
-  "sprite": "https://protomaps.github.io/basemaps-assets/sprites/v4/dark",
-  "glyphs": "https://protomaps.github.io/basemaps-assets/fonts/{fontstack}/{range}.pbf",
+  "sprite": "https://basemaps-assets.amtraker.com/sprites/v4/dark",
+  "glyphs": "https://basemaps-assets.amtraker.com/fonts/{fontstack}/{range}.pbf",
   "layers": [
     {
       "id": "background",
@@ -60,6 +60,7 @@
         "forest",
         "golf_course",
         "wood",
+        "nature_reserve",
         "forest",
         "scrub",
         "grassland",
@@ -92,6 +93,8 @@
         "forest",
         "golf_course",
         "wood",
+        "nature_reserve",
+        "forest",
         "scrub",
         "grassland",
         "grass",
@@ -386,281 +389,11 @@
       }
     },
     {
-      "id": "roads_tunnels_other_casing",
-      "type": "line",
-      "source": "protomaps",
-      "source-layer": "roads",
-      "filter": [
-        "all",
-        [
-          "has",
-          "is_tunnel"
-        ],
-        [
-          "in",
-          "kind",
-          "other",
-          "path"
-        ]
-      ],
-      "paint": {
-        "line-color": "#5A5A5A",
-        "line-gap-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          14,
-          0,
-          20,
-          7
-        ]
-      }
-    },
-    {
-      "id": "roads_tunnels_minor_casing",
-      "type": "line",
-      "source": "protomaps",
-      "source-layer": "roads",
-      "filter": [
-        "all",
-        [
-          "has",
-          "is_tunnel"
-        ],
-        [
-          "==",
-          "kind",
-          "minor_road"
-        ]
-      ],
-      "paint": {
-        "line-color": "#5A5A5A",
-        "line-dasharray": [
-          3,
-          2
-        ],
-        "line-gap-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          11,
-          0,
-          12.5,
-          0.5,
-          15,
-          2,
-          18,
-          11
-        ],
-        "line-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          12,
-          0,
-          12.5,
-          1
-        ]
-      }
-    },
-    {
-      "id": "roads_tunnels_link_casing",
-      "type": "line",
-      "source": "protomaps",
-      "source-layer": "roads",
-      "filter": [
-        "all",
-        [
-          "has",
-          "is_tunnel"
-        ],
-        [
-          "has",
-          "is_link"
-        ]
-      ],
-      "paint": {
-        "line-color": "#5A5A5A",
-        "line-dasharray": [
-          3,
-          2
-        ],
-        "line-gap-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          13,
-          0,
-          13.5,
-          1,
-          18,
-          11
-        ],
-        "line-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          12,
-          0,
-          12.5,
-          1
-        ]
-      }
-    },
-    {
-      "id": "roads_tunnels_major_casing",
-      "type": "line",
-      "source": "protomaps",
-      "source-layer": "roads",
-      "filter": [
-        "all",
-        [
-          "!has",
-          "is_tunnel"
-        ],
-        [
-          "!has",
-          "is_bridge"
-        ],
-        [
-          "==",
-          "kind",
-          "major_road"
-        ]
-      ],
-      "paint": {
-        "line-color": "#5A5A5A",
-        "line-dasharray": [
-          3,
-          2
-        ],
-        "line-gap-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          7,
-          0,
-          7.5,
-          0.5,
-          18,
-          13
-        ],
-        "line-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          9,
-          0,
-          9.5,
-          1
-        ]
-      }
-    },
-    {
-      "id": "roads_tunnels_highway_casing",
-      "type": "line",
-      "source": "protomaps",
-      "source-layer": "roads",
-      "filter": [
-        "all",
-        [
-          "!has",
-          "is_tunnel"
-        ],
-        [
-          "!has",
-          "is_bridge"
-        ],
-        [
-          "==",
-          "kind",
-          "highway"
-        ],
-        [
-          "!has",
-          "is_link"
-        ]
-      ],
-      "paint": {
-        "line-color": "#5A5A5A",
-        "line-dasharray": [
-          6,
-          0.5
-        ],
-        "line-gap-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          3,
-          0,
-          3.5,
-          0.5,
-          18,
-          15
-        ],
-        "line-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          7,
-          0,
-          7.5,
-          1,
-          20,
-          15
-        ]
-      }
-    },
-    {
       "id": "roads_tunnels_other",
       "type": "line",
       "source": "protomaps",
       "source-layer": "roads",
+      "minzoom": 12,
       "filter": [
         "all",
         [
@@ -692,7 +425,7 @@
           14,
           0,
           20,
-          7
+          1
         ]
       }
     },
@@ -701,6 +434,7 @@
       "type": "line",
       "source": "protomaps",
       "source-layer": "roads",
+      "minzoom": 12,
       "filter": [
         "all",
         [
@@ -727,11 +461,7 @@
           11,
           0,
           12.5,
-          0.5,
-          15,
-          2,
-          18,
-          11
+          0.5
         ]
       }
     },
@@ -740,6 +470,7 @@
       "type": "line",
       "source": "protomaps",
       "source-layer": "roads",
+      "minzoom": 12,
       "filter": [
         "all",
         [
@@ -765,9 +496,7 @@
           13,
           0,
           13.5,
-          1,
-          18,
-          11
+          1
         ]
       }
     },
@@ -776,6 +505,7 @@
       "type": "line",
       "source": "protomaps",
       "source-layer": "roads",
+      "minzoom": 12,
       "filter": [
         "all",
         [
@@ -802,11 +532,7 @@
           6,
           0,
           12,
-          1.6,
-          15,
-          3,
-          18,
-          13
+          1.6
         ]
       }
     },
@@ -815,6 +541,7 @@
       "type": "line",
       "source": "protomaps",
       "source-layer": "roads",
+      "minzoom": 12,
       "filter": [
         "all",
         [
@@ -853,11 +580,7 @@
           6,
           1.1,
           12,
-          1.6,
-          15,
-          5,
-          18,
-          15
+          1.6
         ]
       }
     },
@@ -866,6 +589,7 @@
       "type": "line",
       "source": "protomaps",
       "source-layer": "roads",
+      "minzoom": 12,
       "filter": [
         "==",
         "kind_detail",
@@ -885,294 +609,7 @@
           12,
           0,
           12.5,
-          0.5,
-          20,
-          16
-        ]
-      }
-    },
-    {
-      "id": "roads_minor_service_casing",
-      "type": "line",
-      "source": "protomaps",
-      "source-layer": "roads",
-      "minzoom": 13,
-      "filter": [
-        "all",
-        [
-          "!has",
-          "is_tunnel"
-        ],
-        [
-          "!has",
-          "is_bridge"
-        ],
-        [
-          "==",
-          "kind",
-          "minor_road"
-        ],
-        [
-          "==",
-          "kind_detail",
-          "service"
-        ]
-      ],
-      "paint": {
-        "line-color": "#5A5A5A",
-        "line-gap-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          13,
-          0,
-          18,
-          8
-        ],
-        "line-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          13,
-          0,
-          13.5,
-          0.8
-        ]
-      }
-    },
-    {
-      "id": "roads_minor_casing",
-      "type": "line",
-      "source": "protomaps",
-      "source-layer": "roads",
-      "filter": [
-        "all",
-        [
-          "!has",
-          "is_tunnel"
-        ],
-        [
-          "!has",
-          "is_bridge"
-        ],
-        [
-          "==",
-          "kind",
-          "minor_road"
-        ],
-        [
-          "!=",
-          "kind_detail",
-          "service"
-        ]
-      ],
-      "paint": {
-        "line-color": "#5A5A5A",
-        "line-gap-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          11,
-          0,
-          12.5,
-          0.5,
-          15,
-          2,
-          18,
-          11
-        ],
-        "line-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          12,
-          0,
-          12.5,
-          1
-        ]
-      }
-    },
-    {
-      "id": "roads_link_casing",
-      "type": "line",
-      "source": "protomaps",
-      "source-layer": "roads",
-      "minzoom": 13,
-      "filter": [
-        "has",
-        "is_link"
-      ],
-      "paint": {
-        "line-color": "#5A5A5A",
-        "line-gap-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          13,
-          0,
-          13.5,
-          1,
-          18,
-          11
-        ],
-        "line-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          13,
-          0,
-          13.5,
-          1.5
-        ]
-      }
-    },
-    {
-      "id": "roads_major_casing_late",
-      "type": "line",
-      "source": "protomaps",
-      "source-layer": "roads",
-      "minzoom": 12,
-      "filter": [
-        "all",
-        [
-          "!has",
-          "is_tunnel"
-        ],
-        [
-          "!has",
-          "is_bridge"
-        ],
-        [
-          "==",
-          "kind",
-          "major_road"
-        ]
-      ],
-      "paint": {
-        "line-color": "#5A5A5A",
-        "line-gap-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          6,
-          0,
-          12,
-          1.6,
-          15,
-          3,
-          18,
-          13
-        ],
-        "line-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          9,
-          0,
-          9.5,
-          1
-        ]
-      }
-    },
-    {
-      "id": "roads_highway_casing_late",
-      "type": "line",
-      "source": "protomaps",
-      "source-layer": "roads",
-      "minzoom": 12,
-      "filter": [
-        "all",
-        [
-          "!has",
-          "is_tunnel"
-        ],
-        [
-          "!has",
-          "is_bridge"
-        ],
-        [
-          "==",
-          "kind",
-          "highway"
-        ],
-        [
-          "!has",
-          "is_link"
-        ]
-      ],
-      "paint": {
-        "line-color": "#5A5A5A",
-        "line-gap-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          3,
-          0,
-          3.5,
-          0.5,
-          18,
-          15
-        ],
-        "line-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          7,
-          0,
-          7.5,
-          1,
-          20,
-          15
+          0.5
         ]
       }
     },
@@ -1181,6 +618,7 @@
       "type": "line",
       "source": "protomaps",
       "source-layer": "roads",
+      "minzoom": 12,
       "filter": [
         "all",
         [
@@ -1221,7 +659,7 @@
           14,
           0,
           20,
-          7
+          1
         ]
       }
     },
@@ -1230,6 +668,7 @@
       "type": "line",
       "source": "protomaps",
       "source-layer": "roads",
+      "minzoom": 12,
       "filter": [
         "has",
         "is_link"
@@ -1248,9 +687,7 @@
           13,
           0,
           13.5,
-          1,
-          18,
-          11
+          1
         ]
       }
     },
@@ -1259,6 +696,7 @@
       "type": "line",
       "source": "protomaps",
       "source-layer": "roads",
+      "minzoom": 12,
       "filter": [
         "all",
         [
@@ -1294,7 +732,7 @@
           13,
           0,
           18,
-          8
+          1
         ]
       }
     },
@@ -1303,6 +741,7 @@
       "type": "line",
       "source": "protomaps",
       "source-layer": "roads",
+      "minzoom": 12,
       "filter": [
         "all",
         [
@@ -1338,67 +777,7 @@
           11,
           0,
           12.5,
-          0.5,
-          15,
-          2,
-          18,
-          11
-        ]
-      }
-    },
-    {
-      "id": "roads_major_casing_early",
-      "type": "line",
-      "source": "protomaps",
-      "source-layer": "roads",
-      "maxzoom": 12,
-      "filter": [
-        "all",
-        [
-          "!has",
-          "is_tunnel"
-        ],
-        [
-          "!has",
-          "is_bridge"
-        ],
-        [
-          "==",
-          "kind",
-          "major_road"
-        ]
-      ],
-      "paint": {
-        "line-color": "#5A5A5A",
-        "line-gap-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          7,
-          0,
-          7.5,
-          0.5,
-          18,
-          13
-        ],
-        "line-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          9,
-          0,
-          9.5,
-          1
+          0.5
         ]
       }
     },
@@ -1407,6 +786,7 @@
       "type": "line",
       "source": "protomaps",
       "source-layer": "roads",
+      "minzoom": 12,
       "filter": [
         "all",
         [
@@ -1437,71 +817,7 @@
           6,
           0,
           12,
-          1.6,
-          15,
-          3,
-          18,
-          13
-        ]
-      }
-    },
-    {
-      "id": "roads_highway_casing_early",
-      "type": "line",
-      "source": "protomaps",
-      "source-layer": "roads",
-      "maxzoom": 12,
-      "filter": [
-        "all",
-        [
-          "!has",
-          "is_tunnel"
-        ],
-        [
-          "!has",
-          "is_bridge"
-        ],
-        [
-          "==",
-          "kind",
-          "highway"
-        ],
-        [
-          "!has",
-          "is_link"
-        ]
-      ],
-      "paint": {
-        "line-color": "#5A5A5A",
-        "line-gap-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          3,
-          0,
-          3.5,
-          0.5,
-          18,
-          15
-        ],
-        "line-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          7,
-          0,
-          7.5,
-          1
+          1.6
         ]
       }
     },
@@ -1546,42 +862,7 @@
           6,
           1.1,
           12,
-          1.6,
-          15,
-          5,
-          18,
-          15
-        ]
-      }
-    },
-    {
-      "id": "roads_rail",
-      "type": "line",
-      "source": "protomaps",
-      "source-layer": "roads",
-      "filter": [
-        "==",
-        "kind",
-        "rail"
-      ],
-      "paint": {
-        "line-opacity": 1,
-        "line-color": "rgba(68, 68, 68, 1)",
-        "line-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          3,
-          0.15,
-          6,
-          0.15,
-          18,
-          5
+          1.6
         ]
       }
     },
@@ -1656,200 +937,6 @@
       }
     },
     {
-      "id": "roads_bridges_other_casing",
-      "type": "line",
-      "source": "protomaps",
-      "source-layer": "roads",
-      "minzoom": 12,
-      "filter": [
-        "all",
-        [
-          "has",
-          "is_bridge"
-        ],
-        [
-          "in",
-          "kind",
-          "other",
-          "path"
-        ]
-      ],
-      "paint": {
-        "line-color": "#5A5A5A",
-        "line-gap-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          14,
-          0,
-          20,
-          7
-        ]
-      }
-    },
-    {
-      "id": "roads_bridges_link_casing",
-      "type": "line",
-      "source": "protomaps",
-      "source-layer": "roads",
-      "minzoom": 12,
-      "filter": [
-        "all",
-        [
-          "has",
-          "is_bridge"
-        ],
-        [
-          "has",
-          "is_link"
-        ]
-      ],
-      "paint": {
-        "line-color": "#5A5A5A",
-        "line-gap-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          13,
-          0,
-          13.5,
-          1,
-          18,
-          11
-        ],
-        "line-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          12,
-          0,
-          12.5,
-          1.5
-        ]
-      }
-    },
-    {
-      "id": "roads_bridges_minor_casing",
-      "type": "line",
-      "source": "protomaps",
-      "source-layer": "roads",
-      "minzoom": 12,
-      "filter": [
-        "all",
-        [
-          "has",
-          "is_bridge"
-        ],
-        [
-          "==",
-          "kind",
-          "minor_road"
-        ]
-      ],
-      "paint": {
-        "line-color": "#5A5A5A",
-        "line-gap-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          11,
-          0,
-          12.5,
-          0.5,
-          15,
-          2,
-          18,
-          11
-        ],
-        "line-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          13,
-          0,
-          13.5,
-          0.8
-        ]
-      }
-    },
-    {
-      "id": "roads_bridges_major_casing",
-      "type": "line",
-      "source": "protomaps",
-      "source-layer": "roads",
-      "minzoom": 12,
-      "filter": [
-        "all",
-        [
-          "has",
-          "is_bridge"
-        ],
-        [
-          "==",
-          "kind",
-          "major_road"
-        ]
-      ],
-      "paint": {
-        "line-color": "#5A5A5A",
-        "line-gap-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          7,
-          0,
-          7.5,
-          0.5,
-          18,
-          10
-        ],
-        "line-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          9,
-          0,
-          9.5,
-          1.5
-        ]
-      }
-    },
-    {
       "id": "roads_bridges_other",
       "type": "line",
       "source": "protomaps",
@@ -1886,7 +973,7 @@
           14,
           0,
           20,
-          7
+          1.6
         ]
       }
     },
@@ -1922,11 +1009,7 @@
           11,
           0,
           12.5,
-          0.5,
-          15,
-          2,
-          18,
-          11
+          0.5
         ]
       }
     },
@@ -1961,9 +1044,7 @@
           13,
           0,
           13.5,
-          1,
-          18,
-          11
+          1
         ]
       }
     },
@@ -1999,69 +1080,7 @@
           6,
           0,
           12,
-          1.6,
-          15,
-          3,
-          18,
-          13
-        ]
-      }
-    },
-    {
-      "id": "roads_bridges_highway_casing",
-      "type": "line",
-      "source": "protomaps",
-      "source-layer": "roads",
-      "minzoom": 12,
-      "filter": [
-        "all",
-        [
-          "has",
-          "is_bridge"
-        ],
-        [
-          "==",
-          "kind",
-          "highway"
-        ],
-        [
-          "!has",
-          "is_link"
-        ]
-      ],
-      "paint": {
-        "line-color": "#5A5A5A",
-        "line-gap-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          3,
-          0,
-          3.5,
-          0.5,
-          18,
-          15
-        ],
-        "line-width": [
-          "interpolate",
-          [
-            "exponential",
-            1.6
-          ],
-          [
-            "zoom"
-          ],
-          7,
-          0,
-          7.5,
-          1,
-          20,
-          15
+          1.6
         ]
       }
     },
@@ -2070,6 +1089,7 @@
       "type": "line",
       "source": "protomaps",
       "source-layer": "roads",
+      "minzoom": 12,
       "filter": [
         "all",
         [
@@ -2102,11 +1122,7 @@
           6,
           1.1,
           12,
-          1.6,
-          15,
-          5,
-          18,
-          15
+          1.6
         ]
       }
     },
@@ -2259,7 +1275,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -2382,7 +1398,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -2420,7 +1436,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -2483,7 +1499,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -2540,7 +1556,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -2605,7 +1621,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -2643,7 +1659,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -2681,7 +1697,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -2747,7 +1763,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -2785,7 +1801,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -2849,7 +1865,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -2887,7 +1903,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -2944,7 +1960,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -2982,7 +1998,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -3015,9 +2031,9 @@
       "filter": [
         "in",
         "kind",
-        "minor_road",
-        "other",
-        "path"
+        "minor_road_REMOVE_TO_RENDER",
+        "other_REMOVE_TO_RENDER",
+        "path_REMOVE_TO_RENDER"
       ],
       "layout": {
         "symbol-sort-key": [
@@ -3160,7 +2176,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -3283,7 +2299,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -3321,7 +2337,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -3384,7 +2400,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -3441,7 +2457,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -3506,7 +2522,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -3544,7 +2560,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -3582,7 +2598,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -3648,7 +2664,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -3686,7 +2702,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -3750,7 +2766,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -3788,7 +2804,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -3845,7 +2861,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -3883,7 +2899,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -4056,7 +3072,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -4179,7 +3195,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -4217,7 +3233,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -4280,7 +3296,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -4337,7 +3353,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -4402,7 +3418,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -4440,7 +3456,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -4478,7 +3494,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -4544,7 +3560,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -4582,7 +3598,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -4646,7 +3662,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -4684,7 +3700,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -4741,7 +3757,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -4779,7 +3795,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -4964,7 +3980,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -5087,7 +4103,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -5125,7 +4141,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -5188,7 +4204,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -5245,7 +4261,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -5310,7 +4326,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -5348,7 +4364,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -5386,7 +4402,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -5452,7 +4468,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -5490,7 +4506,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -5554,7 +4570,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -5592,7 +4608,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -5649,7 +4665,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -5687,7 +4703,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -5735,8 +4751,8 @@
       "filter": [
         "in",
         "kind",
-        "highway",
-        "major_road"
+        "highway_REMOVE_TO_RENDER",
+        "major_road_REMOVE_TO_RENDER"
       ],
       "layout": {
         "symbol-sort-key": [
@@ -5879,7 +4895,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -6002,7 +5018,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -6040,7 +5056,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -6103,7 +5119,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -6160,7 +5176,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -6225,7 +5241,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -6263,7 +5279,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -6301,7 +5317,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -6367,7 +5383,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -6405,7 +5421,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -6469,7 +5485,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -6507,7 +5523,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -6564,7 +5580,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -6602,7 +5618,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -6649,7 +5665,38 @@
         "fill-extrusion-opacity": 1
       }
     },
+
     {
+      "id": "roads_rail",
+      "type": "line",
+      "source": "protomaps",
+      "source-layer": "roads",
+      "filter": [
+        "==",
+        "kind",
+        "rail"
+      ],
+      "paint": {
+        "line-opacity": 1,
+        "line-color": "#444444",
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.6
+          ],
+          [
+            "zoom"
+          ],
+          13,
+          0.8,
+          18,
+          3
+        ]
+      }
+    },
+
+     {
       "id": "shapes-under",
       "type": "line",
       "source": "shapes",
@@ -6680,6 +5727,7 @@
         "line-width": 2
       }
     },
+    
     {
       "id": "buildings-above",
       "type": "fill-extrusion",
@@ -6729,7 +5777,7 @@
       "filter": [
         "==",
         "kind",
-        "neighbourhood"
+        "neighbourhood_REMOVE_TO_RENDER"
       ],
       "layout": {
         "symbol-sort-key": [
@@ -6868,7 +5916,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -6991,7 +6039,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -7029,7 +6077,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -7092,7 +6140,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -7149,7 +6197,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -7214,7 +6262,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -7252,7 +6300,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -7290,7 +6338,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -7356,7 +6404,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -7394,7 +6442,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -7458,7 +6506,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -7496,7 +6544,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -7553,7 +6601,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -7591,7 +6639,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -7657,10 +6705,10 @@
       "type": "symbol",
       "source": "protomaps",
       "source-layer": "places",
-      "filter": [
-        "==",
-        "kind",
-        "locality"
+      "filter": [ 
+          "==",
+          "kind",
+          "locality"
       ],
       "layout": {
         "icon-image": [
@@ -7805,7 +6853,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -7928,7 +6976,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -7966,7 +7014,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -8029,7 +7077,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -8086,7 +7134,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -8151,7 +7199,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -8189,7 +7237,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -8227,7 +7275,7 @@
                   [
                     "literal",
                     [
-                      "Noto Sans Devanagari Regular v1"
+                      "Noto Sans Regular"
                     ]
                   ],
                   [
@@ -8293,7 +7341,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -8331,7 +7379,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -8395,7 +7443,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -8433,7 +7481,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -8490,7 +7538,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -8528,7 +7576,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -8922,7 +7970,7 @@
                       [
                         "literal",
                         [
-                          "Noto Sans Devanagari Regular v1"
+                          "Noto Sans Regular"
                         ]
                       ],
                       [
@@ -9045,7 +8093,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -9083,7 +8131,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -9146,7 +8194,7 @@
                       [
                         "literal",
                         [
-                          "Noto Sans Devanagari Regular v1"
+                          "Noto Sans Regular"
                         ]
                       ],
                       [
@@ -9203,7 +8251,7 @@
                       [
                         "literal",
                         [
-                          "Noto Sans Devanagari Regular v1"
+                          "Noto Sans Regular"
                         ]
                       ],
                       [
@@ -9268,7 +8316,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -9306,7 +8354,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -9344,7 +8392,7 @@
                     [
                       "literal",
                       [
-                        "Noto Sans Devanagari Regular v1"
+                        "Noto Sans Regular"
                       ]
                     ],
                     [
@@ -9410,7 +8458,7 @@
                       [
                         "literal",
                         [
-                          "Noto Sans Devanagari Regular v1"
+                          "Noto Sans Regular"
                         ]
                       ],
                       [
@@ -9448,7 +8496,7 @@
                       [
                         "literal",
                         [
-                          "Noto Sans Devanagari Regular v1"
+                          "Noto Sans Regular"
                         ]
                       ],
                       [
@@ -9512,7 +8560,7 @@
                       [
                         "literal",
                         [
-                          "Noto Sans Devanagari Regular v1"
+                          "Noto Sans Regular"
                         ]
                       ],
                       [
@@ -9550,7 +8598,7 @@
                       [
                         "literal",
                         [
-                          "Noto Sans Devanagari Regular v1"
+                          "Noto Sans Regular"
                         ]
                       ],
                       [
@@ -9607,7 +8655,7 @@
                       [
                         "literal",
                         [
-                          "Noto Sans Devanagari Regular v1"
+                          "Noto Sans Regular"
                         ]
                       ],
                       [
@@ -9645,7 +8693,7 @@
                       [
                         "literal",
                         [
-                          "Noto Sans Devanagari Regular v1"
+                          "Noto Sans Regular"
                         ]
                       ],
                       [
