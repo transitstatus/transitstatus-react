@@ -553,7 +553,7 @@ export const agencies = {
     agencyID: "rutgers",
     name: "Rutgers",
     selectionName: "Rutgers Shuttles",
-    endpoint: "https://store.transitstat.us/passio_go/rutgers",
+    endpoint: "https://store.transitstat.us/tripshot/rutgers",
     mapShapes: ["https://gtfs.piemadd.com/data/rutgers/shapes/type_3.geojson"],
     gtfsRoot: "https://gtfs.piemadd.com/data/rutgers",
     mapDefault: [40.35417700651374, -74.70768648283568, 9],
@@ -995,7 +995,7 @@ export const config = {
   siteTitle: "Transitstat.us",
   siteTitleOther: "Transitstatus",
   tagLine: "Open source, free, and easy transit tracker.",
-  version: "v1.21.8",
+  version: "v1.21.9",
   additionalWarnings: [],
   globalAlerts: [
     {
