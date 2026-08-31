@@ -31,6 +31,18 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id="1-21-10">
+            <td>
+              <a href="#1-21-10">v1.21.10</a>
+            </td>
+            <td>
+              <ul>
+                <li>Added setting to maximize number of trains per destination at a stop.</li>
+                <li>Added internal config option to better sort destinations if data is available.</li>
+                <li>Changed CTA config to work with new data source.</li>
+              </ul>
+            </td>
+          </tr>
            <tr id="1-21-9">
             <td>
               <a href="#1-21-9">v1.21.9</a>

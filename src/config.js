@@ -135,6 +135,9 @@ export const agencies = {
     tripIDPrefixMinimal: "#",
     dontFilterMapLines: false,
     updateFrequency: 15000,
+    useDirectionsInsteadOfDestinations: true,
+    sortDestinationsByID: false,
+    sortDestinationsByIDReverse: true,
   },
   snowpiercer: {
     agencyID: "snowpiercer",
@@ -995,7 +998,7 @@ export const config = {
   siteTitle: "Transitstat.us",
   siteTitleOther: "Transitstatus",
   tagLine: "Open source, free, and easy transit tracker.",
-  version: "v1.21.9",
+  version: "v1.21.10",
   additionalWarnings: [],
   globalAlerts: [
     {

@@ -27,6 +27,7 @@ const Station = () => {
 
   let settings = JSON.parse(localStorage.getItem("transitstatus_v1_settings") ?? "{}");
   if (!settings.playgroundEnabled) settings.playgroundEnabled = false;
+  if (!settings.maxTrainsPerDest) settings.maxTrainsPerDest = 12;
 
   useEffect(() => {
     const fetchData = () => {
@@ -156,7 +157,15 @@ const Station = () => {
           <p style={{ maxWidth: "384px", padding: "8px", marginBottom: "4px", background: "#333" }}>{loadingMessage}</p>
         ) : (
           Object.keys(station.destinations)
-            .sort((a, b) => a.localeCompare(b)) // sorting destinations alphabetically
+            .sort((a, b) => {
+              if (agencyMeta.sortDestinationsByID) {
+                return station.destinations[a]?.stopID.localeCompare(station.destinations[b]?.stopID);
+              } else if (agencyMeta.sortDestinationsByIDReverse) {
+                return station.destinations[b]?.stopID.localeCompare(station.destinations[a]?.stopID);
+              } else {
+                return a.localeCompare(b);
+              }
+            }) // sorting destinations alphabetically
             .map((destinationKey) => {
               return (
                 <div key={destinationKey} className="trains">
@@ -174,6 +183,7 @@ const Station = () => {
                           return a.actualETA - b.actualETA;
                         })
                         .filter((eta) => eta.actualETA >= Date.now() - 1000 * 60 * 5 || eta.noETA)
+                        .slice(0, settings.maxTrainsPerDest)
                         .map((train) => {
                           if (train.extra?.holidayChristmas && !activateSnowfall) setActivateSnowfall(true);
 
@@ -199,13 +209,13 @@ const Station = () => {
                                 }}
                               >
                                 <span
-                                    style={{
-                                      filter:
-                                        train.extra?.holidayChristmas || train.extra?.holidayGay
-                                          ? "drop-shadow(0px 0px 1px #000000) drop-shadow(0px 0px 2px #000000) drop-shadow(0px 0px 2px #000000)"
-                                          : null
-                                    }}
-                                  >
+                                  style={{
+                                    filter:
+                                      train.extra?.holidayChristmas || train.extra?.holidayGay
+                                        ? "drop-shadow(0px 0px 1px #000000) drop-shadow(0px 0px 2px #000000) drop-shadow(0px 0px 2px #000000)"
+                                        : null
+                                  }}
+                                >
                                   <p className="text-vertical-align">
                                     {agencyMeta.useCodeForShortName ? train.lineCode : train.line}
                                     {agencyMeta.addLine ? " Line " : " "}
@@ -218,7 +228,7 @@ const Station = () => {
                                         ? agencyMeta.runNumberConverter(train.runNumber)
                                         : train.runNumber
                                       : ""}
-                                    {train.extra?.holidayChristmas ? " 🎄" : (train.extra?.holidayGay ? " 🏳️‍🌈" : "")}
+                                    {train.extra?.holidayChristmas ? " 🎄" : train.extra?.holidayGay ? " 🏳️‍🌈" : ""}
                                     {train.realTime ? null : (
                                       <span className="noto-emoji-outline smaller-emoji"> 🕓 </span>
                                     )}{" "}

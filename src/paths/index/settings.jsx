@@ -33,6 +33,10 @@ const Settings = () => {
       tempSettings.snowMultiplier = 1;
     }
 
+    if (!tempSettings.maxTrainsPerDest) {
+      tempSettings.maxTrainsPerDest = 12;
+    }
+
     if (!tempSettings.alwaysHolidayChristmas) {
       tempSettings.alwaysHolidayChristmas = false;
     }
@@ -130,6 +134,30 @@ const Settings = () => {
                 </option>
               </select>
             </span>
+                
+
+                <span>
+              <label htmlFor='setting_maxTrainsPerDest'>Enter the maximum number of trains displayed per destination at a stop:</label>
+              <input
+                id="maxTrainsPerDest"
+                type="number"
+                step={1}
+                min={1}
+                onChange={(e) => {
+                  setSettings((currentSettings) => {
+                    const newSettings = {
+                      ...currentSettings,
+                      maxTrainsPerDest: e.target.value,
+                    };
+
+                    console.log("New Settings:", newSettings);
+                    return newSettings;
+                  });
+                }}
+                defaultValue={settings.maxTrainsPerDest}
+              ></input>
+            </span>
+
             <span>
               <label htmlFor='setting_snowMultiplier'>Enter a Snow Multiplier (Shown on winter holiday themed vehicles):</label>
               <input
