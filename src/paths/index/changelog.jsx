@@ -31,6 +31,16 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id="1-21-11">
+            <td>
+              <a href="#1-21-11">v1.21.11</a>
+            </td>
+            <td>
+              <ul>
+                <li>Added Brightline track numbers.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id="1-21-10">
             <td>
               <a href="#1-21-10">v1.21.10</a>
@@ -43,7 +53,7 @@ const Changelog = () => {
               </ul>
             </td>
           </tr>
-           <tr id="1-21-9">
+          <tr id="1-21-9">
             <td>
               <a href="#1-21-9">v1.21.9</a>
             </td>

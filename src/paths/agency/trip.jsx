@@ -20,6 +20,8 @@ const Trip = () => {
   const [lastFetched, setLastFetched] = useState(0);
   const [activateSnowfall, setActivateSnowfall] = useState(false);
 
+  const agencyMeta = agencies[agency];
+
   useEffect(() => {
     const fetchData = () => {
       window.dataManager
@@ -59,7 +61,7 @@ const Trip = () => {
   }, [agency, tripID]);
 
   if (trip === "Not found") {
-    document.title = `Trip 404 ${agencies[agency].name} | Transitstat.us`;
+    document.title = `Trip 404 ${agencyMeta.name} | Transitstat.us`;
 
     return (
       <main>
@@ -85,14 +87,14 @@ const Trip = () => {
     );
   }
 
-  document.title = `${trip.line} ${agencies[agency].tripIDPrefix}${agencies[agency].runNumberConverter ? agencies[agency].runNumberConverter(tripID) : tripID} ${agencies[agency].name} | Transitstat.us`;
+  document.title = `${trip.line} ${agencyMeta.tripIDPrefix}${agencyMeta.runNumberConverter ? agencyMeta.runNumberConverter(tripID) : tripID} ${agencyMeta.name} | Transitstat.us`;
 
   return (
     <main>
       <Oneko />
       {activateSnowfall ? <PieroSnowfall /> : null}
       <h1>
-        {agencies[agency].name} {agencies[agency].type} Tracker
+        {agencyMeta.name} {agencyMeta.type} Tracker
       </h1>
       <Meta />
 
@@ -107,16 +109,19 @@ const Trip = () => {
                 : `#${trip.lineColor}`,
             color: trip.extra?.holidayChristmas || trip.extra?.holidayGay ? "#ffffff" : `#${trip.lineTextColor}`,
             marginTop: "12px",
-            textShadow: trip.extra?.holidayChristmas || trip.extra?.holidayGay ? "-1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000, 1px -1px 0 #000000, 0px 0px 2px #000000" : null
+            textShadow:
+              trip.extra?.holidayChristmas || trip.extra?.holidayGay
+                ? "-1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000, 1px -1px 0 #000000, 0px 0px 2px #000000"
+                : null
           }}
         >
           <h2>
             {trip.line}
-            {agencies[agency].addLine ? " Line " : " "}
-            {agencies[agency].addType ? `${agencies[agency].type} ` : ""}
-            {agencies[agency].tripIDPrefix}
-            {agencies[agency].runNumberConverter ? agencies[agency].runNumberConverter(tripID) : tripID}
-            {trip.extra?.holidayChristmas ? " 🎄" : (trip.extra?.holidayGay ? " 🏳️‍🌈" : "")}
+            {agencyMeta.addLine ? " Line " : " "}
+            {agencyMeta.addType ? `${agencyMeta.type} ` : ""}
+            {agencyMeta.tripIDPrefix}
+            {agencyMeta.runNumberConverter ? agencyMeta.runNumberConverter(tripID) : tripID}
+            {trip.extra?.holidayChristmas ? " 🎄" : trip.extra?.holidayGay ? " 🏳️‍🌈" : ""}
           </h2>
           {trip.realTime ? (
             <p>
@@ -151,9 +156,13 @@ const Trip = () => {
                   key={`${stop.stationID}-${i}`}
                   style={{ backgroundColor: "#444", color: "#fff" }}
                 >
-                  <p>
-                    <strong>{stop.stationName}</strong>
-                  </p>
+                  <span>
+                    <p>
+                      <strong>{stop.stationName}</strong>
+                    </p>
+                    {stop.platform && stop.platform.length > 0 ? <p>{agencyMeta.trackName ?? 'Track'} {stop.platform}</p> : null}
+                  </span>
+
                   {stop.noETA ? (
                     <span>
                       <h3>No ETA</h3>
@@ -182,7 +191,7 @@ const Trip = () => {
         <h3
           className="train"
           key="backButton"
-          style={{ backgroundColor: agencies[agency].color, color: agencies[agency].textColor }}
+          style={{ backgroundColor: agencyMeta.color, color: agencyMeta.textColor }}
           onClick={() => {
             //see if querey string has prev
             const urlParams = new URLSearchParams(window.location.search);
@@ -197,21 +206,21 @@ const Trip = () => {
             }
           }}
         >
-          Choose Another {agencies[agency].type}
+          Choose Another {agencyMeta.type}
         </h3>
         <h3
           className="train"
           key="viewMap"
           style={{
-            backgroundColor: agencies[agency].color,
-            color: agencies[agency].textColor,
+            backgroundColor: agencyMeta.color,
+            color: agencyMeta.textColor,
             padding: "8px",
             textDecoration: "none"
           }}
         >
           <Link
-            to={agencies[agency].dontFilterMapLines ? `/${agency}/map` : `/${agency}/map?route=${trip.lineCode}`}
-            style={{ textDecoration: "none", color: agencies[agency].textColor }}
+            to={agencyMeta.dontFilterMapLines ? `/${agency}/map` : `/${agency}/map?route=${trip.lineCode}`}
+            style={{ textDecoration: "none", color: agencyMeta.textColor }}
           >
             View on Map
           </Link>

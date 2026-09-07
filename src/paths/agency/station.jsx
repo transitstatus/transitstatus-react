@@ -246,6 +246,9 @@ const Station = () => {
                                       ))}
                                     </span>
                                   ) : null}
+                                  {train.platform && train.platform.length > 0 ? (
+                                    <p>{agencyMeta.trackName ?? 'Track'} {train.platform}</p>
+                                  ) : null}
                                 </span>
                                 {!train.noETA ? (
                                   <span
