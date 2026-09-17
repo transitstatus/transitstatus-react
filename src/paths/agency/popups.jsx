@@ -25,7 +25,7 @@ export const activateSelectorPopup = (e, features, map, agencyData, singleRouteI
   const hasStations = finalItems.find((item) => item.layer.id == "stations");
 
   let titleText = "Feature";
-  if (hasTrains && !hasStations) titleText = "Train";
+  if (hasTrains && !hasStations) titleText = agencyData.type;
   if (!hasTrains && hasStations) titleText = "Station";
 
   const selectorPopup = new Popup({
@@ -75,7 +75,7 @@ export const activateSelectorPopup = (e, features, map, agencyData, singleRouteI
               {agencyData.addType ? `${agencyData.type} ` : ""}
               {agencyData.tripIDPrefixMinimal}
               {agencyData.runNumberConverter ? agencyData.runNumberConverter(train.id) : train.id}
-              {!train.deadMileage ? <> to {train.dest}</> : null}
+              {!train.deadMileage && !agencyData.dontShowRouteNameAndToInHeader ? <> to {train.dest}</> : null}
             </strong>
             <strong className="smallIdentifier">{agencyData.type}</strong>
           </p>
@@ -138,7 +138,7 @@ export const activateTrainPopup = (feature, map, agencyData) => {
         {agencyData.addType ? `${agencyData.type} ` : ""}
         {agencyData.tripIDPrefix}
         {agencyData.runNumberConverter ? agencyData.runNumberConverter(train.id) : train.id}
-        {!train.deadMileage ? <> to {train.dest}</> : null}
+        {!train.deadMileage && !agencyData.dontShowRouteNameAndToInHeader ? <> to {train.dest}</> : null}
       </h3>
       {extra && (extra.cap || extra.info) ? (
         <p style={{ marginTop: "-2px", paddingBottom: "4px" }}>
@@ -229,7 +229,7 @@ export const activateStationPopup = (feature, map, agencyData, singleRouteID) =>
       return (
         <Fragment key={i}>
           <p className="mapStationBar">
-            {agencyData.useDirectionsInsteadOfDestinations ? "" : "To "}
+            {agencyData.useDirectionsInsteadOfDestinations || agencyData.dontShowRouteNameAndToInHeader ? "" : "To "}
             <strong>{destKey}</strong>
           </p>
           {dest.trains

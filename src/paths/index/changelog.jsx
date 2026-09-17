@@ -31,6 +31,16 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id="1-21-12">
+            <td>
+              <a href="#1-21-12">v1.21.12</a>
+            </td>
+            <td>
+              <ul>
+                <li>Formatting changes specific to Rutgers/Tripshot.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id="1-21-11">
             <td>
               <a href="#1-21-11">v1.21.11</a>

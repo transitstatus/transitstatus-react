@@ -135,7 +135,7 @@ const Trip = () => {
 
           {trip.extra && trip.extra.info ? <p>{trip.extra.info}</p> : null}
           <p>
-            Service to {trip.dest ?? trip.predictions[trip.predictions.length - 1].stationName}
+            {agencyMeta.dontShowRouteNameAndToInHeaderAtStop ? 'Service' : `Service to ${trip.dest ?? trip.predictions[trip.predictions.length - 1].stationName}`}
             {trip.extra && trip.extra.cabCar ? ` | Car ${trip.extra.cabCar}` : null}
             {trip.extra && trip.extra.engine ? ` | Engine ${trip.extra.engine}` : null}
           </p>

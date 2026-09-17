@@ -174,7 +174,9 @@ const Station = () => {
                       <h3 className="destination">
                         {agencyMeta.useDirectionsInsteadOfDestinations
                           ? `${destinationKey} ${agencyMeta.typePlural}`
-                          : `Towards ${destinationKey}`}
+                          : agencyMeta.dontShowRouteNameAndToInHeader
+                            ? `${destinationKey} ${agencyMeta.typePlural}`
+                            : `Towards ${destinationKey}`}
                       </h3>
                       {station.destinations[destinationKey].trains
                         .sort((a, b) => {
@@ -216,24 +218,42 @@ const Station = () => {
                                         : null
                                   }}
                                 >
-                                  <p className="text-vertical-align">
-                                    {agencyMeta.useCodeForShortName ? train.lineCode : train.line}
-                                    {agencyMeta.addLine ? " Line " : " "}
-                                    {agencyMeta.addType ? `${agencyMeta.type} ` : ""}
-                                    {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime)
-                                      ? agencyMeta.tripIDPrefix
-                                      : ""}
-                                    {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime)
-                                      ? agencyMeta.runNumberConverter
-                                        ? agencyMeta.runNumberConverter(train.runNumber)
-                                        : train.runNumber
-                                      : ""}
-                                    {train.extra?.holidayChristmas ? " 🎄" : train.extra?.holidayGay ? " 🏳️‍🌈" : ""}
-                                    {train.realTime ? null : (
-                                      <span className="noto-emoji-outline smaller-emoji"> 🕓 </span>
-                                    )}{" "}
-                                    to
-                                  </p>
+                                  {agencyMeta.dontShowRouteNameAndToInHeader ? (
+                                    <p>
+                                      {agencyMeta.addType ? `${agencyMeta.type} ` : ""}
+                                      {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime)
+                                        ? agencyMeta.tripIDPrefix
+                                        : ""}
+                                      {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime)
+                                        ? agencyMeta.runNumberConverter
+                                          ? agencyMeta.runNumberConverter(train.runNumber)
+                                          : train.runNumber
+                                        : ""}
+                                      {train.extra?.holidayChristmas ? " 🎄" : train.extra?.holidayGay ? " 🏳️‍🌈" : ""}
+                                      {train.realTime ? null : (
+                                        <span className="noto-emoji-outline smaller-emoji"> 🕓 </span>
+                                      )}
+                                    </p>
+                                  ) : (
+                                    <p className="text-vertical-align">
+                                      {agencyMeta.useCodeForShortName ? train.lineCode : train.line}
+                                      {agencyMeta.addLine ? " Line " : " "}
+                                      {agencyMeta.addType ? `${agencyMeta.type} ` : ""}
+                                      {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime)
+                                        ? agencyMeta.tripIDPrefix
+                                        : ""}
+                                      {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime)
+                                        ? agencyMeta.runNumberConverter
+                                          ? agencyMeta.runNumberConverter(train.runNumber)
+                                          : train.runNumber
+                                        : ""}
+                                      {train.extra?.holidayChristmas ? " 🎄" : train.extra?.holidayGay ? " 🏳️‍🌈" : ""}
+                                      {train.realTime ? null : (
+                                        <span className="noto-emoji-outline smaller-emoji"> 🕓 </span>
+                                      )}{" "}
+                                      to
+                                    </p>
+                                  )}
                                   <h3>{train.destination ?? destinationKey ?? train.routeLongName}</h3>
                                   {train.extra && train.extra.info ? <p>{train.extra.info}</p> : null}
                                   {train.extra?.consist && train.extra?.consist.length > 0 ? (
@@ -247,7 +267,9 @@ const Station = () => {
                                     </span>
                                   ) : null}
                                   {train.platform && train.platform.length > 0 ? (
-                                    <p>{agencyMeta.trackName ?? 'Track'} {train.platform}</p>
+                                    <p>
+                                      {agencyMeta.trackName ?? "Track"} {train.platform}
+                                    </p>
                                   ) : null}
                                 </span>
                                 {!train.noETA ? (
@@ -301,7 +323,9 @@ const Station = () => {
                       <p className="destination">
                         {agencyMeta.useDirectionsInsteadOfDestinations
                           ? `No ${destinationKey} ${agencyMeta.typePlural}`
-                          : `No ${agencyMeta.typePlural} towards ${destinationKey}`}
+                          : agencyMeta.dontShowRouteNameAndToInHeader
+                            ? `No ${destinationKey} ${agencyMeta.typePlural}`
+                            : `No ${agencyMeta.typePlural} towards ${destinationKey}`}
                       </p>
                     </>
                   )}

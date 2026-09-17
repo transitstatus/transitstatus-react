@@ -575,6 +575,8 @@ export const agencies = {
     tripIDPrefixOnDisplay: "#",
     tripIDPrefixMinimal: "#",
     dontFilterMapLines: false,
+    dontShowRouteNameAndToInHeader: true,
+    addType: true,
   },
   columbia: {
     agencyID: "columbia",
