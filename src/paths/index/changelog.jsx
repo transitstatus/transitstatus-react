@@ -31,6 +31,16 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id="1-21-13">
+            <td>
+              <a href="#1-21-13">v1.21.13</a>
+            </td>
+            <td>
+              <ul>
+                <li>Added heading back to SSL trains.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id="1-21-12">
             <td>
               <a href="#1-21-12">v1.21.12</a>

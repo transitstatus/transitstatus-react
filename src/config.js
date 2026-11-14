@@ -462,7 +462,7 @@ export const agencies = {
     disabled: false,
     useCodeForShortName: false,
     addShortName: true,
-    showArrow: false,
+    showArrow: true,
     tripIDPrefix: "#",
     tripIDPrefixOnDisplay: "#",
     tripIDPrefixMinimal: "#",
@@ -1000,7 +1000,7 @@ export const config = {
   siteTitle: "Transitstat.us",
   siteTitleOther: "Transitstatus",
   tagLine: "Open source, free, and easy transit tracker.",
-  version: "v1.21.12",
+  version: "v1.21.13",
   additionalWarnings: [],
   globalAlerts: [
     {
