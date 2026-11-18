@@ -149,7 +149,7 @@ const Map = () => {
         });
         window.map = map.current;
 
-        map.current.on("load", async () => {
+        map.current.on("style.load", async () => {
           const stationsData = await window.dataManager.getData(agency, "stations");
           const trainsData = await window.dataManager.getData(agency, "trains");
           const linesData = await window.dataManager.getData(agency, "lines");

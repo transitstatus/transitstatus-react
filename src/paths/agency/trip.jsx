@@ -87,7 +87,7 @@ const Trip = () => {
     );
   }
 
-  document.title = `${trip.line} ${agencyMeta.tripIDPrefix}${agencyMeta.runNumberConverter ? agencyMeta.runNumberConverter(tripID) : tripID} ${agencyMeta.name} | Transitstat.us`;
+  document.title = `${trip.line} ${agencyMeta.tripIDPrefix}${tripID} ${agencyMeta.name} | Transitstat.us`;
 
   return (
     <main>
@@ -120,7 +120,7 @@ const Trip = () => {
             {agencyMeta.addLine ? " Line " : " "}
             {agencyMeta.addType ? `${agencyMeta.type} ` : ""}
             {agencyMeta.tripIDPrefix}
-            {agencyMeta.runNumberConverter ? agencyMeta.runNumberConverter(tripID) : tripID}
+            {agencyMeta.runNumberConverter ? agencyMeta.runNumberConverter({...trip, runNumber: tripID}) : tripID}
             {trip.extra?.holidayChristmas ? " 🎄" : trip.extra?.holidayGay ? " 🏳️‍🌈" : ""}
           </h2>
           {trip.realTime ? (

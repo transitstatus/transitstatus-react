@@ -74,7 +74,7 @@ export const activateSelectorPopup = (e, features, map, agencyData, singleRouteI
               {agencyData.addLine ? " Line " : " "}
               {agencyData.addType ? `${agencyData.type} ` : ""}
               {agencyData.tripIDPrefixMinimal}
-              {agencyData.runNumberConverter ? agencyData.runNumberConverter(train.id) : train.id}
+              {agencyData.runNumberConverter ? agencyData.runNumberConverter({...train, runNumber: train.id}) : train.id}
               {!train.deadMileage && !agencyData.dontShowRouteNameAndToInHeader ? <> to {train.dest}</> : null}
             </strong>
             <strong className="smallIdentifier">{agencyData.type}</strong>
@@ -137,7 +137,7 @@ export const activateTrainPopup = (feature, map, agencyData) => {
         {agencyData.addLine ? " Line " : " "}
         {agencyData.addType ? `${agencyData.type} ` : ""}
         {agencyData.tripIDPrefix}
-        {agencyData.runNumberConverter ? agencyData.runNumberConverter(train.id) : train.id}
+        {agencyData.runNumberConverter ? agencyData.runNumberConverter({...train, runNumber: train.id}) : train.id}
         {!train.deadMileage && !agencyData.dontShowRouteNameAndToInHeader ? <> to {train.dest}</> : null}
       </h3>
       {extra && (extra.cap || extra.info) ? (
@@ -252,7 +252,7 @@ export const activateStationPopup = (feature, map, agencyData, singleRouteID) =>
                     </strong>
                     {agencyData.tripIDPrefix}
                     {agencyData.runNumberConverter
-                      ? agencyData.runNumberConverter(train.runNumber)
+                      ? agencyData.runNumberConverter(train)
                       : train.runNumber}{" "}
                     to <strong>{train.destination ?? destKey}</strong>
                   </span>

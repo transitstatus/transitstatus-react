@@ -276,7 +276,7 @@ const Finder = () => {
                           : ""}
                         {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime)
                           ? agencyMeta.runNumberConverter
-                            ? agencyMeta.runNumberConverter(train.runNumber)
+                            ? agencyMeta.runNumberConverter(train)
                             : train.runNumber
                           : ""}
                         {train.extra?.holidayChristmas ? " 🎄" : train.extra?.holidayGay ? " 🏳️‍🌈" : ""}

@@ -31,6 +31,17 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id="1-21-14">
+            <td>
+              <a href="#1-21-14">v1.21.14</a>
+            </td>
+            <td>
+              <ul>
+                <li>Fixed bug that prevented loading until map is fully rendered.</li>
+                <li>Added MBTA Trains and Ferries and enabled both.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id="1-21-13">
             <td>
               <a href="#1-21-13">v1.21.13</a>

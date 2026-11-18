@@ -160,7 +160,7 @@ const StationDisplay = () => {
                     }}
                   >
                     {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime) ? agencyMeta.tripIDPrefixOnDisplay : ""}
-                    {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime) ? (agencyMeta.runNumberConverter ? agencyMeta.runNumberConverter(train.runNumber) : train.runNumber) : ""}{train.extra?.holidayChristmas ? " 🎄" : ""}
+                    {train.realTime || (agencyMeta.showTripIDOnScheduled && !train.realTime) ? (agencyMeta.runNumberConverter ? agencyMeta.runNumberConverter(train) : train.runNumber) : ""}{train.extra?.holidayChristmas ? " 🎄" : ""}
                   </div>
                   <div
                     className='train'

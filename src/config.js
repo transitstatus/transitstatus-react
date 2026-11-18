@@ -6,7 +6,7 @@ export const agencies = {
     endpoint: "https://store.transitstat.us/atsa/ts",
     mapShapes: [
       "https://gtfs.piemadd.com/data/amtrak/shapes/type_2.geojson",
-      "https://gobbler.transitstat.us/additionalShapes/amtrak.json",
+      "https://gobbler.transitstat.us/additionalShapes/amtrak.json"
     ],
     gtfsRoot: "https://gtfs.piemadd.com/data/amtrak",
     mapDefault: [37.69061057535559, -122.2893385041706, 5],
@@ -24,16 +24,14 @@ export const agencies = {
     tripIDPrefix: "#",
     tripIDPrefixOnDisplay: "#",
     tripIDPrefixMinimal: "#",
-    dontFilterMapLines: true,
+    dontFilterMapLines: true
   },
   brightline: {
     agencyID: "brightline",
     name: "Brightline",
     selectionName: "Brightline",
     endpoint: "https://store.transitstat.us/brightline/v1",
-    mapShapes: [
-      "https://gtfs.piemadd.com/data/brightline/shapes/type_2.geojson",
-    ],
+    mapShapes: ["https://gtfs.piemadd.com/data/brightline/shapes/type_2.geojson"],
     gtfsRoot: "https://gtfs.piemadd.com/data/brightline",
     mapDefault: [27.103015473022282, -80.68149, 6],
     color: "#FFDB00",
@@ -53,7 +51,7 @@ export const agencies = {
     showTripIDOnScheduled: true,
     dontFilterMapLines: true,
     useDirectionsInsteadOfDestinations: true,
-    onlyUseSingleRouteCode: "1",
+    onlyUseSingleRouteCode: "1"
   },
   bay: {
     agencyID: "bay",
@@ -66,7 +64,7 @@ export const agencies = {
       "https://gtfs.piemadd.com/data/RG/shapes/type_2.geojson",
       "https://gtfs.piemadd.com/data/RG/shapes/type_3.geojson",
       "https://gtfs.piemadd.com/data/RG/shapes/type_4.geojson",
-      "https://gtfs.piemadd.com/data/RG/shapes/type_5.geojson",
+      "https://gtfs.piemadd.com/data/RG/shapes/type_5.geojson"
     ],
     gtfsRoot: "https://gtfs.piemadd.com/data/RG",
     mapDefault: [37.69061057535559, -122.2893385041706, 5],
@@ -84,7 +82,7 @@ export const agencies = {
     tripIDPrefix: "#",
     tripIDPrefixOnDisplay: "#",
     tripIDPrefixMinimal: "#",
-    dontFilterMapLines: false,
+    dontFilterMapLines: false
   },
   bart: {
     agencyID: "bart",
@@ -108,8 +106,8 @@ export const agencies = {
     tripIDPrefix: "",
     tripIDPrefixOnDisplay: "",
     tripIDPrefixMinimal: "",
-    runNumberConverter: (runNumber) => "",
-    dontFilterMapLines: true,
+    runNumberConverter: (train) => "",
+    dontFilterMapLines: true
   },
   ctat: {
     agencyID: "ctat",
@@ -137,16 +135,14 @@ export const agencies = {
     updateFrequency: 15000,
     useDirectionsInsteadOfDestinations: true,
     sortDestinationsByID: false,
-    sortDestinationsByIDReverse: true,
+    sortDestinationsByIDReverse: true
   },
   snowpiercer: {
     agencyID: "snowpiercer",
     name: "Snowpiercer",
     selectionName: "Snowpiercer",
     endpoint: "https://store.transitstat.us/snowpiercer/v1",
-    mapShapes: [
-      "https://gobbler.transitstat.us/additionalShapes/snowPiercer.json",
-    ],
+    mapShapes: ["https://gobbler.transitstat.us/additionalShapes/snowPiercer.json"],
     gtfsRoot: "https://gobbler.transitstat.us/piercer",
     mapDefault: [37.6362722722116, -96.71855316394493, 3],
     color: "#a5c9d7",
@@ -164,7 +160,7 @@ export const agencies = {
     tripIDPrefixOnDisplay: "#",
     tripIDPrefixMinimal: "#",
     dontFilterMapLines: false,
-    autoFitMaxZoom: 5,
+    autoFitMaxZoom: 5
   },
   ctab: {
     agencyID: "ctab",
@@ -188,7 +184,7 @@ export const agencies = {
     tripIDPrefix: "#",
     tripIDPrefixOnDisplay: "#",
     tripIDPrefixMinimal: "#",
-    dontFilterMapLines: false,
+    dontFilterMapLines: false
   },
   lirr: {
     agencyID: "lirr",
@@ -215,29 +211,60 @@ export const agencies = {
     showTripIDOnScheduled: true,
     dontFilterMapLines: false,
     useDirectionsInsteadOfDestinations: true,
-    updateFrequency: 10000,
+    updateFrequency: 10000
   },
   mbta: {
     agencyID: "mbta",
     name: "MBTA",
-    selectionName: "MBTA Tracker (Trains, Boats)",
-    endpoint: "https://store.transitstat.us/mbta/v1",
+    tagline: "Boston Commuter Rail and Subway Tracker",
+    selectionName: "MBTA Tracker (Trains)",
+    endpoint: "https://store.transitstat.us/mbta/tsV1",
     mapShapes: [
       "https://gtfs.piemadd.com/data/mbta/shapes/type_0.geojson",
       "https://gtfs.piemadd.com/data/mbta/shapes/type_1.geojson",
       "https://gtfs.piemadd.com/data/mbta/shapes/type_2.geojson",
-      "https://gtfs.piemadd.com/data/mbta/shapes/type_4.geojson",
     ],
     gtfsRoot: "https://gtfs.piemadd.com/data/mbta",
-    mapDefault: [40.84543468920131, -72.97558196777345, 8],
+    mapDefault: [42.192489862615304, -71.06253549999997, 8],
     color: "#82076c",
     textColor: "#ffffff",
     type: "Train",
     typePlural: "Trains",
-    typeCode: "train",
+    typeCode: "trian",
     typeCodePlural: "trains",
     addLine: false,
-    disabled: true,
+    disabled: false,
+    useCodeForShortName: false,
+    addShortName: false,
+    showArrow: true,
+    tripIDPrefix: "",
+    tripIDPrefixOnDisplay: "",
+    tripIDPrefixMinimal: "",
+    showTripIDOnScheduled: true,
+    dontFilterMapLines: false,
+    useDirectionsInsteadOfDestinations: true,
+    updateFrequency: 10000,
+    runNumberConverter: (train) => !train.realTime && train.extra?.routeType != '2' ? "" : `#${train.runNumber}`,
+  },
+  mbta_ferry: {
+    agencyID: "mbta_ferry",
+    name: "MBTA",
+    tagline: "Boston Boat Tracker",
+    selectionName: "MBTA Tracker (Ferries)",
+    endpoint: "https://store.transitstat.us/mbta/tsFerryV1",
+    mapShapes: [
+      "https://gtfs.piemadd.com/data/mbta/shapes/type_4.geojson",
+    ],
+    gtfsRoot: "https://gtfs.piemadd.com/data/mbta",
+    mapDefault: [42.35458011627526, -70.98992499999997, 11],
+    color: "#82076c",
+    textColor: "#ffffff",
+    type: "Boat",
+    typePlural: "Boats",
+    typeCode: "boat",
+    typeCodePlural: "boats",
+    addLine: false,
+    disabled: false,
     useCodeForShortName: false,
     addShortName: false,
     showArrow: true,
@@ -246,8 +273,8 @@ export const agencies = {
     tripIDPrefixMinimal: "#",
     showTripIDOnScheduled: true,
     dontFilterMapLines: false,
-    useDirectionsInsteadOfDestinations: true,
-    updateFrequency: 10000,
+    useDirectionsInsteadOfDestinations: false,
+    updateFrequency: 10000
   },
   mnrr: {
     agencyID: "mnrr",
@@ -274,7 +301,7 @@ export const agencies = {
     showTripIDOnScheduled: true,
     dontFilterMapLines: false,
     useDirectionsInsteadOfDestinations: true,
-    updateFrequency: 10000,
+    updateFrequency: 10000
   },
   nyct_subway: {
     agencyID: "nyct_subway",
@@ -283,7 +310,7 @@ export const agencies = {
     endpoint: "https://store.transitstat.us/nyct_subway/tsv1",
     mapShapes: [
       "https://gtfs.piemadd.com/data/nyct_subway/shapes/type_1.geojson",
-      "https://gtfs.piemadd.com/data/nyct_subway/shapes/type_2.geojson",
+      "https://gtfs.piemadd.com/data/nyct_subway/shapes/type_2.geojson"
     ],
     gtfsRoot: "https://gtfs.piemadd.com/data/nyct_subway",
     mapDefault: [41.28601941310751, -73.45314000000002, 8],
@@ -304,18 +331,16 @@ export const agencies = {
     tripIDPrefixMinimal: "",
     showTripIDOnScheduled: false,
     dontFilterMapLines: false,
-    runNumberConverter: (runNumber) => "",
+    runNumberConverter: (train) => "",
     useDirectionsInsteadOfDestinations: true,
-    updateFrequency: 10000,
+    updateFrequency: 10000
   },
   ctrail: {
     agencyID: "ctrail",
     name: "CTRail",
     selectionName: "CTRail",
     endpoint: "https://store.transitstat.us/ctrail/transitStatus",
-    mapShapes: [
-      "https://gtfs.piemadd.com/data/ctrail_hartford/shapes/type_2.geojson",
-    ],
+    mapShapes: ["https://gtfs.piemadd.com/data/ctrail_hartford/shapes/type_2.geojson"],
     gtfsRoot: "https://gtfs.piemadd.com/data/ctrail_hartford",
     mapDefault: [41.28601941310751, -73.45314000000002, 8],
     color: "#ea0a2a",
@@ -335,7 +360,7 @@ export const agencies = {
     showTripIDOnScheduled: true,
     dontFilterMapLines: false,
     useDirectionsInsteadOfDestinations: true,
-    updateFrequency: 10000,
+    updateFrequency: 10000
   },
   metra: {
     agencyID: "metra",
@@ -361,18 +386,16 @@ export const agencies = {
     tripIDPrefixMinimal: "#",
     showTripIDOnScheduled: true,
     dontFilterMapLines: false,
-    runNumberConverter: (runNumber) => runNumber.split("-").slice(-1),
+    runNumberConverter: (train) => train.runNumber.split("-").slice(-1),
     useDirectionsInsteadOfDestinations: true,
-    updateFrequency: 10000,
+    updateFrequency: 10000
   },
   WMATA: {
     agencyID: "WMATA",
     name: "WMATA",
     selectionName: "WMATA MetroRail",
     endpoint: "https://store.transitstat.us/wmata_rail",
-    mapShapes: [
-      "https://gtfs.piemadd.com/data/wmata_rail/shapes/type_1.geojson",
-    ],
+    mapShapes: ["https://gtfs.piemadd.com/data/wmata_rail/shapes/type_1.geojson"],
     gtfsRoot: "https://gtfs.piemadd.com/data/wmata_rail",
     mapDefault: [38.943903228525784, -77.16953659057617, 10],
     color: "#4679b0",
@@ -389,7 +412,7 @@ export const agencies = {
     tripIDPrefix: "Train #",
     tripIDPrefixOnDisplay: "#",
     tripIDPrefixMinimal: "#",
-    dontFilterMapLines: false,
+    dontFilterMapLines: false
   },
   NJT: {
     agencyID: "NJT",
@@ -398,7 +421,7 @@ export const agencies = {
     endpoint: "https://store.transitstat.us/njt_rail",
     mapShapes: [
       "https://gtfs.piemadd.com/data/njt_rail_nonrt/shapes/type_0.geojson",
-      "https://gtfs.piemadd.com/data/njt_rail_nonrt/shapes/type_2.geojson",
+      "https://gtfs.piemadd.com/data/njt_rail_nonrt/shapes/type_2.geojson"
     ],
     gtfsRoot: "https://gtfs.piemadd.com/data/njt_rail",
     mapDefault: [38.943903228525784, -77.16953659057617, 10],
@@ -416,7 +439,7 @@ export const agencies = {
     tripIDPrefix: "Train #",
     tripIDPrefixOnDisplay: "#",
     tripIDPrefixMinimal: "#",
-    dontFilterMapLines: true,
+    dontFilterMapLines: true
   },
   marta: {
     agencyID: "marta",
@@ -440,16 +463,14 @@ export const agencies = {
     tripIDPrefix: "#",
     tripIDPrefixOnDisplay: "#",
     tripIDPrefixMinimal: "#",
-    dontFilterMapLines: false,
+    dontFilterMapLines: false
   },
   southshore: {
     agencyID: "southshore",
     name: "South Shore Line",
     selectionName: "South Shore Line",
     endpoint: "https://store.transitstat.us/southshore/v1",
-    mapShapes: [
-      "https://gtfs.piemadd.com/data/southshore/shapes/type_2.geojson",
-    ],
+    mapShapes: ["https://gtfs.piemadd.com/data/southshore/shapes/type_2.geojson"],
     gtfsRoot: "https://gtfs.piemadd.com/data/southshore",
     mapDefault: [41.78803440543757, -86.99159058472856, 9],
     color: "#6a1a18",
@@ -468,18 +489,14 @@ export const agencies = {
     tripIDPrefixMinimal: "#",
     showTripIDOnScheduled: true,
     dontFilterMapLines: false,
-    customFontSizes: {
-      name: 28,
-    },
+    customFontSizes: { name: 28 }
   },
   dekalb_il: {
     agencyID: "dekalb_il",
     name: "Dekalb",
     selectionName: "Dekalb, IL/Huskie Lines",
     endpoint: "https://store.transitstat.us/dekalb_il/transitStatus",
-    mapShapes: [
-      "https://gtfs.piemadd.com/data/dekalb_il/shapes/type_3.geojson",
-    ],
+    mapShapes: ["https://gtfs.piemadd.com/data/dekalb_il/shapes/type_3.geojson"],
     gtfsRoot: "https://gtfs.piemadd.com/data/dekalb_il",
     mapDefault: [41.94112708831645, -88.62625503540039, 11],
     color: "#c8102e",
@@ -498,16 +515,14 @@ export const agencies = {
     tripIDPrefixMinimal: "#",
     showTripIDOnScheduled: false,
     dontFilterMapLines: true,
-    useDirectionsInsteadOfDestinations: true,
+    useDirectionsInsteadOfDestinations: true
   },
   mff: {
     agencyID: "mff",
     name: "MFF",
     selectionName: "Midwest FurFest",
     endpoint: "https://store.transitstat.us/mff",
-    mapShapes: [
-      "https://gobblerstatic.transitstat.us/additionalShapes/mff.json",
-    ],
+    mapShapes: ["https://gobblerstatic.transitstat.us/additionalShapes/mff.json"],
     //gtfsRoot: "https://gtfs.piemadd.com/data/southshore",
     mapDefault: [41.9915363, -87.8728995, 13],
     color: "#4776bb",
@@ -524,16 +539,14 @@ export const agencies = {
     tripIDPrefix: "#",
     tripIDPrefixOnDisplay: "#",
     tripIDPrefixMinimal: "#",
-    dontFilterMapLines: false,
+    dontFilterMapLines: false
   },
   cpkc_holiday: {
     agencyID: "cpkc_holiday",
     name: "CPKC Holiday",
     selectionName: "CPKC Holiday Train",
     endpoint: "https://store.transitstat.us/cpkc_holiday",
-    mapShapes: [
-      "https://gobbler.transitstat.us/additionalShapes/cpkcHoliday.json",
-    ],
+    mapShapes: ["https://gobbler.transitstat.us/additionalShapes/cpkcHoliday.json"],
     mapDefault: [43.07607404766978, -94.44906610671728, 3],
     color: "#a80000",
     textColor: "#ffffff",
@@ -550,7 +563,7 @@ export const agencies = {
     tripIDPrefixOnDisplay: "CP",
     tripIDPrefixMinimal: "CP",
     dontFilterMapLines: false,
-    useDirectionsInsteadOfDestinations: true,
+    useDirectionsInsteadOfDestinations: true
   },
   rutgers: {
     agencyID: "rutgers",
@@ -576,7 +589,7 @@ export const agencies = {
     tripIDPrefixMinimal: "#",
     dontFilterMapLines: false,
     dontShowRouteNameAndToInHeader: true,
-    addType: true,
+    addType: true
   },
   columbia: {
     agencyID: "columbia",
@@ -600,7 +613,7 @@ export const agencies = {
     tripIDPrefix: "#",
     tripIDPrefixOnDisplay: "#",
     tripIDPrefixMinimal: "#",
-    dontFilterMapLines: false,
+    dontFilterMapLines: false
   },
   uchicago: {
     agencyID: "uchicago",
@@ -624,7 +637,7 @@ export const agencies = {
     tripIDPrefix: "#",
     tripIDPrefixOnDisplay: "#",
     tripIDPrefixMinimal: "#",
-    dontFilterMapLines: false,
+    dontFilterMapLines: false
   },
   gcsu: {
     agencyID: "gcsu",
@@ -648,7 +661,7 @@ export const agencies = {
     tripIDPrefix: "#",
     tripIDPrefixOnDisplay: "#",
     tripIDPrefixMinimal: "#",
-    dontFilterMapLines: false,
+    dontFilterMapLines: false
   },
   uga: {
     agencyID: "uga",
@@ -672,7 +685,7 @@ export const agencies = {
     tripIDPrefix: "#",
     tripIDPrefixOnDisplay: "#",
     tripIDPrefixMinimal: "#",
-    dontFilterMapLines: false,
+    dontFilterMapLines: false
   },
   gobus: {
     agencyID: "gobus",
@@ -696,7 +709,7 @@ export const agencies = {
     tripIDPrefix: "#",
     tripIDPrefixOnDisplay: "#",
     tripIDPrefixMinimal: "#",
-    dontFilterMapLines: false,
+    dontFilterMapLines: false
   },
   georgiast: {
     agencyID: "georgiast",
@@ -720,7 +733,7 @@ export const agencies = {
     tripIDPrefix: "#",
     tripIDPrefixOnDisplay: "#",
     tripIDPrefixMinimal: "#",
-    dontFilterMapLines: false,
+    dontFilterMapLines: false
   },
   gatech: {
     agencyID: "gatech",
@@ -744,7 +757,7 @@ export const agencies = {
     tripIDPrefix: "#",
     tripIDPrefixOnDisplay: "#",
     tripIDPrefixMinimal: "#",
-    dontFilterMapLines: false,
+    dontFilterMapLines: false
   },
   GASO: {
     agencyID: "GASO",
@@ -768,7 +781,7 @@ export const agencies = {
     tripIDPrefix: "#",
     tripIDPrefixOnDisplay: "#",
     tripIDPrefixMinimal: "#",
-    dontFilterMapLines: false,
+    dontFilterMapLines: false
   },
   MIT: {
     agencyID: "MIT",
@@ -792,7 +805,7 @@ export const agencies = {
     tripIDPrefix: "#",
     tripIDPrefixOnDisplay: "#",
     tripIDPrefixMinimal: "#",
-    dontFilterMapLines: false,
+    dontFilterMapLines: false
   },
   uncc: {
     agencyID: "uncc",
@@ -816,7 +829,7 @@ export const agencies = {
     tripIDPrefix: "#",
     tripIDPrefixOnDisplay: "#",
     tripIDPrefixMinimal: "#",
-    dontFilterMapLines: false,
+    dontFilterMapLines: false
   },
   uncg: {
     agencyID: "uncg",
@@ -840,7 +853,7 @@ export const agencies = {
     tripIDPrefix: "#",
     tripIDPrefixOnDisplay: "#",
     tripIDPrefixMinimal: "#",
-    dontFilterMapLines: false,
+    dontFilterMapLines: false
   },
   uncw: {
     agencyID: "uncw",
@@ -864,7 +877,7 @@ export const agencies = {
     tripIDPrefix: "#",
     tripIDPrefixOnDisplay: "#",
     tripIDPrefixMinimal: "#",
-    dontFilterMapLines: false,
+    dontFilterMapLines: false
   },
   bama: {
     agencyID: "bama",
@@ -888,7 +901,7 @@ export const agencies = {
     tripIDPrefix: "#",
     tripIDPrefixOnDisplay: "#",
     tripIDPrefixMinimal: "#",
-    dontFilterMapLines: false,
+    dontFilterMapLines: false
   },
   ncstate: {
     agencyID: "ncstate",
@@ -912,7 +925,7 @@ export const agencies = {
     tripIDPrefix: "#",
     tripIDPrefixOnDisplay: "#",
     tripIDPrefixMinimal: "#",
-    dontFilterMapLines: false,
+    dontFilterMapLines: false
   },
   ritech: {
     agencyID: "ritech",
@@ -936,7 +949,7 @@ export const agencies = {
     tripIDPrefix: "#",
     tripIDPrefixOnDisplay: "#",
     tripIDPrefixMinimal: "#",
-    dontFilterMapLines: false,
+    dontFilterMapLines: false
   },
   secret_piero: {
     agencyID: "secret_piero",
@@ -963,18 +976,16 @@ export const agencies = {
     showTripIDOnScheduled: true,
     dontFilterMapLines: true,
     useDirectionsInsteadOfDestinations: true,
-    runNumberConverter: (runNumber) => runNumber.split("-").slice(-1),
+    runNumberConverter: (train) => train.runNumber.split("-").slice(-1),
     updateFrequency: 10000,
-    alwaysShowAllTrainsList: true,
+    alwaysShowAllTrainsList: true
   },
   bigboy: {
     agencyID: "bigboy",
     name: "Union Pacific Big Boy",
     selectionName: "Union Pacific Big Boy",
     endpoint: "https://bigboyapi.amtraker.com/",
-    mapShapes: [
-      "https://gobblerstatic.transitstat.us/additionalShapes/bigboy_all_2026.json",
-    ],
+    mapShapes: ["https://gobblerstatic.transitstat.us/additionalShapes/bigboy_all_2026.json"],
     mapDefault: [36.57236484298264, -96.27495103346894, 3],
     color: "#feca00",
     textColor: "#000000",
@@ -992,8 +1003,8 @@ export const agencies = {
     tripIDPrefixMinimal: "#",
     dontFilterMapLines: false,
     useDirectionsInsteadOfDestinations: true,
-    onlyUseSingleRouteCode: "bigboy",
-  },
+    onlyUseSingleRouteCode: "bigboy"
+  }
 };
 
 export const config = {
@@ -1006,24 +1017,24 @@ export const config = {
     {
       title: "UP Big Boy Tracking",
       info: "The Union Pacific Big Boy Tracker has been reactivated! Please be patient, as stops need to be added manually, but within a week of today (3/30) all of them should be added.",
-      expires: -1776398399000,
+      expires: -1776398399000
     },
     {
       title: "Passio Re-Enabled, at a cost",
       info: "We have been able to migrate some of the Passio endpoints to a new data source. That being said, most Passio go agencies don't have valid GTFS-RT feeds, so the list is quite limited.",
-      expires: 1762574399999,
+      expires: 1762574399999
     },
     {
       title: "Scheduled Trains Test",
       info: "We are testing the use of GTFS schedule data to show trains that are not yet running for Metra. If these tests prove to be successful, we will expand the data to other systems.",
-      expires: 1737352799999,
+      expires: 1737352799999
     },
     {
       title: "Transitstat v2 Early Beta",
       info: "Transitstat v2 has hit its beta stage. It is a little unstable and unreliable, but feel free to test it out and send any feedback to piero@piemadd.com.",
       linkText: "Beta Link",
       link: "https://betamap.transitstat.us/",
-      expires: -253402430399000,
-    },
-  ],
+      expires: -253402430399000
+    }
+  ]
 };
