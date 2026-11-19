@@ -31,6 +31,17 @@ const Changelog = () => {
           </tr>
         </thead>
         <tbody>
+          <tr id="1-21-15">
+            <td>
+              <a href="#1-21-15">v1.21.15</a>
+            </td>
+            <td>
+              <ul>
+                <li>Added tag line for better SEO.</li>
+                <li>Changed CPKC Holiday train shape as development progresses.</li>
+              </ul>
+            </td>
+          </tr>
           <tr id="1-21-14">
             <td>
               <a href="#1-21-14">v1.21.14</a>

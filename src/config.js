@@ -546,7 +546,7 @@ export const agencies = {
     name: "CPKC Holiday",
     selectionName: "CPKC Holiday Train",
     endpoint: "https://store.transitstat.us/cpkc_holiday",
-    mapShapes: ["https://gobbler.transitstat.us/additionalShapes/cpkcHoliday.json"],
+    mapShapes: ["https://gobbler.transitstat.us/additionalShapes/cpkcHoliday2026.json"],
     mapDefault: [43.07607404766978, -94.44906610671728, 3],
     color: "#a80000",
     textColor: "#ffffff",
@@ -1011,7 +1011,7 @@ export const config = {
   siteTitle: "Transitstat.us",
   siteTitleOther: "Transitstatus",
   tagLine: "Open source, free, and easy transit tracker.",
-  version: "v1.21.13",
+  version: "v1.21.15",
   additionalWarnings: [],
   globalAlerts: [
     {
