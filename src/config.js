@@ -52,7 +52,7 @@ export const agencies = {
     dontFilterMapLines: true,
     useDirectionsInsteadOfDestinations: true,
     onlyUseSingleRouteCode: "1",
-    customFontSizes: { name: 28 }
+    customFontSizes: { name: 24 }
   },
   bay: {
     agencyID: "bay",
