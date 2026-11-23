@@ -565,7 +565,8 @@ export const agencies = {
     tripIDPrefixOnDisplay: "CP",
     tripIDPrefixMinimal: "CP",
     dontFilterMapLines: true,
-    useDirectionsInsteadOfDestinations: true
+    useDirectionsInsteadOfDestinations: true,
+    customFontSizes: { name: 24 }
   },
   rutgers: {
     agencyID: "rutgers",
