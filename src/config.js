@@ -51,7 +51,8 @@ export const agencies = {
     showTripIDOnScheduled: true,
     dontFilterMapLines: true,
     useDirectionsInsteadOfDestinations: true,
-    onlyUseSingleRouteCode: "1"
+    onlyUseSingleRouteCode: "1",
+    customFontSizes: { name: 28 }
   },
   bay: {
     agencyID: "bay",
