@@ -216,7 +216,7 @@ export const agencies = {
   mbta: {
     agencyID: "mbta",
     name: "MBTA",
-    tagline: "Boston Commuter Rail and Subway Tracker",
+    tagLine: "Boston Commuter Rail and Subway Tracker",
     selectionName: "MBTA Tracker (Trains)",
     endpoint: "https://store.transitstat.us/mbta/tsV1",
     mapShapes: [
@@ -249,7 +249,7 @@ export const agencies = {
   mbta_ferry: {
     agencyID: "mbta_ferry",
     name: "MBTA",
-    tagline: "Boston Boat Tracker",
+    tagLine: "Boston Boat Tracker",
     selectionName: "MBTA Tracker (Ferries)",
     endpoint: "https://store.transitstat.us/mbta/tsFerryV1",
     mapShapes: [
@@ -544,6 +544,7 @@ export const agencies = {
   cpkc_holiday: {
     agencyID: "cpkc_holiday",
     name: "CPKC Holiday",
+    tagLine: "Canadian Pacific Christmas Train",
     selectionName: "CPKC Holiday Train",
     endpoint: "https://store.transitstat.us/cpkc_holiday",
     mapShapes: ["https://gobbler.transitstat.us/additionalShapes/cpkcHoliday2026.json"],
@@ -555,14 +556,14 @@ export const agencies = {
     typeCode: "train",
     typeCodePlural: "trains",
     addLine: false,
-    disabled: true,
+    disabled: false,
     useCodeForShortName: false,
     addShortName: false,
     showArrow: false,
     tripIDPrefix: "Train CP",
     tripIDPrefixOnDisplay: "CP",
     tripIDPrefixMinimal: "CP",
-    dontFilterMapLines: false,
+    dontFilterMapLines: true,
     useDirectionsInsteadOfDestinations: true
   },
   rutgers: {
@@ -1011,7 +1012,7 @@ export const config = {
   siteTitle: "Transitstat.us",
   siteTitleOther: "Transitstatus",
   tagLine: "Open source, free, and easy transit tracker.",
-  version: "v1.21.15",
+  version: "v1.21.16",
   additionalWarnings: [],
   globalAlerts: [
     {

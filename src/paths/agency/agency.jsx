@@ -148,8 +148,8 @@ const Agency = () => {
       <h1 style={{ fontSize: agencies[agency].customFontSizes?.name ?? 32 }}>
         {agencies[agency].name} {agencies[agency].type} Tracker
       </h1>
-      {agencies[agency]?.tagline ? (
-        <p style={{ marginTop: -4, marginBottom: 2, marginLeft: 2 }}>{agencies[agency]?.tagline}</p>
+      {agencies[agency]?.tagLine ? (
+        <p style={{ marginTop: -4, marginBottom: 2, marginLeft: 2 }}>{agencies[agency]?.tagLine}</p>
       ) : null}
       <Meta />
       <div className="routes">
